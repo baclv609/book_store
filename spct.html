@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+    <!-- font -->
+    <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="css/view/index.css">
+
+    <!-- slide -->
+
+</head>
+
+<!-- font-[Poppins] -->
+
+<body class="">
+    <header class="bg-white">
+        <nav class="container-content flex justify-between items-center">
+            <div>
+                <img class="w-16 cursor-pointer" src="https://cdn-icons-png.flaticon.com/512/5968/5968204.png"
+                    alt="...">
+            </div>
+            <div
+                class="nav-links duration-500 md:static absolute bg-white  md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  flex items-center px-5">
+                <ul class="flex md:flex-row flex-col md:items-center md:gap-7 gap-4">
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Products</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Resource</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Developers</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Pricing</a>
+                    </li>
+                    <li>
+                        <div class="relative ">
+                            <a id="dropdownButton" class=" cursor-pointer m-7 md:m-0 hover:text-cyan-400 hover:underline 
+                            transition duration-400 ease-in">Danh Mục <i class="fa-solid fa-chevron-down"></i></a>
+
+                            <ul id="dropdownMenu"
+                                class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a>
+                                </li>
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a>
+                                </li>
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex items-center gap-6">
+                <form action="">
+                    <input type="text" placeholder="Tìm kiếm" class="border border-gray-400 p-2 rounded-md text-xs">
+                    <input type="submit" name="submit" value="Tìm" class="bg-red-500 text-white px-2 py-1 rounded ">
+                </form>
+                <div>
+                    <a href="#" class="flex flex-col justify-center items-center"><i
+                            class="fa-solid fa-cart-shopping"></i>
+                        <div class="text-xs mt-1">Giỏ hàng</div>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="flex flex-col justify-center items-center"><i class="fa-regular fa-user"></i>
+                        <div class="text-xs mt-1">Đăng nhập</div>
+                    </a>
+                </div>
+            </div>
+    </header>
+
+    
+
+    <!-- thông tin sản phẩm -->
+    <section class="mt-5 container mx-auto">
+        <div class="bg-white rounded-xl p-2 lg:p-3 mb-3">
+            <div class="flex flex-wrap-reverse md:flex-nowrap">
+
+                <div class=" p-4 w-full ">
+                    <h3 class="font-[Coiny] font-bold text-2xl leading-6 mb-4 text-center md:text-left">
+                        Thông tin chi tiết
+                    </h3>
+                    <p class="mb-4 text-sm">Sản phẩm được may từ vải cotton mềm mại cho phép bé thoải mái chơi đùa, vận
+                        động mà không cảm
+                        thấy khó
+                        chịu. Bên cạnh đó, chất liệu cotton không gây kích ứng da và có khả năng thấm hút mồ hôi tốt nên
+                        Mẹ không
+                        phải lo lắng bé yêu bị nổi rôm, tuyệt đối an toàn khi sử dụng.</p>
+                    <h3 class="font-semibold mb-4">Thiết kế thoải mái, đáng yêu</h3>
+                    <p class="mb-4 text-sm">Thiết kế thoải mái phối cùng họa tiết cá tính sẽ mang đến phong cách thoải
+                        mái và không kém
+                        phần thời trang
+                        cho bé của bạn. Ngoài ra, các đường nối, đường cuốn biên trên quần áo không bị nổi cộm gây khó
+                        chịu và ngứa
+                        da bé cho phép bé vận động dễ dàng.</p>
+                </div>
+                <div class=" border border-[#ffaa2d] rounded-xl p-4 w-full">
+                    <p class="border-b-2 border-[#097770] pb-6 mb-6">Rinh quà <b class="text-[#097770]">Trung thu</b>
+                        cho bé</p>
+                    <p class="pb-6">Giảm 5% đơn từ 290k - Mã <b class="text-[#097770]">mk5</b></p>
+                    <p class="pb-6">Giảm 20k phí ship đơn từ 700k - Mã <b class="text-[#097770]">FREESHIP20</b></p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Đánh giá sản phẩm -->
+    <section class="container mx-auto">
+        <div class="bg-white rounded-xl p-2 lg:p-3 mb-3 ">
+            <h3 class="font-[Coiny] font-medium text-xl leading-6 mb-4 text-center md:text-left">
+                Đánh giá sản phẩm
+            </h3>
+            <div class="grid grid-cols-3">
+                <div class="md:col-span-1 col-span-3 ">
+                    <div
+                        class="w-full bg-[#fffbed] flex items-center flex-col rounded-xl text-sm leading-5 mb-5 p-3 md:w-[50%]">
+                        <!-- star -->
+                        <!-- <div class="flex items-center mb-1">
+              <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 22 20">
+                <path
+                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+              </svg>
+              <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 22 20">
+                <path
+                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+              </svg>
+              <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 22 20">
+                <path
+                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+              </svg>
+              <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 22 20">
+                <path
+                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+              </svg>
+              <svg class="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                <path
+                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+              </svg>
+            </div> -->
+                        <p class="text-center">(0 đánh giá)</p>
+                    </div>
+                </div>
+                <div class="col-span-3 md:col-span-2 flex justify-end items-center">
+                    <span class=" mb-3 p-3 text-white  bg-menuHover rounded-xl font-bold cursor-pointer"><input
+                            value="Viết đánh giá" type="button" @click="toggleForm" /></span>
+                </div>
+            </div>
+
+            <!-- form -->
+            <div v-show="showForm">
+                <div class="lg:w-[70%] w-full pl-3 mx-auto mb-5 flex justify-end">
+                    <form @submit.prevent="submitForm" class="md:w-[100%] w-[100%]">
+                        <div>
+                            <input v-model="name" type="text" id="name"
+                                class="my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Tên của bạn (>3 ký tự và < 20 ký tự)" />
+                            <div v-if="nameError" class="text-red-500 mt-3 w-full">Tên của bạn phải từ 3 đến 20 ký tự,
+                                vui lòng nhập
+                                lại.</div>
+                        </div>
+                        <div>
+                            <input v-model="email" type="email" id="email"
+                                class="my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="john.smith@example.com" />
+                            <div v-if="emailError" class="text-red-500 mt-3 w-full">Email không đúng định dạng, vui lòng
+                                nhập lại.
+                            </div>
+                        </div>
+                        <!-- <div class="flex items-center mt-3">
+              <label class="mr-2">Đánh giá</label>
+              <div class="flex items-center">
+                <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 22 20">
+                  <path
+                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                </svg>
+                <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 22 20">
+                  <path
+                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                </svg>
+                <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 22 20">
+                  <path
+                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                </svg>
+                <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 22 20">
+                  <path
+                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                </svg>
+                <svg class="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500" aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                  <path
+                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                </svg>
+              </div>
+            </div> -->
+                        <div>
+                            <input v-model="title" type="text" id="title"
+                                class="my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Hãy cho một tiêu đề (>3 ký tự và < 50 ký tự)" />
+                            <div v-if="titleError" class="text-red-500 mt-3 w-full">Tiêu đề của bạn không hợp lệ, vui
+                                lòng nhập lại.
+                            </div>
+                        </div>
+                        <div>
+                            <textarea v-model="content" id="content" rows="4"
+                                class="mt-3 block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="Viết nội dung đánh giá ở đây (>3 ký tự và < 1000 ký tự)"></textarea>
+                            <div v-if="contentError" class="text-red-500 mt-3 w-full">
+                                Viết nội dung đánh giá ở đây (>3 ký tự và < 1000 ký tự) </div>
+                            </div>
+                            <span
+                                class="text-right mt-3 mb-3 p-3 text-white bg-menuHover rounded-xl font-bold cursor-pointer float-right">
+                                <input value="Gửi đánh giá" type="submit" />
+                            </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class=" bg-white">
+        <div class="container-content ">
+
+            <div class="grid grid-cols-12 pt-12">
+                <div class="px-3 xl:col-span-6 lg:col-span-6 md:col-span-7 sm:col-span-12 col-span-12">
+                    <div class="text-lg text-[#C92127] font-bold">
+                        Kids Shop, Cùng Bé lớn khôn!
+                    </div>
+                    <div class="text-sm text-[#424242]">Hotline: 1900.636.099</div>
+                    <div class="text-sm text-[#424242]">
+                        HCM: Lầu 6, 182 Lê Đại Hành, P.15, Quận 11, Tp.HCM
+                    </div>
+
+                    <div class="text-sm text-[#424242] mt-2">Hotline: 1900.636.099</div>
+                    <div class="text-sm text-[#424242] mt-2">
+                        Email: support@haravan.com
+                    </div>
+                </div>
+
+                <div class="px-3 xl:col-span-6 lg:col-span-6 md:col-span-5 sm:col-span-12 col-span-12 w-[420px]">
+                    <div class="grid grid-cols-12">
+                        <div class="col-span-6 lg:col-span-6 md:col-span-12">
+                            <div class="text-lg text-[#C92127] font-bold">Chính sách</div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+
+
+
+                                Hotline: 1900.636.099
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Chính sách vận chuyển
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Chính sách đổi trả
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Quy định sử dụng
+                            </div>
+                        </div>
+
+                        <div class="col-span-6 lg:col-span-6 md:col-span-12">
+                            <div class="text-lg text-[#C92127] font-bold">Hỗ trợ</div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Hướng dẫn mua hàng
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Hướng dẫn thanh toán
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Hướng dẫn giao nhận
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Điều khoản dịch vụ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4" />
+            <div class="text-center text-sm leading-4 text-[#424242] pb-4">
+                Bản quyền thuộc về MewTheme. Powered by Haravan
+            </div>
+        </div>
+    </footer>
+    <script>
+
+    </script>
+</body>
+
+</html>
