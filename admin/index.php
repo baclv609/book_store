@@ -113,6 +113,17 @@ if (isset ($_GET["act"])) {
 
             include ("sach/sach.php");
             break;
+        case 'addSach':
+            // kieerm tra xem nngười dùng có click nút add hay ko 
+            if (isset ($_POST['submit'])) {
+                $name = $_POST["nameDM"];
+                $name = $_POST["nameDM"];
+                $name = $_POST["nameDM"];
+                $name = $_POST["nameDM"];
+            }
+            include ("sach/add.php");
+
+            break;
 
         default:
             include ("home.php");

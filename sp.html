@@ -1,11 +1,780 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+    <!-- font -->
+    <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="css/view/index.css">
+
+    <!-- slide -->
+
 </head>
-<body>
-    <h1>hello</h1>
+
+<!-- font-[Poppins] -->
+
+<body class="">
+    <header class="bg-white sticky">
+        <nav class="container-content flex justify-between items-center">
+            <div>
+                <img class="w-16 cursor-pointer" src="https://cdn-icons-png.flaticon.com/512/5968/5968204.png"
+                    alt="...">
+            </div>
+            <div
+                class="nav-links duration-500 md:static absolute bg-white  md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  flex items-center px-5">
+                <ul class="flex md:flex-row flex-col md:items-center md:gap-7 gap-4">
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Products</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Resource</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Developers</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Pricing</a>
+                    </li>
+                    <li>
+                        <div class="relative ">
+                            <a id="dropdownButton" class=" cursor-pointer m-7 md:m-0 hover:text-cyan-400 hover:underline 
+                            transition duration-400 ease-in">Danh Mục <i class="fa-solid fa-chevron-down"></i></a>
+
+                            <ul id="dropdownMenu"
+                                class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a>
+                                </li>
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a>
+                                </li>
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex items-center gap-6">
+                <form action="">
+                    <input type="text" placeholder="Tìm kiếm" class="border border-gray-400 p-2 rounded-md text-xs">
+                    <input type="submit" name="submit" value="Tìm" class="bg-red-500 text-white px-2 py-1 rounded ">
+                </form>
+                <div>
+                    <a href="#" class="flex flex-col justify-center items-center"><i
+                            class="fa-solid fa-cart-shopping"></i>
+                        <div class="text-xs mt-1">Giỏ hàng</div>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="flex flex-col justify-center items-center"><i class="fa-regular fa-user"></i>
+                        <div class="text-xs mt-1">Đăng nhập</div>
+                    </a>
+                </div>
+            </div>
+    </header>
+
+    <section class="container-content my-5">
+        <div class="rounded-xl border bg-[#FCDDEF] p-2 mt-5">
+            <h1 class="text-lg font-semibold ml-2 mb-1 leading-6">Tất cả sản phẩm</h1>
+        </div>
+        <div class="rounded-xl bg-white mt-5">
+            <div class=" flex justify-end">
+                <form class="w-[600px] m-4">
+                    <div class="flex">
+                        <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Your
+                            Email</label>
+                        <button id="dropdown-button" data-dropdown-toggle="dropdown"
+                            class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100"
+                            type="button">All categories <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg></button>
+                        <div id="dropdown"
+                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
+                                <li>
+                                    <button type="button"
+                                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100">Mockups</button>
+                                </li>
+                                <li>
+                                    <button type="button"
+                                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100">Templates</button>
+                                </li>
+                                <li>
+                                    <button type="button"
+                                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100">Design</button>
+                                </li>
+                                <li>
+                                    <button type="button"
+                                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100">Logos</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="relative w-full">
+                            <input type="search" id="search-dropdown"
+                                class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
+                                placeholder="Search Mockups, Logos, Design Templates..." required />
+                            <button type="submit"
+                                class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                </svg>
+                                <span class="sr-only">Search</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div>
+                <!--  -->
+                <div class="grid grid-cols-5  gap-x-8 gap-y-8">
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                            </div>
+                        </div>
+                    </div> <!-- items 1-->
+                    <div class="w-[220px] p-4 text-sm leading-5 rounded-xl hover:shadow-gray-500">
+                        <div class="">
+                            <a href="#"><img class="w-[195px] h-[195px]"
+                                    src="https://product.hstatic.net/200000785527/product/bo-ve-sinh-tua-tre-em-hokori-5460-2_84cfe160bb694b50bccc5a1b9112851e_large.jpg"
+                                    alt="" /></a>
+                        </div>
+                        <div>
+                            <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                <a href="#"
+                                    class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                    Bô vệ sinh tựa trẻ em Hokori 5460
+                                </a>
+                            </div>
+
+                            <div class="mt-2">
+                                <div>
+                                    <a href="#" class="font-bold text-[#C92127] leading-6 text-left pr-2">
+                                        478,000₫</a>
+
+                                </div>
+                                <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- footer -->
+    <footer class=" bg-white">
+        <div class="container-content ">
+
+            <div class="grid grid-cols-12 pt-12">
+                <div class="px-3 xl:col-span-6 lg:col-span-6 md:col-span-7 sm:col-span-12 col-span-12">
+                    <div class="text-lg text-[#C92127] font-bold">
+                        Kids Shop, Cùng Bé lớn khôn!
+                    </div>
+                    <div class="text-sm text-[#424242]">Hotline: 1900.636.099</div>
+                    <div class="text-sm text-[#424242]">
+                        HCM: Lầu 6, 182 Lê Đại Hành, P.15, Quận 11, Tp.HCM
+                    </div>
+
+                    <div class="text-sm text-[#424242] mt-2">Hotline: 1900.636.099</div>
+                    <div class="text-sm text-[#424242] mt-2">
+                        Email: support@haravan.com
+                    </div>
+                </div>
+
+                <div class="px-3 xl:col-span-6 lg:col-span-6 md:col-span-5 sm:col-span-12 col-span-12 w-[420px]">
+                    <div class="grid grid-cols-12">
+                        <div class="col-span-6 lg:col-span-6 md:col-span-12">
+                            <div class="text-lg text-[#C92127] font-bold">Chính sách</div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+
+
+
+                                Hotline: 1900.636.099
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Chính sách vận chuyển
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Chính sách đổi trả
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Quy định sử dụng
+                            </div>
+                        </div>
+
+                        <div class="col-span-6 lg:col-span-6 md:col-span-12">
+                            <div class="text-lg text-[#C92127] font-bold">Hỗ trợ</div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Hướng dẫn mua hàng
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Hướng dẫn thanh toán
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Hướng dẫn giao nhận
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Điều khoản dịch vụ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4" />
+            <div class="text-center text-sm leading-4 text-[#424242] pb-4">
+                Bản quyền thuộc về MewTheme. Powered by Haravan
+            </div>
+        </div>
+    </footer>
+    <script>
+
+    </script>
 </body>
+
 </html>
