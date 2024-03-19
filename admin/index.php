@@ -4,6 +4,7 @@ include ("../model/connect.php");
 include ("../model/danhmuc.php");
 include ("../model/nhaXuatBan.php");
 include ("../model/tacGia.php");
+include ("../model/binhLuan.php");
 
 include ("header.php");
 if (isset ($_GET["act"])) {
@@ -137,7 +138,6 @@ if (isset ($_GET["act"])) {
             $listTg = list_tac_gia("");
             include ("tacGia/listTacGia.php");
             break;
-
         case 'editTg':
             if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
                 $id = $_GET["id"];
@@ -159,6 +159,36 @@ if (isset ($_GET["act"])) {
             include ("tacGia/listTacGia.php");
             break;
 
+        //Bình luậnhan
+        case 'add_comment': // đoạn này là gì add tại bên kia m để act là ý n
+            if (isset ($_POST['themMoi'])) {
+                $nd = $_POST["content"];
+                // echo $nd;
+                // die();
+                insert_binhLuan($nd);
+                // $thongBao = "Thêm thành công";
+            }
+            include ("binhLuan/add.php");
+            break;
+        case 'comment':
+            if (isset ($_POST['submit'])) {
+                $searchBl = $_POST["searchBl"];
+            } else {
+                $searchBl = "";
+            }
+            $listBl = list_binhLuan($searchBl);
+            // print_r($listDm);
+            // die();
+            include ("binhLuan/comment.php");
+            break;
+        case 'deleteBl':
+            if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
+                $id = $_GET["id"];
+                delete_binhLuan($id);
+            }
+            $listBl = list_binhLuan("");
+            include ("binhLuan/listBl.php");
+            break;
 
         // sách
         case 'sach':
