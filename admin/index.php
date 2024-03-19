@@ -168,11 +168,26 @@ if (isset ($_GET["act"])) {
         case 'addSach':
             // kieerm tra xem nngười dùng có click nút add hay ko 
             if (isset ($_POST['submit'])) {
-                $name = $_POST["nameDM"];
-                $name = $_POST["nameDM"];
-                $name = $_POST["nameDM"];
-                $name = $_POST["nameDM"];
+
+                $tenSanPham = $_POST['name'];
+                $tacGiaId = $_POST['tacGia_id'];
+                $nhaSanXuatId = $_POST['nha_san_xuat_id'];
+                $danhMucId = $_POST['danh_muc_id'];
+                $gia = $_POST['gia'];
+                $giaSale = $_POST['gia_sale'];
+                $moTa = $_POST['mo_ta'];
+                $ngayGioHienTai = date('Y-m-d H:i:s');
+                // echo $nhaSanXuatId;
+//                 echo '<pre>';
+                print_r([$tenSanPham,$tacGiaId,$nhaSanXuatId,$danhMucId,$gia,$giaSale,$moTa,$ngayGioHienTai]);
+die;
+// insert_sach($tenSanPham,$tacGia_id,$danh_muc_id,$nha_san_xuat_id,$img,$the_loai_id,$gia,$gia_sale,$mo_ta,$created_at);
             }
+            $listTg = list_tac_gia("");
+            $listNxb = list_NhaXuatBan("");
+            $listDm = list_danhmuc("");
+            // print_r($listDm);
+            //             die;
             include ("sach/add.php");
 
             break;
