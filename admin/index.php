@@ -3,6 +3,7 @@
 include ("../model/connect.php");
 include ("../model/danhmuc.php");
 include ("../model/nhaXuatBan.php");
+include ("../model/tacGia.php");
 
 include ("header.php");
 if (isset ($_GET["act"])) {
@@ -105,6 +106,57 @@ if (isset ($_GET["act"])) {
             }
             $listNxb = list_NhaXuatBan("");
             include ("NXB/nhaxuatban.php");
+            break;
+
+        //Tác giả
+        case 'addTg':
+            // kieerm tra xem nngười dùng có click nút add hay ko 
+            if (isset ($_POST['themMoi'])) {
+                $name = $_POST["nameTg"];
+                insert_tac_gia($name);
+                // $thongBao = "Thêm thành công";
+            }
+            include ("tacGia/add.php");
+            break;
+        case 'listTacGia':
+            if (isset ($_POST['submit'])) {
+                $searchTG = $_POST["searchTg"];
+            } else {
+                $searchTG = "";
+            }
+            $listTg = list_tac_gia($searchTG);
+            // print_r($listDm);
+            // die();
+            include ("tacGia/listTacGia.php");
+            break;
+        case 'deleteTg':
+            if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
+                $id = $_GET["id"];
+                delete_tac_gia($id);
+            }
+            $listTg = list_tac_gia("");
+            include ("tacGia/listTacGia.php");
+            break;
+
+        case 'editTg':
+            if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
+                $id = $_GET["id"];
+                $tg = edit_tac_gia($id);
+                //  print_r($tg);
+                // die;
+            }
+            include ("tacGia/updateTg.php");
+            break;
+        case 'updateTg':
+            if (isset ($_POST['updateTg'])) {
+                $id = $_POST["id"];
+                $name = $_POST["nametg"];
+                // echo $name;
+                // die();
+                update_tac_gia($id, $name);
+            }
+            $listTg = list_tac_gia("");
+            include ("tacGia/listTacGia.php");
             break;
 
 
