@@ -5,6 +5,7 @@ include ("../model/danhmuc.php");
 include ("../model/nhaXuatBan.php");
 include ("../model/tacGia.php");
 include ("../model/acc.php");
+include ("../model/binhLuan.php");
 
 include ("header.php");
 if (isset ($_GET["act"])) {
@@ -138,7 +139,6 @@ if (isset ($_GET["act"])) {
             $listTg = list_tac_gia("");
             include ("tacGia/listTacGia.php");
             break;
-
         case 'editTg':
             if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
                 $id = $_GET["id"];
@@ -160,6 +160,36 @@ if (isset ($_GET["act"])) {
             include ("tacGia/listTacGia.php");
             break;
 
+        //Bình luậnhan
+        case 'add_comment': // đoạn này là gì add tại bên kia m để act là ý n
+            if (isset ($_POST['themMoi'])) {
+                $nd = $_POST["content"];
+                // echo $nd;
+                // die();
+                insert_binhLuan($nd);
+                // $thongBao = "Thêm thành công";
+            }
+            include ("binhLuan/add.php");
+            break;
+        case 'comment':
+            if (isset ($_POST['submit'])) {
+                $searchBl = $_POST["searchBl"];
+            } else {
+                $searchBl = "";
+            }
+            $listBl = list_binhLuan($searchBl);
+            // print_r($listDm);
+            // die();
+            include ("binhLuan/comment.php");
+            break;
+        case 'deleteBl':
+            if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
+                $id = $_GET["id"];
+                delete_binhLuan($id);
+            }
+            $listBl = list_binhLuan("");
+            include ("binhLuan/listBl.php");
+            break;
 
         // sách
         case 'sach':
@@ -169,11 +199,26 @@ if (isset ($_GET["act"])) {
         case 'addSach':
             // kieerm tra xem nngười dùng có click nút add hay ko 
             if (isset ($_POST['submit'])) {
-                $name = $_POST["nameDM"];
-                $name = $_POST["nameDM"];
-                $name = $_POST["nameDM"];
-                $name = $_POST["nameDM"];
+
+                $tenSanPham = $_POST['name'];
+                $tacGiaId = $_POST['tacGia_id'];
+                $nhaSanXuatId = $_POST['nha_san_xuat_id'];
+                $danhMucId = $_POST['danh_muc_id'];
+                $gia = $_POST['gia'];
+                $giaSale = $_POST['gia_sale'];
+                $moTa = $_POST['mo_ta'];
+                $ngayGioHienTai = date('Y-m-d H:i:s');
+                // echo $nhaSanXuatId;
+//                 echo '<pre>';
+                print_r([$tenSanPham,$tacGiaId,$nhaSanXuatId,$danhMucId,$gia,$giaSale,$moTa,$ngayGioHienTai]);
+die;
+// insert_sach($tenSanPham,$tacGia_id,$danh_muc_id,$nha_san_xuat_id,$img,$the_loai_id,$gia,$gia_sale,$mo_ta,$created_at);
             }
+            $listTg = list_tac_gia("");
+            $listNxb = list_NhaXuatBan("");
+            $listDm = list_danhmuc("");
+            // print_r($listDm);
+            //             die;
             include ("sach/add.php");
 
             break;
