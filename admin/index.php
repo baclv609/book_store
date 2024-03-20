@@ -195,7 +195,7 @@ if (isset ($_GET["act"])) {
         case 'sach':
             $listDm = list_danhmuc("");
             $listTg = list_tac_gia("");
-            $list_Sach = list_sach();
+            $list_Sach = list_sach("");
             // echo '<pre>';
             //  var_dump($list_Sach);
             //             die;
@@ -233,14 +233,68 @@ if (isset ($_GET["act"])) {
             //             die;
             include ("sach/add.php");
             break;
+        case 'editSp':
+            if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
+                $id = $_GET["id"];
 
+                $listTg = list_tac_gia("");
+                //     print_r($listTg);
+                // die();
+                $listDm = list_danhmuc("");
+                $listNxb = list_NhaXuatBan("");
+                $SP = select_spct($id);
+                // echo $SP["tacGia_id"];
+            }
+            include ("sach/updateSp.php");
+            break;
+
+        case 'updateSp':
+            if (isset ($_POST['submit'])) {
+                $id = $_POST["id"];
+                
+                $tenSanPham = $_POST['name'];
+                $tacGiaId = $_POST['tacGia_id'];
+                $nhaSanXuatId = $_POST['nha_san_xuat_id'];
+                $danhMucId = $_POST['danh_muc_id'];
+                $gia = $_POST['gia'];
+                $giaSale = $_POST['gia_sale'];
+                $moTa = $_POST['mo_ta'];
+
+    // print_r([$id, $tenSanPham,$tacGiaId,$nhaSanXuatId,$danhMucId,$gia,$giaSale,$moTa]);
+    //             die();
+
+                $hinhAnh = $_FILES["img"];
+                $filename = $hinhAnh["name"];
+
+                if ($filename) {
+                    $filename = time() . $filename;
+                    $dir = "../uploads/$filename";
+
+                    if (move_uploaded_file($hinhAnh["tmp_name"], $dir)) {
+                        // update_sanpham_coHinhAnh($tenSanPham, $price, $filename, $moTa, $id_danhMuc, $id);
+                        update_sanpham_coHinhAnh($id,$tenSanPham, $tacGiaId, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa);
+                    }
+                } else {
+                    // update_sanpham_KhongHinhAnh($tenSanPham, $price, $moTa, $id_danhMuc, $id);
+                    update_sanpham_KhongHinhAnh($id, $tenSanPham,$tacGiaId,$nhaSanXuatId,$danhMucId,$gia,$giaSale,$moTa);
+
+                }
+
+                $thongBao = "Thêm thành công";
+            }
+            $listDm = list_danhmuc("");
+            $listTg = list_tac_gia("");
+            $list_Sach = list_sach("");
+
+            include ("sach/sach.php");
+            break;
         case 'deleteSp':
             if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
                 $id = $_GET["id"];
                 delete_sach($id);
             }
 
-            $list_Sach = list_sach();
+            $list_Sach = list_sach("");
             include ("sach/sach.php");
             break;
 

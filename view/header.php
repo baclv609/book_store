@@ -50,26 +50,18 @@
                     </li>
                     <li>
                         <div class="relative ">
-                            <!-- <a id="dropdownButton" class=" cursor-pointer m-7 md:m-0 hover:text-cyan-400 hover:underline 
-                            transition duration-400 ease-in">Danh Mục <i class="fa-solid fa-chevron-down"></i></a> -->
+                            <a id="dropdownButton" class=" cursor-pointer m-7 md:m-0 hover:text-cyan-400 hover:underline 
+                            transition duration-400 ease-in">Danh Mục <i class="fa-solid fa-chevron-down"></i></a>
 
-                            <select id="countries" name="nha_san_xuat_id" class="cursor-pointer m-7 md:m-0 hover:text-cyan-400 hover:underline 
-                            transition duration-400 ease-in">
-                                <option selected>Danh mục</option>
+                          
+                            <ul id="dropdownMenu"
+                                class="absolute hidden mt-2 py-2 w-full  bg-white rounded-md shadow-md z-10">
                                 <?php
                                 foreach ($listDm as $key => $value) {
-                                    echo '<option value="' . $value["id"] . '">' . $value["name"] . '</option>';
+                                    echo '<li><a href="index.php?act=sanpham&iddm=' . $value["id"] . '">' . $value["name"] . '</a>
+                                    </li> ';
                                 } ?>
-                            </select>
-                            <!-- <ul id="dropdownMenu"
-                                class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
-                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a>
-                                </li>
-                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a>
-                                </li>
-                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a>
-                                </li>
-                            </ul> -->
+                            </ul>
                         </div>
                     </li>
                 </ul>

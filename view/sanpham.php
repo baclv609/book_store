@@ -33,63 +33,7 @@
 
                 </div>
 
-                <div class="rounded-xl bg-white p-3 mb-4">
-                    <p class="mb-4 text-lg font-medium leading-6 my-2">Lọc giá</p>
-                    <form action="#">
-                        <div class="flex items-center mb-2">
-                            <input id="default-radio-1" type="radio" value="" name="default-radio"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                            <label for="default-radio-1"
-                                class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">Dưới
-                                100.000đ</label>
-                        </div>
-                        <div class="flex items-center mb-2">
-                            <input id="default-radio-1" type="radio" value="" name="default-radio"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                            <label for="default-radio-1"
-                                class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">100.000đ -
-                                200.000đ</label>
-                        </div>
-
-                        <div class="flex items-center mb-2">
-                            <input id="default-radio-1" type="radio" value="" name="default-radio"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                            <label for="default-radio-1"
-                                class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">500.000đ -
-                                1.000.000đ</label>
-                        </div>
-                    </form>
-
-                </div>
-
-                <div class=" rounded-xl bg-white p-3 mb-4">
-                    <p class="mb-4 text-lg font-medium leading-6 my-2">Lọc giá</p>
-                    <form action="#">
-                        <div class="flex items-center mb-2">
-                            <input id="default-radio-1" type="radio" value="" name="default-radio"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                            <label for="default-radio-1"
-                                class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">Dưới
-                                100.000đ</label>
-                        </div>
-                        <div class="flex items-center mb-2">
-                            <input id="default-radio-1" type="radio" value="" name="default-radio"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                            <label for="default-radio-1"
-                                class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">100.000đ -
-                                200.000đ</label>
-                        </div>
-
-                        <div class="flex items-center mb-2">
-                            <input id="default-radio-1" type="radio" value="" name="default-radio"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                            <label for="default-radio-1"
-                                class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">500.000đ -
-                                1.000.000đ</label>
-                        </div>
-                    </form>
-
-                </div>
+             
             </div>
         </div>
 
@@ -99,7 +43,7 @@
             </div>
 
             <div class="bg-white rounded-xl mt-5">
-                <div class="py-4">
+                <!-- <div class="py-4">
                     <ul class="flex space-x-2 mdtext-lg text-sm ">
                         <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Mặc định</label></li>
                         <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Từ A-Z</label></li>
@@ -110,7 +54,7 @@
                         <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Mới nhất</label></li>
 
                     </ul>
-                </div>
+                </div> -->
 
                 <div class="grid md:grid-cols-3 lg:grid-cols-4  grid-cols-2 gap-4">
                     <!-- item 2 -->
