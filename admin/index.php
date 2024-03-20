@@ -4,6 +4,7 @@ include ("../model/connect.php");
 include ("../model/danhmuc.php");
 include ("../model/nhaXuatBan.php");
 include ("../model/tacGia.php");
+include ("../model/acc.php");
 
 include ("header.php");
 if (isset ($_GET["act"])) {
@@ -176,7 +177,50 @@ if (isset ($_GET["act"])) {
             include ("sach/add.php");
 
             break;
+       
+            case 'account':
+                if (isset ($_POST['submit'])) {
+                    $searchName = $_POST["searchName"];
+                } else {
+                    $searchName = "";
+                }
+                $listAcc = list_acc($searchName);
+                echo("<pre>");
+                print_r($listAcc);
+                echo("</pre>");
+                include ("acc/acc.php");
+                break;
+            case 'deleteAcc':
+                if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
+                    $id = $_GET["id"];
+                    delete_acc($id);
+                }
+                $listAcc = list_acc("");
+                include ("acc/acc.php");
+                break;
+    
+            case 'editAcc':
+                if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
+                    $id = $_GET["id"];
+                    $acc = edit_acc($id);
+                    //  print_r($acc);
+                    // die;
+                }
+                include ("acc/updateAcc.php");
+                break;
+            case 'updateAcc':
+                if (isset ($_POST['update'])) {
+                    $id = $_POST["id"];
+                    $name = $_POST["nameacc"];
+                    $avater = $_POST["avater"];
+                    $phone = $_POST["phone"];
+                    $email = $_POST["email"];
 
+                    update_acc($id, $name, $avater,$phone ,$email);
+                }
+                $listAcc = list_acc("");
+                include ("acc/acc.php");
+                break;
         default:
             include ("home.php");
             break;
