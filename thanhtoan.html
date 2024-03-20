@@ -1,0 +1,398 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+    <!-- font -->
+    <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="css/view/index.css">
+
+    <!-- slide -->
+
+</head>
+
+<!-- font-[Poppins] -->
+
+<body class="">
+    <header class="bg-white sticky">
+        <nav class="container-content flex justify-between items-center">
+            <div>
+                <img class="w-16 cursor-pointer" src="https://cdn-icons-png.flaticon.com/512/5968/5968204.png"
+                    alt="...">
+            </div>
+            <div
+                class="nav-links duration-500 md:static absolute bg-white  md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  flex items-center px-5">
+                <ul class="flex md:flex-row flex-col md:items-center md:gap-7 gap-4">
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Products</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Resource</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Developers</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Pricing</a>
+                    </li>
+                    <li>
+                        <div class="relative ">
+                            <a id="dropdownButton" class=" cursor-pointer m-7 md:m-0 hover:text-cyan-400 hover:underline 
+                            transition duration-400 ease-in">Danh Mục <i class="fa-solid fa-chevron-down"></i></a>
+
+                            <ul id="dropdownMenu"
+                                class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a>
+                                </li>
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a>
+                                </li>
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex items-center gap-6">
+                <form action="">
+                    <input type="text" placeholder="Tìm kiếm" class="border border-gray-400 p-2 rounded-md text-xs">
+                    <input type="submit" name="submit" value="Tìm" class="bg-red-500 text-white px-2 py-1 rounded ">
+                </form>
+                <div>
+                    <a href="#" class="flex flex-col justify-center items-center"><i
+                            class="fa-solid fa-cart-shopping"></i>
+                        <div class="text-xs mt-1">Giỏ hàng</div>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="flex flex-col justify-center items-center"><i class="fa-regular fa-user"></i>
+                        <div class="text-xs mt-1">Đăng nhập</div>
+                    </a>
+                </div>
+            </div>
+    </header>
+
+
+        <div class="container-content bg-white rounded-xl p-2 lg:p-3 mb-3 mt-5">Tất cả sản phẩm </div>
+        <!-- All sản phẩm -->
+        <section class="container-content mt-5">
+            <div class="bg-white rounded-xl p-2 lg:p-3 mb-3">
+    
+                <div class="grid grid-cols-12">
+                    <div class="md:col-span-7 col-span-12">
+    
+    
+                        <!-- item 1 -->
+                        <div
+                            class="border border-[#bebebe] rounded-[20px] flex text-sm mb-6 px-5 pt-5 pb-[20px] text-left relative">
+                            <a href="#"><img class="w-[80px] h-[80px]"
+                                    src="https://product.hstatic.net/200000785527/product/sua-morinaga-hagukumi-so-1-850g-0-6-thang-new-1_650c96cdf37b4466ac27b1c6f0ecb5a3_medium.jpg"
+                                    alt=""></a>
+    
+                            <div class="w-full ml-3 ">
+                                <div class="w-full leading-6 overflow-hidden line-clamp-2 h-[42px]"><a href="#">Sữa bột
+                                        Morinaga Hagukumi số 1 850g cho trẻ
+                                        0-6M</a></div>
+                                <div class="flex items-center justify-between mt-2">
+    
+                                    <div class="relative flex items-center max-w-[8rem]">
+                                        <button type="button" id="decrement-button"
+                                            data-input-counter-decrement="quantity-input"
+                                            class="bg-gray-100 hover:bg-gray-200 border border-[#ffaa2d] rounded-full p-2 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+                                            <svg class="w-3 h-3 text-gray-900" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" d="M1 1h16" />
+                                            </svg>
+                                        </button>
+                                        <!-- input -->
+                                        <input type="text" id="quantity-input" data-input-counter data-input-counter-min="1"
+                                            data-input-counter-max="50" aria-describedby="helper-text-explanation"
+                                            class="bg-gray-50 border-x-0 border-gray-300 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-2"
+                                            placeholder="999" value="1" required />
+                                        <button type="button" id="increment-button"
+                                            data-input-counter-increment="quantity-input"
+                                            class="bg-gray-100 hover:bg-gray-200 border border-[#ffaa2d] rounded-full p-2 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+                                            <svg class="w-3 h-3 text-gray-900" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" d="M9 1v16M1 9h16" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div><b class="font-bold text-xl leading-7">538,000₫</b></div>
+                                </div>
+                            </div>
+    
+                            <div class="absolute right-0 top-[-12px] rounded-full bg-[#ffaa2d]">
+                                <button>
+                                    <DeleteOutlined class="w-7 h-6" />
+                                </button>
+                            </div>
+                        </div>
+    
+                        <!-- item 2 -->
+                        <div
+                            class="border border-[#bebebe] rounded-[20px] flex text-sm mb-6 px-5 pt-5 pb-[20px] text-left relative">
+                            <a href="#"><img class="w-[80px] h-[80px]"
+                                    src="https://product.hstatic.net/200000785527/product/sua-morinaga-hagukumi-so-1-850g-0-6-thang-new-1_650c96cdf37b4466ac27b1c6f0ecb5a3_medium.jpg"
+                                    alt=""></a>
+    
+                            <div class="w-full ml-3 ">
+                                <div class="w-full leading-6 overflow-hidden line-clamp-2 h-[42px]"><a href="#">Sữa bột
+                                        Morinaga Hagukumi số 1 850g cho trẻ
+                                        0-6M Sữa bột Morinaga Hagukumi số 1 850g cho trẻ
+                                        0-6M Sữa bột Morinaga Hagukumi số 1 850g cho trẻ
+                                        0-6M Sữa bột Morinaga Hagukumi số 1 850g cho trẻ
+                                        0-6M Sữa bột Morinaga Hagukumi số 1 850g cho trẻ
+                                        0-6M</a></div>
+                                <div class="flex items-center justify-between mt-2">
+    
+                                    <div class="relative flex items-center max-w-[8rem]">
+                                        <button type="button" id="decrement-button"
+                                            data-input-counter-decrement="quantity-input"
+                                            class="bg-gray-100 hover:bg-gray-200 border border-[#ffaa2d] rounded-full p-2 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+                                            <svg class="w-3 h-3 text-gray-900" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" d="M1 1h16" />
+                                            </svg>
+                                        </button>
+                                        <!-- input -->
+                                        <input type="text" id="quantity-input" data-input-counter data-input-counter-min="1"
+                                            data-input-counter-max="50" aria-describedby="helper-text-explanation"
+                                            class="bg-gray-50 border-x-0 border-gray-300 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-2"
+                                            placeholder="999" value="1" required />
+                                        <button type="button" id="increment-button"
+                                            data-input-counter-increment="quantity-input"
+                                            class="bg-gray-100 hover:bg-gray-200 border border-[#ffaa2d] rounded-full p-2 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+                                            <svg class="w-3 h-3 text-gray-900" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" d="M9 1v16M1 9h16" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div><b class="font-bold text-xl leading-7">538,000₫</b></div>
+                                </div>
+                            </div>
+    
+                            <div class="absolute right-0 top-[-12px] rounded-full bg-[#ffaa2d]">
+                                <button>
+                                    <DeleteOutlined class="w-7 h-6" />
+                                </button>
+                            </div>
+                        </div>
+    
+                        <!-- item 3 -->
+                        <div
+                            class="border border-[#bebebe] rounded-[20px] flex text-sm mb-6 px-5 pt-5 pb-[20px] text-left relative">
+                            <a href="#"><img class="w-[80px] h-[80px]"
+                                    src="https://product.hstatic.net/200000785527/product/sua-morinaga-hagukumi-so-1-850g-0-6-thang-new-1_650c96cdf37b4466ac27b1c6f0ecb5a3_medium.jpg"
+                                    alt=""></a>
+    
+                            <div class="w-full ml-3 ">
+                                <div class="w-full leading-6 overflow-hidden line-clamp-2 h-[42px]"><a href="#">Sữa bột
+                                        Morinaga Hagukumi số 1 850g cho trẻ
+                                        0-6M</a></div>
+                                <div class="flex items-center justify-between mt-2">
+    
+                                    <div class="relative flex items-center max-w-[8rem]">
+                                        <button type="button" id="decrement-button"
+                                            data-input-counter-decrement="quantity-input"
+                                            class="bg-gray-100 hover:bg-gray-200 border border-[#ffaa2d] rounded-full p-2 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+                                            <svg class="w-3 h-3 text-gray-900" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" d="M1 1h16" />
+                                            </svg>
+                                        </button>
+                                        <!-- input -->
+                                        <input type="text" id="quantity-input" data-input-counter data-input-counter-min="1"
+                                            data-input-counter-max="50" aria-describedby="helper-text-explanation"
+                                            class="bg-gray-50 border-x-0 border-gray-300 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-2"
+                                            placeholder="999" value="1" required />
+                                        <button type="button" id="increment-button"
+                                            data-input-counter-increment="quantity-input"
+                                            class="bg-gray-100 hover:bg-gray-200 border border-[#ffaa2d] rounded-full p-2 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+                                            <svg class="w-3 h-3 text-gray-900" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" d="M9 1v16M1 9h16" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div><b class="font-bold text-xl leading-7">538,000₫</b></div>
+                                </div>
+                            </div>
+    
+                            <div class="absolute right-0 top-[-12px] rounded-full bg-[#ffaa2d]">
+                                <button>
+                                    <DeleteOutlined class="w-7 h-6" />
+                                </button>
+                            </div>
+                        </div>
+    
+                        <!-- item 4 -->
+                        <div
+                            class="border border-[#bebebe] rounded-[20px] flex text-sm mb-6 px-5 pt-5 pb-[20px] text-left relative">
+                            <a href="#"><img class="w-[80px] h-[80px]"
+                                    src="https://product.hstatic.net/200000785527/product/sua-morinaga-hagukumi-so-1-850g-0-6-thang-new-1_650c96cdf37b4466ac27b1c6f0ecb5a3_medium.jpg"
+                                    alt=""></a>
+    
+                            <div class="w-full ml-3 ">
+                                <div class="w-full leading-6 overflow-hidden line-clamp-2 h-[42px]"><a href="#">Sữa bột
+                                        Morinaga Hagukumi số 1 850g cho trẻ
+                                        0-6M</a></div>
+                                <div class="flex items-center justify-between mt-2">
+    
+                                    <div class="relative flex items-center max-w-[8rem]">
+                                        <button type="button" id="decrement-button"
+                                            data-input-counter-decrement="quantity-input"
+                                            class="bg-gray-100 hover:bg-gray-200 border border-[#ffaa2d] rounded-full p-2 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+                                            <svg class="w-3 h-3 text-gray-900" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" d="M1 1h16" />
+                                            </svg>
+                                        </button>
+                                        <!-- input -->
+                                        <input type="text" id="quantity-input" data-input-counter data-input-counter-min="1"
+                                            data-input-counter-max="50" aria-describedby="helper-text-explanation"
+                                            class="bg-gray-50 border-x-0 border-gray-300 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-1 px-2"
+                                            placeholder="999" value="1" required />
+                                        <button type="button" id="increment-button"
+                                            data-input-counter-increment="quantity-input"
+                                            class="bg-gray-100 hover:bg-gray-200 border border-[#ffaa2d] rounded-full p-2 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+                                            <svg class="w-3 h-3 text-gray-900" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" d="M9 1v16M1 9h16" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div><b class="font-bold text-xl leading-7">538,000₫</b></div>
+                                </div>
+                            </div>
+    
+                            <div class="absolute right-0 top-[-12px] rounded-full bg-[#ffaa2d]">
+                                <button>
+                                    <DeleteOutlined class="w-7 h-6" />
+                                </button>
+                            </div>
+                        </div>
+    
+                        <label for="message" class="block mb-2 text-sm font-mediumtext-[#ff379b]">Ghi chú đơn hàng</label>
+                        <textarea id="message" rows="4"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder=""></textarea>
+    
+                    </div>
+    
+                    <div class="md:col-span-5 col-span-12 sticky overflow-hidden top-0 h-full p-4 w-full ">
+                        <p class="border-b-2 border-[#097770] pb-6 mb-6">Rinh quà <a href="#"
+                                class="text-[#097770] font-bold">Trung thu</a>
+                            cho bé</p>
+                        <p class="pb-6">Giảm 5% đơn từ 290k - Mã <a href="#" class="text-[#097770] font-bold">mk5</a></p>
+                        <p class="pb-6">Giảm 30k đơn từ 599k - Mã <a href="#" class="text-[#097770] font-bold">mk5</a></p>
+                        <p class="pb-6">Giảm 20k phí ship đơn từ 700k - Mã <a href="#"
+                                class="text-[#097770] font-bold">FREESHIP20</a></p>
+                        <p class="pb-6"> Giảm 10k phí ship đơn từ 300k - Mã <a href="#"
+                                class="text-[#097770] font-bold">FREESHIP20</a></p>
+                        <p class="pb-6 border-b-2 border-[#097770]">Copy Mã và nhập ở trang <b class="text-[#097770]">THANH
+                                TOÁN </b> bạn nhé!</p>
+                        <div class="mt-5">
+                            <p class="mb-6">Tổng tiền: <b
+                                    class="text-[#097770] font-bold ml-auto mb-auto text-2xl">1,143,000₫</b></p>
+                            <a href="#"
+                                class=" bg-[#ffaa2d] hover:bg-menuHover text-white rounded-xl py-4 px-7 font-bold text-base transition-all duration-300 ease">Thanh
+                                toán ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+
+    <!-- footer -->
+    <footer class=" bg-white">
+        <div class="container-content ">
+
+            <div class="grid grid-cols-12 pt-12">
+                <div class="px-3 xl:col-span-6 lg:col-span-6 md:col-span-7 sm:col-span-12 col-span-12">
+                    <div class="text-lg text-[#C92127] font-bold">
+                        Kids Shop, Cùng Bé lớn khôn!
+                    </div>
+                    <div class="text-sm text-[#424242]">Hotline: 1900.636.099</div>
+                    <div class="text-sm text-[#424242]">
+                        HCM: Lầu 6, 182 Lê Đại Hành, P.15, Quận 11, Tp.HCM
+                    </div>
+
+                    <div class="text-sm text-[#424242] mt-2">Hotline: 1900.636.099</div>
+                    <div class="text-sm text-[#424242] mt-2">
+                        Email: support@haravan.com
+                    </div>
+                </div>
+
+                <div class="px-3 xl:col-span-6 lg:col-span-6 md:col-span-5 sm:col-span-12 col-span-12 w-[420px]">
+                    <div class="grid grid-cols-12">
+                        <div class="col-span-6 lg:col-span-6 md:col-span-12">
+                            <div class="text-lg text-[#C92127] font-bold">Chính sách</div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+
+
+
+                                Hotline: 1900.636.099
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Chính sách vận chuyển
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Chính sách đổi trả
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Quy định sử dụng
+                            </div>
+                        </div>
+
+                        <div class="col-span-6 lg:col-span-6 md:col-span-12">
+                            <div class="text-lg text-[#C92127] font-bold">Hỗ trợ</div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Hướng dẫn mua hàng
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Hướng dẫn thanh toán
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Hướng dẫn giao nhận
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Điều khoản dịch vụ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4" />
+            <div class="text-center text-sm leading-4 text-[#424242] pb-4">
+                Bản quyền thuộc về MewTheme. Powered by Haravan
+            </div>
+        </div>
+    </footer>
+    <script>
+
+    </script>
+</body>
+
+</html>

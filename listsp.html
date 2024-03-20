@@ -1,0 +1,806 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+    <!-- font -->
+    <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="css/view/index.css">
+
+    <!-- slide -->
+
+</head>
+
+<!-- font-[Poppins] -->
+
+<body class="">
+    <header class="bg-white sticky">
+        <nav class="container-content flex justify-between items-center">
+            <div>
+                <img class="w-16 cursor-pointer" src="https://cdn-icons-png.flaticon.com/512/5968/5968204.png"
+                    alt="...">
+            </div>
+            <div
+                class="nav-links duration-500 md:static absolute bg-white  md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  flex items-center px-5">
+                <ul class="flex md:flex-row flex-col md:items-center md:gap-7 gap-4">
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Products</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Resource</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Developers</a>
+                    </li>
+                    <li>
+                        <a class="hover:text-gray-500" href="#">Pricing</a>
+                    </li>
+                    <li>
+                        <div class="relative ">
+                            <a id="dropdownButton" class=" cursor-pointer m-7 md:m-0 hover:text-cyan-400 hover:underline 
+                            transition duration-400 ease-in">Danh Mục <i class="fa-solid fa-chevron-down"></i></a>
+
+                            <ul id="dropdownMenu"
+                                class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a>
+                                </li>
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a>
+                                </li>
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex items-center gap-6">
+                <form action="">
+                    <input type="text" placeholder="Tìm kiếm" class="border border-gray-400 p-2 rounded-md text-xs">
+                    <input type="submit" name="submit" value="Tìm" class="bg-red-500 text-white px-2 py-1 rounded ">
+                </form>
+                <div>
+                    <a href="#" class="flex flex-col justify-center items-center"><i
+                            class="fa-solid fa-cart-shopping"></i>
+                        <div class="text-xs mt-1">Giỏ hàng</div>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="flex flex-col justify-center items-center"><i class="fa-regular fa-user"></i>
+                        <div class="text-xs mt-1">Đăng nhập</div>
+                    </a>
+                </div>
+            </div>
+    </header>
+
+
+        <div class="container-content bg-white rounded-xl p-2 lg:p-3 mb-3 mt-5">Tất cả sản phẩm </div>
+        <!-- All sản phẩm -->
+        <section class="mt-5 container-content">
+            <div class="grid grid-cols-12">
+                <div class="md:block col-span-3 hidden pr-3">
+                    <div class=" rounded-xl">
+                        <div class="rounded-xl bg-white p-3 mb-4">
+                            <p class="mb-4 text-lg font-medium leading-6 my-2">Lọc giá</p>
+                            <form action="#">
+                                <div class="flex items-center mb-2">
+                                    <input id="default-radio-1" type="radio" value="" name="default-radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                                    <label for="default-radio-1"
+                                        class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">Dưới
+                                        100.000đ</label>
+                                </div>
+                                <div class="flex items-center mb-2">
+                                    <input id="default-radio-1" type="radio" value="" name="default-radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                                    <label for="default-radio-1"
+                                        class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">100.000đ -
+                                        200.000đ</label>
+                                </div>
+    
+                                <div class="flex items-center mb-2">
+                                    <input id="default-radio-1" type="radio" value="" name="default-radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                                    <label for="default-radio-1"
+                                        class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">500.000đ -
+                                        1.000.000đ</label>
+                                </div>
+                            </form>
+    
+                        </div>
+    
+                        <div class="rounded-xl bg-white p-3 mb-4">
+                            <p class="mb-4 text-lg font-medium leading-6 my-2">Lọc giá</p>
+                            <form action="#">
+                                <div class="flex items-center mb-2">
+                                    <input id="default-radio-1" type="radio" value="" name="default-radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                                    <label for="default-radio-1"
+                                        class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">Dưới
+                                        100.000đ</label>
+                                </div>
+                                <div class="flex items-center mb-2">
+                                    <input id="default-radio-1" type="radio" value="" name="default-radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                                    <label for="default-radio-1"
+                                        class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">100.000đ -
+                                        200.000đ</label>
+                                </div>
+    
+                                <div class="flex items-center mb-2">
+                                    <input id="default-radio-1" type="radio" value="" name="default-radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                                    <label for="default-radio-1"
+                                        class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">500.000đ -
+                                        1.000.000đ</label>
+                                </div>
+                            </form>
+    
+                        </div>
+    
+                        <div class=" rounded-xl bg-white p-3 mb-4">
+                            <p class="mb-4 text-lg font-medium leading-6 my-2">Lọc giá</p>
+                            <form action="#">
+                                <div class="flex items-center mb-2">
+                                    <input id="default-radio-1" type="radio" value="" name="default-radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                                    <label for="default-radio-1"
+                                        class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">Dưới
+                                        100.000đ</label>
+                                </div>
+                                <div class="flex items-center mb-2">
+                                    <input id="default-radio-1" type="radio" value="" name="default-radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                                    <label for="default-radio-1"
+                                        class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">100.000đ -
+                                        200.000đ</label>
+                                </div>
+    
+                                <div class="flex items-center mb-2">
+                                    <input id="default-radio-1" type="radio" value="" name="default-radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                                    <label for="default-radio-1"
+                                        class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">500.000đ -
+                                        1.000.000đ</label>
+                                </div>
+                            </form>
+    
+                        </div>
+                    </div>
+                </div>
+    
+                <!--  -->
+                <div class="md:col-span-9 col-span-12  mb-3">
+                    <div class="bg-white rounded-xl h-auto">
+                    </div>
+    
+                    <div class="bg-white rounded-xl mt-5">
+                        <div class="py-4">
+                            <ul class="flex space-x-2 mdtext-lg text-sm ">
+                                <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Mặc định</label></li>
+                                <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Từ A-Z</label></li>
+                                <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Từ Z-A</label></li>
+                                <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Giá tăng dần</label></li>
+                                <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Giá giảm dần</label></li>
+                                <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Cũ nhất</label></li>
+                                <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Mới nhất</label></li>
+                             
+                            </ul>
+                        </div>
+    
+                        <div class="grid md:grid-cols-3 lg:grid-cols-4  grid-cols-2 gap-4">
+                            <!-- item 1 -->
+                            <div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
+                                <div>
+                                    <a href="#"><img class=""
+                                            src="https://product.hstatic.net/200000785527/product/vien-uong-bo-sung-canxi-cho-me-bau-avisure-hi-cal-60-vien-2_1160dd6a488d4383b0378ebab9b29020_large.jpg"
+                                            alt="" /></a>
+                                </div>
+    
+                                <div>
+                                    <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                        <a href="#"
+                                            class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                            Bô vệ sinh tựa trẻ em Hokori 5460
+                                        </a>
+                                    </div>
+    
+                                    <div class="mt-2">
+                                        <div>
+                                            <span class="font-bold text-[#097770] leading-6 text-left pr-2">
+                                                478,000₫</span>
+                                            <div
+                                                class=" inline bg-[#ffaa2d] rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-[#097770] text-left text-sm font-bold grid-auto line-height-18px p-1">
+                                                20%
+                                            </div>
+                                        </div>
+    
+                                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">299,000d</del>
+                                        <div class=" flex mt-1">
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <img src="../assets/image/categories_image/label_starstar.webp"
+                                                class="w-[18px] h-[18px]" alt="">
+                                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- item 2 -->
+                            <div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
+                                <div>
+                                    <a href="#"><img class=""
+                                            src="https://product.hstatic.net/200000785527/product/vien-uong-bo-sung-canxi-cho-me-bau-avisure-hi-cal-60-vien-2_1160dd6a488d4383b0378ebab9b29020_large.jpg"
+                                            alt="" /></a>
+                                </div>
+    
+                                <div>
+                                    <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                        <a href="#"
+                                            class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                            Bô vệ sinh tựa trẻ em Hokori 5460
+                                        </a>
+                                    </div>
+    
+                                    <div class="mt-2">
+                                        <div>
+                                            <span class="font-bold text-[#097770] leading-6 text-left pr-2">
+                                                478,000₫</span>
+                                            <div
+                                                class=" inline bg-[#ffaa2d] rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-[#097770] text-left text-sm font-bold grid-auto line-height-18px p-1">
+                                                20%
+                                            </div>
+                                        </div>
+    
+                                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">299,000d</del>
+                                        <div class=" flex mt-1">
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <img src="../assets/image/categories_image/label_starstar.webp"
+                                                class="w-[18px] h-[18px]" alt="">
+                                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- item 3 -->
+                            <div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
+                                <div>
+                                    <a href="#"><img class=""
+                                            src="https://product.hstatic.net/200000785527/product/vien-uong-bo-sung-canxi-cho-me-bau-avisure-hi-cal-60-vien-2_1160dd6a488d4383b0378ebab9b29020_large.jpg"
+                                            alt="" /></a>
+                                </div>
+    
+                                <div>
+                                    <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                        <a href="#"
+                                            class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                            Bô vệ sinh tựa trẻ em Hokori 5460
+                                        </a>
+                                    </div>
+    
+                                    <div class="mt-2">
+                                        <div>
+                                            <span class="font-bold text-[#097770] leading-6 text-left pr-2">
+                                                478,000₫</span>
+                                            <div
+                                                class=" inline bg-[#ffaa2d] rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-[#097770] text-left text-sm font-bold grid-auto line-height-18px p-1">
+                                                20%
+                                            </div>
+                                        </div>
+    
+                                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">299,000d</del>
+                                        <div class=" flex mt-1">
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <img src="../assets/image/categories_image/label_starstar.webp"
+                                                class="w-[18px] h-[18px]" alt="">
+                                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- item 4 -->
+                            <div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
+                                <div>
+                                    <a href="#"><img class=""
+                                            src="https://product.hstatic.net/200000785527/product/vien-uong-bo-sung-canxi-cho-me-bau-avisure-hi-cal-60-vien-2_1160dd6a488d4383b0378ebab9b29020_large.jpg"
+                                            alt="" /></a>
+                                </div>
+    
+                                <div>
+                                    <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                        <a href="#"
+                                            class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                            Bô vệ sinh tựa trẻ em Hokori 5460
+                                        </a>
+                                    </div>
+    
+                                    <div class="mt-2">
+                                        <div>
+                                            <span class="font-bold text-[#097770] leading-6 text-left pr-2">
+                                                478,000₫</span>
+                                            <div
+                                                class=" inline bg-[#ffaa2d] rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-[#097770] text-left text-sm font-bold grid-auto line-height-18px p-1">
+                                                20%
+                                            </div>
+                                        </div>
+    
+                                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">299,000d</del>
+                                        <div class=" flex mt-1">
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <img src="../assets/image/categories_image/label_starstar.webp"
+                                                class="w-[18px] h-[18px]" alt="">
+                                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+    
+                            <!-- item 5 -->
+                            <div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
+                                <div>
+                                    <a href="#"><img class=""
+                                            src="https://product.hstatic.net/200000785527/product/vien-uong-bo-sung-canxi-cho-me-bau-avisure-hi-cal-60-vien-2_1160dd6a488d4383b0378ebab9b29020_large.jpg"
+                                            alt="" /></a>
+                                </div>
+    
+                                <div>
+                                    <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                        <a href="#"
+                                            class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                            Bô vệ sinh tựa trẻ em Hokori 5460
+                                        </a>
+                                    </div>
+    
+                                    <div class="mt-2">
+                                        <div>
+                                            <span class="font-bold text-[#097770] leading-6 text-left pr-2">
+                                                478,000₫</span>
+                                            <div
+                                                class=" inline bg-[#ffaa2d] rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-[#097770] text-left text-sm font-bold grid-auto line-height-18px p-1">
+                                                20%
+                                            </div>
+                                        </div>
+    
+                                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">299,000d</del>
+                                        <div class=" flex mt-1">
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <img src="../assets/image/categories_image/label_starstar.webp"
+                                                class="w-[18px] h-[18px]" alt="">
+                                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+    
+                            <!-- item 6 -->
+                            <div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
+                                <div>
+                                    <a href="#"><img class=""
+                                            src="https://product.hstatic.net/200000785527/product/vien-uong-bo-sung-canxi-cho-me-bau-avisure-hi-cal-60-vien-2_1160dd6a488d4383b0378ebab9b29020_large.jpg"
+                                            alt="" /></a>
+                                </div>
+    
+                                <div>
+                                    <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                        <a href="#"
+                                            class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                            Bô vệ sinh tựa trẻ em Hokori 5460
+                                        </a>
+                                    </div>
+    
+                                    <div class="mt-2">
+                                        <div>
+                                            <span class="font-bold text-[#097770] leading-6 text-left pr-2">
+                                                478,000₫</span>
+                                            <div
+                                                class=" inline bg-[#ffaa2d] rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-[#097770] text-left text-sm font-bold grid-auto line-height-18px p-1">
+                                                20%
+                                            </div>
+                                        </div>
+    
+                                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">299,000d</del>
+                                        <div class=" flex mt-1">
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <img src="../assets/image/categories_image/label_starstar.webp"
+                                                class="w-[18px] h-[18px]" alt="">
+                                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- item 7 -->
+                            <div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
+                                <div>
+                                    <a href="#"><img class=""
+                                            src="https://product.hstatic.net/200000785527/product/vien-uong-bo-sung-canxi-cho-me-bau-avisure-hi-cal-60-vien-2_1160dd6a488d4383b0378ebab9b29020_large.jpg"
+                                            alt="" /></a>
+                                </div>
+    
+                                <div>
+                                    <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                        <a href="#"
+                                            class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                            Bô vệ sinh tựa trẻ em Hokori 5460
+                                        </a>
+                                    </div>
+    
+                                    <div class="mt-2">
+                                        <div>
+                                            <span class="font-bold text-[#097770] leading-6 text-left pr-2">
+                                                478,000₫</span>
+                                            <div
+                                                class=" inline bg-[#ffaa2d] rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-[#097770] text-left text-sm font-bold grid-auto line-height-18px p-1">
+                                                20%
+                                            </div>
+                                        </div>
+    
+                                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">299,000d</del>
+                                        <div class=" flex mt-1">
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <img src="../assets/image/categories_image/label_starstar.webp"
+                                                class="w-[18px] h-[18px]" alt="">
+                                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- item 8 -->
+                            <div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
+                                <div>
+                                    <a href="#"><img class=""
+                                            src="https://product.hstatic.net/200000785527/product/vien-uong-bo-sung-canxi-cho-me-bau-avisure-hi-cal-60-vien-2_1160dd6a488d4383b0378ebab9b29020_large.jpg"
+                                            alt="" /></a>
+                                </div>
+    
+                                <div>
+                                    <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                        <a href="#"
+                                            class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                            Bô vệ sinh tựa trẻ em Hokori 5460
+                                        </a>
+                                    </div>
+    
+                                    <div class="mt-2">
+                                        <div>
+                                            <span class="font-bold text-[#097770] leading-6 text-left pr-2">
+                                                478,000₫</span>
+                                            <div
+                                                class=" inline bg-[#ffaa2d] rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-[#097770] text-left text-sm font-bold grid-auto line-height-18px p-1">
+                                                20%
+                                            </div>
+                                        </div>
+    
+                                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">299,000d</del>
+                                        <div class=" flex mt-1">
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <img src="../assets/image/categories_image/label_starstar.webp"
+                                                class="w-[18px] h-[18px]" alt="">
+                                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- item 9 -->
+                            <div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
+                                <div>
+                                    <a href="#"><img class=""
+                                            src="https://product.hstatic.net/200000785527/product/vien-uong-bo-sung-canxi-cho-me-bau-avisure-hi-cal-60-vien-2_1160dd6a488d4383b0378ebab9b29020_large.jpg"
+                                            alt="" /></a>
+                                </div>
+    
+                                <div>
+                                    <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                        <a href="#"
+                                            class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                            Bô vệ sinh tựa trẻ em Hokori 5460
+                                        </a>
+                                    </div>
+    
+                                    <div class="mt-2">
+                                        <div>
+                                            <span class="font-bold text-[#097770] leading-6 text-left pr-2">
+                                                478,000₫</span>
+                                            <div
+                                                class=" inline bg-[#ffaa2d] rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-[#097770] text-left text-sm font-bold grid-auto line-height-18px p-1">
+                                                20%
+                                            </div>
+                                        </div>
+    
+                                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">299,000d</del>
+                                        <div class=" flex mt-1">
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <img src="../assets/image/categories_image/label_starstar.webp"
+                                                class="w-[18px] h-[18px]" alt="">
+                                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- item 10 -->
+                            <div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
+                                <div>
+                                    <a href="#"><img class=""
+                                            src="https://product.hstatic.net/200000785527/product/vien-uong-bo-sung-canxi-cho-me-bau-avisure-hi-cal-60-vien-2_1160dd6a488d4383b0378ebab9b29020_large.jpg"
+                                            alt="" /></a>
+                                </div>
+    
+                                <div>
+                                    <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                        <a href="#"
+                                            class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                            Bô vệ sinh tựa trẻ em Hokori 5460
+                                        </a>
+                                    </div>
+    
+                                    <div class="mt-2">
+                                        <div>
+                                            <span class="font-bold text-[#097770] leading-6 text-left pr-2">
+                                                478,000₫</span>
+                                            <div
+                                                class=" inline bg-[#ffaa2d] rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-[#097770] text-left text-sm font-bold grid-auto line-height-18px p-1">
+                                                20%
+                                            </div>
+                                        </div>
+    
+                                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">299,000d</del>
+                                        <div class=" flex mt-1">
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <img src="../assets/image/categories_image/label_starstar.webp"
+                                                class="w-[18px] h-[18px]" alt="">
+                                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- item 11 -->
+                            <div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
+                                <div>
+                                    <a href="#"><img class=""
+                                            src="https://product.hstatic.net/200000785527/product/vien-uong-bo-sung-canxi-cho-me-bau-avisure-hi-cal-60-vien-2_1160dd6a488d4383b0378ebab9b29020_large.jpg"
+                                            alt="" /></a>
+                                </div>
+    
+                                <div>
+                                    <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                        <a href="#"
+                                            class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                            Bô vệ sinh tựa trẻ em Hokori 5460
+                                        </a>
+                                    </div>
+    
+                                    <div class="mt-2">
+                                        <div>
+                                            <span class="font-bold text-[#097770] leading-6 text-left pr-2">
+                                                478,000₫</span>
+                                            <div
+                                                class=" inline bg-[#ffaa2d] rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-[#097770] text-left text-sm font-bold grid-auto line-height-18px p-1">
+                                                20%
+                                            </div>
+                                        </div>
+    
+                                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">299,000d</del>
+                                        <div class=" flex mt-1">
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <img src="../assets/image/categories_image/label_starstar.webp"
+                                                class="w-[18px] h-[18px]" alt="">
+                                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- item 12 -->
+                            <div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
+                                <div>
+                                    <a href="#"><img class=""
+                                            src="https://product.hstatic.net/200000785527/product/vien-uong-bo-sung-canxi-cho-me-bau-avisure-hi-cal-60-vien-2_1160dd6a488d4383b0378ebab9b29020_large.jpg"
+                                            alt="" /></a>
+                                </div>
+    
+                                <div>
+                                    <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+                                        <a href="#"
+                                            class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">
+                                            Bô vệ sinh tựa trẻ em Hokori 5460
+                                        </a>
+                                    </div>
+    
+                                    <div class="mt-2">
+                                        <div>
+                                            <span class="font-bold text-[#097770] leading-6 text-left pr-2">
+                                                478,000₫</span>
+                                            <div
+                                                class=" inline bg-[#ffaa2d] rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-[#097770] text-left text-sm font-bold grid-auto line-height-18px p-1">
+                                                20%
+                                            </div>
+                                        </div>
+    
+                                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">299,000d</del>
+                                        <div class=" flex mt-1">
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                            <StarOutlined />
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <img src="../assets/image/categories_image/label_starstar.webp"
+                                                class="w-[18px] h-[18px]" alt="">
+                                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div> <a-pagination v-model:current="current" :total="50" show-less-items /></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+
+    <!-- footer -->
+    <footer class=" bg-white">
+        <div class="container-content ">
+
+            <div class="grid grid-cols-12 pt-12">
+                <div class="px-3 xl:col-span-6 lg:col-span-6 md:col-span-7 sm:col-span-12 col-span-12">
+                    <div class="text-lg text-[#C92127] font-bold">
+                        Kids Shop, Cùng Bé lớn khôn!
+                    </div>
+                    <div class="text-sm text-[#424242]">Hotline: 1900.636.099</div>
+                    <div class="text-sm text-[#424242]">
+                        HCM: Lầu 6, 182 Lê Đại Hành, P.15, Quận 11, Tp.HCM
+                    </div>
+
+                    <div class="text-sm text-[#424242] mt-2">Hotline: 1900.636.099</div>
+                    <div class="text-sm text-[#424242] mt-2">
+                        Email: support@haravan.com
+                    </div>
+                </div>
+
+                <div class="px-3 xl:col-span-6 lg:col-span-6 md:col-span-5 sm:col-span-12 col-span-12 w-[420px]">
+                    <div class="grid grid-cols-12">
+                        <div class="col-span-6 lg:col-span-6 md:col-span-12">
+                            <div class="text-lg text-[#C92127] font-bold">Chính sách</div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+
+
+
+                                Hotline: 1900.636.099
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Chính sách vận chuyển
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Chính sách đổi trả
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Quy định sử dụng
+                            </div>
+                        </div>
+
+                        <div class="col-span-6 lg:col-span-6 md:col-span-12">
+                            <div class="text-lg text-[#C92127] font-bold">Hỗ trợ</div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Hướng dẫn mua hàng
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Hướng dẫn thanh toán
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Hướng dẫn giao nhận
+                            </div>
+                            <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
+                                Điều khoản dịch vụ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4" />
+            <div class="text-center text-sm leading-4 text-[#424242] pb-4">
+                Bản quyền thuộc về MewTheme. Powered by Haravan
+            </div>
+        </div>
+    </footer>
+    <script>
+
+    </script>
+</body>
+
+</html>

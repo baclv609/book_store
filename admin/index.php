@@ -5,6 +5,7 @@ include ("../model/danhmuc.php");
 include ("../model/nhaXuatBan.php");
 include ("../model/tacGia.php");
 include ("../model/binhLuan.php");
+include ("../model/sach.php");
 
 include ("header.php");
 if (isset ($_GET["act"])) {
@@ -192,7 +193,12 @@ if (isset ($_GET["act"])) {
 
         // sách
         case 'sach':
-
+            $listDm = list_danhmuc("");
+            $listTg = list_tac_gia("");
+            $list_Sach = list_sach();
+            // echo '<pre>';
+            //  var_dump($list_Sach);
+            //             die;
             include ("sach/sach.php");
             break;
         case 'addSach':
@@ -206,12 +212,19 @@ if (isset ($_GET["act"])) {
                 $gia = $_POST['gia'];
                 $giaSale = $_POST['gia_sale'];
                 $moTa = $_POST['mo_ta'];
-                $ngayGioHienTai = date('Y-m-d H:i:s');
+                $created_at = date('Y-m-d H:i:s');
                 // echo $nhaSanXuatId;
 //                 echo '<pre>';
-                print_r([$tenSanPham,$tacGiaId,$nhaSanXuatId,$danhMucId,$gia,$giaSale,$moTa,$ngayGioHienTai]);
-die;
-// insert_sach($tenSanPham,$tacGia_id,$danh_muc_id,$nha_san_xuat_id,$img,$the_loai_id,$gia,$gia_sale,$mo_ta,$created_at);
+//                 print_r([$tenSanPham,$tacGiaId,$nhaSanXuatId,$danhMucId,$gia,$giaSale,$moTa,$ngayGioHienTai]);
+// die;
+
+                $filename = $_FILES["img"]["name"];
+                $target_dir = "../uploads/";
+                $target_file = $target_dir . basename($_FILES["img"]["name"]);
+
+                move_uploaded_file($_FILES["img"]["tmp_name"], $target_file); // Add a semicolon here
+
+                insert_sach($tenSanPham, $tacGiaId, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa, $created_at);
             }
             $listTg = list_tac_gia("");
             $listNxb = list_NhaXuatBan("");
@@ -219,7 +232,16 @@ die;
             // print_r($listDm);
             //             die;
             include ("sach/add.php");
+            break;
 
+        case 'deleteSp':
+            if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
+                $id = $_GET["id"];
+                delete_sach($id);
+            }
+
+            $list_Sach = list_sach();
+            include ("sach/sach.php");
             break;
 
         default:

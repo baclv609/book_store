@@ -4,7 +4,7 @@
 
 
 
-<form action="index.php?act=addSach" method="post" class="w-[700px] mx-auto mt-5">
+<form action="index.php?act=addSach" method="post" class="w-[700px] mx-auto mt-5" enctype="multipart/form-data">
     <div class="mb-6">
         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Tên sản phẩm</label>
         <input type="name" id="name" name="name"
@@ -16,7 +16,7 @@
             <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Tác giả</label>
             <select id="countries" name="tacGia_id"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                <option selected>Chọn Tác Giả</option>
+                <!-- <option selected>Chọn Tác Giả</option> -->
                 <?php
                 foreach ($listTg as $key => $value) {
                     echo '<option value="' . $value["id"] . '">' . $value["name"] . '</option>';
@@ -27,7 +27,7 @@
             <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 ">Nhà Xuất Bản</label>
             <select id="countries" name="nha_san_xuat_id"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                <option selected>Chọn Nhà Xuất Bản</option>
+                <!-- <option selected>Chọn Nhà Xuất Bản</option> -->
                 <?php
                 foreach ($listNxb as $key => $value) {
                     echo '<option value="' . $value["id"] . '">' . $value["name"] . '</option>';
@@ -44,7 +44,7 @@
             <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">danh mục</label>
             <select id="countries" name="danh_muc_id"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                <option selected>Chọn Nhà Danh mục</option>
+                <!-- <option selected>Chọn Nhà Danh mục</option> -->
                 <?php
                 foreach ($listDm as $key => $value) {
                     echo '<option value="' . $value["id"] . '">' . $value["name"] . '</option>';
@@ -56,14 +56,14 @@
             <label for="website" class="block mb-2 text-sm font-medium text-gray-900 ">Giá bán</label>
             <input type="number" id="website" name="gia"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="gia" required />
+                placeholder="gia"  />
         </div>
         <div>
             <label for="visitors" class="block mb-2 text-sm font-medium text-gray-900 ">Giá sale (Không bắt
                 buộc)</label>
             <input type="number" id="visitors" name="gia_sale"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Giá sale " required />
+                placeholder="Giá sale "  />
         </div>
         <div>
 
