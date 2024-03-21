@@ -44,7 +44,6 @@
     </div>
 
     <!--  -->
-
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-7">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
             <thead class="text-xs text-gray-700 uppercase bg-gray-300">
@@ -58,16 +57,16 @@
                     <th scope="col" class="px-6 py-3" style="width: 10%">
                         Hình ảnh
                     </th>
-                    <th scope="col" class="px-6 py-3" style="width: 10%">
+                    <th scope="col" class="px-6 py-3" style="width: 8%">
                         Giá gốc
                     </th>
-                    <th scope="col" class="px-6 py-3" style="width: 10%">
+                    <th scope="col" class="px-6 py-3" style="width: 8%">
                         Giá sale
                     </th>
                     <th scope="col" class="px-6 py-3" style="width: 25%">
                         Mô tả
                     </th>
-                    <th scope="col" class="px-6 py-3" style="width: 10%">
+                    <th scope="col" class="px-6 py-3" style="width: 8%">
                         Ngày đăng bán
                     </th>
                     <th scope="col" class="px-6 py-3" style="width: 10%">
@@ -85,63 +84,28 @@
                 </tr>
             </thead>
             <tbody>
-
                 <?php
                 foreach ($list_Sach as $key => $value) {
                     echo '
                                 <tr class="bg-white border-b text-black hover:bg-gray-100">
                                     <td class="w-4 p-4">' . $value["id"] . '</td>
-                                    <td class="px-6 py-4 font-medium text-black whitespace-nowrap">' . $value["ten"] . '</td>
-                                    <td class="px-6 py-4"><img src="../uploads/' . $value["img"] . '" style="width: 110px;" alt="loading..."></td>
-                                    <td class="px-6 py-4">' . $value["gia"] . '</td>
-                                    <td class="px-6 py-4">' . $value["gia_sale"] . '</td>
-                                    <td class="px-6 py-4">' . $value["mo_ta"] . '</td>
-                                    <td class="px-6 py-4">' . $value["created_at"] . '</td>
-                                    <td class="px-6 py-4">' . $value["tac_gia_name"] . '</td>
-                                    <td class="px-6 py-4">' . $value["danh_muc_name"] . '</td>
-                                    <td class="px-6 py-4">' . $value["nha_san_xua_name"] . '</td>
-                                    <td class="flex items-center px-6 py-4">
+                                    <td class="w-[500px] px-3 py-3 font-medium text-black ">' . $value["ten"] . '</td>
+                                    <td class="px-3 py-3"><img src="../uploads/' . $value["img"] . '" style="width: 110px;" alt="loading..."></td>
+                                    <td class="px-3 py-3">' . $value["gia"] . '</td>
+                                    <td class="px-3 py-3">' . $value["gia_sale"] . '</td>
+                                    <td class="px-3 py-3">' . $value["mo_ta"] . '</td>
+                                    <td class="px-3 py-3">' . $value["created_at"] . '</td>
+                                    <td class="px-3 py-3">' . $value["tac_gia_name"] . '</td>
+                                    <td class="px-3 py-3">' . $value["danh_muc_name"] . '</td>
+                                    <td class="px-3 py-3">' . $value["nha_san_xua_name"] . '</td>
+                                    <td class="flex items-center px-3 py-3">
                                         <a href="index.php?act=editSp&id=' . $value['id'] . '" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                         <a href="index.php?act=deleteSp&id=' . $value['id'] . '" onclick="return confirm(\'Bạn muốn xóa ?\')" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
                                     </td>
                                 </tr>';
                 }
                 ?>
-
                 <!--                 
-                <tr class="bg-white border-b text-black hover:bg-gray-100">
-                    <td class="w-4 p-4">
-                        <div class="flex items-center">
-                            <input id="checkbox-table-search-1" type="checkbox"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2-only">checkbox</label>
-                        </div>
-                    </td>
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                        Apple MacBook Pro 17"
-                    </th>
-                    <td class="px-6 py-4">
-                        Silver
-                    </td>
-                    <td class="px-6 py-4">
-                        Laptop
-                    </td>
-                    <td class="px-6 py-4">
-                        Yes
-                    </td>
-                    <td class="px-6 py-4">
-                        Yes
-                    </td>
-                    <td class="px-6 py-4">
-                        $2999
-                    </td>
-                    <td class="px-6 py-4">
-                        3.0 lb.
-                    </td>
-                    <td class="flex items-center px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
-                    </td>
-                </tr>
                 <tr class="bg-white border-b text-black hover:bg-gray-100">
                     <td class="w-4 p-4">
                         <div class="flex items-center">

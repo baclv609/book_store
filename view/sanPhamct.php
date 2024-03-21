@@ -3,8 +3,8 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row -mx-4">
             <div class="md:flex-1 px-4">
-                <div class="h-[460px] rounded-lg bg-gray-300 mb-4">
-                    <img class="w-full h-full object-cover" src="https://cdn.pixabay.com/photo/2020/05/22/17/53/mockup-5206355_960_720.jpg" alt="Product Image">
+                <div class="h-[460px] w-[428px] rounded-lg hover:shadow-md mb-4 flex justify-center items-center">
+                    <img class="max-h-[460px] max-w-[428px]  object-cover" src="./uploads/<?php  echo $sanPhamCt["img"]; ?>" alt="Product Image">
                 </div>
                 <div class="flex -mx-2 mb-4">
                     <div class="w-1/2 px-2">

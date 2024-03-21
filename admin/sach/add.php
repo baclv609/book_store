@@ -4,7 +4,7 @@
 
 
 
-<form action="index.php?act=addSach" method="post" class="w-[700px] mx-auto mt-5" enctype="multipart/form-data">
+<form action="index.php?act=addSach" method="post" class="w-[700px] mx-auto mt-5" enctype="multipart/form-data" >
     <div class="mb-6">
         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Tên sản phẩm</label>
         <input type="name" id="name" name="name"
@@ -56,14 +56,14 @@
             <label for="website" class="block mb-2 text-sm font-medium text-gray-900 ">Giá bán</label>
             <input type="number" id="website" name="gia"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="gia"  />
+                placeholder="gia" />
         </div>
         <div>
             <label for="visitors" class="block mb-2 text-sm font-medium text-gray-900 ">Giá sale (Không bắt
                 buộc)</label>
             <input type="number" id="visitors" name="gia_sale"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Giá sale "  />
+                placeholder="Giá sale " />
         </div>
         <div>
 
@@ -83,7 +83,7 @@
 
     <div class="">
         <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Thông tin sản phẩm</label>
-        <textarea id="message" rows="4"name="mo_ta"
+        <textarea id="message" rows="4" name="mo_ta"
             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
             placeholder="Write your thoughts here..."></textarea>
 
@@ -101,3 +101,4 @@
     </div>
 
 </form>
+

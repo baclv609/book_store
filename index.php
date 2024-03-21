@@ -34,14 +34,11 @@ if (isset ($_GET["act"])) {
             break;
 
             case 'searchsp':
-                if ((isset($_POST["kyw"])) && ($_POST["kyw"]) != "") {
+                if ((isset($_POST["submit"])) && ($_POST["submit"]) != "") {
                     $kyw = $_POST["kyw"];
-                    // echo $kyw;
-                    // die; 
                 } else {
                     $kyw = "";
                 }
-                // $listSp = list_sach($danh_muc_id);   
                 $listSp = list_sach(0, $kyw);
                
                 include ("view/sanpham.php");
@@ -64,6 +61,45 @@ if (isset ($_GET["act"])) {
             }
             include ("view/sanphamct.php");
             break;
+
+
+
+
+
+            // login
+            case 'dangnhap':
+                // if ((isset($_POST["dangnhap"])) && ($_POST["dangnhap"])) {
+                //     $user = $_POST["user"];
+                //     $pass = $_POST["password"];
+                //     $isCheck = true; 
+    
+                //     if (empty($user)) {
+                //         $errDangNhapuser = "Nhập user";
+                //         $isCheck = false;
+                //     }
+                //     if (empty($pass)) {
+                //         $errDangNhappass = "Nhập pass";
+                //         $isCheck = false;
+                //     }
+    
+                //     if ($isCheck) {
+                //         // $checkuser = checkUser($user, $pass);
+                //         if (is_array($checkuser)) {
+                //             // nếu có 1 mảng thì tức là bạn đã đăng nhập thành công
+                //             $_SESSION['user'] = $checkuser;
+                //             header("Location: index.php");
+                //             exit(); // Thêm câu lệnh exit() để dừng thực hiện mã nguồn tiếp theo
+                //         } else {
+                //             $thongBao = "Tài khoản không tồn tại";
+                //         }
+                //     }
+                // }
+                include("view/taiKhoan/login.php");
+                break;
+
+                case 'dangky':
+                    include("view/taiKhoan/sigin.php");
+                    break;
         default:
             include ("view/home.php");
             break;

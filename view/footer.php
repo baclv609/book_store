@@ -73,7 +73,6 @@
         }
 
         //Drop down menu
-
         // Lấy tham chiếu đến nút dropdown và menu dropdown
         const dropdownButton = document.getElementById('dropdownButton');
         const dropdownMenu = document.getElementById('dropdownMenu');

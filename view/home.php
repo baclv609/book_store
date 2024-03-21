@@ -30,9 +30,9 @@
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
 
-            <div><img class="rounded" src="https://cdn0.fahasa.com/media/wysiwyg/Thang-03-2024/392x156_shopee_t3.jpg"
+            <div><img class="rounded h-[147px] w-full" src="https://cdn0.fahasa.com/media/wysiwyg/Thang-03-2024/392x156_shopee_t3.jpg"
                     alt=""></div>
-            <div><img class="rounded" src="https://cdn0.fahasa.com/media/wysiwyg/Thang-03-2024/392x156_zalopay_t3.jpg"
+            <div><img class="rounded h-[147px] w-full" src="https://cdn0.fahasa.com/media/wysiwyg/Thang-03-2024/392x156_zalopay_t3.jpg"
                     alt=""></div>
         </div>
 

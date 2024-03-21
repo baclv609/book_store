@@ -13,7 +13,7 @@
 
                 <button type="submit" name="submit"
                     class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  ">
-                  
+
                     <!-- icon search -->
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <span class="sr-only">Search</span>
@@ -57,22 +57,30 @@
         </thead>
         <tbody class="hover:bg-gray-100">
 
+           
+
+           
+
             <?php
             if (!empty ($listAcc)) {
                 foreach ($listAcc as $value) {
-                    echo '
-                             <tr class="bg-white border-b px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                 <td scope="row" class="px-6 py-4">' . $value['id'] . '</td>
-                                 <td class="px-6 py-4">' . $value['name'] . '</td>
-                                 <td class="px-6 py-4">' . $value['avater'] . '</td>
-                                 <td class="px-6 py-4">' . $value['phone'] . '</td>
-                                 <td class="px-6 py-4">' . $value['email'] . '</td>
-                                 <td class="px-6 py-4">' . $value['is_admin'] . '</td>
+                    echo ' <tr class="bg-white border-b px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    <td scope="row" class="px-6 py-4">' . $value['id'] . '</td>
+                    <td class="px-6 py-4"> <div class="flex items-center gap-4">
+   <img class="w-10 h-10 rounded-full" src="../uploads/' . $value['avatar'] . '" alt="">
+   <div class="font-medium">
+       <div>' . $value['name'] . '</div>
+       <div class="text-sm text-gray-500 ">' . $value['email'] . '</div>
+   </div>
+</div></td>
+                    <td class="px-6 py-4">' . $value['avatar'] . '</td>
+                    <td class="px-6 py-4">' . $value['phone'] . '</td>
+                    <td class="px-6 py-4">' . $value['email'] . '</td>
+                    <td class="px-6 py-4">' . $value['is_admin'] . '</td>
 
-                                 <td class="px-6 py-4"><a href="index.php?act=editAcc&id=' . $value['id'] . '"><input type="button" value="Sửa" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"></a> 
-                                  <a href="index.php?act=deleteAcc&id=' . $value['id'] . '" onclick="return confirm(\'Bạn muốn xóa ?\')"><input type="button" value="Xóa"  class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"></a></td>
-                             </tr>
-                                    ';
+                    <td class="px-6 py-4"><a href="index.php?act=editAcc&id=' . $value['id'] . '"><input type="button" value="Sửa" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"></a> 
+                     <a href="index.php?act=deleteAcc&id=' . $value['id'] . '" onclick="return confirm(\'Bạn muốn xóa ?\')"><input type="button" value="Xóa"  class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"></a></td>
+                </tr>';
                 }
             } else {
                 echo '<tr><td colspan="4" style="text-align: center">No data available</td></tr>';

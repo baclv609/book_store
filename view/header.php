@@ -40,7 +40,7 @@
                         <a class="hover:text-gray-500" href="index.php">Trang chủ</a>
                     </li>
                     <li>
-                        <a class="hover:text-gray-500" href="index.php?act=sanpham">sanpham</a>
+                        <a class="hover:text-gray-500" href="index.php?act=sanpham">Sản phẩm</a>
                     </li>
                     <li>
                         <a class="hover:text-gray-500" href="index.php?act=tacgia">Tác giả</a>
@@ -49,16 +49,15 @@
                         <a class="hover:text-gray-500" href="index.php?act=nhaxuatban">Nhà xuất bản</a>
                     </li>
                     <li>
-                        <div class="relative ">
-                            <a id="dropdownButton" class=" cursor-pointer m-7 md:m-0 hover:text-cyan-400 hover:underline 
+                        <div class="">
+                            <a id="dropdownButton" class="cursor-pointer w-55 m-7 md:m-0 hover:text-cyan-400 
                             transition duration-400 ease-in">Danh Mục <i class="fa-solid fa-chevron-down"></i></a>
 
-                          
                             <ul id="dropdownMenu"
-                                class="absolute hidden mt-2 py-2 w-full  bg-white rounded-md shadow-md z-10">
+                                class="absolute hidden mt-2 py-2 w-55  bg-white rounded-md shadow-md z-10">
                                 <?php
                                 foreach ($listDm as $key => $value) {
-                                    echo '<li><a href="index.php?act=sanpham&iddm=' . $value["id"] . '">' . $value["name"] . '</a>
+                                    echo '<li><a class="hover:text-cyan-400 p-3"  href="index.php?act=sanpham&iddm=' . $value["id"] . '">' . $value["name"] . '</a>
                                     </li> ';
                                 } ?>
                             </ul>
@@ -67,7 +66,7 @@
                 </ul>
             </div>
             <div class="flex items-center gap-6">
-                <form action="index.php?act=sanpham" method="post">
+                <form action="index.php?act=searchsp" method="post">
                     <input type="text" name="kyw" placeholder="Tìm kiếm"
                         class="border border-gray-400 p-2 rounded-md text-xs">
                     <input type="submit" name="submit" value="Tìm"
@@ -80,9 +79,70 @@
                     </a>
                 </div>
                 <div>
-                    <a href="#" class="flex flex-col justify-center items-center"><i class="fa-regular fa-user"></i>
+                    <!-- <a href="#" class="flex flex-col justify-center items-center"><i class="fa-regular fa-user"></i>
                         <div class="text-xs mt-1">Đăng nhập</div>
-                    </a>
+                    </a> -->
+
+                    <div class="relative inline-block text-left">
+                        <div>
+                            <button type="button" class="flex flex-col justify-center items-center" id="menu-button"
+                                aria-expanded="true" aria-haspopup="true">
+
+                                <i class="fa-regular fa-user"></i>
+
+                                <div class="text-xs mt-1">Đăng nhập</div>
+                            </button>
+                        </div>
+
+                        <div class="absolute right-0  z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
+                            id="userDropdown" role="menu" aria-orientation="vertical" aria-labelledby="menu-button"
+                            tabindex="-1">
+                            <div class="px-4 py-3 text-sm text-gray-900 ">
+                                <div>Bonnie Green</div>
+                                <div class="font-medium truncate">name@flowbite.com</div>
+                            </div>
+                            <ul class="py-2 text-sm text-gray-700" aria-labelledby="avatarButton">
+                                <li>
+                                    <a href="admin/index.php"
+                                        class="block px-4 py-2 hover:bg-gray-100">Admin</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-100">Settings</a>
+                                </li>
+                                <li>
+                                    <a href="index.php?act=dangnhap"
+                                        class="block px-4 py-2 hover:bg-gray-100">Đăng nhập</a>
+                                </li>
+                            </ul>
+                            <div class="py-1">
+                                <a href="index.php?act=dangky"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
+                                    Đăng ký</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        // Lấy tham chiếu đến các phần tử trong DOM
+                        const menuButton = document.getElementById('menu-button');
+                        const dropdown = document.getElementById('userDropdown');
+
+                        // Bắt sự kiện click vào nút "menuButton"
+                        menuButton.addEventListener('click', () => {
+                            // Kiểm tra trạng thái hiện tại của dropdown
+                            const isDropdownVisible = dropdown.style.display === 'block';
+
+                            // Ẩn/hiện dropdown dựa trên trạng thái hiện tại
+                            if (isDropdownVisible) {
+                                dropdown.style.display = 'none';
+                            } else {
+                                dropdown.style.display = 'block';
+                            }
+                        });
+                    </script>
+
+
                 </div>
             </div>
     </header>

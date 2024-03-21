@@ -4,7 +4,7 @@ include ("../model/connect.php");
 include ("../model/danhmuc.php");
 include ("../model/nhaXuatBan.php");
 include ("../model/tacGia.php");
-include ("../model/binhLuan.php");
+include ("../model/acc.php");
 include ("../model/sach.php");
 
 include ("header.php");
@@ -160,14 +160,13 @@ if (isset ($_GET["act"])) {
             include ("tacGia/listTacGia.php");
             break;
 
-        //Bình luậnhan
-        case 'add_comment': // đoạn này là gì add tại bên kia m để act là ý n
+        //Bình luận
+        case 'add_comment':
             if (isset ($_POST['themMoi'])) {
                 $nd = $_POST["content"];
                 // echo $nd;
                 // die();
                 insert_binhLuan($nd);
-                // $thongBao = "Thêm thành công";
             }
             include ("binhLuan/add.php");
             break;
@@ -261,7 +260,7 @@ if (isset ($_GET["act"])) {
         case 'updateSp':
             if (isset ($_POST['submit'])) {
                 $id = $_POST["id"];
-                
+
                 $tenSanPham = $_POST['name'];
                 $tacGiaId = $_POST['tacGia_id'];
                 $nhaSanXuatId = $_POST['nha_san_xuat_id'];
@@ -270,8 +269,8 @@ if (isset ($_GET["act"])) {
                 $giaSale = $_POST['gia_sale'];
                 $moTa = $_POST['mo_ta'];
 
-    // print_r([$id, $tenSanPham,$tacGiaId,$nhaSanXuatId,$danhMucId,$gia,$giaSale,$moTa]);
-    //             die();
+                // print_r([$id, $tenSanPham,$tacGiaId,$nhaSanXuatId,$danhMucId,$gia,$giaSale,$moTa]);
+                //             die();
 
                 $hinhAnh = $_FILES["img"];
                 $filename = $hinhAnh["name"];
@@ -281,12 +280,10 @@ if (isset ($_GET["act"])) {
                     $dir = "../uploads/$filename";
 
                     if (move_uploaded_file($hinhAnh["tmp_name"], $dir)) {
-                        // update_sanpham_coHinhAnh($tenSanPham, $price, $filename, $moTa, $id_danhMuc, $id);
-                        update_sanpham_coHinhAnh($id,$tenSanPham, $tacGiaId, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa);
+                        update_sanpham_coHinhAnh($id, $tenSanPham, $tacGiaId, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa);
                     }
                 } else {
-                    // update_sanpham_KhongHinhAnh($tenSanPham, $price, $moTa, $id_danhMuc, $id);
-                    update_sanpham_KhongHinhAnh($id, $tenSanPham,$tacGiaId,$nhaSanXuatId,$danhMucId,$gia,$giaSale,$moTa);
+                    update_sanpham_KhongHinhAnh($id, $tenSanPham, $tacGiaId, $nhaSanXuatId, $danhMucId, $gia, $giaSale, $moTa);
 
                 }
 
@@ -294,7 +291,7 @@ if (isset ($_GET["act"])) {
             }
             $listDm = list_danhmuc("");
             $listTg = list_tac_gia("");
-            $list_Sach = list_sach("");
+            $list_Sach = list_sach("", "");
 
             include ("sach/sach.php");
             break;
@@ -304,53 +301,50 @@ if (isset ($_GET["act"])) {
                 delete_sach($id);
             }
 
-            $list_Sach = list_sach("");
+            $list_Sach = list_sach("", "");
             include ("sach/sach.php");
             break;
-       
-            case 'account':
-                if (isset ($_POST['submit'])) {
-                    $searchName = $_POST["searchName"];
-                } else {
-                    $searchName = "";
-                }
-                $listAcc = list_acc($searchName);
-                echo("<pre>");
-                print_r($listAcc);
-                echo("</pre>");
-                include ("acc/acc.php");
-                break;
-            case 'deleteAcc':
-                if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
-                    $id = $_GET["id"];
-                    delete_acc($id);
-                }
-                $listAcc = list_acc("");
-                include ("acc/acc.php");
-                break;
-    
-            case 'editAcc':
-                if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
-                    $id = $_GET["id"];
-                    $acc = edit_acc($id);
-                    //  print_r($acc);
-                    // die;
-                }
-                include ("acc/updateAcc.php");
-                break;
-            case 'updateAcc':
-                if (isset ($_POST['update'])) {
-                    $id = $_POST["id"];
-                    $name = $_POST["nameacc"];
-                    $avater = $_POST["avater"];
-                    $phone = $_POST["phone"];
-                    $email = $_POST["email"];
 
-                    update_acc($id, $name, $avater,$phone ,$email);
-                }
-                $listAcc = list_acc("");
-                include ("acc/acc.php");
-                break;
+        case 'account':
+            if (isset ($_POST['submit'])) {
+                $searchName = $_POST["searchName"];
+            } else {
+                $searchName = "";
+            }
+            $listAcc = list_acc($searchName);
+            include ("acc/acc.php");
+            break;
+        case 'deleteAcc':
+            if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
+                $id = $_GET["id"];
+                delete_acc($id);
+            }
+            $listAcc = list_acc("");
+            include ("acc/acc.php");
+            break;
+
+        case 'editAcc':
+            if (isset ($_GET["id"]) && ($_GET["id"] > 0)) {
+                $id = $_GET["id"];
+                $acc = edit_acc($id);
+                //  print_r($acc);
+                // die;
+            }
+            include ("acc/updateAcc.php");
+            break;
+        case 'updateAcc':
+            if (isset ($_POST['update'])) {
+                $id = $_POST["id"];
+                $name = $_POST["nameacc"];
+                $avater = $_POST["avater"];
+                $phone = $_POST["phone"];
+                $email = $_POST["email"];
+
+                update_acc($id, $name, $avater, $phone, $email);
+            }
+            $listAcc = list_acc("");
+            include ("acc/acc.php");
+            break;
         default:
             include ("home.php");
             break;
