@@ -37,9 +37,9 @@ function delete_sach($id)
 //     return $listSach;
 // }
 
-function list_sach($danh_muc_id, $searchSp)
+function list_sach($danh_muc_id, $searchSp, $tacGia_id)
 {
-    $sql = "SELECT products.id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, tac_gia.name AS tac_gia_name, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
+    $sql = "SELECT products.id, products.tacGia_id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, tac_gia.name AS tac_gia_name, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
     FROM products 
     JOIN tac_gia ON tac_gia.id = products.tacGia_id 
     JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
@@ -52,7 +52,9 @@ function list_sach($danh_muc_id, $searchSp)
     if ($danh_muc_id > 0) {
         $sql .= " AND products.danh_muc_id = " . $danh_muc_id;
     }
-
+    if ($tacGia_id > 0) {
+        $sql .= " AND products.tacGia_id = " . $tacGia_id;
+    }
     $sql .= " ORDER BY products.id DESC";
 // echo $sql;
 // die;
