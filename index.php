@@ -51,8 +51,10 @@ if (isset ($_GET["act"])) {
             include ("view/home.php");
             break;
     }
+}else{
+
+    include ("view/home.php");
 }
-// include ("view/home.php");
 
 include ("view/footer.php");
 ?>
