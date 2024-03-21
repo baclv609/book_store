@@ -3,35 +3,29 @@
 <div class="relative overflow-x-auto">
 
     <div class="font-bold text-[30px]">
-        Danh sách san pham
+        Danh sách sản phẩm
     </div>
     <!-- input-->
     <div class="flex justify-between items-center mt-5">
-        <form class="w-[700px]">
+        <form action="index.php?act=sach" method="post" class="w-[700px]">
             <div class="flex">
 
                 <select id="countries" name="danh_muc_id"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                    <option selected>Chọn Nhà Danh mục</option>
+                    <option selected value="">Chọn Nhà Danh mục</option>
                     <?php
                     foreach ($listDm as $key => $value) {
                         echo '<option value="' . $value["id"] . '">' . $value["name"] . '</option>';
                     }
                     ?>
                 </select>
-                <select id="countries" name="tacGia_id"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
-                    <option selected>Chọn Tác Giả</option>
-                    <?php
-                    foreach ($listTg as $key => $value) {
-                        echo '<option value="' . $value["id"] . '">' . $value["name"] . '</option>';
-                    } ?>
-                </select>
+
                 <div class="relative w-full">
                     <input type="search" id="search-dropdown"
                         class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Search Mockups, Logos, Design Templates..." required />
-                    <button type="submit"
+                        placeholder="Nhập để tìm kiếm" name="searchSP" />
+
+                    <button name="submit" type="submit"
                         class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
                         <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 20 20">
@@ -53,48 +47,48 @@
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-7">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-300">
-    <tr>
-        <th scope="col" class="px-6 py-3" style="width: 3%">
-            ID
-        </th>
-        <th scope="col" class="px-6 py-3" style="width: 15%">
-            Tên sách
-        </th>
-        <th scope="col" class="px-6 py-3" style="width: 10%">
-            Hình ảnh
-        </th>
-        <th scope="col" class="px-6 py-3" style="width: 10%">
-            Giá gốc
-        </th>
-        <th scope="col" class="px-6 py-3" style="width: 10%">
-            Giá sale
-        </th>
-        <th scope="col" class="px-6 py-3" style="width: 25%">
-            Mô tả
-        </th>
-        <th scope="col" class="px-6 py-3" style="width: 10%">
-            Ngày đăng bán
-        </th>
-        <th scope="col" class="px-6 py-3" style="width: 10%">
-            Tên tác giả
-        </th>
-        <th scope="col" class="px-6 py-3" style="width: 10%">
-            Tên danh mục
-        </th>
-        <th scope="col" class="px-6 py-3" style="width: 10%">
-            Tên nhà sản xuất
-        </th>
-        <th scope="col" class="px-6 py-3" style="width: 3%">
-            #
-        </th>
-    </tr>
-</thead>
+            <thead class="text-xs text-gray-700 uppercase bg-gray-300">
+                <tr>
+                    <th scope="col" class="px-6 py-3" style="width: 3%">
+                        ID
+                    </th>
+                    <th scope="col" class="px-6 py-3" style="width: 15%">
+                        Tên sách
+                    </th>
+                    <th scope="col" class="px-6 py-3" style="width: 10%">
+                        Hình ảnh
+                    </th>
+                    <th scope="col" class="px-6 py-3" style="width: 10%">
+                        Giá gốc
+                    </th>
+                    <th scope="col" class="px-6 py-3" style="width: 10%">
+                        Giá sale
+                    </th>
+                    <th scope="col" class="px-6 py-3" style="width: 25%">
+                        Mô tả
+                    </th>
+                    <th scope="col" class="px-6 py-3" style="width: 10%">
+                        Ngày đăng bán
+                    </th>
+                    <th scope="col" class="px-6 py-3" style="width: 10%">
+                        Tên tác giả
+                    </th>
+                    <th scope="col" class="px-6 py-3" style="width: 10%">
+                        Tên danh mục
+                    </th>
+                    <th scope="col" class="px-6 py-3" style="width: 10%">
+                        Tên nhà sản xuất
+                    </th>
+                    <th scope="col" class="px-6 py-3" style="width: 3%">
+                        #
+                    </th>
+                </tr>
+            </thead>
             <tbody>
-      
+
                 <?php
-                        foreach ($list_Sach as $key => $value) {
-                            echo '
+                foreach ($list_Sach as $key => $value) {
+                    echo '
                                 <tr class="bg-white border-b text-black hover:bg-gray-100">
                                     <td class="w-4 p-4">' . $value["id"] . '</td>
                                     <td class="px-6 py-4 font-medium text-black whitespace-nowrap">' . $value["ten"] . '</td>
@@ -111,10 +105,10 @@
                                         <a href="index.php?act=deleteSp&id=' . $value['id'] . '" onclick="return confirm(\'Bạn muốn xóa ?\')" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
                                     </td>
                                 </tr>';
-                        }
-                        ?>
+                }
+                ?>
 
-<!--                 
+                <!--                 
                 <tr class="bg-white border-b text-black hover:bg-gray-100">
                     <td class="w-4 p-4">
                         <div class="flex items-center">
