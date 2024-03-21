@@ -11,23 +11,57 @@ function delete_sach($id)
     $sql = "DELETE FROM products WHERE id = $id";
     pdo_query($sql);
 }
-function list_sach($danh_muc_id)
+// function list_sach($danh_muc_id, $searchSp)
+// {
+//     $sql = "SELECT products.id,products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, tac_gia.name AS tac_gia_name, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
+//     FROM products 
+//     JOIN tac_gia 
+//     ON tac_gia.id = products.tacGia_id 
+//     JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
+//     JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id WHERE 1";
+
+//     // $sql = "SELECT * FROM products WHERE 1";
+//     if ($searchSp != "") {
+//         $sql .= " AND name LIKE '%" . $searchSp . "%'";
+//     }
+//     $sql .= " ORDER BY id desc";
+//     // echo $sql;
+//     // die();
+
+//     if ($danh_muc_id > 0) {
+//         $sql .= " AND products.danh_muc_id = " . $danh_muc_id;
+//     }
+
+//     $sql .= " ORDER BY products.id DESC";
+//     $listSach = pdo_query($sql);
+//     return $listSach;
+// }
+
+function list_sach($danh_muc_id, $searchSp)
 {
-    $sql = "SELECT products.id,products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, tac_gia.name AS tac_gia_name, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
+    $sql = "SELECT products.id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, tac_gia.name AS tac_gia_name, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
     FROM products 
-    JOIN tac_gia 
-    ON tac_gia.id = products.tacGia_id 
+    JOIN tac_gia ON tac_gia.id = products.tacGia_id 
     JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
     JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id WHERE 1";
+
+    if ($searchSp != "") {
+        $sql .= " AND products.ten LIKE '%" . $searchSp . "%'";
+    }
 
     if ($danh_muc_id > 0) {
         $sql .= " AND products.danh_muc_id = " . $danh_muc_id;
     }
 
     $sql .= " ORDER BY products.id DESC";
+// echo $sql;
+// die;
     $listSach = pdo_query($sql);
     return $listSach;
 }
+
+// ...
+
 function select_spct($id)
 {
     $sql = "SELECT products.id,products.ten, products.img,products.tacGia_id, products.gia, products.gia_sale, products.mo_ta, products.created_at, products.danh_muc_id, tac_gia.name AS tac_gia_name, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name FROM products JOIN tac_gia ON tac_gia.id = products.tacGia_id JOIN danh_muc ON danh_muc.id = products.danh_muc_id JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id WHERE products.id = $id";

@@ -22,13 +22,30 @@ if (isset ($_GET["act"])) {
             // }
             if ((isset($_GET["iddm"])) && ($_GET["iddm"]) > 0) {
                 $danh_muc_id = $_GET["iddm"];
+                // $searchSP = $_POST["kyw"];
             } else {
-                $danh_muc_id = 0;
+                $danh_muc_id = "";
+                // $searchSP = "";
             }
-            $listSp = list_sach($danh_muc_id);
+            // $listSp = list_sach($danh_muc_id);   
+            $listSp = list_sach($danh_muc_id, "");
            
             include ("view/sanpham.php");
             break;
+
+            case 'searchsp':
+                if ((isset($_POST["kyw"])) && ($_POST["kyw"]) != "") {
+                    $kyw = $_POST["kyw"];
+                    // echo $kyw;
+                    // die; 
+                } else {
+                    $kyw = "";
+                }
+                // $listSp = list_sach($danh_muc_id);   
+                $listSp = list_sach(0, $kyw);
+               
+                include ("view/sanpham.php");
+                break;
         case 'sanphamct':
             if ((isset ($_GET["idsp"])) && ($_GET["idsp"]) > 0) {
                 $id = $_GET["idsp"];

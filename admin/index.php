@@ -194,9 +194,19 @@ if (isset ($_GET["act"])) {
 
         // sách
         case 'sach':
+            if (isset ($_POST['submit'])) {
+                $searchSP = $_POST["searchSP"];
+                $danh_muc_id = $_POST["danh_muc_id"];
+                // echo $searchSP ;
+                // echo $danh_muc_id ;
+                //         die;
+            } else {
+                $searchSP = "";
+                $danh_muc_id = "";
+            }
             $listDm = list_danhmuc("");
             $listTg = list_tac_gia("");
-            $list_Sach = list_sach("");
+            $list_Sach = list_sach($danh_muc_id, $searchSP);
             // echo '<pre>';
             //  var_dump($list_Sach);
             //             die;

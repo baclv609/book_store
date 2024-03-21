@@ -51,7 +51,7 @@
                 <a href="index.php?act=listTacGia"
                     class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class="fa-solid fa-at mr-3 text-lg"></i>
-                    
+
                     <span class="text-sm">Tác giả</span>
                 </a>
             </li>
@@ -90,7 +90,7 @@
                     <span class="text-sm">Thống kê</span>
                 </a>
             </li>
-           
+
             <li class="mb-1 group">
                 <a href="#"
                     class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
@@ -124,12 +124,13 @@
                     </button>
                     <div
                         class="dropdown-menu shadow-md shadow-black/5 z-30 hidden max-w-xs w-full bg-white rounded-md border border-gray-100">
-                        <form action="" class="p-4 border-b border-b-gray-100">
+                        <form action="index.php?act=searchsp" method="post" class="p-4 border-b border-b-gray-100">
                             <div class="relative w-full">
-                                <input type="text"
+                                <input type="text" name="kyw"
                                     class="py-2 pr-4 pl-10 bg-gray-50 w-full outline-none border border-gray-100 rounded-md text-sm focus:border-blue-500"
                                     placeholder="Search...">
-                                <i class="ri-search-line absolute top-1/2 left-4 -translate-y-1/2 text-gray-400"></i>
+                                <button type="submit" name="submit"><i
+                                        class="ri-search-line absolute top-1/2 left-4 -translate-y-1/2 text-gray-400"></i></button>
                             </div>
                         </form>
                         <div class="mt-3 mb-2">
