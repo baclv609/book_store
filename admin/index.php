@@ -5,6 +5,7 @@ include ("../model/danhmuc.php");
 include ("../model/nhaXuatBan.php");
 include ("../model/tacGia.php");
 include ("../model/acc.php");
+include ("../model/binhLuan.php");
 include ("../model/sach.php");
 
 include ("header.php");
