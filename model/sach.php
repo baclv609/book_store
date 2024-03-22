@@ -39,30 +39,37 @@ function delete_sach($id)
 
 function list_sach($danh_muc_id, $searchSp, $tacGia_id)
 {
+    // SQL query to select the necessary data from the 'products' table and join it with other related tables
     $sql = "SELECT products.id, products.tacGia_id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, tac_gia.name AS tac_gia_name, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
     FROM products 
     JOIN tac_gia ON tac_gia.id = products.tacGia_id 
     JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
     JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id WHERE 1";
 
+    // Add search criteria for product name
     if ($searchSp != "") {
         $sql .= " AND products.ten LIKE '%" . $searchSp . "%'";
     }
 
+    // Add filter criteria for category ID
     if ($danh_muc_id > 0) {
         $sql .= " AND products.danh_muc_id = " . $danh_muc_id;
     }
+
+    // Add filter criteria for author ID
     if ($tacGia_id > 0) {
         $sql .= " AND products.tacGia_id = " . $tacGia_id;
     }
+
+    // Sort the results by product ID in descending order
     $sql .= " ORDER BY products.id DESC";
-// echo $sql;
-// die;
+
+    // Execute the SQL query and retrieve the list of products
     $listSach = pdo_query($sql);
+
+    // Return the list of products
     return $listSach;
 }
-
-// ...
 
 function select_spct($id)
 {

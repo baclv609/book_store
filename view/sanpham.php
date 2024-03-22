@@ -154,19 +154,19 @@
 
                         <del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $value["gia_sale"] . '</del>
                        
-                        <div class="mt-2 flex items-center">
-                            <img src="../assets/image/categories_image/label_starstar.webp"
-                                class="w-[18px] h-[18px]" alt="">
-                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
-                            </div>
-                        </div>
+                     
                     </div>
                 </div>
             </div>';
                     }
                     ?>
                 </div>
-
+                <!-- <div class="mt-2 flex items-center">
+                            <img src="../assets/image/categories_image/label_starstar.webp"
+                                class="w-[18px] h-[18px]" alt="">
+                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
+                            </div>
+                        </div> -->
                 <div> <a-pagination v-model:current="current" :total="50" show-less-items /></div>
             </div>
         </div>

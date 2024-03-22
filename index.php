@@ -4,11 +4,12 @@ include ("./model/connect.php");
 include ("./model/danhmuc.php");
 include ("./model/sach.php");
 include ("./model/taiKhoan.php");
-// include ("../model/tacGia.php");
+include ("./model/tacGia.php");
 // include ("../model/binhLuan.php");
 // include ("../model/sach.php");
 
 $listDm = list_danhmuc("");
+$listTg = list_tac_gia("");
 
 $errDangNhappass = "";
 $errDangNhapuser = "";
@@ -37,18 +38,36 @@ if (isset ($_GET["act"])) {
                 // $searchSP = "";
             }
             // $listSp = list_sach($danh_muc_id);   
-            $listSp = list_sach($danh_muc_id, "","");
+            $listSp = list_sach($danh_muc_id, "", "");
 
             include ("view/sanpham.php");
             break;
-
+        // lọc ở sản phẩm
+        case 'sach':
+            if (isset ($_POST['submit'])) {
+                $tacGia_id = $_POST["tacGia_id"];
+                $danh_muc_id = $_POST["danh_muc_id"];
+                $searchSP = $_POST["searchSP"];
+            } else {
+                $searchSP = "";
+                $danh_muc_id = "";
+                $searchSP = "";
+            }
+            // $listDm = list_danhmuc("");
+            // $listTg = list_tac_gia("");
+            $listSp = list_sach($danh_muc_id, $searchSP, $tacGia_id);
+            // echo '<pre>';
+            //  var_dump($list_Sach);
+            //             die;
+            include ("view/sanpham.php");
+            break;
         case 'searchsp':
             if ((isset ($_POST["submit"])) && ($_POST["submit"]) != "") {
                 $kyw = $_POST["kyw"];
             } else {
                 $kyw = "";
             }
-            $listSp = list_sach(0, $kyw,"");
+            $listSp = list_sach(0, $kyw, "");
 
             include ("view/sanpham.php");
             break;
@@ -125,16 +144,16 @@ if (isset ($_GET["act"])) {
                     $errDangNhappass = "Cần nhập mật khẩu";
                 }
                 //if ($checkuser) {
-                    if ($email == 'name' && $password == 'password') {
-                        // $_SESSION['name'] = $checkuser;
-                        // echo $checkuser;
-                        echo $email;
-                        echo $password;
-                        die();
-                        header('Location: index.php');
-                    }else{
-                        $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra lại hoặc đăng ký!";
-                    }
+                if ($email == 'name' && $password == 'password') {
+                    // $_SESSION['name'] = $checkuser;
+                    // echo $checkuser;
+                    echo $email;
+                    echo $password;
+                    die();
+                    header('Location: index.php');
+                } else {
+                    $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra lại hoặc đăng ký!";
+                }
 
                 // } else {
                 //     $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra lại hoặc đăng ký!";
