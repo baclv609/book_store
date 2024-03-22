@@ -4,7 +4,12 @@
         <div class="flex flex-col md:flex-row -mx-4">
             <div class="md:flex-1 px-4">
                 <div class="h-[460px] w-[428px] rounded-lg hover:shadow-md mb-4 flex justify-center items-center">
-                    <img class="max-h-[460px] max-w-[428px]  object-cover" src="./uploads/<?php  echo $sanPhamCt["img"]; ?>" alt="Product Image">
+                <?php  foreach ($sanPhamCt["images"] as $key => $value) {
+                    // echo $value;
+
+                  echo '<img class="max-h-[460px] max-w-[428px]  object-cover" src="./uploads/'. $value.'" alt="Product Image">';
+                }  ?>
+                   
                 </div>
                 <div class="flex -mx-2 mb-4">
                     <div class="w-1/2 px-2">

@@ -205,7 +205,7 @@ if (isset ($_GET["act"])) {
             }
             $listDm = list_danhmuc("");
             $listTg = list_tac_gia("");
-            $list_Sach = list_sach($danh_muc_id, $searchSP,"");
+            $list_Sach = list_sach($danh_muc_id, $searchSP, "");
             // echo '<pre>';
             //  var_dump($list_Sach);
             //             die;
@@ -223,18 +223,43 @@ if (isset ($_GET["act"])) {
                 $giaSale = $_POST['gia_sale'];
                 $moTa = $_POST['mo_ta'];
                 $created_at = date('Y-m-d H:i:s');
-                // echo $nhaSanXuatId;
-//                 echo '<pre>';
-//                 print_r([$tenSanPham,$tacGiaId,$nhaSanXuatId,$danhMucId,$gia,$giaSale,$moTa,$ngayGioHienTai]);
-// die;
 
-                $filename = $_FILES["img"]["name"];
-                $target_dir = "../uploads/";
-                $target_file = $target_dir . basename($_FILES["img"]["name"]);
+                $total = count($_FILES['productImage']['name']);
+                if ($total < 1) {
+                    return;
+                }
+                // print_r($total);
+                //         die;
 
-                move_uploaded_file($_FILES["img"]["tmp_name"], $target_file); // Add a semicolon here
+                $productID = insert_sach($tenSanPham, $tacGiaId, $danhMucId, $nhaSanXuatId, $gia, $giaSale, $moTa, $created_at);
 
-                insert_sach($tenSanPham, $tacGiaId, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa, $created_at);
+                // echo $productID;
+                // die;
+                for ($i = 0; $i < $total; $i++) {
+                    //Get the temp file path
+                    $tmpFilePath = $_FILES['productImage']['tmp_name'][$i];
+
+                    //Make sure we have a file path
+                    if ($tmpFilePath != "") {
+                        //Setup our new file path
+                        $filename = $_FILES['productImage']['name'][$i];
+                        $newFilePath = "../uploads/" . $filename;
+
+                        //Upload the file into the temp dir
+                        if (move_uploaded_file($tmpFilePath, $newFilePath)) {
+
+                            //Handle other code here
+                            insert_imageProducts($productID, $filename);
+                        }
+                    }
+                }
+
+                // $filename = $_FILES["img"]["name"];
+                // $target_dir = "../uploads/";
+                // $target_file = $target_dir . basename($_FILES["img"]["name"]);
+
+                // move_uploaded_file($_FILES["img"]["tmp_name"], $target_file); // Add a semicolon here
+
             }
             $listTg = list_tac_gia("");
             $listNxb = list_NhaXuatBan("");
@@ -272,27 +297,37 @@ if (isset ($_GET["act"])) {
 
                 // print_r([$id, $tenSanPham,$tacGiaId,$nhaSanXuatId,$danhMucId,$gia,$giaSale,$moTa]);
                 //             die();
+                $total = count($_FILES['productImage']['name']);
 
-                $hinhAnh = $_FILES["img"];
-                $filename = $hinhAnh["name"];
+                if ($total > 0) {
+                    $sql = "DELETE FROM product_images WHERE product_id = $id";
+                    pdo_query($sql);
 
-                if ($filename) {
-                    $filename = time() . $filename;
-                    $dir = "../uploads/$filename";
+                    for ($i = 0; $i < $total; $i++) {
+                        //Get the temp file path
+                        $tmpFilePath = $_FILES['productImage']['tmp_name'][$i];
 
-                    if (move_uploaded_file($hinhAnh["tmp_name"], $dir)) {
-                        update_sanpham_coHinhAnh($id, $tenSanPham, $tacGiaId, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa);
+                        //Make sure we have a file path
+                        if ($tmpFilePath != "") {
+                            //Setup our new file path
+                            $filename = $_FILES['productImage']['name'][$i];
+                            $newFilePath = "../uploads/" . $filename;
+
+                            //Upload the file into the temp dir
+                            if (move_uploaded_file($tmpFilePath, $newFilePath)) {
+
+                                //Handle other code here
+                                insert_imageProducts($id, $filename);
+                            }
+                        }
                     }
-                } else {
-                    update_sanpham_KhongHinhAnh($id, $tenSanPham, $tacGiaId, $nhaSanXuatId, $danhMucId, $gia, $giaSale, $moTa);
-
                 }
+                update_sanpham($id, $tenSanPham, $tacGiaId, $danhMucId, $nhaSanXuatId, $gia, $giaSale, $moTa);
 
-                $thongBao = "Thêm thành công";
             }
             $listDm = list_danhmuc("");
             $listTg = list_tac_gia("");
-            $list_Sach = list_sach("", "");
+            $list_Sach = list_sach("", "", "");
 
             include ("sach/sach.php");
             break;
@@ -302,7 +337,7 @@ if (isset ($_GET["act"])) {
                 delete_sach($id);
             }
 
-            $list_Sach = list_sach("", "");
+            $list_Sach = list_sach("", "", "");
             include ("sach/sach.php");
             break;
 

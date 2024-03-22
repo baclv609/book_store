@@ -84,7 +84,7 @@
             <label class="block mb-2 text-sm font-medium text-gray-900" for="file_input">Ảnh</label>
             <input
                 class="block text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 w-full p-2.5"
-                aria-describedby="file_input_help" id="file_input" type="file" name="img">
+                aria-describedby="file_input_help"  multiple="multiple" type="file" name="productImage[]">
 
         </div>
 
