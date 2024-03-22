@@ -48,7 +48,7 @@ if (isset ($_GET["act"])) {
             } else {
                 $kyw = "";
             }
-            $listSp = list_sach(0, $kyw);
+            $listSp = list_sach(0, $kyw ,0);
 
             include ("view/sanpham.php");
             break;
