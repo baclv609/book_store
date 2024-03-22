@@ -592,3 +592,53 @@
             </div>
         </div>
     </section>
+
+    <section id="miraway-customer" class="mt-[100px] max-lg:mt-[80px] px-[120px] pb-[50px]">
+        <h3 class="text-primary text-center">Khách hàng của Miraway</h3>
+    <div class="mt-14 max-md:mt-[40px] overflow-hidden flex">
+                <div class="slide w-full shrink-0 max-md:hidden">
+                  <img
+                    loading="lazy"
+                    src="https://miraway.vn/_ipx/w_1536&f_webp/images/customer-logo.png"
+                    :img-attrs="{ class: 'w-full', alt: 'customer-logos' }"
+                  />
+                </div>
+      
+                <div class="slide slide-clone w-full shrink-0 max-md:hidden">
+                  <img
+                    loading="lazy"
+                    src="https://miraway.vn/_ipx/w_1536&f_webp/images/customer-logo.png"
+                    :img-attrs="{ class: 'w-full', alt: 'customer-logos' }"
+                  />
+                </div>
+      
+                <div class="slide w-full shrink-0 md:hidden">
+                  <img
+                    loading="lazy"
+                    src="https://miraway.vn/_ipx/w_1536&f_webp/images/customer-logo.png"
+                    :img-attrs="{ class: 'w-full', alt: 'customer-logos' }"
+                  />
+                </div>
+      
+                <div class="slide slide-clone w-full shrink-0 md:hidden">
+                  <img
+                    loading="lazy"
+                    src="https://miraway.vn/_ipx/w_1536&f_webp/images/customer-logo.png"
+                    :img-attrs="{ class: 'w-full', alt: 'customer-logos' }"
+                  />
+                </div>
+              </div>
+              <style>
+              .slide {
+                animation: slideAnimation 20s linear infinite;
+              }
+              
+              @keyframes slideAnimation {
+                0% {
+                  transform: translateX(0%);
+                }
+                100% {
+                  transform: translateX(-100%);
+                }
+              }</style>
+    </section>
