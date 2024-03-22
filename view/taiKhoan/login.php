@@ -6,10 +6,16 @@
             <h2 class="font-bold text-2xl text-[#002D74]">Đăng nhập</h2>
             <p class="text-xs mt-4 text-[#002D74]">Nếu bạn chưa có tài khoản hãy đăng ký</p>
 
-            <form action="" class="flex flex-col gap-4">
+            <form action="index.php?act=dangnhap" method="post" class="flex flex-col gap-4">
                 <input class="p-2 mt-8 rounded-xl border" type="email" name="email" placeholder="Email">
+                <span style="color: red">
+                    <?= $errDangKyemail ?>
+                </span> <br>
                 <div class="relative">
                     <input class="p-2 rounded-xl border w-full" type="password" name="password" placeholder="Password">
+                    <span style="color: red">
+                        <?= $errDangKyemail ?>
+                    </span> <br>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray"
                         class="bi bi-eye absolute top-1/2 right-3 -translate-y-1/2" viewBox="0 0 16 16">
                         <path
@@ -18,8 +24,18 @@
                             d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                     </svg>
                 </div>
-                <button class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">Đăng nhập</button>
+                <input type="submit" value="Đăng nhập" name="dangnhap" 
+                class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">
+                <!-- <button name="submit" type="submit"
+                    class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">Đăng nhập</button> -->
             </form>
+            <h4 style="color:red">
+                <?php
+                if (isset ($thongbao) && $thongbao != "") {
+                    echo $thongbao;
+                }
+                ?>
+            </h4>
 
             <div class="mt-6 grid grid-cols-3 items-center text-gray-400">
                 <hr class="border-gray-400">

@@ -350,5 +350,6 @@ if (isset ($_GET["act"])) {
             break;
     }
 }
+
 include ("footer.php");
 ?>
