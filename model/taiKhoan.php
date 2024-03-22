@@ -11,10 +11,10 @@ function insert_taikhoan($email, $name, $password)
 // die;
 
 // đăng nhập
-function check_user($name, $password){
-    $sql = "SELECT * FROM users WHERE name = '".$name."' AND password = '".$password."'";
-    $sp = pdo_query_one($sql);
-    return $sp;
-}
+// function check_user($name, $password){
+//     $sql = "SELECT * FROM users WHERE name = '".$name."' AND password = '".$password."'";
+//     $sp = pdo_query_one($sql);
+//     return $sp;
+// }
 
 ?>

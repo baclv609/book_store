@@ -10,8 +10,8 @@ include ("./model/taiKhoan.php");
 
 $listDm = list_danhmuc("");
 
-// $errDangNhappass = "";
-// $errDangNhapuser = "";
+$errDangNhappass = "";
+$errDangNhapuser = "";
 
 $errDangKypass = "";
 $errDangKyuser = "";
@@ -76,36 +76,36 @@ if (isset ($_GET["act"])) {
         //đăng kí
         case 'dangky':
             // nếu có tồn tại và có nhấp vào nút dangky
-            if (isset($_POST["submit"])) {
+            if (isset ($_POST["submit"])) {
                 $email = $_POST["email"];
                 $name = $_POST["name"];
                 $password = $_POST["password"];
                 $isCheck = true;
-                
-                if ($email =='') {
+
+                if ($email == '') {
                     $isCheck = false;
-                    $errDangKyemail ="Cần nhập email";
+                    $errDangKyemail = "Cần nhập email";
                 }
-                if ($name =='') {
+                if ($name == '') {
                     $isCheck = false;
-                    $errDangKyuser ="Cần nhập tên đăng nhập";
+                    $errDangKyuser = "Cần nhập tên đăng nhập";
                 }
-                if ($password =='') {
+                if ($password == '') {
                     $isCheck = false;
-                    $errDangKypass ="Cần nhập mật khẩu";
+                    $errDangKypass = "Cần nhập mật khẩu";
                 }
-                
-                if($isCheck){
+
+                if ($isCheck) {
                     insert_taikhoan($email, $name, $password);
                     $thongbao = "bạn đăng kí thành công!";
-                //     if(insert_taikhoan($email, $name, $password)){
-                //         header('Location: index.php');
-                //     }else{
-                //         //echo "thêm thất bại";
-                //     }
+                    //     if(insert_taikhoan($email, $name, $password)){
+                    //         header('Location: index.php');
+                    //     }else{
+                    //         //echo "thêm thất bại";
+                    //     }
                 }
             }
-            
+
             include ("view/taiKhoan/sigin.php");
             break;
 
@@ -115,23 +115,30 @@ if (isset ($_GET["act"])) {
                 $email = $_POST["email"];
                 $password = $_POST["password"];
                 $isCheck = true;
-                $checkuser = check_user($name, $password);
-                if ($email =='') {
+                // $checkuser = check_user($name, $password);
+                if ($email == '') {
                     $isCheck = false;
-                    $errDangKyemail ="Cần nhập email";
+                    $errDangNhapuser = "Cần nhập email";
                 }
-                if ($password =='') {
+                if ($password == '') {
                     $isCheck = false;
-                    $errDangKypass ="Cần nhập mật khẩu";
+                    $errDangNhappass = "Cần nhập mật khẩu";
                 }
-                if (is_array($checkuser)) {
-                    $_SESSION['name'] = $checkuser;
-                    // echo $checkuser;
-                    // die();
-                    header('Location: index.php');
-                } else {
-                    $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra lại hoặc đăng ký!";
-                }
+                //if ($checkuser) {
+                    if ($email == 'name' && $password == 'password') {
+                        // $_SESSION['name'] = $checkuser;
+                        // echo $checkuser;
+                        echo $email;
+                        echo $password;
+                        die();
+                        header('Location: index.php');
+                    }else{
+                        $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra lại hoặc đăng ký!";
+                    }
+
+                // } else {
+                //     $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra lại hoặc đăng ký!";
+                // }
             }
             include ("view/taiKhoan/login.php");
             break;

@@ -9,12 +9,12 @@
             <form action="index.php?act=dangnhap" method="post" class="flex flex-col gap-4">
                 <input class="p-2 mt-8 rounded-xl border" type="email" name="email" placeholder="Email">
                 <span style="color: red">
-                    <?= $errDangKyemail ?>
+                    <?= $errDangNhapuser ?>
                 </span> <br>
                 <div class="relative">
                     <input class="p-2 rounded-xl border w-full" type="password" name="password" placeholder="Password">
                     <span style="color: red">
-                        <?= $errDangKyemail ?>
+                        <?= $errDangNhappass ?>
                     </span> <br>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray"
                         class="bi bi-eye absolute top-1/2 right-3 -translate-y-1/2" viewBox="0 0 16 16">
