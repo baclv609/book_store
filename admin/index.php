@@ -205,7 +205,7 @@ if (isset ($_GET["act"])) {
             }
             $listDm = list_danhmuc("");
             $listTg = list_tac_gia("");
-            $list_Sach = list_sach($danh_muc_id, $searchSP);
+            $list_Sach = list_sach($danh_muc_id, $searchSP,"");
             // echo '<pre>';
             //  var_dump($list_Sach);
             //             die;
@@ -351,5 +351,6 @@ if (isset ($_GET["act"])) {
             break;
     }
 }
+
 include ("footer.php");
 ?>

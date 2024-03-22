@@ -12,11 +12,20 @@
             <h2 class="font-bold text-2xl text-[#002D74]">Đăng ký</h2>
             <p class="text-xs mt-4 text-[#002D74]">Nếu bạn đã có tài khoản hãy đăng nhập</p>
 
-            <form action="" class="flex flex-col gap-4">
+            <form action="index.php?act=dangky" method="post" class="flex flex-col gap-4">
                 <input class="p-2 mt-8 rounded-xl border" type="text" name="name" placeholder="User name">
+                <span style="color: red">
+                    <?= $errDangKyuser ?>
+                </span> <br>
                 <input class="p-2  rounded-xl border" type="email" name="email" placeholder="Email">
+                <span style="color: red">
+                    <?= $errDangKyemail ?>
+                </span> <br>
                 <div class="relative">
                     <input class="p-2 rounded-xl border w-full" type="password" name="password" placeholder="Password">
+                    <span style="color: red">
+                    <?= $errDangKyemail ?>
+                </span> <br>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray"
                         class="bi bi-eye absolute top-1/2 right-3 -translate-y-1/2" viewBox="0 0 16 16">
                         <path
@@ -25,9 +34,15 @@
                             d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                     </svg>
                 </div>
-                <button class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">Đăng ký</button>
+                
+                <button type="submit" name="submit"
+                    class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">Đăng ký</button>
             </form>
-
+            <h4 style="color:red">
+                <?php if (isset($thongbao) && $thongbao != "") {
+                    echo $thongbao;
+                } ?>
+            </h4>
             <!-- <div class="mt-6 grid grid-cols-3 items-center text-gray-400">
                 <hr class="border-gray-400">
                 <p class="text-center text-sm">HOẶC</p>
@@ -40,11 +55,12 @@
 
             <div class="mt-3 text-xs flex justify-between items-center text-[#002D74]">
                 <p>Bạn đã có tài khoản?</p>
-                <button class="py-2 px-4 bg-white border rounded-xl hover:scale-110 duration-300">Đăng nhập ngay</button>
+                <button class="py-2 px-4 bg-white border rounded-xl hover:scale-110 duration-300">Đăng nhập
+                    ngay</button>
             </div>
         </div>
 
-        
+
     </div>
 </section>
 <script>

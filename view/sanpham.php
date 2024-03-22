@@ -43,18 +43,45 @@
             </div>
 
             <div class="bg-white rounded-xl mt-5">
-                <!-- <div class="py-4">
-                    <ul class="flex space-x-2 mdtext-lg text-sm ">
-                        <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Mặc định</label></li>
-                        <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Từ A-Z</label></li>
-                        <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Từ Z-A</label></li>
-                        <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Giá tăng dần</label></li>
-                        <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Giá giảm dần</label></li>
-                        <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Cũ nhất</label></li>
-                        <li><label class="hover:text-[#ff379b] px-2 md:px-4" for="#">Mới nhất</label></li>
+            <form action="index.php?act=sach" method="post" class="w-[700px]">
+            <div class="flex">
 
-                    </ul>
-                </div> -->
+                <select id="countries" name="danh_muc_id"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                    <option selected value="">Chọn Nhà Danh mục</option>
+                    <?php
+                    foreach ($listDm as $key => $value) {
+                        echo '<option value="' . $value["id"] . '">' . $value["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+                <select id="countries" name="tacGia_id"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                    <option selected value="">Chọn Tác Giả</option>
+                    <?php
+                    foreach ($listTg as $key => $value) {
+                        print_r($listTg);
+                        echo '<option value="' . $value["id"] . '">' . $value["name"] . '</option>';
+                    }
+                    ?>
+                </select>
+                <div class="relative w-full">
+                    <input type="search" id="search-dropdown"
+                        class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Nhập để tìm kiếm" name="searchSP" />
+
+                    <button name="submit" type="submit"
+                        class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                        <span class="sr-only">Search</span>
+                    </button>
+                </div>
+            </div>
+        </form>
 
                 <div class="grid md:grid-cols-3 lg:grid-cols-4  grid-cols-2 gap-4">
                     <!-- item 2 -->
@@ -103,7 +130,7 @@
 
 
                     <?php
-                    foreach ($listSp as $key => $value) {
+                    foreach ($list_Sach as $key => $value) {
                         # code...
                         echo '<div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
                 <div>
