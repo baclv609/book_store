@@ -37,7 +37,7 @@ if (isset ($_GET["act"])) {
                 // $searchSP = "";
             }
             // $listSp = list_sach($danh_muc_id);   
-            $listSp = list_sach($danh_muc_id, "");
+            $listSp = list_sach($danh_muc_id, "","");
 
             include ("view/sanpham.php");
             break;
@@ -48,7 +48,7 @@ if (isset ($_GET["act"])) {
             } else {
                 $kyw = "";
             }
-            $listSp = list_sach(0, $kyw);
+            $listSp = list_sach(0, $kyw,"");
 
             include ("view/sanpham.php");
             break;

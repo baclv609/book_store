@@ -130,7 +130,7 @@
 
 
                     <?php
-                    foreach ($list_Sach as $key => $value) {
+                    foreach ($listSp as $key => $value) {
                         # code...
                         echo '<div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
                 <div>

@@ -292,7 +292,7 @@ if (isset ($_GET["act"])) {
             }
             $listDm = list_danhmuc("");
             $listTg = list_tac_gia("");
-            $list_Sach = list_sach("", "");
+            $list_Sach = list_sach("", "","");
 
             include ("sach/sach.php");
             break;
@@ -302,7 +302,7 @@ if (isset ($_GET["act"])) {
                 delete_sach($id);
             }
 
-            $list_Sach = list_sach("", "");
+            $list_Sach = list_sach("", "","");
             include ("sach/sach.php");
             break;
 
