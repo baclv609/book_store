@@ -39,8 +39,8 @@
                     class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">Đăng ký</button>
             </form>
             <h4 style="color:red">
-                <?php if (isset ($thongBao)) {
-                    echo $thongBao;
+                <?php if (isset($thongbao) && $thongbao != "") {
+                    echo $thongbao;
                 } ?>
             </h4>
             <!-- <div class="mt-6 grid grid-cols-3 items-center text-gray-400">

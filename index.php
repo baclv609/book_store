@@ -48,7 +48,7 @@ if (isset ($_GET["act"])) {
             } else {
                 $kyw = "";
             }
-            $listSp = list_sach(0, $kyw ,0);
+            $listSp = list_sach(0, $kyw);
 
             include ("view/sanpham.php");
             break;
@@ -94,15 +94,16 @@ if (isset ($_GET["act"])) {
                     $isCheck = false;
                     $errDangKypass ="Cần nhập mật khẩu";
                 }
-                insert_taikhoan($email, $name, $password);
-                $thongbao = "bạn đăng kí thành công!";
-                // if($isCheck){
+                
+                if($isCheck){
+                    insert_taikhoan($email, $name, $password);
+                    $thongbao = "bạn đăng kí thành công!";
                 //     if(insert_taikhoan($email, $name, $password)){
                 //         header('Location: index.php');
                 //     }else{
                 //         //echo "thêm thất bại";
                 //     }
-                // }
+                }
             }
             
             include ("view/taiKhoan/sigin.php");
