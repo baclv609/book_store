@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include ("./model/connect.php");
 include ("./model/danhmuc.php");
 include ("./model/sach.php");
@@ -117,11 +117,6 @@ if (isset ($_GET["act"])) {
                 if ($isCheck) {
                     insert_taikhoan($email, $name, $password);
                     $thongbao = "bạn đăng kí thành công!";
-                    //     if(insert_taikhoan($email, $name, $password)){
-                    //         header('Location: index.php');
-                    //     }else{
-                    //         //echo "thêm thất bại";
-                    //     }
                 }
             }
 
@@ -132,34 +127,33 @@ if (isset ($_GET["act"])) {
         case 'dangnhap':
             $email = "";
             $password = "";
-            if (isset($_POST["submit"])) {
+            $errDangNhapuser = '';
+            $errDangNhappass = '';
+
+            $isCheck = true;
+            if (isset ($_POST["submit"])) {
                 $email = $_POST["email"];
                 $password = $_POST["passsword"];
-            // echo $email;
-            // echo $password;
-            // die;
-                $isCheck = true;
-                $errDangNhapuser = '';
-                $errDangNhappass = '';
-            
-                if ($email == '') {
+
+                if (empty ($email)) {
                     $isCheck = false;
                     $errDangNhapuser = "Cần nhập email";
                 }
-            
-                if ($password == '') {
+
+                if (empty ($password)) {
                     $isCheck = false;
                     $errDangNhappass = "Cần nhập mật khẩu";
                 }
-            
+
                 if ($isCheck) {
-                    // Kiểm tra thông tin đăng nhập
-                    if ($email == 'name' && $password == 'password') {
-                        // Thực hiện các hành động sau khi đăng nhập thành công
-                        header('Location: index.php');
-                        exit;
+                    $checkuser = checkUser($email, $password);
+                    if (is_array($checkuser)) {
+                        // nếu có 1 mảng thì tức là bạn đã đăng nhập thành công
+                        $_SESSION['user'] = $checkuser;
+                        header("Location: index.php");
+                        exit(); // Thêm câu lệnh exit() để dừng thực hiện mã nguồn tiếp theo
                     } else {
-                        $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra lại hoặc đăng ký!";
+                        $thongBao = "Tài khoản không tồn tại";
                     }
                 }
             }
@@ -172,7 +166,6 @@ if (isset ($_GET["act"])) {
             break;
     }
 } else {
-
     include ("view/home.php");
 }
 
