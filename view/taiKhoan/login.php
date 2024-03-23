@@ -7,12 +7,14 @@
             <p class="text-xs mt-4 text-[#002D74]">Nếu bạn chưa có tài khoản hãy đăng ký</p>
 
             <form action="index.php?act=dangnhap" method="post" class="flex flex-col gap-4">
-                <input class="p-2 mt-8 rounded-xl border" type="email" name="email" placeholder="Email">
+                <input class="p-2 mt-8 rounded-xl border" type="email" name="email" placeholder="Email"
+                    value="<?= $email ?>">
                 <span style="color: red">
                     <?= $errDangNhapuser ?>
                 </span> <br>
                 <div class="relative">
-                    <input class="p-2 rounded-xl border w-full" type="password" name="password" placeholder="Password">
+                    <input class="p-2 rounded-xl border w-full" type="password" name="passsword" placeholder="Password"
+                        value="<?= $password ?>">
                     <span style="color: red">
                         <?= $errDangNhappass ?>
                     </span> <br>
@@ -24,10 +26,8 @@
                             d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                     </svg>
                 </div>
-                <input type="submit" value="Đăng nhập" name="dangnhap" 
-                class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">
-                <!-- <button name="submit" type="submit"
-                    class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">Đăng nhập</button> -->
+                <button name="submit" type="submit"
+                    class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">Đăng nhập</button>
             </form>
             <h4 style="color:red">
                 <?php

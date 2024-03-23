@@ -130,34 +130,38 @@ if (isset ($_GET["act"])) {
 
         // đăng nhập
         case 'dangnhap':
-            if ((isset ($_POST["submit"])) && ($_POST["submit"])) {
+            $email = "";
+            $password = "";
+            if (isset($_POST["submit"])) {
                 $email = $_POST["email"];
-                $password = $_POST["password"];
+                $password = $_POST["passsword"];
+            // echo $email;
+            // echo $password;
+            // die;
                 $isCheck = true;
-                // $checkuser = check_user($name, $password);
+                $errDangNhapuser = '';
+                $errDangNhappass = '';
+            
                 if ($email == '') {
                     $isCheck = false;
                     $errDangNhapuser = "Cần nhập email";
                 }
+            
                 if ($password == '') {
                     $isCheck = false;
                     $errDangNhappass = "Cần nhập mật khẩu";
                 }
-                //if ($checkuser) {
-                if ($email == 'name' && $password == 'password') {
-                    // $_SESSION['name'] = $checkuser;
-                    // echo $checkuser;
-                    echo $email;
-                    echo $password;
-                    die();
-                    header('Location: index.php');
-                } else {
-                    $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra lại hoặc đăng ký!";
+            
+                if ($isCheck) {
+                    // Kiểm tra thông tin đăng nhập
+                    if ($email == 'name' && $password == 'password') {
+                        // Thực hiện các hành động sau khi đăng nhập thành công
+                        header('Location: index.php');
+                        exit;
+                    } else {
+                        $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra lại hoặc đăng ký!";
+                    }
                 }
-
-                // } else {
-                //     $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra lại hoặc đăng ký!";
-                // }
             }
             include ("view/taiKhoan/login.php");
             break;
