@@ -162,15 +162,15 @@ if (isset ($_GET["act"])) {
             break;
 
         //Bình luận
-        case 'add_comment':
-            if (isset ($_POST['themMoi'])) {
-                $nd = $_POST["content"];
-                // echo $nd;
-                // die();
-                insert_binhLuan($nd);
-            }
-            include ("binhLuan/add.php");
-            break;
+        // case 'add_comment':
+        //     if (isset ($_POST['themMoi'])) {
+        //         $nd = $_POST["content"];
+        //         // echo $nd;
+        //         // die();
+        //         insert_binhLuan($nd);
+        //     }
+        //     include ("binhLuan/add.php");
+        //     break;
         case 'comment':
             if (isset ($_POST['submit'])) {
                 $searchBl = $_POST["searchBl"];
@@ -188,7 +188,7 @@ if (isset ($_GET["act"])) {
                 delete_binhLuan($id);
             }
             $listBl = list_binhLuan("");
-            include ("binhLuan/listBl.php");
+            include ("binhLuan/comment.php");
             break;
 
         // sách

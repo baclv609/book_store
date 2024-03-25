@@ -4,7 +4,7 @@
 
 
 
-<form action="index.php?act=addSach" method="post" class="w-[700px] mx-auto mt-5" enctype="multipart/form-data" >
+<form action="index.php?act=addSach" method="post" class="w-[700px] mx-auto mt-5" enctype="multipart/form-data">
     <div class="mb-6">
         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Tên sản phẩm</label>
         <input type="name" id="name" name="name"
@@ -17,6 +17,11 @@
             <select id="countries" name="tacGia_id"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <!-- <option selected>Chọn Tác Giả</option> -->
+
+                <!-- foreach ($listTg as $key => $value) {
+                    echo '<input type="checkbox" name="checkbox[]" value="' . $value["id"] . '">' . $value["name"] . '<br>';
+                 } -->
+
                 <?php
                 foreach ($listTg as $key => $value) {
                     echo '<option value="' . $value["id"] . '">' . $value["name"] . '</option>';
@@ -34,12 +39,6 @@
                 } ?>
             </select>
         </div>
-        <!-- <div>
-            <label for="company" class="block mb-2 text-sm font-medium text-gray-900 ">Company</label>
-            <input type="text" id="company"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Flowbite" required />
-        </div> -->
         <div>
             <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">danh mục</label>
             <select id="countries" name="danh_muc_id"
@@ -73,12 +72,6 @@
                 aria-describedby="file_input_help" id="file_input" type="file" name="img">
 
         </div>
-        <!-- <div>
-            <label class="block mb-2 text-sm font-medium text-gray-900 ">Ảnh phụ</label>
-            <input
-                class="block w-full mb-5 text-gray-900 border border-gray-300 rounded-lg cursor-pointer text-sm bg-gray-50 p-2.5"
-                id="small_size" type="file">
-        </div> -->
     </div>
 
     <div class="">
@@ -101,4 +94,3 @@
     </div>
 
 </form>
-

@@ -5,7 +5,7 @@
     </div>
     <!-- input-->
     <div class="flex justify-between items-center mt-5">
-        <form class="w-[500px]" action="index.php?act=listBl" method="post">
+        <form class="w-[500px]" action="index.php?act=comment" method="post">
             <div class="relative ">
                 <input type="search" id="search-dropdown"
                     class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500   "

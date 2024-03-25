@@ -93,7 +93,7 @@
                                     <td class="px-3 py-3"><img src="../uploads/' . $value["img"] . '" style="width: 110px;" alt="loading..."></td>
                                     <td class="px-3 py-3">' . $value["gia"] . '</td>
                                     <td class="px-3 py-3">' . $value["gia_sale"] . '</td>
-                                    <td class="px-3 py-3">' . $value["mo_ta"] . '</td>
+                                    <td class="px-3 line-clamp-6">' . $value["mo_ta"] . '</td>
                                     <td class="px-3 py-3">' . $value["created_at"] . '</td>
                                     <td class="px-3 py-3">' . $value["tac_gia_name"] . '</td>
                                     <td class="px-3 py-3">' . $value["danh_muc_name"] . '</td>

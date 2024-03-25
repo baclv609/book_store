@@ -23,9 +23,6 @@
                     <div class="col-span-6 lg:col-span-6 md:col-span-12">
                         <div class="text-lg text-[#C92127] font-bold">Chính sách</div>
                         <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
-
-
-
                             Hotline: 1900.636.099
                         </div>
                         <div class="leading-5 my-1 text-sm text-[#424242] hover:text-[#C92127]">
@@ -65,24 +62,31 @@
     </div>
 </footer>
 
+<!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
-    // slider
-    var swiper = new Swiper(".mySwiper", {
+    var swiper = new Swiper(".mySwiper2", {
         spaceBetween: 30,
         centeredSlides: true,
         autoplay: {
             delay: 2500,
             disableOnInteraction: false,
         },
+
+    });
+    // <!-- Initialize Swiper -->
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 5,
+        spaceBetween: 30,
+        freeMode: true,
+        autoplay: {
+            delay: 2000,
+            disableOnInteraction: false,
+        },
         pagination: {
             el: ".swiper-pagination",
             clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
         },
     });
 

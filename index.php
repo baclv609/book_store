@@ -10,6 +10,12 @@ include ("./model/tacGia.php");
 
 $listDm = list_danhmuc("");
 $listTg = list_tac_gia("");
+$listSp_home = list_sach("","","");
+$list_sach_flashSale_home = list_sach_flashSale_home();
+$list_sach_banchay_home = list_sach_banchay_home();
+// echo '<pre>';
+// var_dump($list_sach_banchay_home);
+// die;
 
 $errDangNhappass = "";
 $errDangNhapuser = "";
@@ -101,22 +107,22 @@ if (isset ($_GET["act"])) {
                 $password = $_POST["password"];
                 $isCheck = true;
 
-                if ($email == '') {
+                if (empty ($email)) {
                     $isCheck = false;
                     $errDangKyemail = "Cần nhập email";
                 }
-                if ($name == '') {
+                if (empty ($name)) {
                     $isCheck = false;
                     $errDangKyuser = "Cần nhập tên đăng nhập";
                 }
-                if ($password == '') {
+                if (empty ($password)) {
                     $isCheck = false;
                     $errDangKypass = "Cần nhập mật khẩu";
                 }
 
                 if ($isCheck) {
                     insert_taikhoan($email, $name, $password);
-                    $thongbao = "bạn đăng kí thành công!";
+                    $thongbao = "B  ạn đăng kí thành công!";
                 }
             }
 
@@ -148,10 +154,10 @@ if (isset ($_GET["act"])) {
                 if ($isCheck) {
                     $checkuser = checkUser($email, $password);
                     if (is_array($checkuser)) {
-                        // nếu có 1 mảng thì tức là bạn đã đăng nhập thành công
                         $_SESSION['user'] = $checkuser;
+                        // print_r( ;$_SESSION['user'])
                         header("Location: index.php");
-                        exit(); // Thêm câu lệnh exit() để dừng thực hiện mã nguồn tiếp theo
+                        exit();
                     } else {
                         $thongBao = "Tài khoản không tồn tại";
                     }
@@ -159,7 +165,10 @@ if (isset ($_GET["act"])) {
             }
             include ("view/taiKhoan/login.php");
             break;
-
+        case 'logout':
+            session_unset();
+            header("Location: index.php");
+            break;
 
         default:
             include ("view/home.php");

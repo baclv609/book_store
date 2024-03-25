@@ -71,6 +71,33 @@ function list_sach($danh_muc_id, $searchSp, $tacGia_id)
     return $listSach;
 }
 
+function list_sach_flashSale_home()
+{
+    // SQL query to select the necessary data from the 'products' table and join it with other related tables
+    $sql = "SELECT * FROM products WHERE gia_sale IS NOT NULL AND gia_sale <> 0;";
+
+    $listSach = pdo_query($sql);
+
+    return $listSach;
+}
+
+function list_sach_banchay_home()
+{
+    $sql = "SELECT products.id, products.tacGia_id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, tac_gia.name AS tac_gia_name, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
+    FROM products 
+    JOIN tac_gia ON tac_gia.id = products.tacGia_id 
+    JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
+    JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id   
+    ORDER BY products.id DESC
+    LIMIT 5;";
+// SELECT products.id, products.tacGia_id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, tac_gia.name AS tac_gia_name, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
+// FROM products 
+// JOIN tac_gia ON tac_gia.id = products.tacGia_id 
+// JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
+// JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id   
+    $listSach = pdo_query($sql);
+    return $listSach;
+}
 function select_spct($id)
 {
     $sql = "SELECT products.id,products.ten, products.img,products.tacGia_id, products.gia, products.gia_sale, products.mo_ta, products.created_at, products.danh_muc_id, tac_gia.name AS tac_gia_name, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name FROM products JOIN tac_gia ON tac_gia.id = products.tacGia_id JOIN danh_muc ON danh_muc.id = products.danh_muc_id JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id WHERE products.id = $id";
@@ -98,10 +125,10 @@ function update_sach($id, $name)
     pdo_execute($sql);
 }
 
-function update_sanpham_coHinhAnh($id,$tenSanPham, $tacGiaId, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa)
+function update_sanpham_coHinhAnh($id, $tenSanPham, $tacGiaId, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa)
 {
 
-$sql = "UPDATE `products` SET 
+    $sql = "UPDATE `products` SET 
 `ten`='$tenSanPham',
 `tacGia_id`='$tacGiaId',
 `danh_muc_id`='$danhMucId',
@@ -115,7 +142,7 @@ $sql = "UPDATE `products` SET
 }
 // ($tenSanPham, $tacGiaId, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa)
 // $id, $tenSanPham,$tacGiaId,$nhaSanXuatId,$danhMucId,$gia,$giaSale,$moTa
-function update_sanpham_KhongHinhAnh($id, $tenSanPham,$tacGiaId,$nhaSanXuatId,$danhMucId,$gia,$giaSale,$moTa)
+function update_sanpham_KhongHinhAnh($id, $tenSanPham, $tacGiaId, $nhaSanXuatId, $danhMucId, $gia, $giaSale, $moTa)
 {
     $sql = "UPDATE `products` SET 
     `ten`='$tenSanPham',
