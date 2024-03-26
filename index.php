@@ -5,11 +5,13 @@ include ("./model/danhmuc.php");
 include ("./model/sach.php");
 include ("./model/taiKhoan.php");
 include ("./model/tacGia.php");
+include "global.php"; 
 // include ("../model/binhLuan.php");
 // include ("../model/sach.php");
 
 $listDm = list_danhmuc("");
 $listTg = list_tac_gia("");
+$dstop = loadall_sanpham_top5sp();
 
 $errDangNhappass = "";
 $errDangNhapuser = "";
@@ -150,8 +152,8 @@ if (isset ($_GET["act"])) {
                     if (is_array($checkuser)) {
                         // nếu có 1 mảng thì tức là bạn đã đăng nhập thành công
                         $_SESSION['user'] = $checkuser;
-                        header("Location: index.php");
-                        exit(); // Thêm câu lệnh exit() để dừng thực hiện mã nguồn tiếp theo
+                        //header("Location: index.php");
+                        //exit(); // Thêm câu lệnh exit() để dừng thực hiện mã nguồn tiếp theo
                     } else {
                         $thongBao = "Tài khoản không tồn tại";
                     }
@@ -159,7 +161,11 @@ if (isset ($_GET["act"])) {
             }
             include ("view/taiKhoan/login.php");
             break;
+        
+        //top 5 sản phẩm bán chạy
+        case 'top5sp':
 
+            break;
 
         default:
             include ("view/home.php");

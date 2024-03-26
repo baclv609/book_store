@@ -131,4 +131,11 @@ function update_sanpham_KhongHinhAnh($id, $tenSanPham,$tacGiaId,$nhaSanXuatId,$d
     pdo_execute($sql);
 
 }
+
+function loadall_sanpham_top5sp()
+{
+    $sql = "SELECT * FROM products WHERE 1 ORDER BY luot_ban DESC LIMIT 0,5";
+    $listsanpham = pdo_query($sql);
+    return $listsanpham;
+}
 ?>
