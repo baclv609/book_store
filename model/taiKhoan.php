@@ -24,6 +24,15 @@ function list_Alltaikhoan()
 
     return $listTk;
 }
+
+function update_taikhoan($id, $name, $sđt, $email, $password){
+    $sql = "UPDATE users SET name= '" . $name . "', phone= '" . $sđt . "', email= '" . $email . "', password= '".$password."' WHERE id = " . $id;
+    echo $sql;
+    die();
+    pdo_execute($sql);
+
+}
+
 // function insert_taiKhoan($user, $pass, $email)
 // {
 //     $sql = "INSERT INTO taikhoan(user, pass, email) 
