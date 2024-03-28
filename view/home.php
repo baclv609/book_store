@@ -1,4 +1,4 @@
-<section class="bg-white container-content mt-[50px]">
+<section class="bg-white container-content ">
     <div class="mt-5 grid grid-cols-3 gap-4">
         <!-- Slideshow container -->
         <div class="slideshow-container col-span-2 row-span-2">
@@ -194,8 +194,6 @@
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <!-- list_sach_flashSale_home -->
-
-
                 <?php
                 foreach ($list_sach_flashSale_home as $key => $value) {
                     $giaCu = $value['gia_sale'];
