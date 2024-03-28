@@ -164,20 +164,37 @@ if (isset($_GET["act"])) {
             include ("view/taiKhoan/login.php");
             break;
 
-        case 'edittk':
-            if (isset($_POST['submit'])) {
-                $name = $_POST["name"];
-                $sđt = $_POST['phone'];
-                $email = $_POST["email"];
-                $password = $_POST["password"];
-                $id = $_POST['id'];
-                //cho $id;
-                update_taikhoan($id, $name, $sđt, $email, $password);
-                $_SESSION['user'] = checkUser($email, $password);
-                header('Location: index.php?act=edittk');
-            }
-            include "view/taiKhoan/edittk.php";
-            break;
+
+            case 'edittk':
+                if (isset($_POST['submit'])) {
+                    // Lấy các giá trị được gửi từ form
+                    $name = $_POST["name"];
+                    $sđt = $_POST['phone'];
+                    $email = $_POST["email"];
+                    $password = $_POST["password"];
+                    $dia_chi = $_POST["dia_chi"];
+                    $id = $_POST['id'];
+            
+                    $hinhAnh = $_FILES["img"];
+                    $filename = $hinhAnh["name"];
+            
+                    $filename = time() . $filename;
+                    $dir = "./uploads/$filename";
+            
+                    // Di chuyển tệp tin hình ảnh tải lên vào thư mục uploads
+                    move_uploaded_file($hinhAnh["tmp_name"], $dir);
+            
+                    // Gọi hàm update_taikhoan để cập nhật thông tin tài khoản
+                    update_taikhoan($id, $name, $filename, $sđt, $email, $password, $dia_chi);
+            
+                    // Cập nhật lại thông tin người dùng trong phiên làm việc
+                    $_SESSION['user'] = checkUser($email, $password);
+            
+                    // Chuyển hướng người dùng về trang edittk (chỉnh sửa tài khoản)
+                    header('Location: index.php?act=edittk');
+                }
+                include "view/taiKhoan/edittk.php";
+                break;
         case 'logout':
             session_unset();
             header("Location: index.php");

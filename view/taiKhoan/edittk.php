@@ -2,33 +2,76 @@
     <!-- login container -->
     <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
         <!-- form -->
-
-        <!-- image -->
-        <div class="md:block hidden w-1/2">
-            <img class="rounded-2xl"
-                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJvb2t8ZW58MHx8MHx8fDA%3D">
-        </div>
-        <div class="md:w-1/2 px-8 md:px-14">
+        <?php if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
+            extract($_SESSION['user']);
+        }
+        // var_dump($_SESSION['user']);
+        // die;
+        ?>
+        <div class=" px-8 md:px-14">
             <h2 class="font-bold text-2xl text-[#002D74]">Cập nhật tài khoản</h2>
-            <p class="text-xs mt-4 text-[#002D74]">Nếu bạn đã có tài khoản hãy đăng nhập</p>
+            <br>
+            <form class="max-w-md mx-auto" action="index.php?act=edittk" method="post" enctype="multipart/form-data">
+                <div class="grid md:grid-cols-2 md:gap-6">
+                    <div class="relative z-0 w-full mb-5 group">
+                        <input type="text" name="name"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-non focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required value="<?= $name ?>" />
+                        <label for="floating_first_name"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User
+                            name</label>
+                    </div>
+                    <div class="relative z-0 w-full mb-5 group">
+                        <input type="tel" name="phone" id="floating_phone" value="<?= $phone ?>"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-non focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " />
+                        <label
+                            class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Số
+                            điện thoại</label>
 
-            <form action="index.php?act=edittk" method="post" class="flex flex-col ">
-                <input class="p-2 mt-8 rounded-xl border" type="text" name="name" placeholder="User name"
-                    value="<?= $name ?>">
+                    </div>
+                </div>
 
-                <input class="p-2 mt-8 rounded-xl border" type="text" name="phone" placeholder="Số điện thoại">
-                <br>
-                <input class="p-2  rounded-xl border" type="email" name="email" placeholder="Email"
-                    value="<?= $email ?>">
-                <br>
-                <div class="relative">
-                    <input class="p-2 rounded-xl border w-full" type="password" name="password" placeholder="Password"
-                        value="<?= $password ?>">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="email" name="email" value="<?= $email ?>"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-non focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+
+                    <label for="floating_email"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="password" name="password" value="<?= $password ?>"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-non focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="floating_password"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+                </div>
+
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="dia_chi" value="<?= $dia_chi ?>"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-non focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="floating_repeat_password"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Địa
+                        chỉ</label>
+                </div>
+
+                <div class="grid md:grid-cols-2 md:gap-6">
+                    <!-- image -->
+                    <div class="w-full mb-5">
+                        <input name="img"
+                            class="block w-full h-full  text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
+                            type="file">
+                    </div>
                 </div>
                 <br>
-                <input type="hidden" name="id" value="<?= $id ?>">
-                <button type="submit" name="submit"
-                    class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">Cập nhật</button>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="hidden" name="id" value="<?= $id ?>">
+                    <button type="submit" name="submit"
+                        class="bg-[#002D74] w-full rounded-xl text-white py-2 hover:scale-105 duration-300">Cập
+                        nhật</button>
+                </div>
             </form>
             <p class="text-red-500 text-[13px] pl-2">
                 <?php
@@ -37,30 +80,8 @@
                 }
                 ?>
             </p>
-
-            <div class="mt-5 text-xs border-b border-[#002D74] py-4 text-[#002D74]">
-                <a href="#">Quên mật khẩu?</a>
-            </div>
-
-            <div class="mt-3 text-xs flex justify-between items-center text-[#002D74]">
-                <p>Bạn đã có tài khoản?</p>
-                <a href="index.php?act=dangnhap"
-                    class="py-2 px-4 bg-white border rounded-xl hover:scale-110 duration-300">Đăng nhập
-                    ngay</a>
-            </div>
         </div>
 
 
     </div>
 </section>
-<script>
-
-    // Support Me 🙏🥰 
-
-    kofiWidgetOverlay.draw('mohamedghulam', {
-        'type': 'floating-chat',
-        'floating-chat.donateButton.text': 'Support me',
-        'floating-chat.donateButton.background-color': '#323842',
-        'floating-chat.donateButton.text-color': '#fff'
-    });
-</script>

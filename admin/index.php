@@ -273,9 +273,6 @@ if (isset($_GET["act"])) {
                 $id = $_GET["id"];
 
                 $listTg = list_tac_gia("");
-                //  echo '<pre>';
-                //     print_r($listTg);
-                // die();
                 $listDm = list_danhmuc("");
                 $listNxb = list_NhaXuatBan("");
                 $SP = select_spct($id);
