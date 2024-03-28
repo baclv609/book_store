@@ -156,8 +156,10 @@ if (isset($_GET["act"])) {
                     if (is_array($checkuser)) {
                         $_SESSION['user'] = $checkuser;
                         // print_r( ;$_SESSION['user'])
-                        header("Location: index.php");
-                        exit();
+                        $thongbao = "Đăng nhập thành công";
+                        //header("Location: index.php");
+                        // exit();
+                        
                     } else {
                         $thongBao = "Tài khoản không tồn tại";
                     }
@@ -179,6 +181,20 @@ if (isset($_GET["act"])) {
                 header('Location: index.php?act=edittk');
             }
             include "view/taiKhoan/edittk.php";
+            break;
+
+        case 'quenmk':
+            if (isset($_POST['guiemail'])) {
+                $email = $_POST['email'];
+                $thongbao = "";
+                $checkemail = checkemail($email);
+                if (is_array($checkemail)) {
+                    $thongbao = "Mật khẩu của bạn là: " . $checkemail['password'];
+                } else {
+                    $thongbao = "Email này không tồn tại";
+                }
+            }
+            include "view/taiKhoan/quenmk.php";
             break;
         case 'logout':
             session_unset();

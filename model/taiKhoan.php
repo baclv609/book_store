@@ -11,7 +11,8 @@ function insert_taikhoan($email, $name, $password)
 // die;
 
 // đăng nhập
-function checkUser($email, $password){
+function checkUser($email, $password)
+{
     $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
     $sp = pdo_query_one($sql);
     return $sp;
@@ -25,12 +26,20 @@ function list_Alltaikhoan()
     return $listTk;
 }
 
-function update_taikhoan($id, $name, $sđt, $email, $password){
-    $sql = "UPDATE users SET name= '" . $name . "', phone= '" . $sđt . "', email= '" . $email . "', password= '".$password."' WHERE id = " . $id;
-    echo $sql;
-    die();
+function update_taikhoan($id, $name, $sđt, $email, $password)
+{
+    $sql = "UPDATE users SET name= '" . $name . "', phone= '" . $sđt . "', email= '" . $email . "', password= '" . $password . "' WHERE id = " . $id;
+    // echo $sql;
+    // die();
     pdo_execute($sql);
 
+}
+
+function checkemail($email)
+{
+    $sql = "SELECT * FROM users WHERE email = '" . $email . "'";
+    $sp = pdo_query_one($sql);
+    return $sp;
 }
 
 // function insert_taiKhoan($user, $pass, $email)

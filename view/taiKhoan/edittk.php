@@ -15,7 +15,9 @@
             <form action="index.php?act=edittk" method="post" class="flex flex-col ">
                 <input class="p-2 mt-8 rounded-xl border" type="text" name="name" placeholder="User name"
                     value="<?= $name ?>">
-
+                    <br>
+                <!-- <input type="file" name="avatar">
+                <img src="upload/<?= $image ?>" style="width: 250px;" alt=""><br> -->
                 <input class="p-2 mt-8 rounded-xl border" type="text" name="phone" placeholder="Số điện thoại">
                 <br>
                 <input class="p-2  rounded-xl border" type="email" name="email" placeholder="Email"
@@ -32,14 +34,14 @@
             </form>
             <p class="text-red-500 text-[13px] pl-2">
                 <?php
-                if (isset($thongBao) && $thongBao != "") {
-                    echo $thongBao;
+                if (isset($thongbao) && $thongbao != "") {
+                    echo $thongbao;
                 }
                 ?>
             </p>
 
             <div class="mt-5 text-xs border-b border-[#002D74] py-4 text-[#002D74]">
-                <a href="#">Quên mật khẩu?</a>
+                <a href="index.php?act=quenmk">Quên mật khẩu?</a>
             </div>
 
             <div class="mt-3 text-xs flex justify-between items-center text-[#002D74]">
