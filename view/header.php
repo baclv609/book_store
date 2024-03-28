@@ -38,6 +38,7 @@
                             tặng hấp dẫn. Mua hàng ngay đừng bỏ lỡ.</span></a></div>
             </div>
         </div>
+        <div >
 
         <div>
             <nav class="container-content flex justify-between items-center ">
@@ -97,10 +98,10 @@
                                 <button type="button" class="flex flex-col justify-center items-center" id="menu-button"
                                     aria-expanded="true" aria-haspopup="true">
 
-                                    <?php if (!isset ($_SESSION['user'])) { ?>
+                                    <?php if (!isset($_SESSION['user'])) { ?>
                                         <i class="fa-regular fa-user"></i>
                                     <?php } else { ?>
-                                        <?php if (isset ($_SESSION['user']) && isset ($_SESSION['user']['image'])) { ?>
+                                        <?php if (isset($_SESSION['user']) && isset($_SESSION['user']['image'])) { ?>
                                             <img class="w-[30px] h-[30px] rounded-full"
                                                 src="<?php echo $_SESSION['user']['image']; ?>" alt="Rounded avatar">
                                         <?php } else { ?>
@@ -116,7 +117,7 @@
                             <div class="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
                                 id="userDropdown" role="menu" aria-orientation="vertical" aria-labelledby="menu-button"
                                 tabindex="-1">
-                                <?php if (isset ($_SESSION['user'])) {
+                                <?php if (isset($_SESSION['user'])) {
                                     // var_dump($_SESSION['user']);
                                     // die;
                                     extract($_SESSION['user']);
@@ -140,7 +141,8 @@
                                                 mật
                                                 khẩu</a></li>
                                         <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Cập nhật tài khoản</a>
+                                            <a href="index.php?act=edittk" class="block px-4 py-2 hover:bg-gray-100">Cập
+                                                nhật tài khoản</a>
                                         </li>
                                         <?php if ($is_admin == 1) { ?>
                                             <li>

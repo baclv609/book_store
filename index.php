@@ -163,6 +163,21 @@ if (isset($_GET["act"])) {
             }
             include ("view/taiKhoan/login.php");
             break;
+
+        case 'edittk':
+            if (isset($_POST['submit'])) {
+                $name = $_POST["name"];
+                $sđt = $_POST['phone'];
+                $email = $_POST["email"];
+                $password = $_POST["password"];
+                $id = $_POST['id'];
+                //cho $id;
+                update_taikhoan($id, $name, $sđt, $email, $password);
+                $_SESSION['user'] = checkUser($email, $password);
+                header('Location: index.php?act=edittk');
+            }
+            include "view/taiKhoan/edittk.php";
+            break;
         case 'logout':
             session_unset();
             header("Location: index.php");
