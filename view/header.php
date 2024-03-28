@@ -83,7 +83,7 @@
                             class="bg-red-500 text-white px-2 text-sm py-1 rounded ">
                     </form>
                     <div>
-                        <a href="#" class="flex flex-col justify-center items-center">
+                        <a href="index.php?act=giohang" class="flex flex-col justify-center items-center">
                             <i class="fa-solid fa-cart-shopping"></i>
                             <!-- <div class="text-xs mt-1">Giỏ hàng</div> -->
                         </a>

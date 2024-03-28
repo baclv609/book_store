@@ -5,12 +5,13 @@ include ("./model/danhmuc.php");
 include ("./model/sach.php");
 include ("./model/taiKhoan.php");
 include ("./model/tacGia.php");
+include ("./model/giohang.php");
 // include ("../model/binhLuan.php");
 // include ("../model/sach.php");
 
 $listDm = list_danhmuc("");
 $listTg = list_tac_gia("");
-$listSp_home = list_sach("","","");
+$listSp_home = list_sach("", "", "");
 $list_sach_flashSale_home = list_sach_flashSale_home();
 $list_sach_banchay_home = list_sach_banchay_home();
 // echo '<pre>';
@@ -169,7 +170,17 @@ if (isset ($_GET["act"])) {
             session_unset();
             header("Location: index.php");
             break;
-
+        case 'giohang':
+        
+                $gioHang =select_1_sach();
+                echo '<pre>';
+                    print_r($gioHang);
+                    echo '</pre>';
+                
+            
+            include ("./view/giohang.php");
+           
+            break;
         default:
             include ("view/home.php");
             break;
