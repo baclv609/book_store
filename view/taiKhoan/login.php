@@ -15,7 +15,7 @@
                     </p> <br>
                 </div>
                 <div class="relative">
-                    <input class="p-2 rounded-xl border w-full" type="password" name="passsword" placeholder="Password"
+                    <input class="p-2 rounded-xl border w-full" type="password" name="password" placeholder="Password"
                         value="<?= $password ?>">
                     <p class="text-red-500 text-[13px] pl-2">
                         <?= $errDangNhappass ?>

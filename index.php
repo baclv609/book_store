@@ -10,19 +10,14 @@ include ("./model/tacGia.php");
 
 $listDm = list_danhmuc("");
 $listTg = list_tac_gia("");
-$listSp_home = list_sach("","","");
+$listSp_home = list_sach("", "", "");
 $list_sach_flashSale_home = list_sach_flashSale_home();
 $list_sach_banchay_home = list_sach_banchay_home();
 // echo '<pre>';
 // var_dump($list_sach_banchay_home);
 // die;
 
-$errDangNhappass = "";
-$errDangNhapuser = "";
 
-$errDangKypass = "";
-$errDangKyuser = "";
-$errDangKyemail = "";
 
 
 include ("view/header.php");
@@ -100,29 +95,50 @@ if (isset ($_GET["act"])) {
 
         //đăng kí
         case 'dangky':
+            $errDangKypass = "";
+            $errDangKyuser = "";
+            $errDangKyemail = "";
+
+            $email = '';
+            $name = '';
+            $password = '';
             // nếu có tồn tại và có nhấp vào nút dangky
-            if (isset ($_POST["submit"])) {
-                $email = $_POST["email"];
+            if (isset($_POST["submit"])) {
                 $name = $_POST["name"];
+                $email = $_POST["email"];
                 $password = $_POST["password"];
+                // print_r([$name,$email,$password]);
+                // die();
                 $isCheck = true;
 
-                if (empty ($email)) {
+                // Kiểm tra tên đăng nhập
+                if (!$name) {
                     $isCheck = false;
-                    $errDangKyemail = "Cần nhập email";
+                    $errDangKyuser = 'Bạn không được để trống tên đăng nhập';
+                } else if (ten_dang_nhap_da_ton_tai($name)) {
+                    $isCheck = false;
+                    $errDangKyuser = 'Tên đăng nhập đã tồn tại trong hệ thống, vui lòng chọn tên khác.';
                 }
-                if (empty ($name)) {
+
+                //xác thực địa chỉ email
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $isCheck = false;
-                    $errDangKyuser = "Cần nhập tên đăng nhập";
+                    $errDangKyemail = 'Bạn không được để trống email';
                 }
-                if (empty ($password)) {
+                // Kiểm tra email đã tồn tại trong cơ sở dữ liệu hay không
+                if ($email && email_da_ton_tai($email)) {
                     $isCheck = false;
-                    $errDangKypass = "Cần nhập mật khẩu";
+                    $errDangKyemail = 'Email đã tồn tại trong hệ thống, vui lòng sử dụng email khác.';
+                }
+
+                if(!$password){
+                    $isCheck = false;
+                    $errDangKypass = 'Bạn không được để trống pass';
                 }
 
                 if ($isCheck) {
-                    insert_taikhoan($email, $name, $password);
-                    $thongbao = "B  ạn đăng kí thành công!";
+                    insert_taikhoan($name,$email, $password);
+                    $thongbao = "Bạn đăng kí thành công!";
                 }
             }
 
@@ -133,29 +149,31 @@ if (isset ($_GET["act"])) {
         case 'dangnhap':
             $email = "";
             $password = "";
+            
             $errDangNhapuser = '';
             $errDangNhappass = '';
 
             $isCheck = true;
             if (isset ($_POST["submit"])) {
                 $email = $_POST["email"];
-                $password = $_POST["passsword"];
+                $password = $_POST["password"];
+                $checkuser = checkUser($email, $password);
 
-                if (empty ($email)) {
+                $isCheck = true;
+                if(!$email){
                     $isCheck = false;
-                    $errDangNhapuser = "Cần nhập email";
+                    $errDangNhapuser = 'Bạn không được để trống tên đăng nhập';
                 }
-
-                if (empty ($password)) {
+                if(!$password){
                     $isCheck = false;
-                    $errDangNhappass = "Cần nhập mật khẩu";
+                    $errDangNhappass = 'Bạn không được để trống pass';
                 }
 
                 if ($isCheck) {
-                    $checkuser = checkUser($email, $password);
                     if (is_array($checkuser)) {
-                        $_SESSION['user'] = $checkuser;
+                        $_SESSION['email'] = $checkuser;
                         // print_r( ;$_SESSION['user'])
+                        $thongbao = "Đăng nhập thành công";
                         header("Location: index.php");
                         exit();
                     } else {

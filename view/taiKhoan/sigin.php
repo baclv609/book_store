@@ -25,11 +25,11 @@
                     <input class="p-2 rounded-xl border w-full" type="password" name="password" placeholder="Password">
 
                     <p class="text-red-500 text-[13px] pl-2">
-                        <?= $errDangKyuser ?>
+                        <?= $errDangKypass ?>
                     </p> <br>
                 </div>
 
-                <button type="submit" name="submit"
+                <button type="submit" name="submit" 
                     class="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">Đăng ký</button>
             </form>
             <p class="text-red-500 text-[13px] pl-2">
