@@ -13,23 +13,31 @@
     </div>
     <div class="grid gap-6 md:grid-cols-2">
         <div>
-            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Tác giả</label>
-            <select id="countries" name="tacGia_id"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                <!-- <option selected>Chọn Tác Giả</option> -->
+            <label for="tacGia_id" class="block mb-2 text-sm font-medium text-gray-900">Tác giả</label>
 
-                <?php
-                // print_r($listTg);
-                // die;
-                foreach ($listTg as $key => $value) {
-                    if ($SP["tacGia_id"] == $value["id"]) {
-                        echo '<option value="' . $value["id"] . '" selected>' . $value["name"] . '</option>';
-                    } else {
-                        echo '<option value="' . $value["id"] . '">' . $value["name"] . '</option>';
-                    }
-                }
-                ?>
-            </select>
+            <?php
+            // Lấy danh sách các ID tác giả liên quan đến sản phẩm
+            $listTacGiaSeleced = list_tacgia_sach($SP['id']);
+            $listTacGiaID = array_column($listTacGiaSeleced, 'id');
+
+            foreach ($listTg as $key => $value) {
+                $checked = in_array($value['id'], $listTacGiaID) ? 'checked' : ''; // Kiểm tra xem tác giả có trong danh sách tác giả của sản phẩm hay không
+                echo '<input type="checkbox" name="tacGia_id[]" value="' . $value["id"] . '" ' . $checked . '> ' . $value["name"] . '<br>';
+            }
+
+            // $listTacGiaID = array_column($listTacGiaSeleced, 'id');
+            // foreach ($listTg as $key => $value) {
+            //     $checked = (!empty($listTacGiaID) && in_array($value['id'], $listTacGiaID)) ? "checked" : null;
+            //     $inputCheckBox = '<input type="checkbox" name="tacGia_id[]" value="' . $value["id"] . '"';
+            //     if (!empty($checked)) {
+            //         $inputCheckBox .= ' checked';
+            //     }
+            
+            //     $inputCheckBox .= '> ' . $value["name"] . '<br>';
+            
+            //     echo $inputCheckBox;
+            // }
+            ?>
         </div>
         <div>
             <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 ">Nhà Xuất Bản</label>
@@ -45,7 +53,7 @@
                     }
                 }
                 ?>
-                
+
             </select>
         </div>
 
@@ -55,7 +63,7 @@
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <!-- <option selected>Chọn Nhà Danh mục</option> -->
                 <?php
-             
+
                 foreach ($listDm as $key => $value) {
                     if ($SP["danh_muc_id"] == $value["id"]) {
                         echo '<option value="' . $value["id"] . '" selected>' . $value["name"] . '</option>';

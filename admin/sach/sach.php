@@ -66,11 +66,11 @@
                     <th scope="col" class="px-6 py-3" style="width: 25%">
                         Mô tả
                     </th>
-                    <th scope="col" class="px-6 py-3" style="width: 8%">
-                        Ngày đăng bán
-                    </th>
                     <th scope="col" class="px-6 py-3" style="width: 10%">
                         Tên tác giả
+                    </th>
+                    <th scope="col" class="px-6 py-3" style="width: 8%">
+                        Ngày đăng bán
                     </th>
                     <th scope="col" class="px-6 py-3" style="width: 10%">
                         Tên danh mục
@@ -86,23 +86,31 @@
             <tbody>
                 <?php
                 foreach ($list_Sach as $key => $value) {
+                    $list_tacgia_sach_spct = list_tacgia_sach_spct($value["id"]);
+
                     echo '
-                                <tr class="bg-white border-b text-black hover:bg-gray-100">
-                                    <td class="w-4 p-4">' . $value["id"] . '</td>
-                                    <td class="w-[500px] px-3 py-3 font-medium text-black ">' . $value["ten"] . '</td>
-                                    <td class="px-3 py-3"><img src="../uploads/' . $value["img"] . '" style="width: 110px;" alt="loading..."></td>
-                                    <td class="px-3 py-3">' . $value["gia"] . '</td>
-                                    <td class="px-3 py-3">' . $value["gia_sale"] . '</td>
-                                    <td class="px-3 line-clamp-6">' . $value["mo_ta"] . '</td>
-                                    <td class="px-3 py-3">' . $value["created_at"] . '</td>
-                                    <td class="px-3 py-3">' . $value["tac_gia_name"] . '</td>
-                                    <td class="px-3 py-3">' . $value["danh_muc_name"] . '</td>
-                                    <td class="px-3 py-3">' . $value["nha_san_xua_name"] . '</td>
-                                    <td class="flex items-center px-3 py-3">
-                                        <a href="index.php?act=editSp&id=' . $value['id'] . '" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                        <a href="index.php?act=deleteSp&id=' . $value['id'] . '" onclick="return confirm(\'Bạn muốn xóa ?\')" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
-                                    </td>
-                                </tr>';
+        <tr class="bg-white border-b text-black hover:bg-gray-100">
+            <td class="w-4 p-4">' . $value["id"] . '</td>
+            <td class="w-[500px] px-3 py-3 font-medium text-black">' . $value["ten"] . '</td>
+            <td class="px-3 py-3"><img src="../uploads/' . $value["img"] . '" style="width: 110px;" alt="loading..."></td>
+            <td class="px-3 py-3">' . $value["gia"] . '</td>
+            <td class="px-3 py-3">' . $value["gia_sale"] . '</td>
+            <td class="px-3 line-clamp-6">' . $value["mo_ta"] . '</td>
+            <td class="px-3 py-3">';
+
+                    foreach ($list_tacgia_sach_spct as $key_tacgia => $value_tacgia) {
+                        echo $value_tacgia["tac_gia_name"] . ", ";
+                    }
+
+                    echo '</td>
+            <td class="px-3 py-3">' . $value["created_at"] . '</td>
+            <td class="px-3 py-3">' . $value["danh_muc_name"] . '</td>
+            <td class="px-3 py-3">' . $value["nha_san_xua_name"] . '</td>
+            <td class="flex items-center px-3 py-3">
+                <a href="index.php?act=editSp&id=' . $value["id"] . '" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <a href="index.php?act=deleteSp&id=' . $value["id"] . '" onclick="return confirm(\'Bạn muốn xóa ?\')" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
+            </td>
+        </tr>';
                 }
                 ?>
                 <!--                 
