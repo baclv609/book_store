@@ -27,7 +27,7 @@
 <!-- font-[Poppins] -->
 
 <body class="">
-    <div class="bg-white z-[11] top-0 w-full" style="box-shadow: 0 1px 3px gray">
+    <div class="bg-white sticky z-[11] top-0 w-full " style="box-shadow: 0 1px 3px gray">
         <div class="swiper mySwiper2 bg-[#C92127]">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"><a class=" h-[50px]" href="index.php"><span
@@ -38,8 +38,9 @@
                             tặng hấp dẫn. Mua hàng ngay đừng bỏ lỡ.</span></a></div>
             </div>
         </div>
-        <div>
+        <div >
 
+        <div>
             <nav class="container-content flex justify-between items-center ">
                 <div>
                     <a href="index.php"><img class="w-16 cursor-pointer"
@@ -66,8 +67,7 @@
                                 <a id="dropdownButton" class="cursor-pointer w-55 m-7 md:m-0 hover:text-cyan-400 
                             transition duration-400 ease-in">Danh Mục <i class="fa-solid fa-chevron-down"></i></a>
                                 <ul id="dropdownMenu"
-                                    class="absolute hidden mt-2 py-2 w-55  bg-white rounded-md shadow-md z-10">
-                                    <?php foreach ($listDm as $key => $value) {
+                                    class="absolute hidden mt-2 py-2 w-55  bg-white rounded-md shadow-md z-10"><?php foreach ($listDm as $key => $value) {
                                         echo '<li><a class="hover:text-cyan-400 p-3"  href="index.php?act=sanpham&iddm=' . $value["id"] . '">' . $value["name"] . '</a></li>';
                                     } ?>
                                 </ul>
@@ -203,3 +203,4 @@
                     </div>
                 </div>
         </div>
+    </div>

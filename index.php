@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include ("./model/connect.php");
 include ("./model/danhmuc.php");
@@ -81,17 +82,14 @@ if (isset($_GET["act"])) {
         case 'sanphamct':
             if ((isset($_GET["idsp"])) && ($_GET["idsp"]) > 0) {
                 $id = $_GET["idsp"];
-                // echo $id;
-                // die();
                 $sanPhamCt = select_spct($id);
+                $list_tacgia_sach_spct = list_tacgia_sach_spct($id);
+
                 //     echo '<pre>';
-                // print_r($sanPhamCt);
+                // var_dump($list_tacgia_sach_spct);
                 // die();
                 $sach_cungLoai = Select_sach_cungLoai($id, $sanPhamCt["danh_muc_id"]);
-                //          echo '<pre>';
-                // print_r($sach_cungLoai);
-                // die();
-
+                $bien_the_bia = select_loai_bia_theo_sach($id);
             } else {
                 include ("view/home.php");
             }
