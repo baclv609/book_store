@@ -19,7 +19,9 @@
             <p class="text-red-500 text-[13px] pl-2">
                 <?php
                 if (isset ($thongbao) && $thongbao != "") {
-                    echo $thongbao;
+                    echo $thongbao
+                    
+                    ;
                 }
                 ?>
             </p>
