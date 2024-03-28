@@ -5,7 +5,7 @@
         <div class="grid grid-cols-12 pt-12">
             <div class="px-3 xl:col-span-6 lg:col-span-6 md:col-span-7 sm:col-span-12 col-span-12">
                 <div class="text-lg text-[#C92127] font-bold">
-                    Kids Shop, Cùng Bé lớn khôn!
+                   stripe
                 </div>
                 <div class="text-sm text-[#424242]">Hotline: 1900.636.099</div>
                 <div class="text-sm text-[#424242]">
@@ -70,10 +70,9 @@
         spaceBetween: 30,
         centeredSlides: true,
         autoplay: {
-            delay: 2500,
+            delay: 2000,
             disableOnInteraction: false,
         },
-
     });
     // <!-- Initialize Swiper -->
     var swiper = new Swiper(".mySwiper", {

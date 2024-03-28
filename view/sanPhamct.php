@@ -26,12 +26,20 @@
                     <?php echo $sanPhamCt["ten"]; ?>
                 </h2>
                 <div class="flex mb-4">
-                    <div class="mr-4">
-                        <span class=" text-gray-700 ">Tác giả:</span>
-                        <span class="text-gray-600 font-bold">
-                            <?php echo $sanPhamCt["tac_gia_name"]; ?>
-                        </span>
-                    </div>
+                    <?php
+                        if (!empty($list_tacgia_sach_spct)) {
+                   
+                            echo ' <div class="mr-4">';
+                            echo '<span class="text-gray-700">Tác giả:</span>';
+                            echo '<span class="text-gray-600 font-bold">';
+                            foreach ($list_tacgia_sach_spct as $key => $value) {
+                                echo $value["tac_gia_name"], " ,";
+                            }
+                            echo '</div>';
+                            echo '</span>';
+                        } else {
+                            // Ẩn div tác giả
+                        } ?>
                     <div>
                         <span class=" text-gray-700 ">Nhà xuất bản:</span>
                         <span class="text-gray-600 font-bold">
@@ -49,8 +57,10 @@
                 </div>
                 <div class="flex mb-4 items-center">
                     <div class="mr-4">
+                        <span class="hidden" value="<?php echo $sanPhamCt["gia"]; ?>" id="gia_bien_the"
+                            onchange="myFunction()"></span>
                         <!-- <span class=" text-gray-700 ">Giá:</span> -->
-                        <span class="text-[#FF0000] text-[24px] font-bold">
+                        <span class="text-[#FF0000] text-[24px] font-bold" id="gia_sau_bien_the">
                             <?php echo $sanPhamCt["gia"]; ?>.000 đ
                         </span>
                     </div>
@@ -74,20 +84,31 @@
                     </div>
                 </div>
                 <div class="mb-4">
-                    <span class="font-bold text-gray-700 ">Select Size:</span>
+                    <span class="font-bold text-gray-700 ">Select Loại Bìa:</span>
                     <div class="flex items-center mt-2">
-                        <button
-                            class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">S</button>
-                        <button
-                            class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">M</button>
-                        <button
-                            class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">L</button>
-                        <button
-                            class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">XL</button>
-                        <button
-                            class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">XXL</button>
+                        <!-- <button
+                            class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">S</button> -->
+                        <div><select id="mySelect" onchange="myFunction2()">
+                                <option value="Audi">Audi</option>
+                                <option value="BMW">BMW</option>
+                                <option value="Mercedes">Mercedes</option>
+                                <option value="Volvo">Volvo</option>
+                            </select>
+                            <?php
+                            foreach ($bien_the_bia as $Check) {
+                                extract($Check);
+                                echo '
+                                     <label>
+                                         <input type="radio" name="loai_bia" value="' . $muc_tang . '" onchange="myFunction()"
+                                         class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">' . $loai_bia . '
+                                     </label>
+                                 ';
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
+
                 <div>
                     <span class="font-bold text-gray-700 ">Mô tả:</span>
                     <p class="text-gray-600  text-sm mt-2">
@@ -171,3 +192,18 @@
                 href="#">Xem thêm</a></div>
     </div>
 </section>
+
+<script>
+    var y;
+    function myFunction() {
+        console.log("hello");
+        var x = document.getElementById("loai_bia").value;
+
+        y = document.getElementById("gia_bien_the").value; // Gán một giá trị cho biến y toàn cục
+        document.getElementById("gia_sau_bien_the").innerHTML = y + x;
+        console.log(y + x);
+
+        var selectedValue = document.querySelector('input[name="loai_bia"]:checked').value;
+        console.log(selectedValue);
+    }
+</script>

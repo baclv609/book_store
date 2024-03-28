@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include ("./model/connect.php");
 include ("./model/danhmuc.php");
@@ -10,7 +11,7 @@ include ("./model/tacGia.php");
 
 $listDm = list_danhmuc("");
 $listTg = list_tac_gia("");
-$listSp_home = list_sach("","","");
+$listSp_home = list_sach("", "", "");
 $list_sach_flashSale_home = list_sach_flashSale_home();
 $list_sach_banchay_home = list_sach_banchay_home();
 // echo '<pre>';
@@ -26,7 +27,7 @@ $errDangKyemail = "";
 
 
 include ("view/header.php");
-if (isset ($_GET["act"])) {
+if (isset($_GET["act"])) {
     $act = $_GET["act"];
     switch ($act) {
 
@@ -36,7 +37,7 @@ if (isset ($_GET["act"])) {
             // } else {
             //     $kyw = "";
             // }
-            if ((isset ($_GET["iddm"])) && ($_GET["iddm"]) > 0) {
+            if ((isset($_GET["iddm"])) && ($_GET["iddm"]) > 0) {
                 $danh_muc_id = $_GET["iddm"];
                 // $searchSP = $_POST["kyw"];
             } else {
@@ -50,7 +51,7 @@ if (isset ($_GET["act"])) {
             break;
         // lọc ở sản phẩm
         case 'sach':
-            if (isset ($_POST['submit'])) {
+            if (isset($_POST['submit'])) {
                 $tacGia_id = $_POST["tacGia_id"];
                 $danh_muc_id = $_POST["danh_muc_id"];
                 $searchSP = $_POST["searchSP"];
@@ -68,7 +69,7 @@ if (isset ($_GET["act"])) {
             include ("view/sanpham.php");
             break;
         case 'searchsp':
-            if ((isset ($_POST["submit"])) && ($_POST["submit"]) != "") {
+            if ((isset($_POST["submit"])) && ($_POST["submit"]) != "") {
                 $kyw = $_POST["kyw"];
             } else {
                 $kyw = "";
@@ -79,19 +80,16 @@ if (isset ($_GET["act"])) {
             break;
 
         case 'sanphamct':
-            if ((isset ($_GET["idsp"])) && ($_GET["idsp"]) > 0) {
+            if ((isset($_GET["idsp"])) && ($_GET["idsp"]) > 0) {
                 $id = $_GET["idsp"];
-                // echo $id;
-                // die();
                 $sanPhamCt = select_spct($id);
+                $list_tacgia_sach_spct = list_tacgia_sach_spct($id);
+
                 //     echo '<pre>';
-                // print_r($sanPhamCt);
+                // var_dump($list_tacgia_sach_spct);
                 // die();
                 $sach_cungLoai = Select_sach_cungLoai($id, $sanPhamCt["danh_muc_id"]);
-                //          echo '<pre>';
-                // print_r($sach_cungLoai);
-                // die();
-
+                $bien_the_bia = select_loai_bia_theo_sach($id);
             } else {
                 include ("view/home.php");
             }
@@ -101,21 +99,21 @@ if (isset ($_GET["act"])) {
         //đăng kí
         case 'dangky':
             // nếu có tồn tại và có nhấp vào nút dangky
-            if (isset ($_POST["submit"])) {
+            if (isset($_POST["submit"])) {
                 $email = $_POST["email"];
                 $name = $_POST["name"];
                 $password = $_POST["password"];
                 $isCheck = true;
 
-                if (empty ($email)) {
+                if (empty($email)) {
                     $isCheck = false;
                     $errDangKyemail = "Cần nhập email";
                 }
-                if (empty ($name)) {
+                if (empty($name)) {
                     $isCheck = false;
                     $errDangKyuser = "Cần nhập tên đăng nhập";
                 }
-                if (empty ($password)) {
+                if (empty($password)) {
                     $isCheck = false;
                     $errDangKypass = "Cần nhập mật khẩu";
                 }
@@ -137,16 +135,16 @@ if (isset ($_GET["act"])) {
             $errDangNhappass = '';
 
             $isCheck = true;
-            if (isset ($_POST["submit"])) {
+            if (isset($_POST["submit"])) {
                 $email = $_POST["email"];
                 $password = $_POST["passsword"];
 
-                if (empty ($email)) {
+                if (empty($email)) {
                     $isCheck = false;
                     $errDangNhapuser = "Cần nhập email";
                 }
 
-                if (empty ($password)) {
+                if (empty($password)) {
                     $isCheck = false;
                     $errDangNhappass = "Cần nhập mật khẩu";
                 }
