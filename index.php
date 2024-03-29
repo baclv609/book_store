@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include ("./model/connect.php");
 include ("./model/danhmuc.php");
@@ -27,7 +28,7 @@ $errDangKyemail = "";
 
 
 include ("view/header.php");
-if (isset ($_GET["act"])) {
+if (isset($_GET["act"])) {
     $act = $_GET["act"];
     switch ($act) {
 
@@ -37,7 +38,7 @@ if (isset ($_GET["act"])) {
             // } else {
             //     $kyw = "";
             // }
-            if ((isset ($_GET["iddm"])) && ($_GET["iddm"]) > 0) {
+            if ((isset($_GET["iddm"])) && ($_GET["iddm"]) > 0) {
                 $danh_muc_id = $_GET["iddm"];
                 // $searchSP = $_POST["kyw"];
             } else {
@@ -51,7 +52,7 @@ if (isset ($_GET["act"])) {
             break;
         // lọc ở sản phẩm
         case 'sach':
-            if (isset ($_POST['submit'])) {
+            if (isset($_POST['submit'])) {
                 $tacGia_id = $_POST["tacGia_id"];
                 $danh_muc_id = $_POST["danh_muc_id"];
                 $searchSP = $_POST["searchSP"];
@@ -69,7 +70,7 @@ if (isset ($_GET["act"])) {
             include ("view/sanpham.php");
             break;
         case 'searchsp':
-            if ((isset ($_POST["submit"])) && ($_POST["submit"]) != "") {
+            if ((isset($_POST["submit"])) && ($_POST["submit"]) != "") {
                 $kyw = $_POST["kyw"];
             } else {
                 $kyw = "";
@@ -80,19 +81,16 @@ if (isset ($_GET["act"])) {
             break;
 
         case 'sanphamct':
-            if ((isset ($_GET["idsp"])) && ($_GET["idsp"]) > 0) {
+            if ((isset($_GET["idsp"])) && ($_GET["idsp"]) > 0) {
                 $id = $_GET["idsp"];
-                // echo $id;
-                // die();
                 $sanPhamCt = select_spct($id);
+                $list_tacgia_sach_spct = list_tacgia_sach_spct($id);
+
                 //     echo '<pre>';
-                // print_r($sanPhamCt);
+                // var_dump($list_tacgia_sach_spct);
                 // die();
                 $sach_cungLoai = Select_sach_cungLoai($id, $sanPhamCt["danh_muc_id"]);
-                //          echo '<pre>';
-                // print_r($sach_cungLoai);
-                // die();
-
+                $bien_the_bia = select_loai_bia_theo_sach($id);
             } else {
                 include ("view/home.php");
             }
@@ -102,21 +100,21 @@ if (isset ($_GET["act"])) {
         //đăng kí
         case 'dangky':
             // nếu có tồn tại và có nhấp vào nút dangky
-            if (isset ($_POST["submit"])) {
+            if (isset($_POST["submit"])) {
                 $email = $_POST["email"];
                 $name = $_POST["name"];
                 $password = $_POST["password"];
                 $isCheck = true;
 
-                if (empty ($email)) {
+                if (empty($email)) {
                     $isCheck = false;
                     $errDangKyemail = "Cần nhập email";
                 }
-                if (empty ($name)) {
+                if (empty($name)) {
                     $isCheck = false;
                     $errDangKyuser = "Cần nhập tên đăng nhập";
                 }
-                if (empty ($password)) {
+                if (empty($password)) {
                     $isCheck = false;
                     $errDangKypass = "Cần nhập mật khẩu";
                 }
@@ -138,16 +136,16 @@ if (isset ($_GET["act"])) {
             $errDangNhappass = '';
 
             $isCheck = true;
-            if (isset ($_POST["submit"])) {
+            if (isset($_POST["submit"])) {
                 $email = $_POST["email"];
                 $password = $_POST["passsword"];
 
-                if (empty ($email)) {
+                if (empty($email)) {
                     $isCheck = false;
                     $errDangNhapuser = "Cần nhập email";
                 }
 
-                if (empty ($password)) {
+                if (empty($password)) {
                     $isCheck = false;
                     $errDangNhappass = "Cần nhập mật khẩu";
                 }
@@ -166,6 +164,38 @@ if (isset ($_GET["act"])) {
             }
             include ("view/taiKhoan/login.php");
             break;
+
+
+            case 'edittk':
+                if (isset($_POST['submit'])) {
+                    // Lấy các giá trị được gửi từ form
+                    $name = $_POST["name"];
+                    $sđt = $_POST['phone'];
+                    $email = $_POST["email"];
+                    $password = $_POST["password"];
+                    $dia_chi = $_POST["dia_chi"];
+                    $id = $_POST['id'];
+            
+                    $hinhAnh = $_FILES["img"];
+                    $filename = $hinhAnh["name"];
+            
+                    $filename = time() . $filename;
+                    $dir = "./uploads/$filename";
+            
+                    // Di chuyển tệp tin hình ảnh tải lên vào thư mục uploads
+                    move_uploaded_file($hinhAnh["tmp_name"], $dir);
+            
+                    // Gọi hàm update_taikhoan để cập nhật thông tin tài khoản
+                    update_taikhoan($id, $name, $filename, $sđt, $email, $password, $dia_chi);
+            
+                    // Cập nhật lại thông tin người dùng trong phiên làm việc
+                    $_SESSION['user'] = checkUser($email, $password);
+            
+                    // Chuyển hướng người dùng về trang edittk (chỉnh sửa tài khoản)
+                    header('Location: index.php?act=edittk');
+                }
+                include "view/taiKhoan/edittk.php";
+                break;
         case 'logout':
             session_unset();
             header("Location: index.php");

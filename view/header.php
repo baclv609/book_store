@@ -27,7 +27,7 @@
 <!-- font-[Poppins] -->
 
 <body class="">
-    <div class="bg-white z-[11] top-0 w-full" style="box-shadow: 0 1px 3px gray">
+    <div class="bg-white sticky z-[11] top-0 w-full " style="box-shadow: 0 1px 3px gray">
         <div class="swiper mySwiper2 bg-[#C92127]">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"><a class=" h-[50px]" href="index.php"><span
@@ -38,167 +38,180 @@
                             tặng hấp dẫn. Mua hàng ngay đừng bỏ lỡ.</span></a></div>
             </div>
         </div>
-        <div >
+        <div>
 
-            <nav class="container-content flex justify-between items-center ">
-                <div>
-                    <a href="index.php"><img class="w-16 cursor-pointer"
-                            src="https://cdn-icons-png.flaticon.com/512/5968/5968204.png" alt="..."></a>
-
-                </div>
-                <div
-                    class="nav-links duration-500 md:static absolute bg-white  md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto flex items-center px-5">
-                    <ul class="flex md:flex-row flex-col md:items-center md:gap-7 gap-4">
-                        <li>
-                            <a class="hover:text-gray-500" href="index.php">Trang chủ</a>
-                        </li>
-                        <li>
-                            <a class="hover:text-gray-500" href="index.php?act=sanpham">Sản phẩm</a>
-                        </li>
-                        <li>
-                            <a class="hover:text-gray-500" href="index.php?act=tacgia">Tác giả</a>
-                        </li>
-                        <li>
-                            <a class="hover:text-gray-500" href="index.php?act=nhaxuatban">Nhà xuất bản</a>
-                        </li>
-                        <li>
-                            <div class="">
-                                <a id="dropdownButton" class="cursor-pointer w-55 m-7 md:m-0 hover:text-cyan-400 
-                            transition duration-400 ease-in">Danh Mục <i class="fa-solid fa-chevron-down"></i></a>
-                                <ul id="dropdownMenu"
-                                    class="absolute hidden mt-2 py-2 w-55  bg-white rounded-md shadow-md z-10">
-                                    <?php foreach ($listDm as $key => $value) {
-                                        echo '<li><a class="hover:text-cyan-400 p-3"  href="index.php?act=sanpham&iddm=' . $value["id"] . '">' . $value["name"] . '</a></li>';
-                                    } ?>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex items-center gap-6">
-                    <form action="index.php?act=searchsp" method="post">
-                        <input type="text" name="kyw" placeholder="Tìm kiếm"
-                            class="border border-gray-400 p-2 rounded-md text-xs">
-                        <input type="submit" name="submit" value="Tìm"
-                            class="bg-red-500 text-white px-2 text-sm py-1 rounded ">
-                    </form>
+            <div>
+                <nav class="container-content flex justify-between items-center ">
                     <div>
+<<<<<<< HEAD
                         <a href="index.php?act=giohang" class="flex flex-col justify-center items-center">
                             <i class="fa-solid fa-cart-shopping"></i>
                             <!-- <div class="text-xs mt-1">Giỏ hàng</div> -->
                         </a>
+=======
+                        <a href="index.php"><img class="w-16 cursor-pointer"
+                                src="https://cdn-icons-png.flaticon.com/512/5968/5968204.png" alt="..."></a>
+
+>>>>>>> 25650fe2c9f64e9aab22d9b71e9718a190ee18f7
                     </div>
-                    <div>
-                        <!-- <a href="#" class="flex flex-col justify-center items-center"><i class="fa-regular fa-user"></i>
+                    <div
+                        class="nav-links duration-500 md:static absolute bg-white  md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto flex items-center px-5">
+                        <ul class="flex md:flex-row flex-col md:items-center md:gap-7 gap-4">
+                            <li>
+                                <a class="hover:text-gray-500" href="index.php">Trang chủ</a>
+                            </li>
+                            <li>
+                                <a class="hover:text-gray-500" href="index.php?act=sanpham">Sản phẩm</a>
+                            </li>
+                            <li>
+                                <a class="hover:text-gray-500" href="index.php?act=tacgia">Tác giả</a>
+                            </li>
+                            <li>
+                                <a class="hover:text-gray-500" href="index.php?act=nhaxuatban">Nhà xuất bản</a>
+                            </li>
+                            <li>
+                                <div class="">
+                                    <a id="dropdownButton" class="cursor-pointer w-55 m-7 md:m-0 hover:text-cyan-400 
+                            transition duration-400 ease-in">Danh Mục <i class="fa-solid fa-chevron-down"></i></a>
+                                    <ul id="dropdownMenu"
+                                        class="absolute hidden mt-2 py-2 w-55  bg-white rounded-md shadow-md z-10">
+                                        <?php foreach ($listDm as $key => $value) {
+                                            echo '<li><a class="hover:text-cyan-400 p-3"  href="index.php?act=sanpham&iddm=' . $value["id"] . '">' . $value["name"] . '</a></li>';
+                                        } ?>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <form action="index.php?act=searchsp" method="post">
+                            <input type="text" name="kyw" placeholder="Tìm kiếm"
+                                class="border border-gray-400 p-2 rounded-md text-xs">
+                            <input type="submit" name="submit" value="Tìm"
+                                class="bg-red-500 text-white px-2 text-sm py-1 rounded ">
+                        </form>
+                        <div>
+                            <a href="#" class="flex flex-col justify-center items-center">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <!-- <div class="text-xs mt-1">Giỏ hàng</div> -->
+                            </a>
+                        </div>
+                        <div>
+                            <!-- <a href="#" class="flex flex-col justify-center items-center"><i class="fa-regular fa-user"></i>
                         <div class="text-xs mt-1">Đăng nhập</div>
                     </a> -->
 
-                        <div class="relative inline-block text-left">
-                            <div>
-                                <button type="button" class="flex flex-col justify-center items-center" id="menu-button"
-                                    aria-expanded="true" aria-haspopup="true">
+                            <div class="relative inline-block text-left">
+                                <div>
+                                    <button type="button" class="flex flex-col justify-center items-center"
+                                        id="menu-button" aria-expanded="true" aria-haspopup="true">
 
-                                    <?php if (!isset ($_SESSION['user'])) { ?>
-                                        <i class="fa-regular fa-user"></i>
-                                    <?php } else { ?>
-                                        <?php if (isset ($_SESSION['user']) && isset ($_SESSION['user']['image'])) { ?>
-                                            <img class="w-[30px] h-[30px] rounded-full"
-                                                src="<?php echo $_SESSION['user']['image']; ?>" alt="Rounded avatar">
+                                        <?php if (!isset($_SESSION['user'])) { ?>
+                                            <i class="fa-regular fa-user"></i>
                                         <?php } else { ?>
-                                            <img class="w-[30px] h-[30px] rounded-full"
-                                                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                                                alt="Rounded avatar">
+                                            <?php if (isset($_SESSION['user']) && isset($_SESSION['user']['avatar'])) { ?>
+                                                <img class="w-[30px] h-[30px] rounded-full"
+                                                    src="./uploads/<?php echo $_SESSION['user']['avatar']; ?>" alt="Rounded avatar">
+                                            <?php } else { ?>
+                                                <img class="w-[30px] h-[30px] rounded-full"
+                                                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                                                    alt="Rounded avatar">
+                                            <?php } ?>
                                         <?php } ?>
-                                    <?php } ?>
-                                    <!-- <div class="text-xs mt-1">Đăng nhập</div> -->
-                                </button>
-                            </div>
+                                        <!-- <div class="text-xs mt-1">Đăng nhập</div> -->
+                                    </button>
+                                </div>
 
-                            <div class="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
-                                id="userDropdown" role="menu" aria-orientation="vertical" aria-labelledby="menu-button"
-                                tabindex="-1">
-                                <?php if (isset ($_SESSION['user'])) {
-                                    // var_dump($_SESSION['user']);
-                                    // die;
-                                    extract($_SESSION['user']);
-                                    ?>
-                                    <div class="px-4 py-3 text-sm text-gray-900 ">
-                                        <div>
-                                            <?php echo $name ?>
+                                <div class="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
+                                    id="userDropdown" role="menu" aria-orientation="vertical"
+                                    aria-labelledby="menu-button" tabindex="-1">
+                                    <?php if (isset($_SESSION['user'])) {
+                                        // var_dump($_SESSION['user']);
+                                        // die;
+                                        extract($_SESSION['user']);
+                                        ?>
+                                        <div class="px-4 py-3 text-sm text-gray-900 ">
+                                            <div>
+                                                <?php echo $name ?>
+                                            </div>
+                                            <div class="font-medium truncate">
+                                                <?php echo $email ?>
+                                            </div>
                                         </div>
-                                        <div class="font-medium truncate">
-                                            <?php echo $email ?>
-                                        </div>
-                                    </div>
-                                    <hr>
-
-                                    <ul class="py-2 text-sm text-gray-700" aria-labelledby="avatarButton">
-
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Đơn hàng của tôi</a>
-                                        </li>
-                                        <li><a href="index.php?act=quenmk" class="block px-4 py-2 hover:bg-gray-100">Quên
-                                                mật
-                                                khẩu</a></li>
-                                        <li>
-                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Cập nhật tài khoản</a>
-                                        </li>
-                                        <?php if ($is_admin == 1) { ?>
-                                            <li>
-                                                <a href="admin/index.php" class="block px-4 py-2 hover:bg-gray-100">Vào trang
-                                                    quản
-                                                    trị</a>
-                                            </li>
-                                        <?php } ?>
-                                    </ul>
-
-                                    <div class="py-1">
                                         <hr>
-                                        <a href="index.php?act=logout"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                            Đăng xuất
-                                        </a>
-                                    </div>
 
-                                <?php } else { ?>
+                                        <ul class="py-2 text-sm text-gray-700" aria-labelledby="avatarButton">
 
-                                    <ul class="py-2 text-sm text-gray-700" aria-labelledby="avatarButton">
-                                        <li>
-                                            <a href="index.php?act=dangnhap" class="block px-4 py-2 hover:bg-gray-100">Đăng
-                                                nhập</a>
-                                        </li>
-                                        <li>
-                                            <a href="index.php?act=dangky"
+                                            <li>
+                                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Đơn hàng của tôi</a>
+                                            </li>
+                                            <li><a href="index.php?act=quenmk"
+                                                    class="block px-4 py-2 hover:bg-gray-100">Quên
+                                                    mật
+                                                    khẩu</a></li>
+                                            <li>
+                                                <a href="index.php?act=edittk" class="block px-4 py-2 hover:bg-gray-100">Cập
+                                                    nhật tài khoản</a>
+                                            </li>
+                                            <?php if ($is_admin == 1) { ?>
+                                                <li>
+                                                    <a href="admin/index.php" class="block px-4 py-2 hover:bg-gray-100">Vào
+                                                        trang
+                                                        quản
+                                                        trị</a>
+                                                </li>
+                                            <?php } ?>
+                                        </ul>
+
+                                        <div class="py-1">
+                                            <hr>
+                                            <a href="index.php?act=logout"
                                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                                Đăng ký
+                                                Đăng xuất
                                             </a>
-                                        </li>
-                                    </ul>
+                                        </div>
 
-                                <?php } ?>
+                                    <?php } else { ?>
+
+                                        <ul class="py-2 text-sm text-gray-700" aria-labelledby="avatarButton">
+                                            <li>
+                                                <a href="index.php?act=dangnhap"
+                                                    class="block px-4 py-2 hover:bg-gray-100">Đăng
+                                                    nhập</a>
+                                            </li>
+                                            <li>
+                                                <a href="index.php?act=dangky"
+                                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                                    Đăng ký
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    <?php } ?>
+                                </div>
                             </div>
+
+                            <script>
+                                // Lấy tham chiếu đến các phần tử trong DOM
+                                const menuButton = document.getElementById('menu-button');
+                                const dropdown = document.getElementById('userDropdown');
+
+                                // Bắt sự kiện click vào nút "menuButton"
+                                menuButton.addEventListener('click', () => {
+                                    // Kiểm tra trạng thái hiện tại của dropdown
+                                    const isDropdownVisible = dropdown.style.display === 'block';
+
+                                    // Ẩn/hiện dropdown dựa trên trạng thái hiện tại
+                                    if (isDropdownVisible) {
+                                        dropdown.style.display = 'none';
+                                    } else {
+                                        dropdown.style.display = 'block';
+                                    }
+                                });
+                            </script>
+
+
                         </div>
-
-                        <script>
-                            // Lấy tham chiếu đến các phần tử trong DOM
-                            const menuButton = document.getElementById('menu-button');
-                            const dropdown = document.getElementById('userDropdown');
-
-                            // Bắt sự kiện click vào nút "menuButton"
-                            menuButton.addEventListener('click', () => {
-                                // Kiểm tra trạng thái hiện tại của dropdown
-                                const isDropdownVisible = dropdown.style.display === 'block';
-
-                                // Ẩn/hiện dropdown dựa trên trạng thái hiện tại
-                                if (isDropdownVisible) {
-                                    dropdown.style.display = 'none';
-                                } else {
-                                    dropdown.style.display = 'block';
-                                }
-                            });
-                        </script>
-
-
                     </div>
-                </div>
+            </div>
         </div>
