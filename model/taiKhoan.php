@@ -26,6 +26,7 @@ function list_Alltaikhoan()
     return $listTk;
 }
 
+<<<<<<< HEAD
 function update_taikhoan($id, $name, $img, $sđt, $email, $password, $dia_chi)
 {
     $sql = "UPDATE users 
@@ -49,6 +50,30 @@ function select_taiKhoan_id($id)
     $sql = "SELECT * FROM `users` WHERE id= $id";
     pdo_execute($sql);
 }
+=======
+function update_taikhoan($id, $name, $sđt, $email, $password)
+{
+    $sql = "UPDATE users SET name= '" . $name . "', phone= '" . $sđt . "', email= '" . $email . "', password= '" . $password . "' WHERE id = " . $id;
+    // echo $sql;
+    // die();
+    pdo_execute($sql);
+
+}
+
+function checkemail($email)
+{
+    $sql = "SELECT * FROM users WHERE email = '" . $email . "'";
+    $sp = pdo_query_one($sql);
+    return $sp;
+}
+
+// function insert_taiKhoan($user, $pass, $email)
+// {
+//     $sql = "INSERT INTO taikhoan(user, pass, email) 
+//     VALUES ('$user','$pass','$email')";
+//     pdo_execute($sql);
+// }
+>>>>>>> 36629a91fe44c91395b5a605296a094c3b8dbf44
 // function checkUser($user, $pass)
 // {
 //     $sql = "SELECT * FROM taikhoan WHERE user = '$user' and pass = '$pass'";
