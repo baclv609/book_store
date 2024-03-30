@@ -14,19 +14,11 @@
     <div class="grid gap-6 md:grid-cols-2">
         <div>
             <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">Tác giả</label>
-            <select id="countries" name="tacGia_id"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                <!-- <option selected>Chọn Tác Giả</option> -->
-
-                <!-- foreach ($listTg as $key => $value) {
-                    echo '<input type="checkbox" name="checkbox[]" value="' . $value["id"] . '">' . $value["name"] . '<br>';
-                 } -->
-
-                <?php
-                foreach ($listTg as $key => $value) {
-                    echo '<option value="' . $value["id"] . '">' . $value["name"] . '</option>';
-                } ?>
-            </select>
+            <?php
+            foreach ($listTg as $key => $value) {
+                echo '<input type="checkbox" name="tacGia_id[]" value="' . $value["id"] . '"> ' . $value["name"] . '<br>';
+            }
+            ?>
         </div>
         <div>
             <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 ">Nhà Xuất Bản</label>

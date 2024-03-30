@@ -40,21 +40,24 @@
             </thead>
             <tbody class="hover:bg-gray-100">
                 <?php
-                // foreach ($gioHang as $key=> $value) {
+                foreach ($gioHang as $key=> $value) {
                     // echo '<pre>';
                     // print_r($gioHang);
                     // echo '</pre>';
+                    $hinh = "../uploads/".$value['hinhAnh'];
 
                     echo '
                         <tr class="bg-white border-b px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <td scope="row" class="px-6 py-4">' . $gioHang['ten'] . '</td>
-                            <td class="px-6 py-4"><img src="' . $gioHang['hinhAnh'] . '" alt=""></td>
-                            <td class="px-6 py-4">' . $gioHang['gia'] . '</td>
-                            <td class="px-6 py-4">' . $gioHang['so_luong'] . '</td>
-                            <td class="px-6 py-4">' . $gioHang['thanhtien'] . '</td>                   
+                            <td scope="row" class="px-6 py-4" >' . $value['ten'] . '</td>
+                            <td class="px-3 py-3"><img src="'.$hinh.'" style="width: 110px;" alt="loading...">'.$value['hinhAnh'].'</td>
+                            <td class="px-6 py-4">' . $value['gia'] . '</td>
+                            
+                            <td class="px-6 py-4"><form action="" method="post"><input type="number" name="so_luong" value="' . $value['so_luong'] . '"></form></td>                   
+                      
+                            <td class="px-6 py-4">' . $value['thanhtien'] . '</td>                   
                         </tr>
                         ';
-                // }
+                }
 
                 ?>
 
@@ -65,8 +68,8 @@
     <div class="cart-summary">
         <?php
         //   foreach ($gioHang as  $value) {
-            echo '<h3>Tổng số tiền :'.$gioHang['tongsotien'].' </h3>';
-        //   }
+            echo '<h3>Tổng số tiền :'.$value['tongsotien'].' </h3>';
+        //   }      <td class="px-6 py-4">' . $value['so_luong'] . '</td>
         ?>
         
         <button>thanh toán</button>
