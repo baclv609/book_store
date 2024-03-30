@@ -96,19 +96,20 @@
                                 <option value="Volvo">Volvo</option>
                             </select> -->
                             <?php
-                            foreach ($bien_the_bia as $Check) {
-                                extract($Check);
-                                // echo $Check['muc_tang'];
-                                echo '
-                                <label>
-                                    <input type="radio" name="loai_bia" value="' . $Check['muc_tang'] . '" onchange="myFunction()"';
-                                if ($loai_bia === 'Bìa Mềm') {
-                                    echo ' checked="checked"';
-                                }
-                                echo ' class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">' . $loai_bia . '
-                                </label>
-                            ';
+                           foreach ($bien_the_bia as $Check) {
+                            extract($Check);
+                        
+                            echo '<label>';
+                            echo '<input type="radio" name="loai_bia" value="' . $Check['muc_tang'] . '" onchange="myFunction()"';
+                        
+                            if ($Check['muc_tang'] == 0) {
+                                echo ' checked="checked"';
                             }
+                        
+                            echo ' class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">';
+                            echo $loai_bia;
+                            echo '</label>';
+                        }
                             ?>
                         </div>
                     </div>

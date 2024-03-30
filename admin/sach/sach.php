@@ -109,46 +109,11 @@
             <td class="flex flex-col px-3 py-3">
             <a href="index.php?act=editSp&id=' . $value["id"] . '" class="font-medium text-blue-600 hover:underline">Edit</a> <br>
             <a href="index.php?act=deleteSp&id=' . $value["id"] . '" onclick="return confirm(\'Bạn muốn xóa ?\')" class="font-medium text-red-600  hover:underline">Remove</a><br>
-            <a href="index.php?act=addBia&id=' . $value["id"] . '" class="font-medium text-blue-600 hover:underline">Thêm bìa</a>
+            <a href="index.php?act=BiaSach&id=' . $value["id"] . '" class="font-medium text-blue-600 hover:underline">Thêm bìa</a>
         </td>
         </tr>';
                 }
                 ?>
-                <!--                 
-                <tr class="bg-white border-b text-black hover:bg-gray-100">
-                    <td class="w-4 p-4">
-                        <div class="flex items-center">
-                            <input id="checkbox-table-search-1" type="checkbox"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2-only">checkbox</label>
-                        </div>
-                    </td>
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                        Apple MacBook Pro 17"
-                    </th>
-                    <td class="px-6 py-4">
-                        Silver
-                    </td>
-                    <td class="px-6 py-4">
-                        Laptop
-                    </td>
-                    <td class="px-6 py-4">
-                        Yes
-                    </td>
-                    <td class="px-6 py-4">
-                        Yes
-                    </td>
-                    <td class="px-6 py-4">
-                        $2999
-                    </td>
-                    <td class="px-6 py-4">
-                        3.0 lb.
-                    </td>
-                    <td class="flex items-center px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
-                    </td>
-                </tr> -->
-
             </tbody>
         </table>
     </div>

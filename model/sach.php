@@ -148,7 +148,8 @@ function update_sanpham_KhongHinhAnh($id, $tenSanPham, $nhaSanXuatId, $danhMucId
     pdo_execute($sql);
 
 }
-function delete_tacgia_by_sanpham($id){
+function delete_tacgia_by_sanpham($id)
+{
     $sql = "DELETE FROM `produt_tac_gia` WHERE produt_tac_gia.product_id = $id";
     pdo_query($sql);
 }
@@ -159,10 +160,12 @@ function update_sach_tac_gia($sachId, $tacGiaId, $id)
 }
 function select_loai_bia_theo_sach($id)
 {
-    $sql = "SELECT bien_the.loai_bia, bien_the.muc_tang, products.id, bien_the.id FROM products 
-    JOIN trung_gian_bia_product ON trung_gian_bia_product.product_id = products.id 
-    JOIN bien_the ON trung_gian_bia_product.bia_id = bien_the.id 
-    WHERE products.id = " . $id;
+    $sql = "SELECT bien_the.loai_bia, bien_the.muc_tang, products.id, bien_the.id
+            FROM products 
+            JOIN trung_gian_bia_product ON trung_gian_bia_product.product_id = products.id 
+            JOIN bien_the ON trung_gian_bia_product.bia_id = bien_the.id 
+            WHERE products.id = $id 
+            ORDER BY bien_the.muc_tang ASC";
     $select_loai_bia_theo_sach = pdo_query($sql);
     return $select_loai_bia_theo_sach;
 }

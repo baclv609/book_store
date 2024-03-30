@@ -7,6 +7,7 @@ include ("../model/tacGia.php");
 include ("../model/acc.php");
 include ("../model/binhLuan.php");
 include ("../model/sach.php");
+include ("../model/bia.php");
 
 include ("header.php");
 if (isset($_GET["act"])) {
@@ -202,36 +203,6 @@ if (isset($_GET["act"])) {
             //             die;
             include ("sach/sach.php");
             break;
-        // case 'addSach':
-        //     if (isset($_POST['submit'])) {
-        //         // Lấy các giá trị từ form
-        //         $tenSanPham = $_POST['name'];
-        //         $tacGiaId = isset($_POST['tacGia_id']) ? $_POST['tacGia_id'] : array();
-        //         echo '<pre>';
-        //         print_r($tacGiaId);
-        //         die;
-        //         $nhaSanXuatId = $_POST['nha_san_xuat_id'];
-        //         $danhMucId = $_POST['danh_muc_id'];
-        //         $gia = $_POST['gia'];
-        //         $giaSale = $_POST['gia_sale'];
-        //         $moTa = $_POST['mo_ta'];
-        //         $created_at = date('Y-m-d H:i:s');
-        //         $filename = $_FILES["img"]["name"];
-        //         $target_dir = "../uploads/";
-        //         $target_file = $target_dir . basename($_FILES["img"]["name"]);
-
-        //         move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
-
-        //         insert_sach($tenSanPham, $tacGiaId, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa, $created_at);
-        //     }
-
-        //     $listTg = list_tac_gia("");
-        //     $listNxb = list_NhaXuatBan("");
-        //     $listDm = list_danhmuc("");
-
-        //     include ("sach/add.php");
-        //     break;
-
         case 'addSach':
             if (isset($_POST['submit'])) {
                 // Lấy các giá trị từ form
@@ -372,12 +343,26 @@ if (isset($_GET["act"])) {
             include ("sach/sach.php");
             break;
         // thêm bìa sách
-        case 'addBiah':
-            if (isset($_POST['submit'])) {
-
+        case 'BiaSach': // bỏ 
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
             }
+            include ("Bia_sach/add.php");
+            break;
 
-            include ("sach/add.php");
+        case 'insertBia':
+            if (isset($_POST['submit'])) {
+                $id_sach = $_POST['id'];
+                $loai_bia = $_POST['loai_bia'];
+                $muc_tang = $_POST['muc_tang'];
+                // Ví dụ:
+                $bia_id = insert_bia_bienthe($loai_bia, $muc_tang);
+                // thêm vào bảng trung gian
+                insert_trung_gian_bia_product($id_sach, $bia_id);
+            }
+            $list_Sach = list_sach("", "", "");
+
+            include ("sach/sach.php");
             break;
         case 'account':
             if (isset($_POST['submit'])) {
@@ -401,8 +386,6 @@ if (isset($_GET["act"])) {
             if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
                 $id = $_GET["id"];
                 $acc = edit_acc($id);
-                //  print_r($acc);
-                // die;
             }
             include ("acc/updateAcc.php");
             break;
