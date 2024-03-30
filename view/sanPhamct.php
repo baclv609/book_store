@@ -2,69 +2,70 @@
 <div class="bg-gray-100 py-8">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row -mx-4">
-            <div class="md:flex-1 px-4">
-                <div class="h-[460px] w-[428px] rounded-lg hover:shadow-md mb-4 flex justify-center items-center">
-                    <img class="max-h-[460px] max-w-[428px]  object-cover"
-                        src="./uploads/<?php echo $sanPhamCt["img"]; ?>" alt="Product Image">
-                </div>
-                <div class="flex -mx-2 mb-4">
-                    <div class="w-1/2 px-2">
-                        <button
-                            class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 ">Mua
-                            ngay</button>
+            <form action="index.php?act=add_to_card" method="post" class="flex flex-col md:flex-row -mx-4">
+                <div class="md:flex-1 px-4">
+                    <div class="h-[460px] w-[428px] rounded-lg hover:shadow-md mb-4 flex justify-center items-center">
+                        <img class="max-h-[460px] max-w-[428px]  object-cover"
+                            src="./uploads/<?php echo $sanPhamCt["img"]; ?>" alt="Product Image">
+                            <input type="hidden" name="hinhAnh" value="./uploads/<?php echo $sanPhamCt["img"]; ?>" >
                     </div>
+                    <div class="flex -mx-2 mb-4">
+                        <div class="w-1/2 px-2">
+                            <button
+                                class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 ">Mua
+                                ngay</button>
+                        </div>
+                        <div class="w-1/2 px-2">
+                            <input type="submit" name="submit" value="Thêm vào giỏ Hàng"  class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300">
+                            <?php
+                            // print_r($sanPhamCt) ;
+                            // extract($sanPhamCt);
+                            // echo '<a href="index.php?act=add_to_card&idsp=' . $sanPhamCt['id'] . '" class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300"> Thêm vào giỏ hàng</a>';
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:flex-1 px-4">
 
-                    <div class="w-1/2 px-2">
+                    <!-- <h2 class="text-2xl font-bold text-gray-800  mb-2">Tên sách</h2> -->
+                    <h2 class=" font-bold mb-4 text-red-600">
+
+                        <?php echo '<input type="hidden" name="id" value="' . $sanPhamCt["id"] . '" readonly >';
+                        echo $sanPhamCt["ten"]; ?>
+                    </h2>
+                    <div class="flex mb-4">
                         <?php
-                        // print_r($sanPhamCt) ;
-                        extract($sanPhamCt);
-                        echo '<a href="index.php?act=add_to_card&idsp=' . $sanPhamCt['id'] . '" class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300"> Thêm vào giỏ hàng</a>';
-                        ?>
-                    </div>
-                </div>
-            </div>
-            <div class="md:flex-1 px-4">
-                <?php
-                echo '<form action="index.php?act=add_to_card&idsp=' . $sanPhamCt['id'] . '" method="get"></form>'; ?>
-                <!-- <h2 class="text-2xl font-bold text-gray-800  mb-2">Tên sách</h2> -->
-                <h2 class=" font-bold mb-4 text-red-600">
+                        if (!empty($list_tacgia_sach_spct)) {
 
-                    <?php echo '<input type="hidden" value="' . $sanPhamCt["ten"] . '" readonly >'; 
-                    echo $sanPhamCt["ten"] ;?>
-                </h2>
-                <div class="flex mb-4">
-                    <?php
-                    if (!empty($list_tacgia_sach_spct)) {
-
-                        echo ' <div class="mr-4">';
-                        echo '<span class="text-gray-700">Tác giả:</span>';
-                        echo '<span class="text-gray-600 font-bold">';
-                        foreach ($list_tacgia_sach_spct as $key => $value) {
-                            echo $value["tac_gia_name"], " ,";
-                        }
-                        echo '</div>';
-                        echo '</span>';
-                    } else {
-                        // Ẩn div tác giả
-                    } ?>
-                    <div>
-                        <span class=" text-gray-700 ">Nhà xuất bản:</span>
-                        <span class="text-gray-600 font-bold">
-                            <?php echo $sanPhamCt["nha_san_xua_name"]; ?>
-                        </span>
+                            echo ' <div class="mr-4">';
+                            echo '<span class="text-gray-700">Tác giả:</span>';
+                            echo '<span class="text-gray-600 font-bold">';
+                            foreach ($list_tacgia_sach_spct as $key => $value) {
+                                echo $value["tac_gia_name"], " ,";
+                            }
+                            echo '</div>';
+                            echo '</span>';
+                        } else {
+                            // Ẩn div tác giả
+                        } ?>
+                        <div>
+                            <span class=" text-gray-700 ">Nhà xuất bản:</span>
+                            <span class="text-gray-600 font-bold">
+                                <?php echo $sanPhamCt["nha_san_xua_name"]; ?>
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div class="flex mb-4">
-                    <div class="mr-4">
-                        <span class=" text-gray-700 ">Danh mục:</span>
-                        <span class="text-gray-600 font-bold">
-                            <?php echo $sanPhamCt["danh_muc_name"]; ?>
-                        </span>
+                    <div class="flex mb-4">
+                        <div class="mr-4">
+                            <span class=" text-gray-700 ">Danh mục:</span>
+                            <span class="text-gray-600 font-bold">
+                                <?php echo $sanPhamCt["danh_muc_name"]; ?>
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div class="flex mb-4 items-center">
-                    <div class="mr-4">
-                        <?php echo '<input type="hidden" name="gia" value="" readonly > 
+                    <div class="flex mb-4 items-center">
+                        <div class="mr-4">
+                            <?php echo '<input type="hidden" name="gia" value="' . $sanPhamCt["gia"] . '" readonly > 
                          <span class="hidden" value="' . $sanPhamCt["gia"] . '" id="gia_bien_the"
                             onchange="myFunction()"></span>
                         <!-- <span class=" text-gray-700 ">Giá:</span> -->
@@ -72,66 +73,69 @@
                             ' . $sanPhamCt["gia"] . '.000 đ
                         </span> '; ?>
 
-                    </div>
-                    <?php
-                    if ($sanPhamCt["gia_sale"] && trim($sanPhamCt["gia_sale"]) !== '') {
-                        echo '<div>
+                        </div>
+                        <?php
+                        if ($sanPhamCt["gia_sale"] && trim($sanPhamCt["gia_sale"]) !== '') {
+                            echo '<div>
                         <del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $sanPhamCt["gia_sale"] . '.000 đ</del>
                     </div>';
-                    }
-                    ?>
+                        }
+                        ?>
 
-                </div>
-
-                <div class="mb-4">
-                    <span class="font-bold text-gray-700 ">Select Color:</span>
-                    <div class="flex items-center mt-2">
-                        <button class="w-6 h-6 rounded-full bg-gray-800 mr-2"></button>
-                        <button class="w-6 h-6 rounded-full bg-red-500 dark:bg-red-700 mr-2"></button>
-                        <button class="w-6 h-6 rounded-full bg-blue-500 dark:bg-blue-700 mr-2"></button>
-                        <button class="w-6 h-6 rounded-full bg-yellow-500 dark:bg-yellow-700 mr-2"></button>
                     </div>
-                </div>
-                <div class="mb-4">
-                    <span class="font-bold text-gray-700 ">Loại Hàng:</span>
-                    <div class="flex items-center mt-2">
-                        <!-- <button
-                            class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">S</button> -->
-                        <div><select id="mySelect" onchange="myFunction2()">
-                                <option value="Audi">Audi</option>
-                                <option value="BMW">BMW</option>
-                                <option value="Mercedes">Mercedes</option>
-                                <option value="Volvo">Volvo</option>
-                            </select>
-                            <?php
-                            foreach ($bien_the_bia as $Check) {
-                                extract($Check);
 
-                                echo '<label>';
-                                echo '<input type="radio" name="loai_bia" value="' . $Check['muc_tang'] . '" onchange="myFunction()"';
-
-                                if ($Check['muc_tang'] == 0) {
-                                    echo ' checked="checked"';
-                                }
-
-                                echo ' class="bg-gray-300 text-gray-700 dark:text-white py-2 ml-3 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">';
-                                echo $loai_bia;
-                                echo '</label>';
-                            }
-                            ?>
+                    <div class="mb-4">
+                        <span class="font-bold text-gray-700 ">Select Color:</span>
+                        <div class="flex items-center mt-2">
+                            <button class="w-6 h-6 rounded-full bg-gray-800 mr-2"></button>
+                            <button class="w-6 h-6 rounded-full bg-red-500 dark:bg-red-700 mr-2"></button>
+                            <button class="w-6 h-6 rounded-full bg-blue-500 dark:bg-blue-700 mr-2"></button>
+                            <button class="w-6 h-6 rounded-full bg-yellow-500 dark:bg-yellow-700 mr-2"></button>
                         </div>
                     </div>
+                    <div class="mb-4">
+                        <span class="font-bold text-gray-700 ">Loại Hàng:</span>
+                        <div class="flex items-center mt-2">
+                            <!-- <button
+                            class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">S</button> -->
+                            <div><select id="mySelect" onchange="myFunction2()">
+                                    <option value="Audi">Audi</option>
+                                    <option value="BMW">BMW</option>
+                                    <option value="Mercedes">Mercedes</option>
+                                    <option value="Volvo">Volvo</option>
+                                </select>
+                                <?php
+                                foreach ($bien_the_bia as $Check) {
+                                    extract($Check);
+
+                                    echo '<label>';
+                                    echo '<input type="radio" name="loai_bia" value="' . $Check['muc_tang'] . '" onchange="myFunction()"';
+
+                                    if ($Check['muc_tang'] == 0) {
+                                        echo ' checked="checked"';
+                                    }
+
+                                    echo ' class="bg-gray-300 text-gray-700 dark:text-white py-2 ml-3 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">';
+                                    echo $loai_bia;
+                                    echo '</label>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4"><span class="font-bold text-gray-700 ">Số Lượng:</span>
+                        <input type="number" name="so_luong" value="so_luong">
+                        <?php
+                        print_r($sanPhamCt);
+                        ?>
+                    </div>
+                    <div>
+                        <span class="font-bold text-gray-700 ">Mô tả:</span>
+                        <p class="text-gray-600  text-sm mt-2">
+                            <?php echo $sanPhamCt["mo_ta"]; ?>
+                        </p>
+                    </div>
                 </div>
-                <div class="mb-4"><span class="font-bold text-gray-700 ">Số Lượng:</span>
-                <input type="number"  name="so_luong">or
-                </div>
-                <div>
-                    <span class="font-bold text-gray-700 ">Mô tả:</span>
-                    <p class="text-gray-600  text-sm mt-2">
-                        <?php echo $sanPhamCt["mo_ta"]; ?>
-                    </p>
-                </div>
-            </div>
             </form>
         </div>
     </div>

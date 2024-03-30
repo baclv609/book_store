@@ -217,7 +217,35 @@ if (isset($_GET["act"])) {
             $gioHang = select_1_sach();
             include ('./view/giohang.php');
             break;
+        case 'deleteGioHang':
+            delete_gio_hang($id);
+            $gioHang = select_1_sach();
+
+            include ('./view/giohang.php');
+            break;
         case 'add_to_card':
+            // session_start();
+            // ob_start();
+            // if (!isset($_SESSION['myCart'])) {
+            //     $_SESSION['myCart'] = array();
+            // }
+            if (isset($_POST['submit']) && ($_POST['submit'])) {
+                print_r($_POST['submit']);
+                //lấy giá trị
+                // $hinhAnh = $_FILES['hinhAnh'];
+                $product_id = $_POST['id'];
+                $gia = $_POST['gia'];
+                $so_luong = $_POST['so_luong'];
+                print_r([$product_id, $gia, $so_luong]);
+                add_gio_hang($product_id, $so_luong, $gia);
+                //tạo mảng con
+                // $sp = array($ten, $gia, $so_luong);
+                // add vàogior hàng
+                // $_SESSION['myCart'][] = $sp;
+                // array_push($_SESSION['myCart'],$sp);
+
+                // header('location: index.php?act=giohang');
+            }
             $gioHang = select_1_sach();
             include ('./view/giohang.php');
             break;
