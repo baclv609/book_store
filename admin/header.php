@@ -92,7 +92,7 @@
             </li>
 
             <li class="mb-1 group">
-                <a href="../index.php"
+                <a href="index.php?act=logout"
                     class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class="fa-solid fa-gear mr-3 text-lg"></i>
                     <span class="text-sm">Đăng xuất</span>
@@ -309,12 +309,13 @@
                             <a href="#"
                                 class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Profile</a>
                         </li>
-                        <!-- <li>
-                            <a href="#"
-                                class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Settings</a>
-                        </li> -->
                         <li>
-                            <a href="#"
+                            <a href="../"
+                                class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Vào
+                                Website</a>
+                        </li>
+                        <li>
+                            <a href="index.php?act=logout"
                                 class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-blue-500 hover:bg-gray-50">Đăng
                                 xuất</a>
                         </li>

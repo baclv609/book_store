@@ -10,7 +10,7 @@
                 <div class="flex flex-col">
                     <input class="p-2 mt-8 rounded-xl border" type="email" name="email" placeholder="Email"
                         value="<?= !empty($email) ? $email : null ?>">
-                    <p class="text-red-500 text-[13px] pl-2">
+                    <p class="text-red-500 text-[13px] pl-2 py-2">
                         <?= $errEmail ?><br>
                 </div>
 
@@ -19,16 +19,16 @@
             </form>
             <p class="text-red-500 text-[13px] pl-2">
                 <?php
-                if (isset($thongBao) && $thongBao != "") {
-                    echo $thongBao;
+                if (isset($thongbao) && $thongbao != "") {
+                    echo $thongbao;
                 }
                 ?>
             </p>
 
             <div class="mt-5 text-xs flex justify-between items-center text-[#002D74]">
-                <p>Bạn chưa có tài khoản?</p>
-                <a href="index.php?act=dangky"
-                    class="py-2 px-4 bg-white border rounded-xl hover:scale-110 duration-300">Đăng ký ngay</a>
+                <p>Bạn đã có tài khoản?</p>
+                <a href="index.php?act=dangnhap"
+                    class="py-2 px-4 bg-white border rounded-xl hover:scale-110 duration-300">Đăng nhập ngay</a>
             </div>
         </div>
 

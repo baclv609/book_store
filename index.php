@@ -43,7 +43,6 @@ if (isset($_GET["act"])) {
                 // $searchSP = $_POST["kyw"];
             } else {
                 $danh_muc_id = "";
-                // $searchSP = "";
             }
             // $listSp = list_sach($danh_muc_id);   
             $listSp = list_sach($danh_muc_id, "", "");
@@ -64,9 +63,6 @@ if (isset($_GET["act"])) {
             // $listDm = list_danhmuc("");
             // $listTg = list_tac_gia("");
             $listSp = list_sach($danh_muc_id, $searchSP, $tacGia_id);
-            // echo '<pre>';
-            //  var_dump($list_Sach);
-            //             die;
             include ("view/sanpham.php");
             break;
         case 'searchsp':
@@ -193,6 +189,25 @@ if (isset($_GET["act"])) {
                 header('Location: index.php?act=edittk');
             }
             include "view/taiKhoan/edittk.php";
+            break;
+        case 'quenmk':
+            $errEmail = '';
+            if (isset($_POST['guiemail'])) {
+                $email = $_POST['email'];
+                if (empty($email)) {
+                    $isCheck = false;
+                    $errEmail = "Cần nhập email";
+                }
+
+                $thongbao = "";
+                $checkemail = checkemail($email);
+                if (is_array($checkemail)) {
+                    $thongbao = "Mật khẩu của bạn là: " . $checkemail['password'];
+                } else {
+                    $thongbao = "Email này không tồn tại";
+                }
+            }
+            include "view/taikhoan/quenmk.php";
             break;
         case 'logout':
             session_unset();
