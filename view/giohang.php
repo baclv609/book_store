@@ -75,6 +75,14 @@
                        </form>
                         ';
                 }
+                // session_start();
+                // if(isset($_SESSION['myCart'])){
+                //     echo '<pre>';
+                //      print_r($_SESSION['myCart']);
+                //     echo '</pre>';
+                //     var_dump($_SESSION['myCart']);
+
+                // }
                 ?>
 
 
@@ -85,8 +93,8 @@
     <div class="cart-summary">
         <?php
         //   foreach ($gioHang as  $value) {
-        echo '<h3>Tổng số tiền :' . $value['tongsotien'] . ' </h3>';
-        //   }      <td class="px-6 py-4">' . $value['so_luong'] . '</td>
+        echo '<h3>Tổng số tiền :' . $value['thanhtien'] . '+ </h3>';
+        //   }   
         ?>
 
         <button>thanh toán</button>
