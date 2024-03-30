@@ -43,9 +43,16 @@
             <div>
                 <nav class="container-content flex justify-between items-center ">
                     <div>
+<<<<<<< HEAD
+                        <a href="index.php?act=giohang" class="flex flex-col justify-center items-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <!-- <div class="text-xs mt-1">Giỏ hàng</div> -->
+                        </a>
+=======
                         <a href="index.php"><img class="w-16 cursor-pointer"
                                 src="https://cdn-icons-png.flaticon.com/512/5968/5968204.png" alt="..."></a>
 
+>>>>>>> 25650fe2c9f64e9aab22d9b71e9718a190ee18f7
                     </div>
                     <div
                         class="nav-links duration-500 md:static absolute bg-white  md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto flex items-center px-5">
