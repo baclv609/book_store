@@ -43,9 +43,16 @@
             <div>
                 <nav class="container-content flex justify-between items-center ">
                     <div>
+<<<<<<< HEAD
+                        <a href="index.php?act=giohang" class="flex flex-col justify-center items-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <!-- <div class="text-xs mt-1">Giỏ hàng</div> -->
+                        </a>
+=======
                         <a href="index.php"><img class="w-16 cursor-pointer"
                                 src="https://cdn-icons-png.flaticon.com/512/5968/5968204.png" alt="..."></a>
 
+>>>>>>> 25650fe2c9f64e9aab22d9b71e9718a190ee18f7
                     </div>
                     <div
                         class="nav-links duration-500 md:static absolute bg-white  md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto flex items-center px-5">
@@ -66,31 +73,31 @@
                                 <div class="">
                                     <a id="dropdownButton" class="cursor-pointer w-55 m-7 md:m-0 hover:text-cyan-400 
                             transition duration-400 ease-in">Danh Mục <i class="fa-solid fa-chevron-down"></i></a>
-                                    <ul id="dropdownMenu"
-                                        class="absolute hidden mt-2 py-2 w-55  bg-white rounded-md shadow-md z-10">
-                                        <?php foreach ($listDm as $key => $value) {
-                                            echo '<li><a class="hover:text-cyan-400 p-3"  href="index.php?act=sanpham&iddm=' . $value["id"] . '">' . $value["name"] . '</a></li>';
-                                        } ?>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
+                                <ul id="dropdownMenu"
+                                    class="absolute hidden mt-2 py-2 w-55  bg-white rounded-md shadow-md z-10">
+                                    <?php foreach ($listDm as $key => $value) {
+                                        echo '<li><a class="hover:text-cyan-400 p-3"  href="index.php?act=sanpham&iddm=' . $value["id"] . '">' . $value["name"] . '</a></li>';
+                                    } ?>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex items-center gap-6">
+                    <form action="index.php?act=searchsp" method="post">
+                        <input type="text" name="kyw" placeholder="Tìm kiếm"
+                            class="border border-gray-400 p-2 rounded-md text-xs">
+                        <input type="submit" name="submit" value="Tìm"
+                            class="bg-red-500 text-white px-2 text-sm py-1 rounded ">
+                    </form>
+                    <div>
+                        <a href="index.php?act=giohang" class="flex flex-col justify-center items-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <!-- <div class="text-xs mt-1">Giỏ hàng</div> -->
+                        </a>
                     </div>
-                    <div class="flex items-center gap-6">
-                        <form action="index.php?act=searchsp" method="post">
-                            <input type="text" name="kyw" placeholder="Tìm kiếm"
-                                class="border border-gray-400 p-2 rounded-md text-xs">
-                            <input type="submit" name="submit" value="Tìm"
-                                class="bg-red-500 text-white px-2 text-sm py-1 rounded ">
-                        </form>
-                        <div>
-                            <a href="#" class="flex flex-col justify-center items-center">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                <!-- <div class="text-xs mt-1">Giỏ hàng</div> -->
-                            </a>
-                        </div>
-                        <div>
-                            <!-- <a href="#" class="flex flex-col justify-center items-center"><i class="fa-regular fa-user"></i>
+                    <div>
+                        <!-- <a href="#" class="flex flex-col justify-center items-center"><i class="fa-regular fa-user"></i>
                         <div class="text-xs mt-1">Đăng nhập</div>
                     </a> -->
 

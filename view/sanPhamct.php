@@ -13,17 +13,24 @@
                             class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 ">Mua
                             ngay</button>
                     </div>
+
                     <div class="w-1/2 px-2">
-                        <button
-                            class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300">Thêm
-                            vào gỏ hàng</button>
+                        <?php
+                        // print_r($sanPhamCt) ;
+                        extract($sanPhamCt);
+                        echo '<a href="index.php?act=add_to_card&idsp=' . $sanPhamCt['id'] . '" class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300"> Thêm vào giỏ hàng</a>';
+                        ?>
                     </div>
                 </div>
             </div>
             <div class="md:flex-1 px-4">
+                <?php
+                echo '<form action="index.php?act=add_to_card&idsp=' . $sanPhamCt['id'] . '" method="get"></form>'; ?>
                 <!-- <h2 class="text-2xl font-bold text-gray-800  mb-2">Tên sách</h2> -->
                 <h2 class=" font-bold mb-4 text-red-600">
-                    <?php echo $sanPhamCt["ten"]; ?>
+
+                    <?php echo '<input type="hidden" value="' . $sanPhamCt["ten"] . '" readonly >'; 
+                    echo $sanPhamCt["ten"] ;?>
                 </h2>
                 <div class="flex mb-4">
                     <?php
@@ -57,12 +64,14 @@
                 </div>
                 <div class="flex mb-4 items-center">
                     <div class="mr-4">
-                        <input class="hidden" id="gia_bien_the" value="<?php echo $sanPhamCt["gia"]; ?>"
-                            oninput="myFunction()"></input>
+                        <?php echo '<input type="hidden" name="gia" value="" readonly > 
+                         <span class="hidden" value="' . $sanPhamCt["gia"] . '" id="gia_bien_the"
+                            onchange="myFunction()"></span>
                         <!-- <span class=" text-gray-700 ">Giá:</span> -->
                         <span class="text-[#FF0000] text-[24px] font-bold" id="gia_sau_bien_the">
-                            <?php echo $sanPhamCt["gia"]; ?>.000 đ
-                        </span>
+                            ' . $sanPhamCt["gia"] . '.000 đ
+                        </span> '; ?>
+
                     </div>
                     <?php
                     if ($sanPhamCt["gia_sale"] && trim($sanPhamCt["gia_sale"]) !== '') {
@@ -74,7 +83,7 @@
 
                 </div>
 
-                <!-- <div class="mb-4">
+                <div class="mb-4">
                     <span class="font-bold text-gray-700 ">Select Color:</span>
                     <div class="flex items-center mt-2">
                         <button class="w-6 h-6 rounded-full bg-gray-800 mr-2"></button>
@@ -82,19 +91,18 @@
                         <button class="w-6 h-6 rounded-full bg-blue-500 dark:bg-blue-700 mr-2"></button>
                         <button class="w-6 h-6 rounded-full bg-yellow-500 dark:bg-yellow-700 mr-2"></button>
                     </div>
-                </div> -->
+                </div>
                 <div class="mb-4">
                     <span class="font-bold text-gray-700 ">Loại Hàng:</span>
                     <div class="flex items-center mt-2">
                         <!-- <button
                             class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">S</button> -->
-                        <div>
-                            <!-- <select id="mySelect" onchange="myFunction2()">
+                        <div><select id="mySelect" onchange="myFunction2()">
                                 <option value="Audi">Audi</option>
                                 <option value="BMW">BMW</option>
                                 <option value="Mercedes">Mercedes</option>
                                 <option value="Volvo">Volvo</option>
-                            </select> -->
+                            </select>
                             <?php
                             foreach ($bien_the_bia as $Check) {
                                 extract($Check);
@@ -114,7 +122,9 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="mb-4"><span class="font-bold text-gray-700 ">Số Lượng:</span>
+                <input type="number"  name="so_luong">or
+                </div>
                 <div>
                     <span class="font-bold text-gray-700 ">Mô tả:</span>
                     <p class="text-gray-600  text-sm mt-2">
@@ -122,6 +132,7 @@
                     </p>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>
@@ -131,6 +142,8 @@
 <section class="mt-5 w-[800px] mx-auto" id="binhluan">
     <?php
     extract($sanPhamCt);
+    // echo $id;
+    // die;
     ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
@@ -201,9 +214,13 @@
     var y;
     function myFunction() {
         console.log("hello");
-        y = parseFloat(document.getElementById("gia_bien_the").value); // Gán một giá trị cho biến y toàn cục
-        var x = parseFloat(document.querySelector('input[name="loai_bia"]:checked').value);
-        document.getElementById("gia_sau_bien_the").innerHTML = y + x + '.000 đ';
+        var x = document.getElementById("loai_bia").value;
+
+        y = document.getElementById("gia_bien_the").value; // Gán một giá trị cho biến y toàn cục
+        document.getElementById("gia_sau_bien_the").innerHTML = y + x;
         console.log(y + x);
+
+        var selectedValue = document.querySelector('input[name="loai_bia"]:checked').value;
+        console.log(selectedValue);
     }
 </script>

@@ -6,6 +6,7 @@ include ("./model/danhmuc.php");
 include ("./model/sach.php");
 include ("./model/taiKhoan.php");
 include ("./model/tacGia.php");
+include ("./model/giohang.php");
 // include ("../model/binhLuan.php");
 // include ("../model/sach.php");
 
@@ -21,6 +22,10 @@ $errDangKypass = "";
 $errDangKyuser = "";
 $errDangKyemail = "";
 
+if (!isset($_SESSION['myCart'])) {
+    $_SESSION['myCart'] = [];
+}
+$countProducts = count($_SESSION['myCart']);
 
 include ("view/header.php");
 if (isset($_GET["act"])) {
@@ -81,7 +86,7 @@ if (isset($_GET["act"])) {
                 $sanPhamCt = select_spct($id);
                 $list_tacgia_sach_spct = list_tacgia_sach_spct($id);
 
-                
+
                 $sach_cungLoai = Select_sach_cungLoai($id, $sanPhamCt["danh_muc_id"]);
                 $bien_the_bia = select_loai_bia_theo_sach($id);
             } else {
@@ -175,6 +180,7 @@ if (isset($_GET["act"])) {
                 $filename = time() . $filename;
                 $dir = "./uploads/$filename";
 
+                // Di chuyển tệp tin hình ảnh tải lên vào thư mục uploads
                 move_uploaded_file($hinhAnh["tmp_name"], $dir);
 
                 // Gọi hàm update_taikhoan để cập nhật thông tin tài khoản
@@ -188,33 +194,18 @@ if (isset($_GET["act"])) {
             }
             include "view/taiKhoan/edittk.php";
             break;
-        case 'quenmk':
-            $errEmail = '';
-            $isCheck = true;
-
-            if (isset($_POST['guiemail'])) {
-                $email = $_POST["email"];
-                // echo $email;
-                // die;
-                if (empty($email)) {
-                    $isCheck = false;
-                    $errEmail = "Cần nhập email";
-                }
-                $checkEmail = checkEmail($email);
-                if (is_array($checkEmail)) {
-                    $thongBao = "Mật khẩu của bạn là " . $checkEmail["password"];
-                } else {
-                    $thongBao = "Email bạn nhập ko đúng hoặc không tồn tại";
-                }
-
-            }
-            include "view/taiKhoan/quenmk.php";
-            break;
         case 'logout':
             session_unset();
             header("Location: index.php");
             break;
-      
+        case 'giohang':
+            $gioHang = select_1_sach();
+            include ('./view/giohang.php');
+            break;
+        case 'add_to_card':
+            $gioHang = select_1_sach();
+            include ('./view/giohang.php');
+            break;
         default:
             include ("view/home.php");
             break;
