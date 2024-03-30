@@ -118,7 +118,7 @@
                     </div>
                 </div>
                 <div class="mb-4"><span class="font-bold text-gray-700 ">Số Lượng:</span>
-                <input type="number"  name="so_luong">
+                <input type="number"  name="so_luong">or
                 </div>
                 <div>
                     <span class="font-bold text-gray-700 ">Mô tả:</span>

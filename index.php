@@ -15,10 +15,6 @@ $listTg = list_tac_gia("");
 $listSp_home = list_sach("", "", "");
 $list_sach_flashSale_home = list_sach_flashSale_home();
 $list_sach_banchay_home = list_sach_banchay_home();
-// echo '<pre>';
-// var_dump($list_sach_banchay_home);
-// die;
-
 $errDangNhappass = "";
 $errDangNhapuser = "";
 
@@ -26,10 +22,10 @@ $errDangKypass = "";
 $errDangKyuser = "";
 $errDangKyemail = "";
 
-if(!isset($_SESSION['myCart'])){
-    $_SESSION['myCart']=[];   
+if (!isset($_SESSION['myCart'])) {
+    $_SESSION['myCart'] = [];
 }
-$countProducts=count($_SESSION['myCart']);
+$countProducts = count($_SESSION['myCart']);
 
 include ("view/header.php");
 if (isset($_GET["act"])) {
@@ -90,9 +86,7 @@ if (isset($_GET["act"])) {
                 $sanPhamCt = select_spct($id);
                 $list_tacgia_sach_spct = list_tacgia_sach_spct($id);
 
-                //     echo '<pre>';
-                // var_dump($list_tacgia_sach_spct);
-                // die();
+
                 $sach_cungLoai = Select_sach_cungLoai($id, $sanPhamCt["danh_muc_id"]);
                 $bien_the_bia = select_loai_bia_theo_sach($id);
             } else {
@@ -205,72 +199,13 @@ if (isset($_GET["act"])) {
             header("Location: index.php");
             break;
         case 'giohang':
-
             $gioHang = select_1_sach();
-            // echo '<pre>';
-            //     print_r($gioHang);
-            //     echo '</pre>';
-
-            include ("./view/giohang.php");
-
+            include ('./view/giohang.php');
             break;
         case 'add_to_card':
-            // if(isset($_GET['idsp'])){
-            //     echo $_POST['idsp'];
-            //     $tenSanPham = $_POST['ten'];
-            //     $hinhAnh =$_FILES['hinhAnh'];
-            //     $gia =$_POST['gia'];
-            //     $so_luong = $_POST['so_luong'];
-            //     $thanhtien = $_POST['thanhtien'];
-            //     print_r($tenSanPham,$hinhAnh,$gia,$gia,$so_luong,$thanhtien);
-            //     add_gio_hang($id,$gio_hang_id,$product_id,$so_luong);
-               
-            // }
-
-            // if(!isset($_GET['idsp'])){
-            //     $id_sanpham=$_POST['id_sanpham'];
-            //     $id_color=$_POST['id_mausac'];
-            //     $id_size=$_POST['id_kichco'];
-            //     $quantity=(int)$_POST['quantity'];
-            // }
-            // if(isset($_SESSION['myCart'])&&(count($_SESSION['myCart'])>0)){
-            //     foreach($_SESSION['myCart'] as $product){
-            //         if($product[0]==$id_bien_the){
-            //             // thay đổi số lượng
-            //             $quantity+=$product[2];
-            //             $isExist=true;
-            //             // cập nhật lại số lượng sản phẩm trong giỏ hàng
-            //             $_SESSION['myCart'][$i][2]=$quantity;
-            //             $gia=$gia * ((100 - (int)$giam_gia)/100);
-            //             // cập nhật lại thành tiền
-            //             $thanhtien=$gia*$quantity;      
-            //             $_SESSION['myCart'][$i][7]=$thanhtien;
-            //             break;
-            //         }
-            //         $i++;
-            //     }
-            // }
-            // if(!$isExist){
-            //     $gia=$gia * ((100 - (int)$giam_gia)/100);
-            //     $thanhtien=$gia*$quantity;
-            //     $addProduct=[$id_bien_the,$gia,$quantity,$ten_san_pham,$hinh_anh,$ten_kich_co,$ten_mau_sac,$thanhtien];
-            //     array_push($_SESSION['myCart'],$addProduct);
-            //     // echo '<pre>';
-            //     // print_r($_SESSION['myCart']);
-            //     // die;
-            // }
             $gioHang = select_1_sach();
-
-            include ("./view/giohang.php");
+            include ('./view/giohang.php');
             break;
-            case 'deleteGioHang':
-                if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
-                    $id = $_GET["id"];
-                delete_gio_hang($id);
-                }
-                $gioHang = select_1_sach();
-                include ("./view/giohang.php");
-                break; 
         default:
             include ("view/home.php");
             break;
