@@ -13,35 +13,40 @@
                             class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 ">Mua
                             ngay</button>
                     </div>
-                    
+
                     <div class="w-1/2 px-2">
-                       <a href="index.php?act=add_to_card&idsp="> 
-                        <button class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300">
-                            Thêm vào gỏ hàng
-                            </button></a>
+                        <?php
+                        // print_r($sanPhamCt) ;
+                        extract($sanPhamCt);
+                        echo '<a href="index.php?act=add_to_card&idsp=' . $sanPhamCt['id'] . '" class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300"> Thêm vào giỏ hàng</a>';
+                        ?>
                     </div>
                 </div>
             </div>
             <div class="md:flex-1 px-4">
+                <?php
+                echo '<form action="index.php?act=add_to_card&idsp=' . $sanPhamCt['id'] . '" method="get"></form>'; ?>
                 <!-- <h2 class="text-2xl font-bold text-gray-800  mb-2">Tên sách</h2> -->
                 <h2 class=" font-bold mb-4 text-red-600">
-                    <?php echo $sanPhamCt["ten"]; ?>
+
+                    <?php echo '<input type="hidden" value="' . $sanPhamCt["ten"] . '" readonly >'; 
+                    echo $sanPhamCt["ten"] ;?>
                 </h2>
                 <div class="flex mb-4">
                     <?php
-                        if (!empty($list_tacgia_sach_spct)) {
-                   
-                            echo ' <div class="mr-4">';
-                            echo '<span class="text-gray-700">Tác giả:</span>';
-                            echo '<span class="text-gray-600 font-bold">';
-                            foreach ($list_tacgia_sach_spct as $key => $value) {
-                                echo $value["tac_gia_name"], " ,";
-                            }
-                            echo '</div>';
-                            echo '</span>';
-                        } else {
-                            // Ẩn div tác giả
-                        } ?>
+                    if (!empty($list_tacgia_sach_spct)) {
+
+                        echo ' <div class="mr-4">';
+                        echo '<span class="text-gray-700">Tác giả:</span>';
+                        echo '<span class="text-gray-600 font-bold">';
+                        foreach ($list_tacgia_sach_spct as $key => $value) {
+                            echo $value["tac_gia_name"], " ,";
+                        }
+                        echo '</div>';
+                        echo '</span>';
+                    } else {
+                        // Ẩn div tác giả
+                    } ?>
                     <div>
                         <span class=" text-gray-700 ">Nhà xuất bản:</span>
                         <span class="text-gray-600 font-bold">
@@ -59,12 +64,14 @@
                 </div>
                 <div class="flex mb-4 items-center">
                     <div class="mr-4">
-                        <span class="hidden" value="<?php echo $sanPhamCt["gia"]; ?>" id="gia_bien_the"
+                        <?php echo '<input type="hidden" name="gia" value="" readonly > 
+                         <span class="hidden" value="' . $sanPhamCt["gia"] . '" id="gia_bien_the"
                             onchange="myFunction()"></span>
                         <!-- <span class=" text-gray-700 ">Giá:</span> -->
                         <span class="text-[#FF0000] text-[24px] font-bold" id="gia_sau_bien_the">
-                            <?php echo $sanPhamCt["gia"]; ?>.000 đ
-                        </span>
+                            ' . $sanPhamCt["gia"] . '.000 đ
+                        </span> '; ?>
+
                     </div>
                     <?php
                     if ($sanPhamCt["gia_sale"] && trim($sanPhamCt["gia_sale"]) !== '') {
@@ -110,7 +117,9 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="mb-4"><span class="font-bold text-gray-700 ">Số Lượng:</span>
+                <input type="number"  name="so_luong">
+                </div>
                 <div>
                     <span class="font-bold text-gray-700 ">Mô tả:</span>
                     <p class="text-gray-600  text-sm mt-2">
@@ -118,6 +127,7 @@
                     </p>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>
