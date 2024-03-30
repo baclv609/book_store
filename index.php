@@ -214,7 +214,7 @@ if (isset($_GET["act"])) {
             session_unset();
             header("Location: index.php");
             break;
-
+      
         default:
             include ("view/home.php");
             break;

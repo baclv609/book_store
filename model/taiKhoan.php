@@ -49,18 +49,23 @@ function select_taiKhoan_id($id)
     $sql = "SELECT * FROM `users` WHERE id= $id";
     pdo_execute($sql);
 }
+function checkemail($email){
+    $sql = "SELECT * FROM users WHERE email = '".$email."'";
+    $sp = pdo_query_one($sql);
+    return $sp;
+}
 // function checkUser($user, $pass)
 // {
 //     $sql = "SELECT * FROM taikhoan WHERE user = '$user' and pass = '$pass'";
 //     $tendm = pdo_query_one($sql);
 //     return $tendm;
 // }
-function checkEmail($email)
-{
-    $sql = "SELECT * FROM users WHERE email = '$email'";
-    $tendm = pdo_query_one($sql);
-    return $tendm;
-}
+// function checkEmail($email)
+// {
+//     $sql = "SELECT * FROM users WHERE email = '$email'";
+//     $tendm = pdo_query_one($sql);
+//     return $tendm;
+// }
 // function update_taikhoan($id, $user, $pass, $email, $adress, $tel)
 // {
 //     $sql = "UPDATE taikhoan 
