@@ -55,12 +55,12 @@ function select_taiKhoan_id($id)
 //     $tendm = pdo_query_one($sql);
 //     return $tendm;
 // }
-// function checkEmail($email)
-// {
-//     $sql = "SELECT * FROM taikhoan WHERE email = '$email'";
-//     $tendm = pdo_query_one($sql);
-//     return $tendm;
-// }
+function checkEmail($email)
+{
+    $sql = "SELECT * FROM users WHERE email = '$email'";
+    $tendm = pdo_query_one($sql);
+    return $tendm;
+}
 // function update_taikhoan($id, $user, $pass, $email, $adress, $tel)
 // {
 //     $sql = "UPDATE taikhoan 

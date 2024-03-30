@@ -35,32 +35,6 @@ function delete_sach($id)
     $sql = "DELETE FROM products WHERE id = $id";
     pdo_query($sql);
 }
-// function list_sach($danh_muc_id, $searchSp)
-// {
-//     $sql = "SELECT products.id,products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, tac_gia.name AS tac_gia_name, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
-//     FROM products 
-//     JOIN tac_gia 
-//     ON tac_gia.id = products.tacGia_id 
-//     JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
-//     JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id WHERE 1";
-
-//     // $sql = "SELECT * FROM products WHERE 1";
-//     if ($searchSp != "") {
-//         $sql .= " AND name LIKE '%" . $searchSp . "%'";
-//     }
-//     $sql .= " ORDER BY id desc";
-//     // echo $sql;
-//     // die();
-
-//     if ($danh_muc_id > 0) {
-//         $sql .= " AND products.danh_muc_id = " . $danh_muc_id;
-//     }
-
-//     $sql .= " ORDER BY products.id DESC";
-//     $listSach = pdo_query($sql);
-//     return $listSach;
-// }
-
 function list_sach($danh_muc_id, $searchSp, $tacGia_id)
 {
     $sql = "SELECT products.id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
@@ -68,17 +42,14 @@ function list_sach($danh_muc_id, $searchSp, $tacGia_id)
     JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
     JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id WHERE 1";
 
-    // Add search criteria for product name
     if ($searchSp != "") {
         $sql .= " AND products.ten LIKE '%" . $searchSp . "%'";
     }
 
-    // Add filter criteria for category ID
     if ($danh_muc_id > 0) {
         $sql .= " AND products.danh_muc_id = " . $danh_muc_id;
     }
 
-    // Add filter criteria for author ID
     if ($tacGia_id > 0) {
         // $sql .= " AND products.tacGia_id = " . $tacGia_id;
     }
@@ -174,25 +145,21 @@ function update_sanpham_KhongHinhAnh($id, $tenSanPham, $nhaSanXuatId, $danhMucId
     `gia_sale`='$giaSale',
     `mo_ta`='$moTa' 
      WHERE  id='$id'";
-    //  echo $sql;
-    //  die();
     pdo_execute($sql);
 
 }
-
-function update_sach_tac_gia($sachId, $tacGiaId)
+function delete_tacgia_by_sanpham($id){
+    $sql = "DELETE FROM `produt_tac_gia` WHERE produt_tac_gia.product_id = $id";
+    pdo_query($sql);
+}
+function update_sach_tac_gia($sachId, $tacGiaId, $id)
 {
-    $sql = "UPDATE products 
-    JOIN produt_tac_gia on products.id = produt_tac_gia.product_id
-    JOIN tac_gia on tac_gia.id = produt_tac_gia.tac_gia_id
-    set produt_tac_gia.tac_gia_id = '$tacGiaId'
-    WHERE products.id = '$sachId'";
-
+    $sql = "UPDATE produt_tac_gia SET tac_gia_id=$tacGiaId WHERE id=$id AND product_id=$sachId";
     pdo_execute($sql);
 }
 function select_loai_bia_theo_sach($id)
 {
-    $sql = "SELECT loai_bia, muc_tang, products.id, bien_the.id FROM products 
+    $sql = "SELECT bien_the.loai_bia, bien_the.muc_tang, products.id, bien_the.id FROM products 
     JOIN trung_gian_bia_product ON trung_gian_bia_product.product_id = products.id 
     JOIN bien_the ON trung_gian_bia_product.bia_id = bien_the.id 
     WHERE products.id = " . $id;
@@ -212,7 +179,7 @@ function list_tacgia_sach_spct($id)
 
 function list_tacgia_sach($id)
 {
-    $sql = "SELECT tac_gia.id FROM products 
+    $sql = "SELECT tac_gia.id, produt_tac_gia.id as 'tac_gia_id' FROM products 
  JOIN produt_tac_gia on products.id = produt_tac_gia.product_id
  JOIN tac_gia on tac_gia.id = produt_tac_gia.tac_gia_id
  WHERE products.id =$id";

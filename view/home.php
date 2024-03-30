@@ -235,19 +235,13 @@
                                   </div>
                               </div>
                           </div>
-                   </div>
-                       ';
+                   </div>';
                 }
                 ?>
-                <!-- items 1-->
-
-
-
             </div>
             <div class="swiper-pagination mt-10"></div>
         </div>
 </section>
-
 
 
 <!-- Sản phẩm nổi bật  -->
@@ -347,6 +341,8 @@
 
                 <?php
                 foreach ($list_sach_banchay_home as $key => $value) {
+                    $list_tacgia_sach_spct = list_tacgia_sach_spct($value["id"]);
+
                     echo '<div class="w-[520px] h-[120px]">
                     <div class="flex py-2">
                         <div class="flex justify-between items-center px-4">' . $key + 1 . '</div>
@@ -355,9 +351,12 @@
                                     alt=""></a></div>
                         <div class="w-[330px] px-4">
                             <div class="text-sm leading-5 text-left">' . $value["ten"] . '</div>
-                            <div class="text-[12px] text-[#808080] leading-5 text-left">' . $value["tac_gia_name"] . '</div>
+                            <div class="text-[12px] text-[#808080] leading-5 text-left">';
+                    foreach ($list_tacgia_sach_spct as $key_tacgia => $value_tacgia) {
+                        echo $value_tacgia["tac_gia_name"] . ", ";
+                    }
+                    echo '</div>
                             <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
-
                         </div>
                     </div>
                 </div>
@@ -392,11 +391,20 @@
                                 class="max-h-full " src="./uploads/<?php echo $list_sach_banchay_home[0]['img']; ?>"
                                 alt=""></a></div>
                     <div class="col-span-7 pr-1">
-                        <div class="text-[#333333] text-lg font-semibold leading-6 text-left"><a href="index.php?act=sanphamct&idsp=<?= $list_sach_banchay_home[0]['id']; ?>">
+                        <div class="text-[#333333] text-lg font-semibold leading-6 text-left"><a
+                                href="index.php?act=sanphamct&idsp=<?= $list_sach_banchay_home[0]['id']; ?>">
                                 <?php echo $list_sach_banchay_home[0]['ten']; ?>
                             </a> </div>
                         <div class="text-[#333333] text-sm leading-6 text-left ">Tác giả: <span class="font-medium">
-                                <?php echo $list_sach_banchay_home[0]['tac_gia_name']; ?>
+
+                                <?php
+                                $list_tacgia_sach_spct = list_tacgia_sach_spct($list_sach_banchay_home[0]['id']);
+                                // echo $list_sach_banchay_home[0]['tac_gia_name']; 
+                                foreach ($list_tacgia_sach_spct as $key_tacgia => $value_tacgia) {
+                                    echo  $value_tacgia["tac_gia_name"] . ", ";
+                                }
+                                ?>
+
                             </span> </div>
                         <div class="text-[#333333] text-sm leading-6 text-left mb-1">Nhà xuất bản: <span
                                 class="font-medium">

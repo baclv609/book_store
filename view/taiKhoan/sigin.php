@@ -41,7 +41,7 @@
             </p>
 
             <div class="mt-5 text-xs border-b border-[#002D74] py-4 text-[#002D74]">
-                <a href="#">Quên mật khẩu?</a>
+                <a href="index.php?act=quenmk">Quên mật khẩu?</a>
             </div>
 
             <div class="mt-3 text-xs flex justify-between items-center text-[#002D74]">

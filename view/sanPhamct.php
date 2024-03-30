@@ -27,19 +27,19 @@
                 </h2>
                 <div class="flex mb-4">
                     <?php
-                        if (!empty($list_tacgia_sach_spct)) {
-                   
-                            echo ' <div class="mr-4">';
-                            echo '<span class="text-gray-700">Tác giả:</span>';
-                            echo '<span class="text-gray-600 font-bold">';
-                            foreach ($list_tacgia_sach_spct as $key => $value) {
-                                echo $value["tac_gia_name"], " ,";
-                            }
-                            echo '</div>';
-                            echo '</span>';
-                        } else {
-                            // Ẩn div tác giả
-                        } ?>
+                    if (!empty($list_tacgia_sach_spct)) {
+
+                        echo ' <div class="mr-4">';
+                        echo '<span class="text-gray-700">Tác giả:</span>';
+                        echo '<span class="text-gray-600 font-bold">';
+                        foreach ($list_tacgia_sach_spct as $key => $value) {
+                            echo $value["tac_gia_name"], " ,";
+                        }
+                        echo '</div>';
+                        echo '</span>';
+                    } else {
+                        // Ẩn div tác giả
+                    } ?>
                     <div>
                         <span class=" text-gray-700 ">Nhà xuất bản:</span>
                         <span class="text-gray-600 font-bold">
@@ -57,8 +57,8 @@
                 </div>
                 <div class="flex mb-4 items-center">
                     <div class="mr-4">
-                        <span class="hidden" value="<?php echo $sanPhamCt["gia"]; ?>" id="gia_bien_the"
-                            onchange="myFunction()"></span>
+                        <input class="hidden" id="gia_bien_the" value="<?php echo $sanPhamCt["gia"]; ?>"
+                            oninput="myFunction()"></input>
                         <!-- <span class=" text-gray-700 ">Giá:</span> -->
                         <span class="text-[#FF0000] text-[24px] font-bold" id="gia_sau_bien_the">
                             <?php echo $sanPhamCt["gia"]; ?>.000 đ
@@ -74,7 +74,7 @@
 
                 </div>
 
-                <div class="mb-4">
+                <!-- <div class="mb-4">
                     <span class="font-bold text-gray-700 ">Select Color:</span>
                     <div class="flex items-center mt-2">
                         <button class="w-6 h-6 rounded-full bg-gray-800 mr-2"></button>
@@ -82,27 +82,32 @@
                         <button class="w-6 h-6 rounded-full bg-blue-500 dark:bg-blue-700 mr-2"></button>
                         <button class="w-6 h-6 rounded-full bg-yellow-500 dark:bg-yellow-700 mr-2"></button>
                     </div>
-                </div>
+                </div> -->
                 <div class="mb-4">
-                    <span class="font-bold text-gray-700 ">Select Loại Bìa:</span>
+                    <span class="font-bold text-gray-700 ">Loại Bìa:</span>
                     <div class="flex items-center mt-2">
                         <!-- <button
                             class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">S</button> -->
-                        <div><select id="mySelect" onchange="myFunction2()">
+                        <div>
+                            <!-- <select id="mySelect" onchange="myFunction2()">
                                 <option value="Audi">Audi</option>
                                 <option value="BMW">BMW</option>
                                 <option value="Mercedes">Mercedes</option>
                                 <option value="Volvo">Volvo</option>
-                            </select>
+                            </select> -->
                             <?php
                             foreach ($bien_the_bia as $Check) {
                                 extract($Check);
+                                // echo $Check['muc_tang'];
                                 echo '
-                                     <label>
-                                         <input type="radio" name="loai_bia" value="' . $muc_tang . '" onchange="myFunction()"
-                                         class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">' . $loai_bia . '
-                                     </label>
-                                 ';
+                                <label>
+                                    <input type="radio" name="loai_bia" value="' . $Check['muc_tang'] . '" onchange="myFunction()"';
+                                if ($loai_bia === 'Bìa Mềm') {
+                                    echo ' checked="checked"';
+                                }
+                                echo ' class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">' . $loai_bia . '
+                                </label>
+                            ';
                             }
                             ?>
                         </div>
@@ -125,8 +130,6 @@
 <section class="mt-5 w-[800px] mx-auto" id="binhluan">
     <?php
     extract($sanPhamCt);
-    // echo $id;
-    // die;
     ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
@@ -197,13 +200,9 @@
     var y;
     function myFunction() {
         console.log("hello");
-        var x = document.getElementById("loai_bia").value;
-
-        y = document.getElementById("gia_bien_the").value; // Gán một giá trị cho biến y toàn cục
-        document.getElementById("gia_sau_bien_the").innerHTML = y + x;
+        y = parseFloat(document.getElementById("gia_bien_the").value); // Gán một giá trị cho biến y toàn cục
+        var x = parseFloat(document.querySelector('input[name="loai_bia"]:checked').value);
+        document.getElementById("gia_sau_bien_the").innerHTML = y + x + '.000 đ';
         console.log(y + x);
-
-        var selectedValue = document.querySelector('input[name="loai_bia"]:checked').value;
-        console.log(selectedValue);
     }
 </script>

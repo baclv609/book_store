@@ -69,21 +69,23 @@
                     <th scope="col" class="px-6 py-3" style="width: 10%">
                         Tên tác giả
                     </th>
-                    <th scope="col" class="px-6 py-3" style="width: 8%">
+                    <!-- <th scope="col" class="px-6 py-3" style="width: 8%">
                         Ngày đăng bán
-                    </th>
+                    </th> -->
                     <th scope="col" class="px-6 py-3" style="width: 10%">
                         Tên danh mục
                     </th>
                     <th scope="col" class="px-6 py-3" style="width: 10%">
                         Tên nhà sản xuất
                     </th>
-                    <th scope="col" class="px-6 py-3" style="width: 3%">
+                    <th scope="col" class="px-6 py-3" style="width: 10%">
                         #
                     </th>
                 </tr>
             </thead>
             <tbody>
+            <!-- <td class="px-3 py-3">' . $value["created_at"] . '</td> -->
+
                 <?php
                 foreach ($list_Sach as $key => $value) {
                     $list_tacgia_sach_spct = list_tacgia_sach_spct($value["id"]);
@@ -101,15 +103,14 @@
                     foreach ($list_tacgia_sach_spct as $key_tacgia => $value_tacgia) {
                         echo $value_tacgia["tac_gia_name"] . ", ";
                     }
-
                     echo '</td>
-            <td class="px-3 py-3">' . $value["created_at"] . '</td>
             <td class="px-3 py-3">' . $value["danh_muc_name"] . '</td>
             <td class="px-3 py-3">' . $value["nha_san_xua_name"] . '</td>
-            <td class="flex items-center px-3 py-3">
-                <a href="index.php?act=editSp&id=' . $value["id"] . '" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                <a href="index.php?act=deleteSp&id=' . $value["id"] . '" onclick="return confirm(\'Bạn muốn xóa ?\')" class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
-            </td>
+            <td class="flex flex-col px-3 py-3">
+            <a href="index.php?act=editSp&id=' . $value["id"] . '" class="font-medium text-blue-600 hover:underline">Edit</a> <br>
+            <a href="index.php?act=deleteSp&id=' . $value["id"] . '" onclick="return confirm(\'Bạn muốn xóa ?\')" class="font-medium text-red-600  hover:underline">Remove</a><br>
+            <a href="index.php?act=addBia&id=' . $value["id"] . '" class="font-medium text-blue-600 hover:underline">Thêm bìa</a>
+        </td>
         </tr>';
                 }
                 ?>

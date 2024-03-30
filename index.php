@@ -14,10 +14,6 @@ $listTg = list_tac_gia("");
 $listSp_home = list_sach("", "", "");
 $list_sach_flashSale_home = list_sach_flashSale_home();
 $list_sach_banchay_home = list_sach_banchay_home();
-// echo '<pre>';
-// var_dump($list_sach_banchay_home);
-// die;
-
 $errDangNhappass = "";
 $errDangNhapuser = "";
 
@@ -85,9 +81,7 @@ if (isset($_GET["act"])) {
                 $sanPhamCt = select_spct($id);
                 $list_tacgia_sach_spct = list_tacgia_sach_spct($id);
 
-                //     echo '<pre>';
-                // var_dump($list_tacgia_sach_spct);
-                // die();
+                
                 $sach_cungLoai = Select_sach_cungLoai($id, $sanPhamCt["danh_muc_id"]);
                 $bien_the_bia = select_loai_bia_theo_sach($id);
             } else {
@@ -165,36 +159,57 @@ if (isset($_GET["act"])) {
             break;
 
 
-            case 'edittk':
-                if (isset($_POST['submit'])) {
-                    // Lấy các giá trị được gửi từ form
-                    $name = $_POST["name"];
-                    $sđt = $_POST['phone'];
-                    $email = $_POST["email"];
-                    $password = $_POST["password"];
-                    $dia_chi = $_POST["dia_chi"];
-                    $id = $_POST['id'];
-            
-                    $hinhAnh = $_FILES["img"];
-                    $filename = $hinhAnh["name"];
-            
-                    $filename = time() . $filename;
-                    $dir = "./uploads/$filename";
-            
-                    // Di chuyển tệp tin hình ảnh tải lên vào thư mục uploads
-                    move_uploaded_file($hinhAnh["tmp_name"], $dir);
-            
-                    // Gọi hàm update_taikhoan để cập nhật thông tin tài khoản
-                    update_taikhoan($id, $name, $filename, $sđt, $email, $password, $dia_chi);
-            
-                    // Cập nhật lại thông tin người dùng trong phiên làm việc
-                    $_SESSION['user'] = checkUser($email, $password);
-            
-                    // Chuyển hướng người dùng về trang edittk (chỉnh sửa tài khoản)
-                    header('Location: index.php?act=edittk');
+        case 'edittk':
+            if (isset($_POST['submit'])) {
+                // Lấy các giá trị được gửi từ form
+                $name = $_POST["name"];
+                $sđt = $_POST['phone'];
+                $email = $_POST["email"];
+                $password = $_POST["password"];
+                $dia_chi = $_POST["dia_chi"];
+                $id = $_POST['id'];
+
+                $hinhAnh = $_FILES["img"];
+                $filename = $hinhAnh["name"];
+
+                $filename = time() . $filename;
+                $dir = "./uploads/$filename";
+
+                move_uploaded_file($hinhAnh["tmp_name"], $dir);
+
+                // Gọi hàm update_taikhoan để cập nhật thông tin tài khoản
+                update_taikhoan($id, $name, $filename, $sđt, $email, $password, $dia_chi);
+
+                // Cập nhật lại thông tin người dùng trong phiên làm việc
+                $_SESSION['user'] = checkUser($email, $password);
+
+                // Chuyển hướng người dùng về trang edittk (chỉnh sửa tài khoản)
+                header('Location: index.php?act=edittk');
+            }
+            include "view/taiKhoan/edittk.php";
+            break;
+        case 'quenmk':
+            $errEmail = '';
+            $isCheck = true;
+
+            if (isset($_POST['guiemail'])) {
+                $email = $_POST["email"];
+                // echo $email;
+                // die;
+                if (empty($email)) {
+                    $isCheck = false;
+                    $errEmail = "Cần nhập email";
                 }
-                include "view/taiKhoan/edittk.php";
-                break;
+                $checkEmail = checkEmail($email);
+                if (is_array($checkEmail)) {
+                    $thongBao = "Mật khẩu của bạn là " . $checkEmail["password"];
+                } else {
+                    $thongBao = "Email bạn nhập ko đúng hoặc không tồn tại";
+                }
+
+            }
+            include "view/taiKhoan/quenmk.php";
+            break;
         case 'logout':
             session_unset();
             header("Location: index.php");

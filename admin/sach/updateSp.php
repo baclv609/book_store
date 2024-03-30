@@ -20,24 +20,14 @@
             $listTacGiaSeleced = list_tacgia_sach($SP['id']);
             $listTacGiaID = array_column($listTacGiaSeleced, 'id');
 
+            $sach_tacgia_id = json_encode(array_column($listTacGiaSeleced, 'tac_gia_id'));
             foreach ($listTg as $key => $value) {
+
                 $checked = in_array($value['id'], $listTacGiaID) ? 'checked' : ''; // Kiểm tra xem tác giả có trong danh sách tác giả của sản phẩm hay không
                 echo '<input type="checkbox" name="tacGia_id[]" value="' . $value["id"] . '" ' . $checked . '> ' . $value["name"] . '<br>';
             }
-
-            // $listTacGiaID = array_column($listTacGiaSeleced, 'id');
-            // foreach ($listTg as $key => $value) {
-            //     $checked = (!empty($listTacGiaID) && in_array($value['id'], $listTacGiaID)) ? "checked" : null;
-            //     $inputCheckBox = '<input type="checkbox" name="tacGia_id[]" value="' . $value["id"] . '"';
-            //     if (!empty($checked)) {
-            //         $inputCheckBox .= ' checked';
-            //     }
-            
-            //     $inputCheckBox .= '> ' . $value["name"] . '<br>';
-            
-            //     echo $inputCheckBox;
-            // }
             ?>
+            <input type="hidden" name="sach_tacgia_id" value="<?= $sach_tacgia_id ?>">
         </div>
         <div>
             <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 ">Nhà Xuất Bản</label>

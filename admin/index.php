@@ -280,22 +280,67 @@ if (isset($_GET["act"])) {
             include ("sach/updateSp.php");
             break;
 
+        // case 'updateSp':
+        //     if (isset($_POST['submit'])) {
+        //         $id = $_POST["id"];
+
+        //         $tenSanPham = $_POST['name'];
+        //         // $tacGiaId = $_POST['tacGia_id'];
+        //         $nhaSanXuatId = $_POST['nha_san_xuat_id'];
+        //         $danhMucId = $_POST['danh_muc_id'];
+        //         $gia = $_POST['gia'];
+        //         $giaSale = $_POST['gia_sale'];
+        //         $moTa = $_POST['mo_ta'];
+
+
+        //         // echo '<pre>';
+        //         // print_r([$id, $tenSanPham, $nhaSanXuatId, $danhMucId, $gia, $giaSale, $moTa]);
+        //         // die();
+
+        //         $hinhAnh = $_FILES["img"];
+        //         $filename = $hinhAnh["name"];
+
+        //         if ($filename) {
+        //             $filename = time() . $filename;
+        //             $dir = "../uploads/$filename";
+
+        //             if (move_uploaded_file($hinhAnh["tmp_name"], $dir)) {
+        //                 update_sanpham_coHinhAnh($id, $tenSanPham, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa);
+        //             }
+        //         } else {
+        //             update_sanpham_KhongHinhAnh($id, $tenSanPham, $nhaSanXuatId, $danhMucId, $gia, $giaSale, $moTa);
+
+        //         }
+        //         // Lưu thông tin về tác giả
+
+        //     }
+        //     $listDm = list_danhmuc("");
+        //     $listTg = list_tac_gia("");
+        //     $list_Sach = list_sach("", "", "");
+
+        //     include ("sach/sach.php");
+        //     break;
         case 'updateSp':
             if (isset($_POST['submit'])) {
                 $id = $_POST["id"];
-
                 $tenSanPham = $_POST['name'];
-                // $tacGiaId = $_POST['tacGia_id'];
                 $nhaSanXuatId = $_POST['nha_san_xuat_id'];
                 $danhMucId = $_POST['danh_muc_id'];
                 $gia = $_POST['gia'];
                 $giaSale = $_POST['gia_sale'];
                 $moTa = $_POST['mo_ta'];
 
+                // Xóa tất cả các tác giả liên quan đến sản phẩm
+                delete_tacgia_by_sanpham($id);
 
-                // echo '<pre>';
-                // print_r([$id, $tenSanPham, $nhaSanXuatId, $danhMucId, $gia, $giaSale, $moTa]);
-                // die();
+                // Thêm mới các tác giả cho sản phẩm
+                if (!empty($_POST['tacGia_id'])) {
+                    $tacGiaIds = $_POST['tacGia_id'];
+                    foreach ($tacGiaIds as $tacGiaId) {
+                        // echo  $tacGiaId;
+                        insert_sach_tac_gia($id, $tacGiaId);
+                    }
+                }
 
                 $hinhAnh = $_FILES["img"];
                 $filename = $hinhAnh["name"];
@@ -309,15 +354,6 @@ if (isset($_GET["act"])) {
                     }
                 } else {
                     update_sanpham_KhongHinhAnh($id, $tenSanPham, $nhaSanXuatId, $danhMucId, $gia, $giaSale, $moTa);
-
-                }
-                // Lưu thông tin về tác giả
-                if (!empty($_POST['tacGia_id'])) {
-                    $tacGiaIds = $_POST['tacGia_id'];
-                    foreach ($tacGiaIds as $tacGiaId) {
-                        update_sach_tac_gia($id, $tacGiaId);
-                        echo $tacGiaId;
-                    }
                 }
             }
             $listDm = list_danhmuc("");
@@ -326,16 +362,23 @@ if (isset($_GET["act"])) {
 
             include ("sach/sach.php");
             break;
+
         case 'deleteSp':
             if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
                 $id = $_GET["id"];
                 delete_sach($id);
             }
-
             $list_Sach = list_sach("", "", "");
             include ("sach/sach.php");
             break;
+        // thêm bìa sách
+        case 'addBiah':
+            if (isset($_POST['submit'])) {
 
+            }
+
+            include ("sach/add.php");
+            break;
         case 'account':
             if (isset($_POST['submit'])) {
                 $searchName = $_POST["searchName"];
