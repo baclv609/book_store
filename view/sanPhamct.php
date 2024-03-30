@@ -84,7 +84,7 @@
                     </div>
                 </div> -->
                 <div class="mb-4">
-                    <span class="font-bold text-gray-700 ">Loại Bìa:</span>
+                    <span class="font-bold text-gray-700 ">Loại Hàng:</span>
                     <div class="flex items-center mt-2">
                         <!-- <button
                             class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">S</button> -->
@@ -96,20 +96,20 @@
                                 <option value="Volvo">Volvo</option>
                             </select> -->
                             <?php
-                           foreach ($bien_the_bia as $Check) {
-                            extract($Check);
-                        
-                            echo '<label>';
-                            echo '<input type="radio" name="loai_bia" value="' . $Check['muc_tang'] . '" onchange="myFunction()"';
-                        
-                            if ($Check['muc_tang'] == 0) {
-                                echo ' checked="checked"';
+                            foreach ($bien_the_bia as $Check) {
+                                extract($Check);
+
+                                echo '<label>';
+                                echo '<input type="radio" name="loai_bia" value="' . $Check['muc_tang'] . '" onchange="myFunction()"';
+
+                                if ($Check['muc_tang'] == 0) {
+                                    echo ' checked="checked"';
+                                }
+
+                                echo ' class="bg-gray-300 text-gray-700 dark:text-white py-2 ml-3 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">';
+                                echo $loai_bia;
+                                echo '</label>';
                             }
-                        
-                            echo ' class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">';
-                            echo $loai_bia;
-                            echo '</label>';
-                        }
                             ?>
                         </div>
                     </div>
