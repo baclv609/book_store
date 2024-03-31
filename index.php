@@ -213,47 +213,60 @@ if (isset($_GET["act"])) {
             session_unset();
             header("Location: index.php");
             break;
-//-- GIỎ HÀNG
+        //-- GIỎ HÀNG
         case 'giohang':
             $gioHang = select_1_sach();
             $tongGia = tong_gia();
-
             include ('./view/giohang.php');
             break;
         case 'deleteGioHang':
             if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
-                $id=$_GET["id"];
-            delete_gio_hang($id);
+                $id = $_GET["id"];
+                delete_gio_hang($id);
             }
             $gioHang = select_1_sach();
             $tongGia = tong_gia();
 
-
-            include ('./view/giohang.php');
             break;
         case 'add_to_card':
-        //    theem gior hangf
-            if (isset($_POST['submit']) && ($_POST['submit'])) { 
+            if (isset($_POST['submit']) && ($_POST['submit'])) {
                 $product_id = $_POST['id'];
                 $gia = $_POST['gia'];
                 $so_luong = $_POST['so_luong'];
-                // print_r([$product_id, $gia, $so_luong]);
-                add_gio_hang($product_id, $so_luong, $gia); 
+
+                // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+                $gioHang = select_1_sach();
+
+                $product_exists = false;
+                foreach ($gioHang as $item) {
+                    if ($item['id_product'] == $product_id) {
+                        $product_exists = true;
+                        $item['so_luong'] += $so_luong;
+                        update_SanPham_Da_co_cart($item['so_luong'], $item['id_product']);
+                        break;
+                    }
+                }
+
+                if (!$product_exists) {
+                    add_gio_hang($product_id, $so_luong, $gia);
+                }
             }
+
             $gioHang = select_1_sach();
             $tongGia = tong_gia();
 
-            if(isset($_POST['muaNgay'])){
+            // Tiếp tục xử lý logic tại đây
+            if (isset($_POST['muaNgay'])) {
                 $so_luong = $_POST['so_luong'];
                 include ("./view/thanhtoan.php");
                 break;
             }
             include ('./view/giohang.php');
             break;
-//-- THANH TOÁN
-            case 'thanh_toan':
-                include ("./view/thanhtoan.php");
-                break;
+        //-- THANH TOÁN
+        case 'thanh_toan':
+            include ("./view/thanhtoan.php");
+            break;
         default:
             include ("view/home.php");
             break;
