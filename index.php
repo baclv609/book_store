@@ -232,7 +232,7 @@ if (isset($_GET["act"])) {
             include ('./view/giohang.php');
             break;
         case 'add_to_card':
-           
+        //    theem gior hangf
             if (isset($_POST['submit']) && ($_POST['submit'])) { 
                 $product_id = $_POST['id'];
                 $gia = $_POST['gia'];
@@ -242,7 +242,9 @@ if (isset($_GET["act"])) {
             }
             $gioHang = select_1_sach();
             $tongGia = tong_gia();
+
             if(isset($_POST['muaNgay'])){
+                $so_luong = $_POST['so_luong'];
                 include ("./view/thanhtoan.php");
                 break;
             }
