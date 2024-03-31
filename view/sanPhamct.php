@@ -69,9 +69,8 @@
                     <div class="flex mb-4 items-center">
                         <div class="mr-4">
                             <?php echo '<input type="hidden" name="gia" value="' . $sanPhamCt["gia"] . '" readonly > 
-                         <span class="hidden" value="' . $sanPhamCt["gia"] . '" id="gia_bien_the"
-                            onchange="myFunction()"></span>
-                        <!-- <span class=" text-gray-700 ">Giá:</span> -->
+                         <input class="text" value="' . $sanPhamCt["gia"] . '" id="gia_bien_the"
+                            onchange="myFunction()"></input>
                         <span class="text-[#FF0000] text-[24px] font-bold" id="gia_sau_bien_the">
                             ' . $sanPhamCt["gia"] . '.000 đ
                         </span> '; ?>
@@ -186,7 +185,6 @@
         <!--  -->
         <div class="grid md:grid-cols-3 lg:grid-cols-4  grid-cols-2 gap-4">
 
-            <!-- items 1-->
             <?php
             foreach ($sach_cungLoai as $key => $value) {
                 # code...
@@ -235,14 +233,9 @@
 <script>
     var y;
     function myFunction() {
-        console.log("hello");
-        var x = document.getElementById("loai_bia").value;
+        var x = parseFloat(document.querySelector('input[name="loai_bia"]:checked').value);
+        y = parseFloat(document.getElementById("gia_bien_the").value);
+        document.getElementById("gia_sau_bien_the").innerHTML = y + x + ".000 đ";
 
-        y = document.getElementById("gia_bien_the").value; // Gán một giá trị cho biến y toàn cục
-        document.getElementById("gia_sau_bien_the").innerHTML = y + x;
-        console.log(y + x);
-
-        var selectedValue = document.querySelector('input[name="loai_bia"]:checked').value;
-        console.log(selectedValue);
     }
 </script>

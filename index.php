@@ -213,10 +213,12 @@ if (isset($_GET["act"])) {
             session_unset();
             header("Location: index.php");
             break;
-        //-- GIỎ HÀNG
+
+
+        //GIỎ HÀNG
         case 'giohang':
-            $gioHang = select_1_sach();
-            $tongGia = tong_gia();
+            $gioHang = select_1_sach($_SESSION['user']['id']);
+            $tongGia = tong_gia($_SESSION['user']['id']);
             include ('./view/giohang.php');
             break;
         case 'deleteGioHang':
@@ -224,8 +226,8 @@ if (isset($_GET["act"])) {
                 $id = $_GET["id"];
                 delete_gio_hang($id);
             }
-            $gioHang = select_1_sach();
-            $tongGia = tong_gia();
+            $gioHang = select_1_sach($_SESSION['user']['id']);
+            $tongGia = tong_gia($_SESSION['user']['id']);
 
             break;
         case 'add_to_card':
@@ -233,9 +235,12 @@ if (isset($_GET["act"])) {
                 $product_id = $_POST['id'];
                 $gia = $_POST['gia'];
                 $so_luong = $_POST['so_luong'];
+                $loai_bia = $_POST['loai_bia'];
 
+                echo'product_id'.$product_id.'gia'.$gia.'so_luong'.$so_luong.'loai_bia'.$loai_bia;
+                die;
                 // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
-                $gioHang = select_1_sach();
+                $gioHang = select_1_sach($_SESSION['user']['id']);
 
                 $product_exists = false;
                 foreach ($gioHang as $item) {
@@ -248,12 +253,12 @@ if (isset($_GET["act"])) {
                 }
 
                 if (!$product_exists) {
-                    add_gio_hang($product_id, $so_luong, $gia);
+                    add_gio_hang($_SESSION['user']['id'], $product_id, $so_luong, $gia);
                 }
             }
 
-            $gioHang = select_1_sach();
-            $tongGia = tong_gia();
+            $gioHang = select_1_sach($_SESSION['user']['id']);
+            $tongGia = tong_gia($_SESSION['user']['id']);
 
             // Tiếp tục xử lý logic tại đây
             if (isset($_POST['muaNgay'])) {

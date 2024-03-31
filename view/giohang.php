@@ -13,9 +13,10 @@
                                         <th class="text-left font-semibold">Giá</th>
                                         <th class="text-left font-semibold">Số lượng</th>
                                         <th class="text-left font-semibold">Thành tiền</th>
-                                        <th class="text-left font-semibold">#</th>
+                                        <th class="text-left font-semibold ">#</th>
                                     </tr>
                                 </thead>
+                                
                                 <tbody>
                                     <?php
                                     foreach ($gioHang as $key => $value) {
@@ -25,7 +26,7 @@
                                                      <div class="flex items-center">
                                                          <img class="h-16 w-16 mr-4" src="' . $hinh . '"
                                                              alt="Product image">
-                                                         <span class="font-semibold w-[200px]">' . $value['ten'] . '</span>
+                                                         <span class="font-medium text-[14px] w-[200px] line-clamp-2">' . $value['ten'] . '</span>
                                                      </div>
                                                  </td>
                                                  <td class="py-4">' . $value['gia'] . '</td>
