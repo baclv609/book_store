@@ -198,42 +198,45 @@ if (isset($_GET["act"])) {
             session_unset();
             header("Location: index.php");
             break;
+//-- GIỎ HÀNG
         case 'giohang':
             $gioHang = select_1_sach();
+            $tongGia = tong_gia();
+
             include ('./view/giohang.php');
             break;
         case 'deleteGioHang':
+            if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
+                $id=$_GET["id"];
             delete_gio_hang($id);
+            }
             $gioHang = select_1_sach();
+            $tongGia = tong_gia();
+
 
             include ('./view/giohang.php');
             break;
         case 'add_to_card':
-            // session_start();
-            // ob_start();
-            // if (!isset($_SESSION['myCart'])) {
-            //     $_SESSION['myCart'] = array();
-            // }
-            if (isset($_POST['submit']) && ($_POST['submit'])) {
-                print_r($_POST['submit']);
-                //lấy giá trị
-                // $hinhAnh = $_FILES['hinhAnh'];
+           
+            if (isset($_POST['submit']) && ($_POST['submit'])) { 
                 $product_id = $_POST['id'];
                 $gia = $_POST['gia'];
                 $so_luong = $_POST['so_luong'];
-                print_r([$product_id, $gia, $so_luong]);
-                add_gio_hang($product_id, $so_luong, $gia);
-                //tạo mảng con
-                // $sp = array($ten, $gia, $so_luong);
-                // add vàogior hàng
-                // $_SESSION['myCart'][] = $sp;
-                // array_push($_SESSION['myCart'],$sp);
-
-                // header('location: index.php?act=giohang');
+                // print_r([$product_id, $gia, $so_luong]);
+                add_gio_hang($product_id, $so_luong, $gia); 
             }
             $gioHang = select_1_sach();
+            $tongGia = tong_gia();
+            if(isset($_POST['muaNgay'])){
+                include ("./view/thanhtoan.php");
+                break;
+            }
             include ('./view/giohang.php');
             break;
+//-- THANH TOÁN
+            case 'thanh_toan':
+                include ("./view/thanhtoan.php");
+                break;
         default:
             include ("view/home.php");
             break;

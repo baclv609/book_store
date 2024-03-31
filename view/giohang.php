@@ -92,12 +92,16 @@
 
     <div class="cart-summary">
         <?php
-        //   foreach ($gioHang as  $value) {
-        echo '<h3>Tổng số tiền :' . $value['thanhtien'] . '+ </h3>';
-        //   }   
+          foreach ($tongGia as  $value) {
+           extract($tongGia);
+        //    print_r($tongGia);
+        echo '<h3>Tổng số tiền :' . $value['tong'] . '</h3>';
+          }   
         ?>
 
-        <button>thanh toán</button>
+        <form action="index.php?act=thanh_toan" method="post">
+            <input type="submit" value="THANH TOÁN" class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 ">
+        </form>
     </div>
 
 

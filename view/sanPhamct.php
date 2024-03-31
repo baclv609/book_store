@@ -11,9 +11,10 @@
                     </div>
                     <div class="flex -mx-2 mb-4">
                         <div class="w-1/2 px-2">
-                            <button
+                            <input type="submit" name="muaNgay" value="Mua Ngay"  class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 ">
+                            <!-- <button
                                 class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 ">Mua
-                                ngay</button>
+                                ngay</button> -->
                         </div>
                         <div class="w-1/2 px-2">
                             <input type="submit" name="submit" value="Thêm vào giỏ Hàng"  class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300">
@@ -126,7 +127,7 @@
                     <div class="mb-4"><span class="font-bold text-gray-700 ">Số Lượng:</span>
                         <input type="number" name="so_luong" value="so_luong">
                         <?php
-                        print_r($sanPhamCt);
+                        // print_r($sanPhamCt);
                         ?>
                     </div>
                     <div>
