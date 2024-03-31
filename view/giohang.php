@@ -66,7 +66,7 @@
                     <form action="them" method="post">
                      <tr class="bg-white border-b px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                      <td scope="row" class="px-6 py-4" ><input type="text" name="ten" value="' . $value['ten'] . '"></td>
-                     <td scope="row" class="px-6 py-4" ><input type="text" name="hinhAnh" value="' . $value['hinhAnh'] . '"><img src="' . $hinh . '" style="width: 110px;" alt="loading..."></td>
+                     <td scope="row" class="px-6 py-4" ><img src="' . $hinh . '" style="width: 110px;" alt="loading..."></td>
                      <td scope="row" class="px-6 py-4" ><input type="text" name="gia" value="' . $value['gia'] . '"></td>
                      <td scope="row" class="px-6 py-4" ><input type="text" name="so_luong" value="' . $value['so_luong'] . '"></td>
                      <td scope="row" class="px-6 py-4" ><input type="text" name="thanhtien" value="' . $value['thanhtien'] . '"></td>
