@@ -37,10 +37,12 @@ function delete_sach($id)
 }
 function list_sach($danh_muc_id, $searchSp, $tacGia_id)
 {
-    $sql = "SELECT products.id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
+    $sql = "SELECT tac_gia.id as idig, tac_gia.name, products.id , products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
     FROM products 
     JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
-    JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id WHERE 1";
+    JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id
+    JOIN produt_tac_gia ON produt_tac_gia.product_id = products.id
+    JOIN tac_gia ON produt_tac_gia.tac_gia_id = tac_gia.id WHERE 1";
 
     if ($searchSp != "") {
         $sql .= " AND products.ten LIKE '%" . $searchSp . "%'";
@@ -50,8 +52,8 @@ function list_sach($danh_muc_id, $searchSp, $tacGia_id)
         $sql .= " AND products.danh_muc_id = " . $danh_muc_id;
     }
 
-    if ($tacGia_id > 0) {
-        // $sql .= " AND products.tacGia_id = " . $tacGia_id;
+    if ($tacGia_id ) {
+        $sql .= " AND tac_gia.id IN ($tacGia_id) " ;
     }
 
     // Sort the results by product ID in descending order
@@ -63,7 +65,19 @@ function list_sach($danh_muc_id, $searchSp, $tacGia_id)
     // Return the list of products
     return $listSach;
 }
-
+// function loc_tacgia($tacGia_id){
+//     $sql = "SELECT tac_gia.name, products.id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
+//     FROM products 
+//     JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
+//     JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id
+//     JOIN produt_tac_gia ON produt_tac_gia.product_id = products.id
+//     JOIN tac_gia ON produt_tac_gia.tac_gia_id = tac_gia.id WHERE 1";
+//     if ($tacGia_id = 'produt_tac_gia.tac_gia_id') {
+//         $sql .= " AND produt_tac_gia.tac_gia_id = " . $tacGia_id;
+//     }
+//     $loc_tacgia = pdo_query($sql);
+//     return $loc_tacgia;
+// }
 function list_sach_flashSale_home()
 {
     // SQL query to select the necessary data from the 'products' table and join it with other related tables
@@ -189,4 +203,5 @@ function list_tacgia_sach($id)
     $tg_spct = pdo_query($sql);
     return $tg_spct;
 }
+
 ?>
