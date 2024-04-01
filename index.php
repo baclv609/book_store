@@ -239,25 +239,22 @@ if (isset($_GET["act"])) {
                 $so_luong = $_POST['so_luong'];
                 // $loai_bia = $_POST['loai_bia'];
                 $selectedLoaiBia = $_POST['loai_bia'];
-                echo $selectedLoaiBia;
-                $selectedLoaiBia = trim($selectedLoaiBia, "[]"); // Loại bỏ các ký tự "[" và "]"
-                $arr = explode(",", $selectedLoaiBia);
-                echo "<pre>";
-                print_r($arr);
-                die;
-                // print_r($selectedLoaiBia);
-                if (is_array($arr)) {
-                    echo "Loại bìa đã chọn 1: ";
-
-                    if (isset($arr[1])) {
-                        echo $arr[1];
+                $loai_bia = "";
+                if (empty($selectedLoaiBia)) {
+                    $selectedLoaiBia = trim($selectedLoaiBia, "[]"); // Loại bỏ các ký tự "[" và "]"
+                    $arr = explode(",", $selectedLoaiBia);
+                    if (is_array($arr)) {
+                        if (isset($arr[1])) {
+                            $loai_bia = $arr[1];
+                        } else {
+                            $loai_bia = '';
+                        }
                     } else {
-                        echo "Không có lựa chọn nào được chọn.";
+                        $loai_bia = '';
                     }
                 } else {
-                    echo "Loại bìa đã chọn 2: " . $selectedLoaiBia;
+                    $loai_bia = '';
                 }
-                die;
                 if (isset($_SESSION['user']['id'])) {
                     // Người dùng đã đăng nhập, cho phép thêm mới vào giỏ hàng
                     $gioHang = select_1_sach($_SESSION['user']['id']);
@@ -271,7 +268,8 @@ if (isset($_GET["act"])) {
                             break;
                         }
                     }
-
+                    echo "loai_bia", $loai_bia;
+                    die;
                     if (!$product_exists) {
                         add_gio_hang($_SESSION['user']['id'], $product_id, $so_luong, $gia);
                     }
