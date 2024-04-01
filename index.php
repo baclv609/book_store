@@ -259,11 +259,9 @@ if (isset($_GET["act"])) {
                 $product_id = $_POST['id'];
                 $gia = $_POST['gia'];
                 $so_luong = $_POST['so_luong'];
-                // $loai_bia = $_POST['loai_bia'];
                 $selectedLoaiBia = $_POST['loai_bia'];
                 $loai_bia = "";
                 if (isset($selectedLoaiBia)) {
-                    // echo $selectedLoaiBia; die;
                     $selectedLoaiBia = trim($selectedLoaiBia, "[]"); // Loại bỏ các ký tự "[" và "]"
                     $arr = explode(",", $selectedLoaiBia);
                     if (is_array($arr)) {
@@ -288,7 +286,7 @@ if (isset($_GET["act"])) {
                             $product_exists = true;
                             $item['so_luong'] += $so_luong;
 
-                            update_SanPham_Da_co_cart($item['so_luong'], $item['id_product'], $loai_bia, $gia);
+                            update_SanPham_Da_co_cart($_SESSION['user']['id'], $item['so_luong'], $item['id_product'], $loai_bia, $gia);
                             break;
                         }
                     }
@@ -306,6 +304,10 @@ if (isset($_GET["act"])) {
             // Tiếp tục xử lý logic tại đây
             if (isset($_POST['muaNgay'])) {
                 $so_luong = $_POST['so_luong'];
+                $gioHang = select_1_sach($_SESSION['user']['id']);
+                $tongGia = tong_gia($_SESSION['user']['id']);
+                // var_dump($tongGia);
+
                 include ("./view/thanhtoan.php");
                 break;
             }
@@ -318,6 +320,8 @@ if (isset($_GET["act"])) {
             }
         //-- THANH TOÁN
         case 'thanh_toan':
+            $gioHang = select_1_sach($_SESSION['user']['id']);
+            $tongGia = tong_gia($_SESSION['user']['id']);
             include ("./view/thanhtoan.php");
             break;
 

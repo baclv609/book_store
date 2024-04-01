@@ -68,21 +68,20 @@
                             <hr class="my-2">
                             <div class="flex justify-between mb-2">
                                 <span class="font-semibold">
-                                    <h3>Tổng số tiền
+                                    <h3>Tổng số tiền :
                                 </span>
                                 <span class="font-semibold">
                                     <?php
                                     foreach ($tongGia as $value) {
                                         extract($tongGia);
-                                        //    print_r($tongGia);
-                                        echo '' . $value['tong'] . '';
+                                        echo '' . $value['tong'] . ',000đ';
                                     }
                                     ?>
                                 </span>
                             </div>
                             <form action="index.php?act=thanh_toan" method="post">
                                 <input type="submit" value="THANH TOÁN"
-                                    class="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full">
+                                    class="bg-red-700 text-white py-2 px-4 rounded-lg mt-4 w-full">
                             </form>
                         </div>
                     </div>

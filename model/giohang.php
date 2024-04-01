@@ -31,36 +31,15 @@ function tong_gia($id_user)
     $tongGia = pdo_query($sql);
     return $tongGia;
 }
-// function update_SanPham_Da_co_cart($so_luong, $id_product,$loai_bia)
-// {
-//     $sql = "UPDATE gio_hang_items SET so_luong='$so_luong' WHERE product_id =  $id_product AND loai_bia = $loai_bia";
-//     // echo $sql;
-//     // die;
-//     pdo_query($sql);
-// }
-function Check_IDProduct_loai_bia($id_product, $loai_bia)
+function update_SanPham_Da_co_cart($id_user, $so_luong, $id_product, $loai_bia, $gia)
 {
-    $sql = "SELECT COUNT(*) AS count FROM gio_hang_items WHERE product_id = ? AND loai_bia = ?";
-    return pdo_query_value($sql, $id_product, $loai_bia);
-}
-function update_SanPham_Da_co_cart($so_luong, $id_product, $loai_bia, $gia)
-{
-    // $sql = "SELECT COUNT(*) AS count FROM gio_hang_items WHERE product_id = ? AND loai_bia = ?";
-    // $count = pdo_query_value($sql, $id_product, $loai_bia);
-    // echo $count;
-    // if ($count > 0) {
-    // Đã có bản ghi với product_id và loai_bia tương ứng, thực hiện update số lượng
-    $sql = "UPDATE gio_hang_items SET so_luong = $so_luong WHERE product_id = $id_product AND loai_bia = '$loai_bia'";
+    $sql = "UPDATE gio_hang_items 
+    SET so_luong = $so_luong 
+    WHERE product_id = $id_product 
+    AND loai_bia = '$loai_bia' 
+    AND gio_hang_items.user_id = $id_user";
     // echo $sql;
     // die;
     pdo_execute($sql);
-    // }
-    // if ($count <= 0) {
-    //     // Chưa có bản ghi với product_id và loai_bia tương ứng, thực hiện thêm mới dữ liệu
-    //     $id_user = $_SESSION['user']['id']; // Lấy id_user từ session hoặc tham số truyền vào
-    //     add_gio_hang($id_user, $id_product, $so_luong - 1, $gia, $loai_bia);
-    //     // echo $sql;
-    //     // die;
-    // }
 }
 ?>
