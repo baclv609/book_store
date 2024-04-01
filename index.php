@@ -230,7 +230,7 @@ if (isset($_GET["act"])) {
             }
             $gioHang = select_1_sach($_SESSION['user']['id']);
             $tongGia = tong_gia($_SESSION['user']['id']);
-
+            include ('./view/giohang.php');
             break;
         case 'add_to_card':
             if (isset($_POST['submit']) && $_POST['submit']) {
