@@ -7,17 +7,19 @@
                     <div class="h-[460px] w-[428px] rounded-lg hover:shadow-md mb-4 flex justify-center items-center">
                         <img class="max-h-[460px] max-w-[428px]  object-cover"
                             src="./uploads/<?php echo $sanPhamCt["img"]; ?>" alt="Product Image">
-                            <input type="hidden" name="hinhAnh" value="./uploads/<?php echo $sanPhamCt["img"]; ?>" >
+                        <input type="hidden" name="hinhAnh" value="./uploads/<?php echo $sanPhamCt["img"]; ?>">
                     </div>
                     <div class="flex -mx-2 mb-4">
                         <div class="w-1/2 px-2">
-                            <input type="submit" name="muaNgay" value="Mua Ngay"  class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 ">
+                            <input type="submit" name="muaNgay" value="Mua Ngay"
+                                class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 ">
                             <!-- <button
                                 class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 ">Mua
                                 ngay</button> -->
                         </div>
                         <div class="w-1/2 px-2">
-                            <input type="submit" name="submit" value="Thêm vào giỏ Hàng"  class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300">
+                            <input type="submit" name="submit" value="Thêm vào giỏ Hàng"
+                                class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300">
                             <?php
                             // print_r($sanPhamCt) ;
                             // extract($sanPhamCt);
@@ -67,9 +69,8 @@
                     <div class="flex mb-4 items-center">
                         <div class="mr-4">
                             <?php echo '<input type="hidden" name="gia" value="' . $sanPhamCt["gia"] . '" readonly > 
-                         <span class="hidden" value="' . $sanPhamCt["gia"] . '" id="gia_bien_the"
-                            onchange="myFunction()"></span>
-                        <!-- <span class=" text-gray-700 ">Giá:</span> -->
+                         <input class="text" value="' . $sanPhamCt["gia"] . '" id="gia_bien_the"
+                            onchange="myFunction()"></input>
                         <span class="text-[#FF0000] text-[24px] font-bold" id="gia_sau_bien_the">
                             ' . $sanPhamCt["gia"] . '.000 đ
                         </span> '; ?>
@@ -84,51 +85,48 @@
                         ?>
 
                     </div>
+                    <!-- <div class="mb-4">
+                        <input type="radio" id="html" name="fav_language" value="HTML">
+                    </div> -->
 
-                    <div class="mb-4">
-                        <span class="font-bold text-gray-700 ">Select Color:</span>
-                        <div class="flex items-center mt-2">
-                            <button class="w-6 h-6 rounded-full bg-gray-800 mr-2"></button>
-                            <button class="w-6 h-6 rounded-full bg-red-500 dark:bg-red-700 mr-2"></button>
-                            <button class="w-6 h-6 rounded-full bg-blue-500 dark:bg-blue-700 mr-2"></button>
-                            <button class="w-6 h-6 rounded-full bg-yellow-500 dark:bg-yellow-700 mr-2"></button>
-                        </div>
-                    </div>
+
+
                     <div class="mb-4">
                         <span class="font-bold text-gray-700 ">Loại Hàng:</span>
                         <div class="flex items-center mt-2">
-                            <!-- <button
-                            class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">S</button> -->
-                            <div><select id="mySelect" onchange="myFunction2()">
-                                    <option value="Audi">Audi</option>
-                                    <option value="BMW">BMW</option>
-                                    <option value="Mercedes">Mercedes</option>
-                                    <option value="Volvo">Volvo</option>
-                                </select>
+                            <div>
                                 <?php
-                                foreach ($bien_the_bia as $Check) {
-                                    extract($Check);
+                                if (!empty($bien_the_bia)) {
+                                    foreach ($bien_the_bia as $Check) {
+                                        extract($Check);
 
-                                    echo '<label>';
-                                    echo '<input type="radio" name="loai_bia" value="' . $Check['muc_tang'] . '" onchange="myFunction()"';
-
-                                    if ($Check['muc_tang'] == 0) {
-                                        echo ' checked="checked"';
+                                        echo '<label>';
+                                        echo '<input type="radio" name="loai_bia" value="' . $Check['muc_tang'] . ',' . $Check['loai_bia'] . '" onchange="myFunction()"';
+                                        if ($Check['muc_tang'] == 0) {
+                                            echo ' checked="checked"';
+                                        }
+                                        echo ' class="bg-gray-300 text-gray-700 dark:text-white py-2 ml-3 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">';
+                                        echo $loai_bia;
+                                        echo '</label>';
                                     }
+                                } else {
+                                    echo "<input type='hidden' name='loai_bia' value=''>";
 
-                                    echo ' class="bg-gray-300 text-gray-700 dark:text-white py-2 ml-3 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">';
-                                    echo $loai_bia;
-                                    echo '</label>';
                                 }
                                 ?>
                             </div>
                         </div>
                     </div>
-                    <div class="mb-4"><span class="font-bold text-gray-700 ">Số Lượng:</span>
-                        <input type="number" name="so_luong" value="so_luong">
-                        <?php
-                        // print_r($sanPhamCt);
-                        ?>
+                    <div class="mb-4">
+                        <span class="font-bold text-gray-700">Số Lượng:</span>
+                        <div class="flex items-center">
+                            <span
+                                class="border bg-white cursor-pointer rounded-md py-2 px-4 mr-2 decrease-quantity">-</span>
+                            <input type="number" name="so_luong" value="1" min="0" class="text-center w-8 quantity"
+                                readonly>
+                            <span
+                                class="border bg-white cursor-pointer rounded-md py-2 px-4 ml-2 increase-quantity">+</span>
+                        </div>
                     </div>
                     <div>
                         <span class="font-bold text-gray-700 ">Mô tả:</span>
@@ -141,14 +139,39 @@
         </div>
     </div>
 </div>
+<script>
+    // Lấy tất cả các nút giảm số lượng
+    const decreaseButtons = document.querySelectorAll('.decrease-quantity');
+    // Lấy tất cả các nút tăng số lượng
+    const increaseButtons = document.querySelectorAll('.increase-quantity');
+    // Lấy input số lượng
+    const quantityInput = document.querySelector('input[name="so_luong"]');
 
+    // Gắn sự kiện click cho nút giảm số lượng
+    decreaseButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            let quantity = parseInt(quantityInput.value);
+            if (quantity > 0) {
+                quantity--;
+                quantityInput.value = quantity;
+            }
+        });
+    });
+
+    // Gắn sự kiện click cho nút tăng số lượng
+    increaseButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            let quantity = parseInt(quantityInput.value);
+            quantity++;
+            quantityInput.value = quantity;
+        });
+    });
+</script>
 
 <!-- bình luận form -->
 <section class="mt-5 w-[800px] mx-auto" id="binhluan">
     <?php
     extract($sanPhamCt);
-    // echo $id;
-    // die;
     ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
@@ -169,7 +192,6 @@
         <!--  -->
         <div class="grid md:grid-cols-3 lg:grid-cols-4  grid-cols-2 gap-4">
 
-            <!-- items 1-->
             <?php
             foreach ($sach_cungLoai as $key => $value) {
                 # code...
@@ -218,14 +240,14 @@
 <script>
     var y;
     function myFunction() {
-        console.log("hello");
-        var x = document.getElementById("loai_bia").value;
+        var x = parseFloat(document.querySelector('input[name="loai_bia"]:checked').value);
+        console.log("x", x);
+        // const arr = JSON.parse(document.querySelector('input[name="loai_bia"]:checked').value);
+        // const firstElement = arr.shift();
 
-        y = document.getElementById("gia_bien_the").value; // Gán một giá trị cho biến y toàn cục
-        document.getElementById("gia_sau_bien_the").innerHTML = y + x;
-        console.log(y + x);
+        // console.log(firstElement)
+        y = parseFloat(document.getElementById("gia_bien_the").value);
+        document.getElementById("gia_sau_bien_the").innerHTML = y + x + ".000 đ";
 
-        var selectedValue = document.querySelector('input[name="loai_bia"]:checked').value;
-        console.log(selectedValue);
     }
 </script>

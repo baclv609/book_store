@@ -198,13 +198,10 @@ if (isset($_GET["act"])) {
                 $filename = time() . $filename;
                 $dir = "./uploads/$filename";
 
-                // Di chuyển tệp tin hình ảnh tải lên vào thư mục uploads
                 move_uploaded_file($hinhAnh["tmp_name"], $dir);
 
-                // Gọi hàm update_taikhoan để cập nhật thông tin tài khoản
                 update_taikhoan($id, $name, $filename, $sđt, $email, $password, $dia_chi);
 
-                // Cập nhật lại thông tin người dùng trong phiên làm việc
                 $_SESSION['user'] = checkUser($email, $password);
 
                 // Chuyển hướng người dùng về trang edittk (chỉnh sửa tài khoản)
@@ -237,21 +234,25 @@ if (isset($_GET["act"])) {
             break;
         //-- GIỎ HÀNG
         case 'giohang':
-            $gioHang = select_1_sach();
-            $tongGia = tong_gia();
+            if (isset($_SESSION['user'])) {
 
-            include ('./view/giohang.php');
+                $gioHang = select_1_sach($_SESSION['user']['id']);
+                $tongGia = tong_gia($_SESSION['user']['id']);
+                include ('./view/giohang.php');
+            } else {
+                echo "Bạn cần đăng nhập để xem giỏ hàng của bạn";
+            }
             break;
         case 'deleteGioHang':
             if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
                 $id = $_GET["id"];
                 delete_gio_hang($id);
+                $id = $_GET["id"];
+                delete_gio_hang($id);
             }
-            $gioHang = select_1_sach();
-            $tongGia = tong_gia();
+            $gioHang = select_1_sach($_SESSION['user']['id']);
+            $tongGia = tong_gia($_SESSION['user']['id']);
 
-
-            include ('./view/giohang.php');
             break;
         case 'add_to_card':
             //    theem gior hangf

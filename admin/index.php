@@ -23,6 +23,8 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                     $name = $_POST["nameDM"];
                     insert_danhmuc($name);
                     // $thongBao = "Thêm thành công";
+
+                    // echo '<script>window.location.reload();</script>';
                 }
                 include ("danhMuc/add.php");
                 break;
@@ -57,10 +59,6 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 if (isset($_POST['update'])) {
                     $id = $_POST["id"];
                     $name = $_POST["namedm"];
-                    // echo  $id;
-                    // echo  $name;
-                    // print_r([$id,$name]);
-                    // die();
                     update_danhmuc($id, $name);
                 }
                 $listDm = list_danhmuc("");
@@ -69,7 +67,6 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
 
             // Nha xuat ban
             case 'addNxb':
-                // kieerm tra xem nngười dùng có click nút add hay ko 
                 if (isset($_POST['themMoi'])) {
                     $name = $_POST["nameNxb"];
                     insert_NhaXuatBan($name);
@@ -99,8 +96,6 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
                     $id = $_GET["id"];
                     $Nxb = edit_NhaXuatBan($id);
-                    //  print_r($dm);
-                    // die;
                 }
                 include ("NXB/updateNxb.php");
                 break;
@@ -131,8 +126,6 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                     $searchTG = "";
                 }
                 $listTg = list_tac_gia($searchTG);
-                // print_r($listDm);
-                // die();
                 include ("tacGia/listTacGia.php");
                 break;
             case 'deleteTg':
@@ -147,8 +140,6 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
                     $id = $_GET["id"];
                     $tg = edit_tac_gia($id);
-                    //  print_r($tg);
-                    // die;
                 }
                 include ("tacGia/updateTg.php");
                 break;
@@ -156,8 +147,6 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 if (isset($_POST['updateTg'])) {
                     $id = $_POST["id"];
                     $name = $_POST["nametg"];
-                    // echo $name;
-                    // die();
                     update_tac_gia($id, $name);
                 }
                 $listTg = list_tac_gia("");
@@ -212,11 +201,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                     $target_file = $target_dir . basename($_FILES["img"]["name"]);
 
                     move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
-                    // Tiến hành xử lý dữ liệu và lưu vào cơ sở dữ liệu
                     $sachId = insert_sach($tenSanPham, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa, $created_at);
-                    // echo $sachId;
-                    // die;
-
                     // Lưu thông tin về tác giả
                     if (!empty($_POST['tacGia_id'])) {
                         $tacGiaIds = $_POST['tacGia_id'];
@@ -226,7 +211,6 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                         }
                     }
                 }
-
                 $listTg = list_tac_gia("");
                 $listNxb = list_NhaXuatBan("");
                 $listDm = list_danhmuc("");
@@ -266,7 +250,6 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                             insert_sach_tac_gia($id, $tacGiaId);
                         }
                     }
-
                     $hinhAnh = $_FILES["img"];
                     $filename = $hinhAnh["name"];
 
@@ -298,7 +281,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 break;
 
             // thêm bìa sách
-            case 'BiaSach': 
+            case 'BiaSach':
                 if (isset($_GET['id'])) {
                     $id = $_GET['id'];
                 }

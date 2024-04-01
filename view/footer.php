@@ -57,7 +57,7 @@
 
         <hr class="my-4" />
         <div class="text-center text-sm leading-4 text-[#424242] pb-4">
-            Bản quyền thuộc về MewTheme. Powered by Haravan
+            Bản quyền thuộc về Nhóm 8. Fpoly
         </div>
     </div>
 </footer>

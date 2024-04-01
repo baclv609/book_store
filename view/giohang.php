@@ -1,113 +1,117 @@
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
+<div>
+    <section>
+        <div class="bg-gray-100 py-8 w-full">
+            <div class="container-content mx-auto px-4">
+                <h1 class="text-2xl font-semibold mb-4">Giỏ Hàng Của Bạn</h1>
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="md:w-3/4">
+                        <div class="bg-white rounded-lg shadow-md p-6 mb-4">
+                            <table class="w-full">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left font-semibold">Sản phẩm</th>
+                                        <th class="text-left font-semibold">Giá</th>
+                                        <th class="text-left font-semibold">Số lượng</th>
+                                        <th class="text-left font-semibold">Thành tiền</th>
+                                        <th class="text-left font-semibold ">#</th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    <?php
+                                    foreach ($gioHang as $key => $value) {
+                                        $hinh = "./uploads/" . $value['hinhAnh'];
+                                        echo '      <tr>
+                                                 <td class="py-4">
+                                                     <div class="flex items-center">
+                                                         <img class="h-16 w-16 mr-4" src="' . $hinh . '"
+                                                             alt="Product image">
+                                                         <span class="font-medium text-[14px] w-[200px] line-clamp-2">' . $value['ten'] . '</span>
+                                                     </div>
+                                                 </td>
+                                                 <td class="py-4">' . $value['gia'] . '</td>
+                                                 <td class="py-4">
+                                                    <div class="flex items-center">
+                                                        <button class="border rounded-md py-2 px-4 mr-2 decrease-quantity">-</button>
+                                                        <span class="text-center w-8 quantity">' . $value['so_luong'] . '</span>
+                                                     <button class="border rounded-md py-2 px-4 ml-2 increase-quantity">+</button>
+                                             </div>
+                                                 </td>
+                                                 <td class="py-4">' . $value['thanhtien'] . '</td>
+                                                 <td class="py-4"><a href="index.php?act=deleteGioHang&id=' . $value['id'] . '" onclick="return confirm(\'Bạn muốn xóa ?\')"><input type="button" value="Xóa"  class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"></a></td>
+                                                </tr> ';
+                                    }
+                                    ?>
+                                    <!-- More product rows -->
+                                </tbody>
+                            </table>
+                        </div>
 
-    .container {
-        max-width: 1200px;
-        margin: 20px auto;
-        padding: 20px;
-        /* border: 1px solid #ccc; */
-    }
-</style>
-</head>
-
-<body>
-    <div class="container">
-        <h2>Giỏ Hàng Của Bạn</h2>
-
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-5">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                    <th scope="col" class="px-6 py-3">
-                        Tên sản phẩm
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Hình ảnh sản phẩm
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Giá Sản phẩm
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Số Lượng
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Thành tiền
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        xóa
-                    </th>
-                </tr>
-            </thead>
-
-            <tbody class="hover:bg-gray-100">
-                <!-- <tr class="bg-white border-b px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <td scope="row" class="px-6 py-4" ></td>
-                            <td class="px-3 py-3" name="hinhAnh"><img src="' . $hinh . '" style="width: 110px;" alt="loading...">' . $value['hinhAnh'] . '</td>
-                            <td class="px-6 py-4" name="gia">' . $value['gia'] . '</td>
-                            
-                            <td class="px-6 py-4"><form action="" method="post"><input type="number" name="so_luong" value="' . $value['so_luong'] . '"></form></td>                   
-                      
-                            <td class="px-6 py-4" name="thanhtien">' . $value['thanhtien'] . '</td>  
-                            <td class="px-6 py-4"> <a href="index.php?act=deleteGioHang&id=' . $value['id'] . '" onclick="return confirm(\'Bạn muốn xóa ?\')"><input type="button" value="Xóa"  class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"></a></td>
-                            </td>  
-
-                        </tr> -->
-                <?php
-                foreach ($gioHang as $key => $value) {
-                    // echo '<pre>';
-                    // print_r($gioHang);
-                    // echo '</pre>';
-                    $hinh = "../uploads/" . $value['hinhAnh'];
-
-                    echo '
-                    <form action="them" method="post">
-                     <tr class="bg-white border-b px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                     <td scope="row" class="px-6 py-4" ><input type="text" name="ten" value="' . $value['ten'] . '"></td>
-                     <td scope="row" class="px-6 py-4" ><img src="' . $hinh . '" style="width: 110px;" alt="loading..."></td>
-                     <td scope="row" class="px-6 py-4" ><input type="text" name="gia" value="' . $value['gia'] . '"></td>
-                     <td scope="row" class="px-6 py-4" ><input type="text" name="so_luong" value="' . $value['so_luong'] . '"></td>
-                     <td scope="row" class="px-6 py-4" ><input type="text" name="thanhtien" value="' . $value['thanhtien'] . '"></td>
-                     <td class="px-6 py-4"> <a href="index.php?act=deleteGioHang&id=' . $value['id'] . '" onclick="return confirm(\'Bạn muốn xóa ?\')"><input type="button" value="Xóa"  class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"></a></td> 
-                       </tr>
-                       </form>
-                        ';
-                }
-                // session_start();
-                // if(isset($_SESSION['myCart'])){
-                //     echo '<pre>';
-                //      print_r($_SESSION['myCart']);
-                //     echo '</pre>';
-                //     var_dump($_SESSION['myCart']);
-                
-                // }
-                ?>
-
-
-            </tbody>
-        </table>
-    </div>
-
-    <div class="cart-summary">
-        <?php
-          foreach ($tongGia as  $value) {
-           extract($tongGia);
-        //    print_r($tongGia);
-        echo '<h3>Tổng số tiền :' . $value['tong'] . '</h3>';
-          }   
-        ?>
-
-        <form action="index.php?act=thanh_toan" method="post">
-            <input type="submit" value="THANH TOÁN" class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 ">
-        </form>
-    </div>
+                    </div>
+                    <div class="md:w-1/4">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <h2 class="text-lg font-semibold mb-4">Tổng</h2>
+                            <div class="flex justify-between mb-2">
+                                <span>Subtotal</span>
+                                <span>$19.99</span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span>Taxes</span>
+                                <span>$1.99</span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span>Shipping</span>
+                                <span>$0.00</span>
+                            </div>
+                            <hr class="my-2">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-semibold">
+                                    <h3>Tổng số tiền
+                                </span>
+                                <span class="font-semibold">
+                                    <?php
+                                    foreach ($tongGia as $value) {
+                                        extract($tongGia);
+                                        //    print_r($tongGia);
+                                        echo '' . $value['tong'] . '';
+                                    }
+                                    ?>
+                                </span>
+                            </div>
+                            <form action="index.php?act=thanh_toan" method="post">
+                                <input type="submit" value="THANH TOÁN"
+                                    class="bg-blue-500 text-white py-2 px-4 rounded-lg mt-4 w-full">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 
 
-    </div>
+<script>
+    const decreaseButtons = document.querySelectorAll('.decrease-quantity');
+    const increaseButtons = document.querySelectorAll('.increase-quantity');
 
+    decreaseButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const quantityElement = button.nextElementSibling;
+            let quantity = parseInt(quantityElement.textContent);
+            if (quantity > 0) {
+                quantity--;
+                quantityElement.textContent = quantity;
+            }
+        });
+    });
 
-</body>
-
-</html>
+    increaseButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const quantityElement = button.previousElementSibling;
+            let quantity = parseInt(quantityElement.textContent);
+            quantity++;
+            quantityElement.textContent = quantity;
+        });
+    });
+</script>
