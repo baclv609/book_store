@@ -5,8 +5,8 @@
         <div class="md:block col-span-3 hidden pr-3">
             <div class=" rounded-xl">
                 <div class="rounded-xl bg-white p-3 mb-4">
-                    <p class="mb-4 text-lg font-medium leading-6 my-2">Lọc giá</p>
-                    <form action="#">
+                    <!-- <p class="mb-4 text-lg font-medium leading-6 my-2">Lọc tác giả</p> -->
+                    <!-- <form action="#">
                         <div class="flex items-center mb-2">
                             <input id="default-radio-1" type="radio" value="" name="default-radio"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
@@ -29,6 +29,18 @@
                                 class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">500.000đ -
                                 1.000.000đ</label>
                         </div>
+                    </form> -->
+                    <form action="index.php?act=tim_tac_gia" method="post">
+                        <?php
+                        foreach ($listTg as $key => $value) {
+                            // print_r($listTg);
+                            echo '<input type="checkbox" name="tacGia_id[]" value="' . $value["id"] . '"> ' . $value["name"] . '<br>';
+                            echo '';
+                        }
+                        ?>
+                        <input type="submit" value="lọc theo tác giả" name="submit" style="color:red;">
+
+
                     </form>
 
                 </div>
@@ -53,16 +65,16 @@
                             }
                             ?>
                         </select>
-                        <select id="countries" name="tacGia_id"
+                        <!-- <select id="countries" name="tacGia_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
                             <option selected value="">Chọn Tác Giả</option>
                             <?php
-                            foreach ($listTg as $key => $value) {
-                                print_r($listTg);
-                                echo '<option value="' . $value["id"] . '">' . $value["name"] . '</option>';
-                            }
+                            // foreach ($listTg as $key => $value) {
+                            //     print_r($listTg);
+                            //     echo '<option value="' . $value["id"] . '">' . $value["name"] . '</option>';
+                            // }
                             ?>
-                        </select>
+                        </select> -->
                         <div class="relative w-full">
                             <input type="search" id="search-dropdown"
                                 class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
@@ -81,14 +93,20 @@
                     </div>
                 </form>
 
+                <form action="" method="post">
+                    
                 <div class="grid md:grid-cols-3 lg:grid-cols-4  grid-cols-2 gap-4">
-                    <!-- item 2 -->
-
-                    <?php
-                    foreach ($listSp as $key => $value) {
-                        # code...
-                        echo '<div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
+                    
+                        <!-- item 2 -->
+                        <?php
+                        foreach ($listSp as $key => $value) {
+                            # code...
+                            
+                            echo '<div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
                 <div>
+                
+                <input type="text" value="' . $value["idig"] . '">
+
                     <a href="index.php?act=sanphamct&idsp=' . $value["id"] . '" class="w-[190px] h-[190px] flex justify-center items-center"> <img src="./uploads/' . $value["img"] . '"
                     alt="loading" class="max-w-[190px] max-h-[190px]"></a>
                 </div>
@@ -106,17 +124,18 @@
                        </div>';
 
 
-                        if ($value["gia_sale"] && trim($value["gia_sale"]) !== '') {
-                            echo '<del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $value["gia_sale"] . '.000 đ</del>';
-                        }
+                            if ($value["gia_sale"] && trim($value["gia_sale"]) !== '') {
+                                echo '<del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $value["gia_sale"] . '.000 đ</del>';
+                            }
 
-                        echo '</div>
+                            echo '</div>
                             </div>
                         </div>';
-                    }
-                    ?>
+                        }
+                        ?>
 
                 </div>
+                </form>
                 <!-- <div class="mt-2 flex items-center">
                             <img src="../assets/image/categories_image/label_starstar.webp"
                                 class="w-[18px] h-[18px]" alt="">

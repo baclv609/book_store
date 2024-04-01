@@ -65,6 +65,28 @@ if (isset($_GET["act"])) {
             $listSp = list_sach($danh_muc_id, $searchSP, $tacGia_id);
             include ("view/sanpham.php");
             break;
+        //-- TÌM TÁC GIẢ TRANG SẢN PHẨM
+        case 'tim_tac_gia':
+            if (isset($_POST['submit'])) {
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    if (isset($_POST['tacGia_id']) && !empty($_POST['tacGia_id'])) {
+                        // print_r($_POST['tacGia_id']);
+                        // $authors = $_POST['tacGia_id'];
+                        // print_r($authors);
+                        // $danh_sach_tacgia = implode(",", $_POST['tacGia_id']);
+                        // print_r($danh_sach_tacgia);
+                        $tacgia = $_POST['tacGia_id'];
+                        $tacGia_id = implode(",",$tacgia );
+                        // print_r($tacGia_id);
+                    } else {
+                        $tacGia_id = "";
+                    }
+                    // $loc_tacgia = loc_tacgia($tacGia_id);
+                }
+            }
+            $listSp = list_sach("", "", $tacGia_id);
+            include ("view/sanpham.php");
+            break;
         case 'searchsp':
             if ((isset($_POST["submit"])) && ($_POST["submit"]) != "") {
                 $kyw = $_POST["kyw"];
@@ -213,7 +235,7 @@ if (isset($_GET["act"])) {
             session_unset();
             header("Location: index.php");
             break;
-//-- GIỎ HÀNG
+        //-- GIỎ HÀNG
         case 'giohang':
             $gioHang = select_1_sach();
             $tongGia = tong_gia();
@@ -222,8 +244,8 @@ if (isset($_GET["act"])) {
             break;
         case 'deleteGioHang':
             if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
-                $id=$_GET["id"];
-            delete_gio_hang($id);
+                $id = $_GET["id"];
+                delete_gio_hang($id);
             }
             $gioHang = select_1_sach();
             $tongGia = tong_gia();
@@ -232,28 +254,29 @@ if (isset($_GET["act"])) {
             include ('./view/giohang.php');
             break;
         case 'add_to_card':
-        //    theem gior hangf
-            if (isset($_POST['submit']) && ($_POST['submit'])) { 
+            //    theem gior hangf
+            if (isset($_POST['submit']) && ($_POST['submit'])) {
                 $product_id = $_POST['id'];
                 $gia = $_POST['gia'];
                 $so_luong = $_POST['so_luong'];
                 // print_r([$product_id, $gia, $so_luong]);
-                add_gio_hang($product_id, $so_luong, $gia); 
+                add_gio_hang($product_id, $so_luong, $gia);
             }
             $gioHang = select_1_sach();
             $tongGia = tong_gia();
 
-            if(isset($_POST['muaNgay'])){
+            if (isset($_POST['muaNgay'])) {
                 $so_luong = $_POST['so_luong'];
                 include ("./view/thanhtoan.php");
                 break;
             }
             include ('./view/giohang.php');
             break;
-//-- THANH TOÁN
-            case 'thanh_toan':
-                include ("./view/thanhtoan.php");
-                break;
+        //-- THANH TOÁN
+        case 'thanh_toan':
+            include ("./view/thanhtoan.php");
+            break;
+
         default:
             include ("view/home.php");
             break;
