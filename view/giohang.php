@@ -16,7 +16,6 @@
                                         <th class="text-left font-semibold ">#</th>
                                     </tr>
                                 </thead>
-                                
                                 <tbody>
                                     <?php
                                     foreach ($gioHang as $key => $value) {
@@ -26,7 +25,10 @@
                                                      <div class="flex items-center">
                                                          <img class="h-16 w-16 mr-4" src="' . $hinh . '"
                                                              alt="Product image">
-                                                         <span class="font-medium text-[14px] w-[200px] line-clamp-2">' . $value['ten'] . '</span>
+                                                             <div class="flex flex-col">
+                                                         <span class="font-medium text-[14px] w-[200px] line-clamp-2">' . $value['ten'] . '</span> 
+                                                        <p class="mt-1 text-[#929292] text-sm leading-4">' . $value['loai_bia'] . '</p>
+                                                        </div>
                                                      </div>
                                                  </td>
                                                  <td class="py-4">' . $value['gia'] . '</td>
