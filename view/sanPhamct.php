@@ -85,6 +85,10 @@
                         ?>
 
                     </div>
+                    <!-- <div class="mb-4">
+                        <input type="radio" id="html" name="fav_language" value="HTML">
+                    </div> -->
+
 
 
                     <div class="mb-4">
@@ -98,7 +102,7 @@
                                     extract($Check);
 
                                     echo '<label>';
-                                    echo '<input type="radio" name="loai_bia" value="' . $Check['muc_tang'] . '" onchange="myFunction()"';
+                                    echo '<input type="radio" name="loai_bia" value="' . $Check['muc_tang'] . ',' . $Check['loai_bia'] . '" onchange="myFunction()"';
                                     if ($Check['muc_tang'] == 0) {
                                         echo ' checked="checked"';
                                     }
@@ -234,6 +238,11 @@
     var y;
     function myFunction() {
         var x = parseFloat(document.querySelector('input[name="loai_bia"]:checked').value);
+        console.log("x", x);
+        // const arr = JSON.parse(document.querySelector('input[name="loai_bia"]:checked').value);
+        // const firstElement = arr.shift();
+
+        // console.log(firstElement)
         y = parseFloat(document.getElementById("gia_bien_the").value);
         document.getElementById("gia_sau_bien_the").innerHTML = y + x + ".000 đ";
 

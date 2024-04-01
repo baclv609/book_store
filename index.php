@@ -176,13 +176,10 @@ if (isset($_GET["act"])) {
                 $filename = time() . $filename;
                 $dir = "./uploads/$filename";
 
-                // Di chuyển tệp tin hình ảnh tải lên vào thư mục uploads
                 move_uploaded_file($hinhAnh["tmp_name"], $dir);
 
-                // Gọi hàm update_taikhoan để cập nhật thông tin tài khoản
                 update_taikhoan($id, $name, $filename, $sđt, $email, $password, $dia_chi);
 
-                // Cập nhật lại thông tin người dùng trong phiên làm việc
                 $_SESSION['user'] = checkUser($email, $password);
 
                 // Chuyển hướng người dùng về trang edittk (chỉnh sửa tài khoản)
@@ -217,9 +214,14 @@ if (isset($_GET["act"])) {
 
         //GIỎ HÀNG
         case 'giohang':
-            $gioHang = select_1_sach($_SESSION['user']['id']);
-            $tongGia = tong_gia($_SESSION['user']['id']);
-            include ('./view/giohang.php');
+            if (isset($_SESSION['user'])) {
+
+                $gioHang = select_1_sach($_SESSION['user']['id']);
+                $tongGia = tong_gia($_SESSION['user']['id']);
+                include ('./view/giohang.php');
+            } else {
+                echo "Bạn cần đăng nhập để xem giỏ hàng của bạn";
+            }
             break;
         case 'deleteGioHang':
             if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
@@ -231,34 +233,54 @@ if (isset($_GET["act"])) {
 
             break;
         case 'add_to_card':
-            if (isset($_POST['submit']) && ($_POST['submit'])) {
+            if (isset($_POST['submit']) && $_POST['submit']) {
                 $product_id = $_POST['id'];
                 $gia = $_POST['gia'];
                 $so_luong = $_POST['so_luong'];
-                $loai_bia = $_POST['loai_bia'];
-
-                echo'product_id'.$product_id.'gia'.$gia.'so_luong'.$so_luong.'loai_bia'.$loai_bia;
+                // $loai_bia = $_POST['loai_bia'];
+                $selectedLoaiBia = $_POST['loai_bia'];
+                echo $selectedLoaiBia;
+                $selectedLoaiBia = trim($selectedLoaiBia, "[]"); // Loại bỏ các ký tự "[" và "]"
+                $arr = explode(",", $selectedLoaiBia);
+                echo "<pre>";
+                print_r($arr);
                 die;
-                // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
-                $gioHang = select_1_sach($_SESSION['user']['id']);
+                // print_r($selectedLoaiBia);
+                if (is_array($arr)) {
+                    echo "Loại bìa đã chọn 1: ";
 
-                $product_exists = false;
-                foreach ($gioHang as $item) {
-                    if ($item['id_product'] == $product_id) {
-                        $product_exists = true;
-                        $item['so_luong'] += $so_luong;
-                        update_SanPham_Da_co_cart($item['so_luong'], $item['id_product']);
-                        break;
+                    if (isset($arr[1])) {
+                        echo $arr[1];
+                    } else {
+                        echo "Không có lựa chọn nào được chọn.";
                     }
+                } else {
+                    echo "Loại bìa đã chọn 2: " . $selectedLoaiBia;
                 }
+                die;
+                if (isset($_SESSION['user']['id'])) {
+                    // Người dùng đã đăng nhập, cho phép thêm mới vào giỏ hàng
+                    $gioHang = select_1_sach($_SESSION['user']['id']);
 
-                if (!$product_exists) {
-                    add_gio_hang($_SESSION['user']['id'], $product_id, $so_luong, $gia);
+                    $product_exists = false;
+                    foreach ($gioHang as &$item) {
+                        if ($item['id_product'] == $product_id) {
+                            $product_exists = true;
+                            $item['so_luong'] += $so_luong;
+                            update_SanPham_Da_co_cart($item['so_luong'], $item['id_product']);
+                            break;
+                        }
+                    }
+
+                    if (!$product_exists) {
+                        add_gio_hang($_SESSION['user']['id'], $product_id, $so_luong, $gia);
+                    }
+                } else {
+                    // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                    header("Location: index.php?act=dangnhap");
+                    exit();
                 }
             }
-
-            $gioHang = select_1_sach($_SESSION['user']['id']);
-            $tongGia = tong_gia($_SESSION['user']['id']);
 
             // Tiếp tục xử lý logic tại đây
             if (isset($_POST['muaNgay'])) {
@@ -266,8 +288,13 @@ if (isset($_GET["act"])) {
                 include ("./view/thanhtoan.php");
                 break;
             }
-            include ('./view/giohang.php');
-            break;
+
+            // Hiển thị giỏ hàng
+            if (isset($_SESSION['user']['id'])) {
+                $gioHang = select_1_sach($_SESSION['user']['id']);
+                $tongGia = tong_gia($_SESSION['user']['id']);
+                include ('./view/giohang.php');
+            }
         //-- THANH TOÁN
         case 'thanh_toan':
             include ("./view/thanhtoan.php");
