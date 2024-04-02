@@ -9,22 +9,12 @@
                             src="./uploads/<?php echo $sanPhamCt["img"]; ?>" alt="Product Image">
                         <input type="hidden" name="hinhAnh" value="./uploads/<?php echo $sanPhamCt["img"]; ?>">
                     </div>
-                    <div class="flex -mx-2 mb-4">
-                        <div class="w-1/2 px-2">
-                            <input type="submit" name="muaNgay" value="Mua Ngay"
-                                class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 ">
-                            <!-- <button
-                                class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 ">Mua
-                                ngay</button> -->
-                        </div>
+                    <div class="flex mx-2 mb-4">
+                     
                         <div class="w-1/2 px-2">
                             <input type="submit" name="submit" value="Thêm vào giỏ Hàng"
                                 class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300">
-                            <?php
-                            // print_r($sanPhamCt) ;
-                            // extract($sanPhamCt);
-                            // echo '<a href="index.php?act=add_to_card&idsp=' . $sanPhamCt['id'] . '" class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300"> Thêm vào giỏ hàng</a>';
-                            ?>
+
                         </div>
                     </div>
                 </div>
@@ -69,7 +59,7 @@
                     <div class="flex mb-4 items-center">
                         <div class="mr-4">
                             <?php echo '<input type="hidden" name="gia" value="' . $sanPhamCt["gia"] . '" readonly > 
-                         <input class="text" value="' . $sanPhamCt["gia"] . '" id="gia_bien_the"
+                         <input class="text" hidden value="' . $sanPhamCt["gia"] . '" id="gia_bien_the"
                             onchange="myFunction()"></input>
                         <span class="text-[#FF0000] text-[24px] font-bold" id="gia_sau_bien_the">
                             ' . $sanPhamCt["gia"] . '.000 đ
@@ -83,14 +73,7 @@
                     </div>';
                         }
                         ?>
-
                     </div>
-                    <!-- <div class="mb-4">
-                        <input type="radio" id="html" name="fav_language" value="HTML">
-                    </div> -->
-
-
-
                     <div class="mb-4">
                         <span class="font-bold text-gray-700 ">Loại Hàng:</span>
                         <div class="flex items-center mt-2">

@@ -63,7 +63,7 @@
                 </a>
             </li>
             <li class="mb-1 group">
-                <a href="index.php?act=cart"
+                <a href="index.php?act=order"
                     class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class="fa-solid fa-cart-shopping mr-3 text-lg"></i>
                     <span class="text-sm">Đơn hàng</span>

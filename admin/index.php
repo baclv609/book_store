@@ -11,6 +11,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
     include ("../model/binhLuan.php");
     include ("../model/sach.php");
     include ("../model/bia.php");
+    include ("../model/giohang.php");
 
     include ("header.php");
     if (isset($_GET["act"])) {
@@ -23,7 +24,6 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                     $name = $_POST["nameDM"];
                     insert_danhmuc($name);
                     // $thongBao = "Thêm thành công";
-
                     // echo '<script>window.location.reload();</script>';
                 }
                 include ("danhMuc/add.php");
@@ -343,6 +343,38 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
             case 'logout':
                 session_unset();
                 header("Location: index.php");
+                break;
+
+            // đơn hàng
+            case 'order':
+                if (isset($_POST['submit'])) {
+                    // Lấy giá trị của tùy chọn đã chọn
+                    $selectedStatus = $_POST['status_id'];
+                    echo 'selectedStatus' . $selectedStatus . '';
+                    die();
+                }
+                // Tiến hành cập nhật vào CSDL
+                // Viết mã xử lý cập nhật vào CSDL ở đây
+                // ...
+                $list_order_cart = select_order_cart();
+                include ("donhang/donhang.php");
+                break;
+            case 'ChiTietDonHang':
+                if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
+                    $id = $_GET["id"];
+                    $list_order_cart_where_id = select_ChiTietDonHang_where_id($id);
+                    $gioHang = select_gio_hang_item_thanhtoan_where_id($id);
+                }
+                include ("donhang/ChiTietDonHang.php");
+                break;
+            case 'updateChiTietDonHang':
+                if (isset($_POST['submit'])) {
+                    $id = $_POST["id"];
+                    $selectedStatus = $_POST['status_id'];
+                    update_status_ChiTietDonHang($id, $selectedStatus);
+                }
+                $list_order_cart = select_order_cart();
+                include ("donhang/donhang.php");
                 break;
             default:
                 include ("home.php");

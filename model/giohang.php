@@ -2,7 +2,7 @@
 
 function select_1_sach($id_user)
 {
-    $sql = "SELECT gio_hang_items.id,products.id as id_product,gio_hang_items.loai_bia, gio_hang_items.so_luong,products.gia AS gia, ( gio_hang_items.so_luong * products.gia ) 
+    $sql = "SELECT gio_hang_items.id,products.id as id_product,gio_hang_items.loai_bia, gio_hang_items.user_id,gio_hang_items.so_luong,products.gia AS gia, ( gio_hang_items.so_luong * products.gia ) 
     AS thanhtien, products.ten ,products.img AS hinhAnh 
     FROM gio_hang_items 
     JOIN products ON products.id=gio_hang_items.product_id 
@@ -21,14 +21,14 @@ function add_gio_hang($id_user, $product_id, $so_luong, $gia, $loai_bia)
 {
     $sql = "INSERT INTO gio_hang_items(user_id, product_id, so_luong, gia,loai_bia) 
      VALUES ('$id_user','$product_id','$so_luong','$gia','$loai_bia')";
-    echo $sql;
+    // echo $sql;
     // die;
     pdo_execute($sql);
 }
 function tong_gia($id_user)
 {
-    $sql = "SELECT id, product_id, so_luong, gia ,SUM(so_luong*gia) AS tong FROM gio_hang_items WHERE gio_hang_items.user_id = $id_user";
-    $tongGia = pdo_query($sql);
+    $sql = "SELECT SUM(so_luong*gia) AS tong FROM gio_hang_items WHERE gio_hang_items.user_id = $id_user";
+    $tongGia = pdo_query_one($sql);
     return $tongGia;
 }
 function update_SanPham_Da_co_cart($id_user, $so_luong, $id_product, $loai_bia, $gia)
@@ -38,8 +38,74 @@ function update_SanPham_Da_co_cart($id_user, $so_luong, $id_product, $loai_bia, 
     WHERE product_id = $id_product 
     AND loai_bia = '$loai_bia' 
     AND gio_hang_items.user_id = $id_user";
-    // echo $sql;
-    // die;
+    pdo_execute($sql);
+}
+function insert_donHang_id($customer_id, $status, $tong_tien, $payment, $ghi_chu, $name, $phone, $email, $adress, $created_at)
+{
+    $sql = "INSERT INTO gio_hang(customer_id, status, tong_tien, payment, ghi_chu, name, phone, email, adress,created_at) 
+    VALUES ('$customer_id','$status','$tong_tien','$payment','$ghi_chu','$name','$phone','$email','$adress','$created_at')";
+    $e = pdo_execute_return_lastInsertId($sql);
+    return $e;
+}
+function insert_gio_hang_item_thanhtoan($so_luong, $product_id, $loai_bia, $user_id, $gio_hang_id)
+{
+    $sql = "INSERT INTO gio_hang_item_thanhtoan(so_luong, product_id, loai_bia, user_id, gio_hang_id) 
+    VALUES ('$so_luong','$product_id','$loai_bia','$user_id','$gio_hang_id')";
+    $e = pdo_execute_return_lastInsertId($sql);
+    return $e;
+}
+function delete_sanPham_cart($id)
+{
+    $sql = "DELETE FROM gio_hang_items WHERE id = $id";
+    pdo_query($sql);
+}
+
+// admin
+function select_order_cart()
+{
+    // $sql = "SELECT 
+    // gio_hang.id,
+    // gio_hang.customer_id as id_user, 
+    // gio_hang.status, 
+    // gio_hang.tong_tien, 
+    // gio_hang.payment, 
+    // gio_hang.ghi_chu, 
+    // gio_hang.name, 
+    // gio_hang.phone, 
+    // gio_hang.email,
+    // gio_hang.adress , 
+    // gio_hang_item_thanhtoan.so_luong,
+    // gio_hang_item_thanhtoan.product_id as id_Product, gio_hang_item_thanhtoan.loai_bia 
+    // FROM `gio_hang` 
+    // JOIN gio_hang_item_thanhtoan 
+    // ON gio_hang.id = gio_hang_item_thanhtoan.gio_hang_id;";
+    $sql = "SELECT gio_hang.id,gio_hang.customer_id as id_user, gio_hang.status, gio_hang.tong_tien, gio_hang.payment, gio_hang.ghi_chu, gio_hang.name, gio_hang.phone, gio_hang.email,gio_hang.adress, gio_hang.created_at  
+    FROM `gio_hang`
+    ORDER BY gio_hang.id desc";
+    $gioHang = pdo_query($sql);
+    return $gioHang;
+}
+function select_ChiTietDonHang_where_id($id)
+{
+    $sql = "SELECT gio_hang.id,gio_hang.customer_id as id_user, gio_hang.status, gio_hang.tong_tien, gio_hang.payment, gio_hang.ghi_chu, gio_hang.name, gio_hang.phone, gio_hang.email,gio_hang.adress, gio_hang.created_at  
+    FROM `gio_hang`
+    WHERE id = $id
+    ORDER BY gio_hang.id desc";
+    $gioHang = pdo_query_one($sql);
+    return $gioHang;
+}
+function select_gio_hang_item_thanhtoan_where_id($id)
+{
+    $sql = "SELECT gio_hang_item_thanhtoan.*, products.ten, products.img AS hinhAnh, ( gio_hang_item_thanhtoan.so_luong * products.gia ) 
+    AS thanhtien  FROM `gio_hang_item_thanhtoan`
+    JOIN products on products.id = gio_hang_item_thanhtoan.product_id
+        WHERE gio_hang_item_thanhtoan.gio_hang_id  = $id
+        ORDER BY gio_hang_item_thanhtoan.id desc";
+    $gioHang = pdo_query($sql);
+    return $gioHang;
+}
+function update_status_ChiTietDonHang($id,$selectedStatus){
+    $sql = "UPDATE `gio_hang` SET `status`='$selectedStatus' WHERE  id = $id";
     pdo_execute($sql);
 }
 ?>

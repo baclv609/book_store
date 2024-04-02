@@ -262,6 +262,7 @@ if (isset($_GET["act"])) {
                 $selectedLoaiBia = $_POST['loai_bia'];
                 $loai_bia = "";
                 if (isset($selectedLoaiBia)) {
+                    // echo $selectedLoaiBia; die;
                     $selectedLoaiBia = trim($selectedLoaiBia, "[]"); // Loại bỏ các ký tự "[" và "]"
                     $arr = explode(",", $selectedLoaiBia);
                     if (is_array($arr)) {
@@ -301,16 +302,16 @@ if (isset($_GET["act"])) {
                 }
             }
 
-            // Tiếp tục xử lý logic tại đây
-            if (isset($_POST['muaNgay'])) {
-                $so_luong = $_POST['so_luong'];
-                $gioHang = select_1_sach($_SESSION['user']['id']);
-                $tongGia = tong_gia($_SESSION['user']['id']);
-                // var_dump($tongGia);
+            // // Tiếp tục xử lý logic tại đây
+            // if (isset($_POST['muaNgay'])) {
+            //     $so_luong = $_POST['so_luong'];
+            //     $gioHang = select_1_sach($_SESSION['user']['id']);
+            //     $tongGia = tong_gia($_SESSION['user']['id']);
+            //     // var_dump($tongGia);
 
-                include ("./view/thanhtoan.php");
-                break;
-            }
+            //     include ("./view/thanhtoan.php");
+            //     break;
+            // }
 
             // Hiển thị giỏ hàng
             if (isset($_SESSION['user']['id'])) {
@@ -318,13 +319,69 @@ if (isset($_GET["act"])) {
                 $tongGia = tong_gia($_SESSION['user']['id']);
                 include ('./view/giohang.php');
             }
+            break;
         //-- THANH TOÁN
         case 'thanh_toan':
+            if (isset($_POST['muahang'])) {
+                $name = $_POST['name'];
+                $phone = $_POST['phone'];
+                $email = $_POST['email'];
+                $dia_chi = $_POST['dia_chi'];
+                $ghi_chu = $_POST['ghi_chu'];
+                $payment = $_POST['payment_method'];
+                $customer_id = $_SESSION['user']['id'];
+                $created_at = date('H:i:s d/m/Y');
+
+                $tongGia = tong_gia($_SESSION['user']['id']);
+
+                $status = 1; // trạng thái đơn hàng
+                $id_DH = insert_donHang_id($customer_id, $status, $tongGia['tong'], $payment, $ghi_chu, $name, $phone, $email, $dia_chi, $created_at);
+
+                // Lấy dữ liệu từ $gioHang và chèn vào bảng gio_hang_item_thanhtoan
+                $gioHang = select_1_sach($_SESSION['user']['id']);
+                // echo "<pre>";
+                // print_r($gioHang);
+                // die;
+
+                $isSuccessful = true; // Flag to track if all operations are successful
+
+                foreach ($gioHang as $key => $value) {
+                    $id_gio_hang_items = $value['id'];
+                    $so_luong = $value['so_luong'];
+                    $product_id = $value['id_product'];
+                    $loai_bia = $value['loai_bia'];
+                    $is_IdProduct_DH = insert_gio_hang_item_thanhtoan($so_luong, $product_id, $loai_bia, $_SESSION['user']['id'], $id_DH);
+                    if (isset($is_IdProduct_DH)) {
+                        delete_sanPham_cart($id_gio_hang_items);
+                    } else {
+                        $isSuccessful = false; // Set the flag to false if any operation fails
+                        break; // Exit the loop
+                    }
+                }
+
+                if ($isSuccessful) {
+                    // All operations are successful
+                    header("Location: index.php?act=thankyou&id_DH=$id_DH"); // Redirect to thankyou.php with the order ID
+                    exit();
+                } else {
+                    // Some operation failed
+                    echo "Payment failed. Please try again.";
+                }
+            }
+
             $gioHang = select_1_sach($_SESSION['user']['id']);
             $tongGia = tong_gia($_SESSION['user']['id']);
-            include ("./view/thanhtoan.php");
+            // echo $tongGia['tong'];
+            // die;
+            include ('./view/thanhtoan.php');
             break;
 
+        case 'thankyou':
+            if (isset($_GET["id_DH"]) && ($_GET["id_DH"] > 0)) {
+                $id = $_GET["id_DH"];
+            }
+            include ("./view/thankyou.php");
+            break;
         default:
             include ("view/home.php");
             break;

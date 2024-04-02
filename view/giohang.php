@@ -72,10 +72,11 @@
                                 </span>
                                 <span class="font-semibold">
                                     <?php
-                                    foreach ($tongGia as $value) {
-                                        extract($tongGia);
-                                        echo '' . $value['tong'] . ',000đ';
-                                    }
+                                    // foreach ($tongGia as $value) {
+                                    //     extract($tongGia);
+                                    //     echo '' . $value['tong'] . ',000đ';
+                                    // }
+                                    echo $tongGia['tong'];
                                     ?>
                                 </span>
                             </div>
