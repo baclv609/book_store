@@ -21,7 +21,7 @@ function add_gio_hang($id_user, $product_id, $so_luong, $gia, $loai_bia)
 {
     $sql = "INSERT INTO gio_hang_items(user_id, product_id, so_luong, gia,loai_bia) 
      VALUES ('$id_user','$product_id','$so_luong','$gia','$loai_bia')";
-    echo $sql;
+    // echo $sql;
     // die;
     pdo_execute($sql);
 }
