@@ -52,17 +52,17 @@ if (isset($_GET["act"])) {
         // lọc ở sản phẩm
         case 'sach':
             if (isset($_POST['submit'])) {
-                $tacGia_id = $_POST["tacGia_id"];
+                //$tacGia_id = $_POST["tacGia_id"];
                 $danh_muc_id = $_POST["danh_muc_id"];
                 $searchSP = $_POST["searchSP"];
             } else {
                 $searchSP = "";
                 $danh_muc_id = "";
-                $searchSP = "";
+                //$tacGia_id = "";
             }
             // $listDm = list_danhmuc("");
             // $listTg = list_tac_gia("");
-            $listSp = list_sach($danh_muc_id, $searchSP, $tacGia_id);
+            $listSp = list_sach($danh_muc_id, $searchSP, "");
             include ("view/sanpham.php");
             break;
         //-- TÌM TÁC GIẢ TRANG SẢN PHẨM
@@ -181,7 +181,8 @@ if (isset($_GET["act"])) {
             include ("view/taiKhoan/login.php");
             break;
 
-
+        
+        //edit tài khoản
         case 'edittk':
             if (isset($_POST['submit'])) {
                 // Lấy các giá trị được gửi từ form
@@ -209,6 +210,8 @@ if (isset($_GET["act"])) {
             }
             include "view/taiKhoan/edittk.php";
             break;
+
+        //quên mk
         case 'quenmk':
             $errEmail = '';
             if (isset($_POST['guiemail'])) {
@@ -228,6 +231,7 @@ if (isset($_GET["act"])) {
             }
             include "view/taikhoan/quenmk.php";
             break;
+
         case 'logout':
             session_unset();
             header("Location: index.php");
