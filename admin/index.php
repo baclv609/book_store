@@ -329,16 +329,27 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 break;
             case 'updateAcc':
                 if (isset($_POST['update'])) {
+                    // print_r($_POST['update']);
+                    // die();
                     $id = $_POST["id"];
                     $name = $_POST["nameacc"];
-                    $avater = $_POST["avater"];
+                    //$avater = $_POST["avater"];
                     $phone = $_POST["phone"];
                     $email = $_POST["email"];
 
+                    $hinhAnh = $_FILES["avater"];
+                    $filename = $hinhAnh["name"];
+
+                    $filename = time() . $filename;
+                    $dir = "./uploads/$filename";
+
+                    move_uploaded_file($hinhAnh["tmp_name"], $dir);
+
                     update_acc($id, $name, $avater, $phone, $email);
+                    
                 }
                 $listAcc = list_acc("");
-                include ("acc/acc.php");
+                include ("acc/updateAcc.php");
                 break;
             case 'logout':
                 session_unset();

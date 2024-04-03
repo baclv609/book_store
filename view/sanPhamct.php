@@ -152,6 +152,7 @@
 </script>
 
 <!-- bình luận form -->
+<h2 class="text-lg text-[#C92127] font-bold" style="margin-left:200px">Bình luận</h2>
 <section class="mt-5 w-[800px] mx-auto" id="binhluan">
     <?php
     extract($sanPhamCt);
