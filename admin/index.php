@@ -347,15 +347,6 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
 
             // đơn hàng
             case 'order':
-                if (isset($_POST['submit'])) {
-                    // Lấy giá trị của tùy chọn đã chọn
-                    $selectedStatus = $_POST['status_id'];
-                    echo 'selectedStatus' . $selectedStatus . '';
-                    die();
-                }
-                // Tiến hành cập nhật vào CSDL
-                // Viết mã xử lý cập nhật vào CSDL ở đây
-                // ...
                 $list_order_cart = select_order_cart();
                 include ("donhang/donhang.php");
                 break;

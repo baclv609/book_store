@@ -43,9 +43,10 @@
                         <tbody class="divide-y divide-gray-200">
                             <?php
                             // echo '<pre>';
-                            // print_r($list_order_cart);
+                            // print_r($select_Don_hang_cua_toi);
                             // die;
-                            foreach ($list_order_cart as $key => $value) {
+                            foreach ($select_Don_hang_cua_toi as $key => $value) {
+                                // $gioHang = select_Don_hang_cua_toi_thanhtoan_where_id($_SESSION['user']['id']);
                                 $gioHang = select_gio_hang_item_thanhtoan_where_id($value['id']);
                                 $status = $value["status"];
                                 $statusMessages = [
@@ -68,7 +69,7 @@
                                                     <p class="mt-1 text-[#929292] text-sm leading-4">' . $gioHang[0]["loai_bia"] . '</p>
                                                     <p class="mt-1 text-[#929292] text-sm leading-4"><span
                                                             class="font-medium text-black">Số lượng: </span>' . $gioHang[0]["so_luong"] . '</p>
-                                                    <a href="index.php?act=ChiTietDonHang&id=' . $value["id"] . '" class="mt-1 font-medium text-blue-600">Xem thêm</a>
+                                                    <a href="index.php?act=ChiTietDonHangCuaToi&id=' . $value["id"] . '" class="mt-1 font-medium text-blue-600">Xem thêm</a>
                                                 </div>
                                             </div>
                                         </td>

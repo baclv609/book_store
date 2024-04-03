@@ -170,7 +170,6 @@ if (isset($_GET["act"])) {
                     $checkuser = checkUser($email, $password);
                     if (is_array($checkuser)) {
                         $_SESSION['user'] = $checkuser;
-                        // print_r( ;$_SESSION['user'])
                         header("Location: index.php");
                         exit();
                     } else {
@@ -181,7 +180,7 @@ if (isset($_GET["act"])) {
             include ("view/taiKhoan/login.php");
             break;
 
-        
+
         //edit tài khoản
         case 'edittk':
             if (isset($_POST['submit'])) {
@@ -295,7 +294,6 @@ if (isset($_GET["act"])) {
                             break;
                         }
                     }
-
                     if (!$product_exists) {
                         add_gio_hang($_SESSION['user']['id'], $product_id, $so_luong, $gia, $loai_bia);
                     }
@@ -305,17 +303,6 @@ if (isset($_GET["act"])) {
                     exit();
                 }
             }
-
-            // // Tiếp tục xử lý logic tại đây
-            // if (isset($_POST['muaNgay'])) {
-            //     $so_luong = $_POST['so_luong'];
-            //     $gioHang = select_1_sach($_SESSION['user']['id']);
-            //     $tongGia = tong_gia($_SESSION['user']['id']);
-            //     // var_dump($tongGia);
-
-            //     include ("./view/thanhtoan.php");
-            //     break;
-            // }
 
             // Hiển thị giỏ hàng
             if (isset($_SESSION['user']['id'])) {
@@ -343,10 +330,6 @@ if (isset($_GET["act"])) {
 
                 // Lấy dữ liệu từ $gioHang và chèn vào bảng gio_hang_item_thanhtoan
                 $gioHang = select_1_sach($_SESSION['user']['id']);
-                // echo "<pre>";
-                // print_r($gioHang);
-                // die;
-
                 $isSuccessful = true; // Flag to track if all operations are successful
 
                 foreach ($gioHang as $key => $value) {
@@ -364,19 +347,14 @@ if (isset($_GET["act"])) {
                 }
 
                 if ($isSuccessful) {
-                    // All operations are successful
-                    header("Location: index.php?act=thankyou&id_DH=$id_DH"); // Redirect to thankyou.php with the order ID
+                    header("Location: index.php?act=thankyou&id_DH=$id_DH");
                     exit();
                 } else {
-                    // Some operation failed
                     echo "Payment failed. Please try again.";
                 }
             }
-
             $gioHang = select_1_sach($_SESSION['user']['id']);
             $tongGia = tong_gia($_SESSION['user']['id']);
-            // echo $tongGia['tong'];
-            // die;
             include ('./view/thanhtoan.php');
             break;
 
@@ -385,6 +363,29 @@ if (isset($_GET["act"])) {
                 $id = $_GET["id_DH"];
             }
             include ("./view/thankyou.php");
+            break;
+        case 'donHangCuaToi':
+            $select_Don_hang_cua_toi = select_Don_hang_cua_toi_where_idUser($_SESSION['user']['id']);
+            $Don_hang_cua_toi_thanhtoan = select_Don_hang_cua_toi_thanhtoan_where_id($_SESSION['user']['id']);
+            include ("./view/donHang/donHangCuaToi.php");
+            break;
+        case 'ChiTietDonHangCuaToi':
+            if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
+                $id = $_GET["id"];
+                $list_order_cart_where_id = select_ChiTietDonHang_where_id($id);
+                $gioHang = select_gio_hang_item_thanhtoan_where_id($id);
+            }
+            include ("./view/donHang/ChiTietDonHangCuaToi.php");
+            break;
+        case 'updateDHcuatoi':
+            if (isset($_POST['submit'])) {
+                $id = $_POST["id"];
+                update_status_DHcuatoi($id);
+                // gọi tham số để select lại đơn hàng
+                $list_order_cart_where_id = select_ChiTietDonHang_where_id($id);
+                $gioHang = select_gio_hang_item_thanhtoan_where_id($id);
+            }
+            include ("./view/donHang/ChiTietDonHangCuaToi.php");
             break;
         default:
             include ("view/home.php");

@@ -101,11 +101,42 @@ function select_gio_hang_item_thanhtoan_where_id($id)
     JOIN products on products.id = gio_hang_item_thanhtoan.product_id
         WHERE gio_hang_item_thanhtoan.gio_hang_id  = $id
         ORDER BY gio_hang_item_thanhtoan.id desc";
+    // echo $sql;
+    // die;
     $gioHang = pdo_query($sql);
     return $gioHang;
 }
-function update_status_ChiTietDonHang($id,$selectedStatus){
+function update_status_ChiTietDonHang($id, $selectedStatus)
+{
     $sql = "UPDATE `gio_hang` SET `status`='$selectedStatus' WHERE  id = $id";
+    pdo_execute($sql);
+}
+
+function select_Don_hang_cua_toi_where_idUser($id)
+{
+    $sql = "SELECT gio_hang.id,gio_hang.customer_id as id_user, gio_hang.status, gio_hang.tong_tien, gio_hang.payment, gio_hang.ghi_chu, gio_hang.name, gio_hang.phone, gio_hang.email,gio_hang.adress, gio_hang.created_at  
+    FROM `gio_hang`
+    WHERE gio_hang.customer_id = $id
+    ORDER BY gio_hang.id desc";
+    // echo $sql; die;
+    $gioHang = pdo_query($sql);
+    return $gioHang;
+}
+function select_Don_hang_cua_toi_thanhtoan_where_id($id)
+{
+    $sql = "SELECT gio_hang_item_thanhtoan.*, products.ten, products.img AS hinhAnh, ( gio_hang_item_thanhtoan.so_luong * products.gia ) 
+    AS thanhtien  FROM `gio_hang_item_thanhtoan`
+    JOIN products on products.id = gio_hang_item_thanhtoan.product_id
+        WHERE gio_hang_item_thanhtoan.user_id  = $id
+        ORDER BY gio_hang_item_thanhtoan.id desc";
+    // echo $sql;
+    // die;
+    $gioHang = pdo_query($sql);
+    return $gioHang;
+}
+function update_status_DHcuatoi($id)
+{
+    $sql = "UPDATE `gio_hang` SET `status`='5' WHERE  id = $id";
     pdo_execute($sql);
 }
 ?>
