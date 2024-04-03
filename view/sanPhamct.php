@@ -10,7 +10,7 @@
                         <input type="hidden" name="hinhAnh" value="./uploads/<?php echo $sanPhamCt["img"]; ?>">
                     </div>
                     <div class="flex mx-2 mb-4">
-                     
+
                         <div class="w-1/2 px-2">
                             <input type="submit" name="submit" value="Thêm vào giỏ Hàng"
                                 class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300">
@@ -152,7 +152,11 @@
 </script>
 
 <!-- bình luận form -->
+<div class="flex justify-center gap-2 py-4">
+    <h2 class="font-bold py-3 text-2xl">Bình luận sản phẩm</h2>
+</div>
 <section class="mt-5 w-[800px] mx-auto" id="binhluan">
+
     <?php
     extract($sanPhamCt);
     ?>

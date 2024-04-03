@@ -330,12 +330,8 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
             case 'updateAcc':
                 if (isset($_POST['update'])) {
                     $id = $_POST["id"];
-                    $name = $_POST["nameacc"];
-                    $avater = $_POST["avater"];
-                    $phone = $_POST["phone"];
-                    $email = $_POST["email"];
-
-                    update_acc($id, $name, $avater, $phone, $email);
+                    $is_admin = $_POST["is_admin"];
+                    update_acc($id, $is_admin);
                 }
                 $listAcc = list_acc("");
                 include ("acc/acc.php");

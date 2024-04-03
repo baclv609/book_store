@@ -62,25 +62,35 @@
            
 
             <?php
-            if (!empty ($listAcc)) {
+            if (!empty($listAcc)) {
                 foreach ($listAcc as $value) {
-                    echo ' <tr class="bg-white border-b px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    <td scope="row" class="px-6 py-4">' . $value['id'] . '</td>
-                    <td class="px-6 py-4"> <div class="flex items-center gap-4">
-   <img class="w-10 h-10 rounded-full" src="../uploads/' . $value['avatar'] . '" alt="">
-   <div class="font-medium">
-       <div>' . $value['name'] . '</div>
-       <div class="text-sm text-gray-500 ">' . $value['email'] . '</div>
-   </div>
-</div></td>
-                    <td class="px-6 py-4">' . $value['avatar'] . '</td>
-                    <td class="px-6 py-4">' . $value['phone'] . '</td>
-                    <td class="px-6 py-4">' . $value['email'] . '</td>
-                    <td class="px-6 py-4">' . $value['is_admin'] . '</td>
-
-                    <td class="px-6 py-4"><a href="index.php?act=editAcc&id=' . $value['id'] . '"><input type="button" value="Sửa" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"></a> 
-                     <a href="index.php?act=deleteAcc&id=' . $value['id'] . '" onclick="return confirm(\'Bạn muốn xóa ?\')"><input type="button" value="Xóa"  class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"></a></td>
-                </tr>';
+                    $role = ($value['is_admin'] == 0) ? 'Người dùng' : 'Admin';
+            
+                    echo '
+                        <tr class="bg-white border-b px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            <td scope="row" class="px-6 py-4">' . $value['id'] . '</td>
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-4">
+                                    <img class="w-10 h-10 rounded-full" src="../uploads/' . $value['avatar'] . '" alt="">
+                                    <div class="font-medium">
+                                        <div>' . $value['name'] . '</div>
+                                        <div class="text-sm text-gray-500 ">' . $value['email'] . '</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">' . $value['avatar'] . '</td>
+                            <td class="px-6 py-4">' . $value['phone'] . '</td>
+                            <td class="px-6 py-4">' . $value['email'] . '</td>
+                            <td class="px-6 py-4">' . $role . '</td>
+                            <td class="px-6 py-4">
+                                <a href="index.php?act=editAcc&id=' . $value['id'] . '">
+                                    <input type="button" value="Sửa" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                </a> 
+                                <a href="index.php?act=deleteAcc&id=' . $value['id'] . '" onclick="return confirm(\'Bạn muốn xóa ?\')">
+                                    <input type="button" value="Xóa"  class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                </a>
+                            </td>
+                        </tr>';
                 }
             } else {
                 echo '<tr><td colspan="4" style="text-align: center">No data available</td></tr>';

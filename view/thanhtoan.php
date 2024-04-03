@@ -83,13 +83,13 @@
                 </div>
 
                 <div class="mt-6">
-                    <h3 class="text-lg font-bold text-[#333] mb-6">Phương thưc thanh toán</h3>
+                    <!-- <h3 class="text-lg font-bold text-[#333] mb-6">Phương thưc thanh toán</h3>
                     <div>
                         <input type="radio" name="payment_method" checked id="COD" value="COD">
                         <label for="cod">Thanh toán khi giao hàng (COD)</label> <br>
                         <input type="radio" name="payment_method" id="VNPay" value="VNPay">
                         <label for="vnpay">Chuyển khoản qua ngân hàng qua VNPay</label>
-                    </div>
+                    </div> -->
                     <div class="w-full p-4">
                         <h4 class="flex gap-4 text-base ">Tổng cộng :
                             <span class="text-red-500 font-bold">
@@ -100,9 +100,16 @@
                         </h4>
                     </div>
                     <div class="flex gap-6 max-sm:flex-col mt-10">
-                        <input type="submit" name="exit" value="Hủy bỏ"
-                            class="rounded-md px-6 py-3 w-full text-sm font-semibold bg-transparent hover:bg-gray-100 border-2 border-[#C92127] text-[#C92127]">
-                        <input type="submit" name="muahang" value="Hoàn tất mua hàng"
+                        <!-- <input type="submit" name="exit" value="Hủy bỏ"
+                            class="rounded-md px-6 py-3 w-full text-sm font-semibold bg-transparent hover:bg-gray-100 border-2 border-[#C92127] text-[#C92127]"> -->
+                        <input type="submit" name="muahang" value="COD"
+                            class="rounded-md px-6 py-3 w-full text-sm font-semibold bg-[#C92127] text-white hover:bg-[#dd292f]">
+                        <input type="submit" name="redirect" value="VNPay"
+                            class="rounded-md px-6 py-3 w-full text-sm font-semibold bg-[#C92127] text-white hover:bg-[#dd292f]">
+                    </div>
+                    <div class="flex gap-6 max-sm:flex-col mt-10">
+                       
+                        <input type="submit" name="payUrl" value="MoMO"
                             class="rounded-md px-6 py-3 w-full text-sm font-semibold bg-[#C92127] text-white hover:bg-[#dd292f]">
                     </div>
                 </div>

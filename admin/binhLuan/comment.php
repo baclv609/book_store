@@ -13,16 +13,12 @@
 
                 <button type="submit" name="submit"
                     class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  ">
-                   <!-- icon search -->
+                    <!-- icon search -->
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <span class="sr-only">Search</span>
                 </button>
             </div>
         </form>
-
-        <div class=""><a href="index.php?act=add_comment"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none">Nhập
-                thêm</a></div>
     </div>
 
 
@@ -43,12 +39,12 @@
         </thead>
         <tbody class="hover:bg-gray-100">
             <?php
-            if (!empty ($listBl)) {
+            if (!empty($listBl)) {
                 foreach ($listBl as $value) {
                     echo '
-                            <tr class="bg-white border-b px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            <tr class="bg-white border-b px-6 py-4 font-medium text-gray-900">
                                 <td scope="row" class="px-6 py-4">' . $value['id'] . '</td>
-                                <td class="px-6 py-4">' . $value['content'] . '</td>
+                                <td class=" py-4">' . $value['content'] . '</td>
                                 <td class="px-6 py-4">
                                 <a href="index.php?act=deleteBl&id=' . $value['id'] . '" onclick="return confirm(\'Bạn muốn xóa ?\')"><input type="button" value="Xóa"  class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"></a></td>
                             </tr>

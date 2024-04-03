@@ -27,14 +27,11 @@ function edit_acc($id)
     $acc = pdo_query_one($sql);
     return $acc;
 }
-function update_acc($id, $name, $avater,$phone ,$email)
+function  update_acc($id, $is_admin)
 {
-    $sql = "UPDATE `users` 
-    SET `id`='$id',
-    `name`='$name',
-    `avater`='$avater',
-    `phone`='$phone',
-    `email`='$email'
+    $sql = "UPDATE users 
+    SET id='$id',
+    is_admin='$is_admin'
      
      WHERE id = $id";
     pdo_execute($sql);
