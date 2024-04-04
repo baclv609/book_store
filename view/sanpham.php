@@ -30,18 +30,18 @@
                                 1.000.000đ</label>
                         </div>
                     </form> -->
-                    <form action="index.php?act=tim_tac_gia" method="post">
+                    <!-- <form action="index.php?act=tim_tac_gia" method="post">
                         <?php
-                        foreach ($listTg as $key => $value) {
-                            // print_r($listTg);
-                            echo '<input type="checkbox" name="tacGia_id[]" value="' . $value["id"] . '"> ' . $value["name"] . '<br>';
-                            echo '';
-                        }
+                        // foreach ($listTg as $key => $value) {
+                        //     // print_r($listTg);
+                        //     echo '<input type="checkbox" name="tacGia_id[]" value="' . $value["id"] . '"> ' . $value["name"] . '<br>';
+                        //     echo '';
+                        // }
                         ?>
                         <input type="submit" value="lọc theo tác giả" name="submit" style="color:red;">
 
 
-                    </form>
+                    </form> -->
 
                 </div>
 
@@ -105,7 +105,7 @@
                             echo '<div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
                 <div>
                 
-                <input type="text" value="' . $value["idig"] . '">
+                <input type="text" hidden value="' . $value["id"] . '">
 
                     <a href="index.php?act=sanphamct&idsp=' . $value["id"] . '" class="w-[190px] h-[190px] flex justify-center items-center"> <img src="./uploads/' . $value["img"] . '"
                     alt="loading" class="max-w-[190px] max-h-[190px]"></a>

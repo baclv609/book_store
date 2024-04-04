@@ -57,7 +57,7 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
                                             <div class="flex items-center">
                                                 <img class="h-16 w-16 mr-4"
-                                                    src="http://localhost:81/da1/Book_Store/uploads/v%C4%83n%20h%E1%BB%8Dc%202.jpg"
+                                                    src="./uploads/' . $gioHang[0]["hinhAnh"] . '"
                                                     alt="Product image">
                                                 <div class="flex flex-col">
                                                     <span class="font-medium text-[14px] w-[200px] line-clamp-1">' . $gioHang[0]["ten"] . '</span>
