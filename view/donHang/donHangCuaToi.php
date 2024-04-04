@@ -1,4 +1,4 @@
-<div class="flex flex-col">
+<div class="flex flex-col container-content">
     <div class="-m-1.5 overflow-x-auto">
         <div class="p-1.5 min-w-full inline-block align-middle">
             <div class="border rounded-lg divide-y divide-gray-200 dark:border-gray-700">
@@ -28,14 +28,9 @@
                                     Sản phẩm</th>
                                 <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-white uppercase">
                                     Đại chỉ</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-white uppercase">
-                                    Thời gian</th>
+
                                 <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-white uppercase">
                                     Trạng thái</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-white uppercase">
-                                    Phương thức <br> thanh toán </th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-white uppercase">
-                                    Tổng tiền</th>
                                 <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-white uppercase">
                                     Action</th>
                             </tr>
@@ -81,56 +76,20 @@
                                             <span class="font-medium text-black">Địa chỉ:</span> ' . $value["adress"] . ' <br>
                                             <span class="font-medium text-black line-clamp-2">Ghi chú:</span> ' . $value["ghi_chu"] . '<br>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . $value["created_at"] . '</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . ($statusMessages[$status] ?? "Trạng thái không hợp lệ") . '</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . $value["payment"] . '</td>
-                                        <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">' . $value["tong_tien"] . ',000đ</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . ($statusMessages[$status] ?? "Trạng thái không hợp lệ") . ' <br>
+                                        
+                                        ' . $value["created_at"] . ' <br>
+                                        Phương thức thanh toán: ' . $value["payment"] . '  <br>
+                                        <p class=" font-bold text-sm text-red-600">Tổng tiền : ' . $value["tong_tien"] . ',000đ</p>
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="index.php?act=ChiTietDonHang&id=' . $value["id"] . '"
-                                                class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Cập nhật</a>
+                                            <a href="index.php?act=ChiTietDonHangCuaToi&id=' . $value["id"] . '"
+                                                class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Xem thêm</a>
                                         </td>
                                     </tr>
                                 ';
                             } ?>
 
-                            <!-- <tr>
-                                <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">VNG027</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 ">
-                                    <div class="flex items-center">
-                                        <img class="h-16 w-16 mr-4"
-                                            src="http://localhost:81/da1/Book_Store/uploads/v%C4%83n%20h%E1%BB%8Dc%202.jpg"
-                                            alt="Product image">
-                                        <div class="flex flex-col">
-                                            <span class="font-medium text-[14px] w-[200px] line-clamp-2">Combo Sách Ghi
-                                                Chép Pháp Y - Những Cái Chết Bí Ẩn + Những Con Quái Vật Đội Lốt
-                                                Người</span>
-                                            <p class="mt-1 text-[#929292] text-sm leading-4">bia mem</p>
-                                            <p class="mt-1 text-[#929292] text-sm leading-4"><span
-                                                    class="font-medium text-black">Số lượng: </span>1</p>
-                                            <p class="mt-1 text-[#929292] text-sm leading-4"><span
-                                                    class="font-medium text-black">Số lượng: </span>1</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
-                                    <span class="font-medium text-black">Họ tên:</span> bacle <br>
-                                    <span class="font-medium text-black">Sdt:</span> 01234567889 <br>
-                                    <span class="font-medium text-black">Địa chỉ:</span> hà noi <br>
-                                    <span class="font-medium text-black">Ghi chú:</span> Giao giờ hành chính <br>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">London No. 1 Lake Park
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">Đã đặt hàng
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">COD
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">129,000đ
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                    <button type="button"
-                                        class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none  dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Delete</button>
-                                </td>
-                            </tr> -->
                         </tbody>
                     </table>
                 </div>

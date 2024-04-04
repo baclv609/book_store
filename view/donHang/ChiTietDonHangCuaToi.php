@@ -98,7 +98,7 @@
                                     $selected = ($list_order_cart_where_id["status"] == $key) ? 'selected' : '';
                                     if ($selected) {
                                         if ($key == 1) {
-                                            echo '<input type="submit" name="submit" value="Hủy đơn hàng" class="bg-red-700 text-white py-2 px-4 rounded-lg mt-4 w-full">';
+                                            echo '<input type="submit" name="submit" onclick="return confirm(\'Bạn chắc chắn muốn hủy đơn hàng ?\')" value="Hủy đơn hàng" class="bg-red-700 text-white py-2 px-4 rounded-lg mt-4 w-full">';
                                         } else {
                                             echo '<span class="text-sm text-red-600 text-center">Không thể hủy đơn hàng.</span>';
                                         }

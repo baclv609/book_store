@@ -377,22 +377,53 @@ if (isset($_GET["act"])) {
                     echo "Payment failed. Please try again.";
                 }
             } else if (isset($_POST['redirect'])) {
-                // echo "vnpay";
-                // die;
-                $tongGia = tong_gia($_SESSION['user']['id']);
-                //    echo $tongGia['tong']; die;
 
-                include ("./vnpay_php/vnpay_create_payment.php");
+                $name = $_POST['name'];
+                $phone = $_POST['phone'];
+                $email = $_POST['email'];
+                $dia_chi = $_POST['dia_chi'];
+                $ghi_chu = $_POST['ghi_chu'];
+
+                // $payment = $_POST['payment_method']; // cod vn pay
+                $payment = 'VNPay';
+                $customer_id = $_SESSION['user']['id'];
+                $created_at = date('H:i:s d/m/Y');
+
+                $tongGia = tong_gia($_SESSION['user']['id']);
+
+                $status = 1; // trạng thái đơn hàng
+                $id_DH = insert_donHang_id($customer_id, $status, $tongGia['tong'], $payment, $ghi_chu, $name, $phone, $email, $dia_chi, $created_at);
+
+                $gioHang = select_1_sach($_SESSION['user']['id']);
+                $isSuccessful = true;
+
+                foreach ($gioHang as $key => $value) {
+                    $id_gio_hang_items = $value['id'];
+                    $so_luong = $value['so_luong'];
+                    $product_id = $value['id_product'];
+                    $loai_bia = $value['loai_bia'];
+                    $is_IdProduct_DH = insert_gio_hang_item_thanhtoan($so_luong, $product_id, $loai_bia, $_SESSION['user']['id'], $id_DH);
+                    if (isset($is_IdProduct_DH)) {
+                        delete_sanPham_cart($id_gio_hang_items);
+                    } else {
+                        $isSuccessful = false;
+                        break;
+                    }
+                }
+                if ($id_DH) {
+                    // Lưu thành công
+                    // Tiếp tục xử lý chuyển hướng đến trang thanh toán của VNPAY
+                    include ("./vnpay_php/vnpay_create_payment.php");
+                } else {
+                    // Lưu thất bại
+                    echo "Failed to save order data. Please try again.";
+                }
 
             } else if (isset($_POST['payUrl'])) {// momo
 
                 $tongGia = tong_gia($_SESSION['user']['id']);
-                // echo $tongGia['tong'];
-                // var_dump($tongGia['tong']);
-                // die;
 
-
-                $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+                $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";      
 
 
                 $partnerCode = 'MOMOBKUN20180529';

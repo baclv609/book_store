@@ -39,13 +39,13 @@
         </div> 
         <script>
              function pay() {
-              window.location.href = "/vnpay_php/vnpay_pay.php";
+              window.location.href = "vnpay_php/vnpay_pay.php";
             }
             function querydr() {
-              window.location.href = "/vnpay_php/vnpay_querydr.php";
+              window.location.href = "vnpay_php/vnpay_querydr.php";
             }
              function refund() {
-              window.location.href = "/vnpay_php/vnpay_refund.php";
+              window.location.href = "vnpay_php/vnpay_refund.php";
             }
         </script>
     </body>
