@@ -162,7 +162,7 @@ if (isset($_GET["act"])) {
 
                 if ($isCheck) {
                     insert_taikhoan($email, $name, $password);
-                    $thongbao = "B  ạn đăng kí thành công!";
+                    $thongbao = "Bạn đăng kí thành công!";
                 }
             }
 

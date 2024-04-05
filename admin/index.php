@@ -12,6 +12,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
     include ("../model/sach.php");
     include ("../model/bia.php");
     include ("../model/giohang.php");
+    include ("../model/thongke.php");
 
     include ("header.php");
     if (isset($_GET["act"])) {
@@ -19,12 +20,18 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
         switch ($act) {
             // danh mục
             case 'addDm':
-                // kieerm tra xem nngười dùng có click nút add hay ko 
+                $errdm = "";
                 if (isset($_POST['themMoi'])) {
                     $name = $_POST["nameDM"];
-                    insert_danhmuc($name);
-                    // $thongBao = "Thêm thành công";
-                    // echo '<script>window.location.reload();</script>';
+                    $isCheck = true;
+                    if (empty($name)) {
+                        $isCheck = false;
+                        $errdm = "Cần nhập Danh mục";
+                    }
+                    if ($isCheck) {
+                        insert_danhmuc($name);
+                        $thongbao = "Thêm thành công!";
+                    }
                 }
                 include ("danhMuc/add.php");
                 break;
@@ -47,19 +54,32 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 break;
 
             case 'editDm':
+
                 if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
                     $id = $_GET["id"];
+                    $errnamedm = "";
+
                     $dm = edit_danhmuc($id);
-                    //  print_r($dm);
-                    // die;
                 }
                 include ("danhMuc/updateDm.php");
                 break;
             case 'updateDm':
+                $errnamedm = "";
+
                 if (isset($_POST['update'])) {
                     $id = $_POST["id"];
                     $name = $_POST["namedm"];
-                    update_danhmuc($id, $name);
+                    $isCheck = true;
+
+                    if (empty($name)) {
+                        $isCheck = false;
+                        $errnamedm = "Cần nhập tên danh mục";
+                    }
+
+                    if ($isCheck) {
+                        update_danhmuc($id, $name);
+                        $thongbao = "Cập nhật thành công!";
+                    }
                 }
                 $listDm = list_danhmuc("");
                 include ("danhMuc/danhmuc.php");
@@ -67,10 +87,19 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
 
             // Nha xuat ban
             case 'addNxb':
+                $errNXB = "";
                 if (isset($_POST['themMoi'])) {
                     $name = $_POST["nameNxb"];
-                    insert_NhaXuatBan($name);
-                    // $thongBao = "Thêm thành công";
+
+                    $isCheck = true;
+                    if (empty($name)) {
+                        $isCheck = false;
+                        $errNXB = "Cần nhập Tên Nhà xuất Bản";
+                    }
+                    if ($isCheck) {
+                        insert_NhaXuatBan($name);
+                        $thongbao = "Thêm thành công!";
+                    }
                 }
                 include ("NXB/add.php");
                 break;
@@ -111,11 +140,19 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
 
             //Tác giả
             case 'addTg':
-                // kieerm tra xem nngười dùng có click nút add hay ko 
+                $errtg = "";
                 if (isset($_POST['themMoi'])) {
                     $name = $_POST["nameTg"];
-                    insert_tac_gia($name);
-                    // $thongBao = "Thêm thành công";
+
+                    $isCheck = true;
+                    if (empty($name)) {
+                        $isCheck = false;
+                        $errtg = "Cần nhập Tên Tác giả";
+                    }
+                    if ($isCheck) {
+                        insert_tac_gia($name);
+                        $thongbao = "Thêm thành công!";
+                    }
                 }
                 include ("tacGia/add.php");
                 break;
@@ -188,7 +225,15 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 break;
             case 'addSach':
                 if (isset($_POST['submit'])) {
-                    // Lấy các giá trị từ form
+                    $ErrtenSanPham = "";
+                    $ErrnhaSanXuatId = "";
+                    $ErrdanhMucId = "";
+                    $Errgia = "";
+                    $ErrmoTa = "";
+                    $ErrTg = "";
+
+                    $isCheck = true;
+
                     $tenSanPham = $_POST['name'];
                     $nhaSanXuatId = $_POST['nha_san_xuat_id'];
                     $danhMucId = $_POST['danh_muc_id'];
@@ -200,15 +245,48 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                     $target_dir = "../uploads/";
                     $target_file = $target_dir . basename($_FILES["img"]["name"]);
 
-                    move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
-                    $sachId = insert_sach($tenSanPham, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa, $created_at);
+                    if (empty($tenSanPham)) {
+                        $isCheck = false;
+                        $ErrtenSanPham = "Tên sản phẩm không được bỏ trống.";
+                    }
+
+                    if (empty($nhaSanXuatId)) {
+                        $isCheck = false;
+                        $ErrnhaSanXuatId = "Vui lòng chọn Nhà Xuất Bản.";
+                    }
+
+                    if (empty($danhMucId)) {
+                        $isCheck = false;
+                        $ErrdanhMucId = "Vui lòng chọn Danh Mục.";
+                    }
+
+                    if (empty($gia)) {
+                        $isCheck = false;
+                        $Errgia = "Giá bán không được bỏ trống.";
+                    }
+                    if (empty($moTa)) {
+                        $isCheck = false;
+                        $ErrmoTa = "Cần nhập Mô tả Sản phẩm";
+                    }
+                    if (empty($filename)) {
+                        $isCheck = false;
+                        $Errimg = "Cần thêm ảnh Sản phẩm";
+                    }
+                    if ($isCheck) {
+                        move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
+                        $sachId = insert_sach($tenSanPham, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa, $created_at);
+                        $thongbao = "Thêm thành công!";
+                    }
+
                     // Lưu thông tin về tác giả
                     if (!empty($_POST['tacGia_id'])) {
                         $tacGiaIds = $_POST['tacGia_id'];
                         foreach ($tacGiaIds as $tacGiaId) {
-                            // echo  $tacGiaId;
                             insert_sach_tac_gia($sachId, $tacGiaId);
                         }
+                    } else {
+                        $isCheck = false;
+                        $ErrTg = "Cần nhập Tên Tác giả";
                     }
                 }
                 $listTg = list_tac_gia("");
@@ -217,6 +295,9 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
 
                 include ("sach/add.php");
                 break;
+
+
+
             case 'editSp':
                 if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
                     $id = $_GET["id"];
@@ -231,6 +312,8 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
 
             case 'updateSp':
                 if (isset($_POST['submit'])) {
+                    $isCheck = true;
+
                     $id = $_POST["id"];
                     $tenSanPham = $_POST['name'];
                     $nhaSanXuatId = $_POST['nha_san_xuat_id'];
@@ -238,30 +321,49 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                     $gia = $_POST['gia'];
                     $giaSale = $_POST['gia_sale'];
                     $moTa = $_POST['mo_ta'];
+                    $hinhAnh = $_FILES["img"];
+                    $filename = $hinhAnh["name"];
 
                     // Xóa tất cả các tác giả liên quan đến sản phẩm
                     delete_tacgia_by_sanpham($id);
+                    if (empty($tenSanPham)) {
+                        $isCheck = false;
+                        $ErrtenSanPham = "Tên sản phẩm không được bỏ trống.";
+                    }
+                    if (empty($gia)) {
+                        $isCheck = false;
+                        $Errgia = "Giá bán không được bỏ trống.";
+                    }
+                    if (empty($moTa)) {
+                        $isCheck = false;
+                        $ErrmoTa = "Cần nhập Mô tả Sản phẩm";
+                    }
+                    // if (empty($filename)) {
+                    //     $isCheck = false;
+                    //     $Errimg = "Cần thêm ảnh Sản phẩm";
+                    // }
+                    // var_dump($isCheck); die;
+                    if ($isCheck) {
+                        if ($filename) {
+                            $filename = time() . $filename;
+                            $dir = "../uploads/$filename";
 
+                            if (move_uploaded_file($hinhAnh["tmp_name"], $dir)) {
+                                update_sanpham_coHinhAnh($id, $tenSanPham, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa);
+                            }
+                        }
+                        update_sanpham_KhongHinhAnh($id, $tenSanPham, $nhaSanXuatId, $danhMucId, $gia, $giaSale, $moTa);
+
+                    }
                     // Thêm mới các tác giả cho sản phẩm
                     if (!empty($_POST['tacGia_id'])) {
                         $tacGiaIds = $_POST['tacGia_id'];
                         foreach ($tacGiaIds as $tacGiaId) {
-                            // echo  $tacGiaId;
                             insert_sach_tac_gia($id, $tacGiaId);
                         }
-                    }
-                    $hinhAnh = $_FILES["img"];
-                    $filename = $hinhAnh["name"];
-
-                    if ($filename) {
-                        $filename = time() . $filename;
-                        $dir = "../uploads/$filename";
-
-                        if (move_uploaded_file($hinhAnh["tmp_name"], $dir)) {
-                            update_sanpham_coHinhAnh($id, $tenSanPham, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa);
-                        }
                     } else {
-                        update_sanpham_KhongHinhAnh($id, $tenSanPham, $nhaSanXuatId, $danhMucId, $gia, $giaSale, $moTa);
+                        $isCheck = false;
+                        $ErrTg = "Cần nhập Tên Tác giả";
                     }
                 }
                 $listDm = list_danhmuc("");
@@ -365,7 +467,9 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 break;
 
             case 'thongKe':
-
+                $thongke_gia_DanhMuc = thongke_gia_DanhMuc();
+                $thongke_DoanhThu_5_thang = thongke_DoanhThu_5_thang();
+                $top_10_sach_banChay = top_10_sach_banChay();
                 include ("thongke/thongke.php");
                 break;
 

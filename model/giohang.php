@@ -21,8 +21,6 @@ function add_gio_hang($id_user, $product_id, $so_luong, $gia, $loai_bia)
 {
     $sql = "INSERT INTO gio_hang_items(user_id, product_id, so_luong, gia,loai_bia) 
      VALUES ('$id_user','$product_id','$so_luong','$gia','$loai_bia')";
-    // echo $sql;
-    // die;
     pdo_execute($sql);
 }
 function tong_gia($id_user)
@@ -96,7 +94,7 @@ function select_ChiTietDonHang_where_id($id)
 }
 function select_gio_hang_item_thanhtoan_where_id($id)
 {
-    $sql = "SELECT gio_hang_item_thanhtoan.*, products.ten, products.img AS hinhAnh, ( gio_hang_item_thanhtoan.so_luong * products.gia ) 
+    $sql = "SELECT gio_hang_item_thanhtoan.*, products.ten, products.img AS hinhAnh, products.id , ( gio_hang_item_thanhtoan.so_luong * products.gia ) 
     AS thanhtien  FROM `gio_hang_item_thanhtoan`
     JOIN products on products.id = gio_hang_item_thanhtoan.product_id
         WHERE gio_hang_item_thanhtoan.gio_hang_id  = $id
@@ -106,12 +104,59 @@ function select_gio_hang_item_thanhtoan_where_id($id)
     $gioHang = pdo_query($sql);
     return $gioHang;
 }
-function update_status_ChiTietDonHang($id, $selectedStatus)
+function update_status_don_hang($id, $selectedStatus)
 {
     $sql = "UPDATE `gio_hang` SET `status`='$selectedStatus' WHERE  id = $id";
     pdo_execute($sql);
 }
 
+function update_luot_ban($id, $selectedStatus)
+{
+    if ($selectedStatus == 3) {
+        // Đã giao hàng thành công
+        $gioHang = select_gio_hang_item_thanhtoan_where_id($id);
+        if (!empty($gioHang)) {
+            foreach ($gioHang as $item) {
+                $soLuong = $item["so_luong"];
+                if (isset($item["product_id"])) {
+                    $idSanPham = $item["product_id"];
+                    // Cập nhật lượt bán thành số lượng sản phẩm
+                    update_luot_ban_san_pham($idSanPham, $soLuong);
+                }
+            }
+        }
+    } else {
+        // Chưa giao hàng thành công
+        $gioHang = select_gio_hang_item_thanhtoan_where_id($id);
+        if (!empty($gioHang)) {
+            foreach ($gioHang as $item) {
+                if (isset($item["product_id"])) {
+                    $idSanPham = $item["product_id"];
+                    // Cập nhật lượt bán thành 0
+                    update_luot_ban_san_pham($idSanPham, 0);
+                }
+            }
+        }
+    }
+}
+function update_status_ChiTietDonHang($id, $selectedStatus)
+{
+    // Cập nhật trạng thái của đơn hàng
+    update_status_don_hang($id, $selectedStatus);
+    // Cập nhật lượt bán của sản phẩm
+    update_luot_ban($id, $selectedStatus);
+}
+
+function update_luot_ban_san_pham($id_product, $soLuong)
+{
+    $sql = "UPDATE `products` SET `luot_ban` = '$soLuong' WHERE `products`.`id` = $id_product";
+    pdo_execute($sql);
+}
+// function update_luot_ban_san_pham($id_product, $soLuong)
+// {
+//     $sql = "UPDATE `products` SET `luot_ban`='$soLuong' WHERE products.id =  $id_product";
+//     pdo_execute($sql);
+// }
 function select_Don_hang_cua_toi_where_idUser($id)
 {
     $sql = "SELECT gio_hang.id,gio_hang.customer_id as id_user, gio_hang.status, gio_hang.tong_tien, gio_hang.payment, gio_hang.ghi_chu, gio_hang.name, gio_hang.phone, gio_hang.email,gio_hang.adress, gio_hang.created_at  

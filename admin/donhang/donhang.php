@@ -47,49 +47,58 @@
                             // die;
                             foreach ($list_order_cart as $key => $value) {
                                 $gioHang = select_gio_hang_item_thanhtoan_where_id($value['id']);
-                                $status = $value["status"];
-                                $statusMessages = [
-                                    1 => "Đơn hàng mới",
-                                    2 => "Đang giao hàng",
-                                    3 => "Đã giao hàng thành công",
-                                    4 => "Giao hàng không thành công",
-                                    5 => "Đơn hàng bị hủy"
-                                ];
-                                echo '
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">VNG0' . $value["id"] . '</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
-                                            <div class="flex items-center">
-                                                <img class="h-16 w-16 mr-4"
-                                                    src="../uploads/' . $gioHang[0]["hinhAnh"] . '"
-                                                    alt="Product image">
-                                                <div class="flex flex-col">
-                                                    <span class="font-medium text-[14px] w-[200px] line-clamp-1">' . $gioHang[0]["ten"] . '</span>
-                                                    <p class="mt-1 text-[#929292] text-sm leading-4">' . $gioHang[0]["loai_bia"] . '</p>
-                                                    <p class="mt-1 text-[#929292] text-sm leading-4"><span
-                                                            class="font-medium text-black">Số lượng: </span>' . $gioHang[0]["so_luong"] . '</p>
-                                                    <a href="index.php?act=ChiTietDonHang&id=' . $value["id"] . '" class="mt-1 font-medium text-blue-600">Xem thêm</a>
-                                                </div>
-                                            </div>
-                                        </td>
-
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                            <span class="font-medium text-black">Họ tên:</span> ' . $value["name"] . ' <br>
-                                            <span class="font-medium text-black">Sdt:</span> ' . $value["phone"] . ' <br>
-                                            <!-- <span class="font-medium text-black">Email:</span> ' . $value["email"] . ' <br> -->
-                                            <span class="font-medium text-black">Địa chỉ:</span> ' . $value["adress"] . ' <br>
-                                            <span class="font-medium text-black line-clamp-2">Ghi chú:</span> ' . $value["ghi_chu"] . '<br>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . $value["created_at"] . '</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . ($statusMessages[$status] ?? "Trạng thái không hợp lệ") . '</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . $value["payment"] . '</td>
-                                        <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">' . $value["tong_tien"] . ',000đ</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <a href="index.php?act=ChiTietDonHang&id=' . $value["id"] . '"
-                                                class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Cập nhật</a>
-                                        </td>
-                                    </tr>
-                                ';
+                                // echo "<pre>";
+                                // var_dump($gioHang);
+                                // die;
+                                // Kiểm tra mảng $gioHang có phần tử hay không
+                                if (!empty($gioHang)) {
+                                    // echo "<pre>";
+                                    // var_dump($gioHang);
+                                    // die;
+                                    $status = $value["status"];
+                                    $statusMessages = [
+                                        1 => "Đơn hàng mới",
+                                        2 => "Đang giao hàng",
+                                        3 => "Đã giao hàng thành công",
+                                        4 => "Giao hàng không thành công",
+                                        5 => "Đơn hàng bị hủy"
+                                    ];
+                                    echo '
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">VNG0' . $value["id"] . '</td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                                                    <div class="flex items-center">
+                                                        <img class="h-16 w-16 mr-4"
+                                                            src="../uploads/' . $gioHang[0]["hinhAnh"] . '"
+                                                            alt="Product image">
+                                                        <div class="flex flex-col">
+                                                            <span class="font-medium text-[14px] w-[200px] line-clamp-1">' . $gioHang[0]["ten"] . '</span>
+                                                            <p class="mt-1 text-[#929292] text-sm leading-4">' . $gioHang[0]["loai_bia"] . '</p>
+                                                            <p class="mt-1 text-[#929292] text-sm leading-4"><span
+                                                                    class="font-medium text-black">Số lượng: </span>' . $gioHang[0]["so_luong"] . '</p>
+                                                            <a href="index.php?act=ChiTietDonHang&id=' . $value["id"] . '" class="mt-1 font-medium text-blue-600">Xem thêm</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
+                                                    <span class="font-medium text-black">Họ tên:</span> ' . $value["name"] . ' <br>
+                                                    <span class="font-medium text-black">Sdt:</span> ' . $value["phone"] . ' <br>
+                                                    <!-- <span class="font-medium text-black">Email:</span> ' . $value["email"] . ' <br> -->
+                                                    <span class="font-medium text-black">Địa chỉ:</span> ' . $value["adress"] . ' <br>
+                                                    <span class="font-medium text-black line-clamp-2">Ghi chú:</span> ' . $value["ghi_chu"] . '<br>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . $value["created_at"] . '</td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . ($statusMessages[$status] ?? "Trạng thái không hợp lệ") . '</td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . $value["payment"] . '</td>
+                                                <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">' . $value["tong_tien"] . ',000đ</td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                    <a href="index.php?act=ChiTietDonHang&id=' . $value["id"] . '"
+                                                        class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Cập nhật</a>
+                                                </td>
+                                            </tr>
+                                        ';
+                                }
                             } ?>
 
                             <!-- <tr>

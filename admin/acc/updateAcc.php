@@ -26,14 +26,15 @@
             name="phone" value="<?php echo $acc['phone'] ?>" disabled>
     </div>
     <div class="mb-5">
-        <label for="password" class="block mb-2 text-sm font-medium text-gray-900" disabled>Email</label>
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
         <input type="text"
             class="bg-gray-100 border cursor-not-allowed border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5  focus:border-blue-500"
-            name="email" value="<?php echo $acc['email'] ?>">
+            name="email" value="<?php echo $acc['email'] ?>" disabled>
     </div>
     <div class="mb-5">
         <label for="password" class="block mb-2 text-sm font-medium text-gray-900" disabled>Vai trò</label>
-        <select name="is_admin" id="cars" class="bg-gray-100 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5  focus:border-blue-500" >
+        <select name="is_admin" id="cars"
+            class="bg-gray-100 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5  focus:border-blue-500">
             <?php
             for ($i = 0; $i <= 1; $i++) {
                 $selected = ($acc['is_admin'] == $i) ? 'selected' : '';

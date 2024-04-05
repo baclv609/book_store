@@ -220,7 +220,7 @@
                                       </div>
 
                                       <del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $value["gia_sale"] . ' đ</del>
-                                      <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                                      <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán ' . $value["luot_ban"] . ' cuốn</div> 
                                       <div class="mt-2 flex items-center">
                                           <img src="https://file.hstatic.net/200000785527/file/label_img_1_ddaf3d6b446745c9a0052f99fd888209.png"
                                               class="w-[18px] h-[18px]" alt="">
@@ -350,7 +350,7 @@
                         echo $value_tacgia["tac_gia_name"] . ", ";
                     }
                     echo '</div>
-                            <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
+                            <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán ' . $value["luot_ban"] . ' cuốn</div>
                         </div>
                     </div>
                 </div>

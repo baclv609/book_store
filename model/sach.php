@@ -18,6 +18,8 @@ function insert_sach(
 ) {
     $sql = "INSERT INTO products( ten, danh_muc_id, nha_san_xuat_id, img, gia, gia_sale, mo_ta, created_at) 
     VALUES ('$tenSanPham','$danhMucId','$nhaSanXuatId','$filename','$gia','$giaSale','$moTa',' $created_at')";
+    // echo $sql;
+    // die;
     return pdo_execute_return_lastInsertId($sql);
 }
 function insert_sach_tac_gia($sachId, $tacGiaId)
@@ -80,12 +82,12 @@ function list_sach_flashSale_home()
 
 function list_sach_banchay_home()
 {
-    $sql = "SELECT products.id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
-    FROM products 
-    JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
-    JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id   
-    ORDER BY products.id DESC
-    LIMIT 5;";
+        $sql = "SELECT products.id,products.luot_ban, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
+        FROM products 
+        JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
+        JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id   
+        ORDER BY products.luot_ban DESC
+        LIMIT 5;";
     // SELECT products.id, products.tacGia_id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, tac_gia.name AS tac_gia_name, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
     // FROM products 
     // JOIN tac_gia ON tac_gia.id = products.tacGia_id 
@@ -137,6 +139,8 @@ gia='$gia',
 gia_sale='$giaSale',
 mo_ta='$moTa' 
  WHERE  id='$id'";
+    // echo $sql;
+    // die;
     pdo_execute($sql);
 }
 function update_sanpham_KhongHinhAnh($id, $tenSanPham, $nhaSanXuatId, $danhMucId, $gia, $giaSale, $moTa)
@@ -149,6 +153,8 @@ function update_sanpham_KhongHinhAnh($id, $tenSanPham, $nhaSanXuatId, $danhMucId
     gia_sale='$giaSale',
     mo_ta='$moTa' 
      WHERE  id='$id'";
+    // echo $sql;
+    // die;
     pdo_execute($sql);
 
 }

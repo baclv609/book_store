@@ -97,7 +97,8 @@
                                         ?>,000đ
                                     </span>
                                 </div>
-                                <input type="text" hidden value="<?php echo $list_order_cart_where_id['id'] ?>" name="id">
+                                <input type="text" hidden value="<?php echo $list_order_cart_where_id['id'] ?>"
+                                    name="id">
 
                                 <input type="submit" name="submit" value="Cập nhật"
                                     class="bg-red-700 text-white py-2 px-4 rounded-lg mt-4 w-full">
