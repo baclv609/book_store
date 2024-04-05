@@ -25,7 +25,6 @@
 </head>
 
 <!-- font-[Poppins] -->
-
 <body class="">
     <div class="bg-white sticky z-[11] top-0 w-full " style="box-shadow: 0 1px 3px gray">
         <div class="swiper mySwiper2 bg-[#C92127]">
@@ -137,7 +136,8 @@
                                         <ul class="py-2 text-sm text-gray-700" aria-labelledby="avatarButton">
 
                                             <li>
-                                                <a href="index.php?act=donHangCuaToi" class="block px-4 py-2 hover:bg-gray-100">Đơn hàng của tôi</a>
+                                                <a href="index.php?act=donHangCuaToi"
+                                                    class="block px-4 py-2 hover:bg-gray-100">Đơn hàng của tôi</a>
                                             </li>
                                             <li><a href="index.php?act=quenmk"
                                                     class="block px-4 py-2 hover:bg-gray-100">Quên
@@ -209,3 +209,4 @@
                     </div>
             </div>
         </div>
+    </div>

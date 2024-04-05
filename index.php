@@ -102,6 +102,7 @@ if (isset($_GET["act"])) {
                         $tacgia = $_POST['tacGia_id'];
                         $tacGia_id = implode(",", $tacgia);
                         // print_r($tacGia_id);
+                        // die;
                     } else {
                         $tacGia_id = "";
                     }
@@ -423,7 +424,7 @@ if (isset($_GET["act"])) {
 
                 $tongGia = tong_gia($_SESSION['user']['id']);
 
-                $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";      
+                $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
 
                 $partnerCode = 'MOMOBKUN20180529';

@@ -1,32 +1,28 @@
 <section class="bg-white container-content ">
     <div class="mt-5 grid grid-cols-3 gap-4">
         <!-- Slideshow container -->
-        <div class="slideshow-container col-span-2 row-span-2">
 
-            <!-- Full-width images with number and caption text -->
-            <div class="mySlides fade">
-                <div class="numbertext">1 / 3</div>
-                <img class="rounded" src="https://cdn0.fahasa.com/media/magentothem/banner7/VPP_Slide_T3_840x320.jpg"
-                    style="width:100%">
+        <div class=" col-span-2 row-span-2 ">
+            <?php
+            $images_slide_home = array(
+                "https://cdn0.fahasa.com/media/magentothem/banner7/TrangBachHoaT324_Slide_840x320.jpg",
+                "https://cdn0.fahasa.com/media/magentothem/banner7/HSO_DoChoiT324-slide_-smallbanner_Slide_840x320.jpg",
+                "https://cdn0.fahasa.com/media/magentothem/banner7/NCCTanViet_T323_BannerSlide_840x320.jpg",
+                "https://cdn0.fahasa.com/media/magentothem/banner7/Stem_mainbanner_T3_Slide_840x320.jpg",
+                "https://cdn0.fahasa.com/media/magentothem/banner7/VPP_Slide_T3_840x320.jpg"
+            );
+            ?>
+            <div class="swiper mySwiper3 w-full">
+                <div class="swiper-wrapper w-full m-0">
+                    <?php
+                    foreach ($images_slide_home as $image) {
+                        echo '<div class="swiper-slide">';
+                        echo '    <img class="rounded" src="' . $image . '">';
+                        echo '</div>';
+                    }
+                    ?>
+                </div>
             </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">2 / 3</div>
-                <img class="rounded"
-                    src="https://cdn0.fahasa.com/media/magentothem/banner7/Stem_mainbanner_T3_Slide_840x320.jpg"
-                    style="width:100%">
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">3 / 3</div>
-                <img class="rounded"
-                    src="https://cdn0.fahasa.com/media/magentothem/banner7/NCCTanViet_T323_BannerSlide_840x320.jpg"
-                    style="width:100%">
-            </div>
-
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
 
         <div><img class="rounded h-[147px] w-full"
@@ -36,8 +32,6 @@
     </div>
 
 </section>
-
-
 <!--  -->
 <section class="container-content mt-5 bg-white">
     <div class="flex justify-between gap-4">
@@ -218,14 +212,14 @@
 
                                   <div class="mt-2">
                                       <div>
-                                          <a href="' . $value["id"] . '" class="font-bold text-[#C92127] leading-6 text-left pr-2">' . $value["gia"] . ',000 đ</a>
+                                          <a href="' . $value["id"] . '" class="font-bold text-[#C92127] leading-6 text-left pr-2">' . number_format($value["gia"], 0, ".", ",") . ' đ</a>
                                           <div
                                               class=" inline bg-[#C92127] text-white rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-left text-sm font-bold grid-auto line-height-18px p-1">
                                               ' . $phanTramGiamGia . ' %
                                           </div>
                                       </div>
 
-                                      <del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $value["gia_sale"] . ',000 đ</del>
+                                      <del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $value["gia_sale"] . ' đ</del>
                                       <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
                                       <div class="mt-2 flex items-center">
                                           <img src="https://file.hstatic.net/200000785527/file/label_img_1_ddaf3d6b446745c9a0052f99fd888209.png"
@@ -305,11 +299,11 @@
 
             <div class="mt-2">
                 <div>
-                    <span class="font-bold text-[#FF0000] leading-6 text-left pr-2">' . $value["gia"] . '.000 đ</span>
+                    <span class="font-bold text-[#FF0000] leading-6 text-left pr-2">' . number_format($value["gia"], 0, ".", ",") . ' đ</span>
                 </div>';
 
                 if ($value["gia_sale"] && trim($value["gia_sale"]) !== '') {
-                    echo '<del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $value["gia_sale"] . '.000 đ</del>';
+                    echo '<del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $value["gia_sale"] . ' đ</del>';
                 }
 
                 echo '</div>
@@ -365,24 +359,6 @@
 
 
                 ?>
-
-                <!-- item 2 -->
-                <!-- <div class="w-[520px] h-[120px]">
-                    <div class="flex py-2">
-                        <div class="flex justify-between items-center px-4">01</div>
-                        <div><a href="#"><img class="w-[100px] h-[100px]"
-                                    src="https://cdn0.fahasa.com/media/catalog/product/8/9/8935325011559.jpg"
-                                    alt=""></a></div>
-                        <div class="w-[330px] px-4">
-                            <div class="text-sm leading-5 text-left">Ghi Chép Pháp Y - Những Thi Thể Không Hoàn
-                                Chỉnh</div>
-                            <div class="text-[12px] text-[#808080] leading-5 text-left">Cao bá quát</div>
-                            <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán 999 cuốn</div>
-
-                        </div>
-                    </div>
-                </div> -->
-
             </div>
             <div class="col-span-7 ">
                 <div class="grid grid-cols-12  px-4">
@@ -401,7 +377,7 @@
                                 $list_tacgia_sach_spct = list_tacgia_sach_spct($list_sach_banchay_home[0]['id']);
                                 // echo $list_sach_banchay_home[0]['tac_gia_name']; 
                                 foreach ($list_tacgia_sach_spct as $key_tacgia => $value_tacgia) {
-                                    echo  $value_tacgia["tac_gia_name"] . ", ";
+                                    echo $value_tacgia["tac_gia_name"] . ", ";
                                 }
                                 ?>
 
@@ -411,7 +387,7 @@
                                 <?php echo $list_sach_banchay_home[0]['nha_san_xua_name']; ?>
                         </div>
                         <a href="#" class="font-bold text-[#C92127] leading-6 text-left mt-4">
-                            <?php echo $list_sach_banchay_home[0]['gia']; ?>,000 ₫
+                            <?php echo number_format($list_sach_banchay_home[0]['gia'], 0, ".", ","); ?> đ
                         </a>
                         <div class="text-[#333333] text-sm leading-6 text-left mt-4 line-clamp-5"><span
                                 class="font-medium">Mô tả : </span> <br>

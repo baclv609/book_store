@@ -363,6 +363,12 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 $list_order_cart = select_order_cart();
                 include ("donhang/donhang.php");
                 break;
+
+            case 'thongKe':
+
+                include ("thongke/thongke.php");
+                break;
+
             default:
                 include ("home.php");
                 break;

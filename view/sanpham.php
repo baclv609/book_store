@@ -5,43 +5,19 @@
         <div class="md:block col-span-3 hidden pr-3">
             <div class=" rounded-xl">
                 <div class="rounded-xl bg-white p-3 mb-4">
-                    <!-- <p class="mb-4 text-lg font-medium leading-6 my-2">Lọc tác giả</p> -->
-                    <!-- <form action="#">
-                        <div class="flex items-center mb-2">
-                            <input id="default-radio-1" type="radio" value="" name="default-radio"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                            <label for="default-radio-1"
-                                class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">Dưới
-                                100.000đ</label>
-                        </div>
-                        <div class="flex items-center mb-2">
-                            <input id="default-radio-1" type="radio" value="" name="default-radio"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                            <label for="default-radio-1"
-                                class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">100.000đ -
-                                200.000đ</label>
-                        </div>
-
-                        <div class="flex items-center mb-2">
-                            <input id="default-radio-1" type="radio" value="" name="default-radio"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                            <label for="default-radio-1"
-                                class="ms-2 text-sm font-medium hover:text-[#ff379b] text-gray-900">500.000đ -
-                                1.000.000đ</label>
-                        </div>
-                    </form> -->
-                    <!-- <form action="index.php?act=tim_tac_gia" method="post">
+                    <form action="index.php?act=tim_tac_gia" method="post">
                         <?php
-                        // foreach ($listTg as $key => $value) {
-                        //     // print_r($listTg);
-                        //     echo '<input type="checkbox" name="tacGia_id[]" value="' . $value["id"] . '"> ' . $value["name"] . '<br>';
-                        //     echo '';
-                        // }
+                        foreach ($listTg as $key => $value) {
+                            // print_r($listTg);
+                            echo '<input type="checkbox" name="tacGia_id[]" value="' . $value["id"] . '"> ' . $value["name"] . '<br>';
+                            echo '';
+                        }
                         ?>
-                        <input type="submit" value="lọc theo tác giả" name="submit" style="color:red;">
-
-
-                    </form> -->
+                        <div class="flex justify-items-center">
+                            <input type="submit" value="lọc theo tác giả" name="submit"
+                                class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">
+                        </div>
+                    </form>
 
                 </div>
 
@@ -94,14 +70,12 @@
                 </form>
 
                 <form action="" method="post">
-                    
-                <div class="grid md:grid-cols-3 lg:grid-cols-4  grid-cols-2 gap-4">
-                    
-                        <!-- item 2 -->
+                    <div class="grid md:grid-cols-3 lg:grid-cols-4  grid-cols-2 gap-4">
                         <?php
+                        // echo '<pre>';
+                        // print_r($listSp);
+                        // die;
                         foreach ($listSp as $key => $value) {
-                            # code...
-                            
                             echo '<div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
                 <div>
                 
@@ -120,12 +94,12 @@
 
                     <div class="mt-2">
                         <div>
-                          <span class="font-bold text-[#FF0000] leading-6 text-left pr-2">' . $value["gia"] . '.000 đ</span>
+                          <span class="font-bold text-[#FF0000] leading-6 text-left pr-2">' . number_format(floatval($value["gia"])) . ' đ</span>
                        </div>';
 
 
                             if ($value["gia_sale"] && trim($value["gia_sale"]) !== '') {
-                                echo '<del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $value["gia_sale"] . '.000 đ</del>';
+                                echo '<del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . number_format(floatval($value["gia_sale"])) . ' đ</del>';
                             }
 
                             echo '</div>
@@ -134,7 +108,7 @@
                         }
                         ?>
 
-                </div>
+                    </div>
                 </form>
                 <!-- <div class="mt-2 flex items-center">
                             <img src="../assets/image/categories_image/label_starstar.webp"
@@ -142,7 +116,6 @@
                             <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale
                             </div>
                         </div> -->
-                <div> <a-pagination v-model:current="current" :total="50" show-less-items /></div>
             </div>
         </div>
     </div>

@@ -58,18 +58,18 @@
                     </div>
                     <div class="flex mb-4 items-center">
                         <div class="mr-4">
-                            <?php echo '<input type="hidden" name="gia" value="' . $sanPhamCt["gia"] . '" readonly > 
-                         <input class="text" hidden value="' . $sanPhamCt["gia"] . '" id="gia_bien_the"
+                            <?php echo '<input type="hidden" name="gia" value="' . number_format(floatval($sanPhamCt["gia"]), 0, ".", ",") . '" readonly > 
+                         <input class="text" hidden value="' . number_format(floatval($sanPhamCt["gia"]), 0, ".", ",") . '" id="gia_bien_the"
                             onchange="myFunction()"></input>
                         <span class="text-[#FF0000] text-[24px] font-bold" id="gia_sau_bien_the">
-                            ' . $sanPhamCt["gia"] . '.000 đ
+                            ' . number_format(floatval($sanPhamCt["gia"]), 0, ".", ",") . ' đ
                         </span> '; ?>
 
                         </div>
                         <?php
                         if ($sanPhamCt["gia_sale"] && trim($sanPhamCt["gia_sale"]) !== '') {
-                            echo '<div>
-                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $sanPhamCt["gia_sale"] . '.000 đ</del>
+                            echo '<div>  
+                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . number_format(floatval($sanPhamCt["gia_sale"]), 0, ".", ",") . ' đ</del>
                     </div>';
                         }
                         ?>
@@ -181,7 +181,6 @@
 
             <?php
             foreach ($sach_cungLoai as $key => $value) {
-                # code...
                 echo '<div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
                 <div>
                     <a href="index.php?act=sanphamct&idsp=' . $value["id"] . '" class="w-[190px] h-[190px] flex justify-center items-center"> <img src="./uploads/' . $value["img"] . '"
@@ -198,11 +197,11 @@
                     <div class="mt-2">
                         <div>
                             <span class="font-bold text-[#097770] leading-6 text-left pr-2">
-                            ' . $value["gia"] . '</span>
+                            ' . number_format(floatval($value["gia"]), 0, ".", ",") . '</span>
                             
                         </div>
 
-                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $value["gia_sale"] . '</del>
+                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . number_format(floatval($value["gia_sale"]), 0, ".", ",") . '</del>
                        
                         <div class="mt-2 flex items-center">
                             <img src="../assets/image/categories_image/label_starstar.webp"

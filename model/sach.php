@@ -1,7 +1,7 @@
 <?php
 // function insert_sach($tenSanPham, $tacGia_id, $danh_muc_id, $nha_san_xuat_id, $img, $gia, $gia_sale, $mo_ta, $created_at)
 // {
-//     $sql = "INSERT INTO `products`(`ten`, `tacGia_id`, `danh_muc_id`, `nha_san_xuat_id`, `img`, `gia`, `gia_sale`, `mo_ta`, `created_at`) 
+//     $sql = "INSERT INTO products(ten, tacGia_id, danh_muc_id, nha_san_xuat_id, img, gia, gia_sale, mo_ta, created_at) 
 //     VALUES 
 //     ('$tenSanPham', '$tacGia_id', '$danh_muc_id', '$nha_san_xuat_id', '$img', '$gia', '$gia_sale', '$mo_ta', '$created_at')";
 //     pdo_execute($sql);
@@ -16,13 +16,9 @@ function insert_sach(
     $moTa,
     $created_at
 ) {
-    // Thực hiện truy vấn SQL để chèn dữ liệu vào bảng "sách"
-    $sql = "INSERT INTO products (ten, danh_muc_id, nha_san_xuat_id, img, gia, gia_sale, mo_ta, created_at) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    $conn = pdo_get_connection();
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([$tenSanPham, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa, $created_at]);
-    return $conn->lastInsertId();
+    $sql = "INSERT INTO products( ten, danh_muc_id, nha_san_xuat_id, img, gia, gia_sale, mo_ta, created_at) 
+    VALUES ('$tenSanPham','$danhMucId','$nhaSanXuatId','$filename','$gia','$giaSale','$moTa',' $created_at')";
+    return pdo_execute_return_lastInsertId($sql);
 }
 function insert_sach_tac_gia($sachId, $tacGiaId)
 {
@@ -37,10 +33,10 @@ function delete_sach($id)
 }
 function list_sach($danh_muc_id, $searchSp, $tacGia_id)
 {
-    $sql = "SELECT products.id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
+    $sql = "SELECT  products.id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
     FROM products 
     JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
-    JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id WHERE 1";
+    JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id  WHERE 1";
 
     if ($searchSp != "") {
         $sql .= " AND products.ten LIKE '%" . $searchSp . "%'";
@@ -54,17 +50,15 @@ function list_sach($danh_muc_id, $searchSp, $tacGia_id)
         $sql .= " AND tac_gia.id IN ($tacGia_id) ";
     }
 
-    // Sort the results by product ID in descending order
     $sql .= " ORDER BY products.id DESC";
     // echo $sql;
     // die;
-    // Execute the SQL query and retrieve the list of products
-    $listSach = pdo_query($sql);
 
-    // Return the list of products
+    $listSach = pdo_query($sql);
     return $listSach;
 }
-// function loc_tacgia($tacGia_id){
+// function loc_tacgia($tacGia_id)
+// {
 //     $sql = "SELECT tac_gia.name, products.id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
 //     FROM products 
 //     JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
@@ -79,11 +73,8 @@ function list_sach($danh_muc_id, $searchSp, $tacGia_id)
 // }
 function list_sach_flashSale_home()
 {
-    // SQL query to select the necessary data from the 'products' table and join it with other related tables
     $sql = "SELECT * FROM products WHERE gia_sale IS NOT NULL AND gia_sale <> 0;";
-
     $listSach = pdo_query($sql);
-
     return $listSach;
 }
 
@@ -96,10 +87,10 @@ function list_sach_banchay_home()
     ORDER BY products.id DESC
     LIMIT 5;";
     // SELECT products.id, products.tacGia_id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, tac_gia.name AS tac_gia_name, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
-// FROM products 
-// JOIN tac_gia ON tac_gia.id = products.tacGia_id 
-// JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
-// JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id   
+    // FROM products 
+    // JOIN tac_gia ON tac_gia.id = products.tacGia_id 
+    // JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
+    // JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id   
     $listSach = pdo_query($sql);
     return $listSach;
 }
@@ -137,33 +128,33 @@ function update_sach($id, $name)
 function update_sanpham_coHinhAnh($id, $tenSanPham, $danhMucId, $nhaSanXuatId, $filename, $gia, $giaSale, $moTa)
 {
 
-    $sql = "UPDATE `products` SET 
-`ten`='$tenSanPham',
-`danh_muc_id`='$danhMucId',
-`nha_san_xuat_id`='$nhaSanXuatId',
-`img`='$filename',
-`gia`='$gia',
-`gia_sale`='$giaSale',
-`mo_ta`='$moTa' 
+    $sql = "UPDATE products SET 
+ten='$tenSanPham',
+danh_muc_id='$danhMucId',
+nha_san_xuat_id='$nhaSanXuatId',
+img='$filename',
+gia='$gia',
+gia_sale='$giaSale',
+mo_ta='$moTa' 
  WHERE  id='$id'";
     pdo_execute($sql);
 }
 function update_sanpham_KhongHinhAnh($id, $tenSanPham, $nhaSanXuatId, $danhMucId, $gia, $giaSale, $moTa)
 {
-    $sql = "UPDATE `products` SET 
-    `ten`='$tenSanPham',
-    `danh_muc_id`='$danhMucId',
-    `nha_san_xuat_id`='$nhaSanXuatId',
-    `gia`='$gia',
-    `gia_sale`='$giaSale',
-    `mo_ta`='$moTa' 
+    $sql = "UPDATE products SET 
+    ten='$tenSanPham',
+    danh_muc_id='$danhMucId',
+    nha_san_xuat_id='$nhaSanXuatId',
+    gia='$gia',
+    gia_sale='$giaSale',
+    mo_ta='$moTa' 
      WHERE  id='$id'";
     pdo_execute($sql);
 
 }
 function delete_tacgia_by_sanpham($id)
 {
-    $sql = "DELETE FROM `produt_tac_gia` WHERE produt_tac_gia.product_id = $id";
+    $sql = "DELETE FROM produt_tac_gia WHERE produt_tac_gia.product_id = $id";
     pdo_query($sql);
 }
 function update_sach_tac_gia($sachId, $tacGiaId, $id)

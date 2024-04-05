@@ -5,7 +5,7 @@
         <div class="grid grid-cols-12 pt-12">
             <div class="px-3 xl:col-span-6 lg:col-span-6 md:col-span-7 sm:col-span-12 col-span-12">
                 <div class="text-lg text-[#C92127] font-bold">
-                   stripe
+                    stripe
                 </div>
                 <div class="text-sm text-[#424242]">Hotline: 1900.636.099</div>
                 <div class="text-sm text-[#424242]">
@@ -64,8 +64,16 @@
 
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
 <script>
+
+    var swiper = new Swiper(".mySwiper3", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+    });
     var swiper = new Swiper(".mySwiper2", {
         spaceBetween: 30,
         centeredSlides: true,
@@ -141,17 +149,10 @@
         let slides = document.getElementsByClassName("mySlides");
         let dots = document.getElementsByClassName("dot");
         if (n > slides.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = slides.length }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-    }
-</script>
+        if (n < 1) { slideIndex = slides.length } for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; } for (i = 0;
+            i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); } slides[slideIndex -
+                1].style.display = "block"; dots[slideIndex - 1].className += " active";
+    } </script>
 </body>
 
 </html>

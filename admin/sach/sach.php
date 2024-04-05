@@ -95,8 +95,8 @@
             <td class="w-4 p-4">' . $value["id"] . '</td>
             <td class="w-[500px] px-3 py-3 font-medium text-black">' . $value["ten"] . '</td>
             <td class="px-3 py-3"><img src="../uploads/' . $value["img"] . '" style="width: 110px;" alt="loading..."></td>
-            <td class="px-3 py-3">' . $value["gia"] . '</td>
-            <td class="px-3 py-3">' . $value["gia_sale"] . '</td>
+            <td class="px-3 py-3">' . number_format(floatval($value["gia"]), 0, ".", ",") . '</td>
+            <td class="px-3 py-3">' . number_format(floatval($value["gia_sale"]), 0, ".", ",") . '</td>
             <td class="px-3 line-clamp-6">' . $value["mo_ta"] . '</td>
             <td class="px-3 py-3">';
 
