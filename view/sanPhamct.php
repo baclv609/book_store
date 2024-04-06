@@ -198,7 +198,6 @@
                         <div>
                             <span class="font-bold text-[#097770] leading-6 text-left pr-2">
                             ' . number_format(floatval($value["gia"]), 0, ".", ",") . '</span>
-                            
                         </div>
 
                         <del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . number_format(floatval($value["gia_sale"]), 0, ".", ",") . '</del>
@@ -220,6 +219,8 @@
         <div class="flex justify-center items-center py-2"><a
                 class="text-center w-[200px] rounded-xl text-sm text-[#C92127] font-bold border-2 border-solid border-[#C92127] leading-5 bg-white py-3 px-4"
                 href="#">Xem thêm</a></div>
+
+
     </div>
 </section>
 
@@ -228,10 +229,6 @@
     function myFunction() {
         var x = parseFloat(document.querySelector('input[name="loai_bia"]:checked').value);
         console.log("x", x);
-        // const arr = JSON.parse(document.querySelector('input[name="loai_bia"]:checked').value);
-        // const firstElement = arr.shift();
-
-        // console.log(firstElement)
         y = parseFloat(document.getElementById("gia_bien_the").value);
         document.getElementById("gia_sau_bien_the").innerHTML = y + x + ".000 đ";
 

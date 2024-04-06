@@ -107,7 +107,69 @@
                         </div>';
                         }
                         ?>
+  <?php
+        // foreach ($listSp as $key => $value) {
+        //     $giaCu = $value['gia_sale'];
+        //     $giaMoi = $value['gia'];
 
+        //     $phanTramGiamGia = round((($giaCu - $giaMoi) / $giaCu) * 100, 0);
+        //     echo '
+        //                 <div class="swiper-slide">
+        //                       <div class="w-[220px] p-4 text-sm leading-5 bg-white rounded-xl">
+        //                       <div>
+        //                           <a href="index.php?act=sanphamct&idsp=' . $value["id"] . '"><img class="w-[195px] h-[195px]"
+        //                                   src="./uploads/' . $value["img"] . '"
+        //                                   alt="loading" /></a>
+        //                       </div>
+                
+        //                       <!-- title + price-->
+        //                       <div>
+        //                           <div class="overflow-hidden text-ellipsis  max-h-9 min-h-9 ">
+        //                               <a href="index.php?act=sanphamct&idsp=' . $value["id"] . '"
+        //                                   class="leading-4 text-[#424242] text-sm text-left hover:text-[#C92127] w-[184px]">' . $value["ten"] . '</a>
+        //                           </div>';
+
+        //     // Kiểm tra nếu có giá sale
+        //     if ($giaCu > 0) {
+        //         echo '
+        //                           <div class="mt-2">
+        //                               <div>
+        //                                   <a href="' . $value["id"] . '" class="font-bold text-[#C92127] leading-6 text-left pr-2">' . number_format($value["gia"], 0, ".", ",") . ' đ</a>
+        //                                   <div
+        //                                       class=" inline bg-[#C92127] text-white rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-left text-sm font-bold grid-auto line-height-18px p-1">
+        //                                       ' . $phanTramGiamGia . ' %
+        //                                   </div>
+        //                               </div>
+                
+        //                               <del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $value["gia_sale"] . ' đ</del>
+        //                               <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán ' . $value["luot_ban"] . ' cuốn</div> 
+        //                               <div class="mt-2 flex items-center">
+        //                                   <img src="https://file.hstatic.net/200000785527/file/label_img_1_ddaf3d6b446745c9a0052f99fd888209.png"
+        //                                       class="w-[18px] h-[18px]" alt="">
+        //                                   <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale </div>
+        //                               </div>
+        //                           </div>';
+        //     } else {
+        //         echo '
+        //                           <div class="mt-2">
+        //                               <div>
+        //                                   <a href="' . $value["id"] . '" class="font-bold text-[#C92127] leading-6 text-left pr-2">' . number_format($value["gia"], 0, ".", ",") . ' đ</a>
+        //                               </div>
+        //                               <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán ' . $value["luot_ban"] . ' cuốn</div> 
+        //                               <div class="mt-2 flex items-center">
+        //                                   <img src="https://file.hstatic.net/200000785527/file/label_img_1_ddaf3d6b446745c9a0052f99fd888209.png"
+        //                                       class="w-[18px] h-[18px]" alt="">
+        //                                   <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale </div>
+        //                               </div>
+        //                           </div>';
+        //     }
+
+        //     echo '
+        //                       </div>
+        //                   </div>
+        //            </div>';
+        // }
+        ?>
                     </div>
                 </form>
                 <!-- <div class="mt-2 flex items-center">
