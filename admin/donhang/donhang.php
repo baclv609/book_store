@@ -91,7 +91,7 @@
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . $value["created_at"] . '</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . ($statusMessages[$status] ?? "Trạng thái không hợp lệ") . '</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . $value["payment"] . '</td>
-                                                <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">' . $value["tong_tien"] . ',000đ</td>
+                                                <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">' .number_format(floatval( $value["tong_tien"] ), 0, ".", ","). 'đ</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                                                     <a href="index.php?act=ChiTietDonHang&id=' . $value["id"] . '"
                                                         class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Cập nhật</a>

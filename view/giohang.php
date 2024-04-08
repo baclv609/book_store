@@ -31,7 +31,7 @@
                                                         </div>
                                                      </div>
                                                  </td>
-                                                 <td class="py-4">' . $value['gia'] . '</td>
+                                                 <td class="py-4">' .number_format(floatval( $value['gia'] ), 0, ".", ","). '</td>
                                                  <td class="py-4">
                                                     <div class="flex items-center">
                                                         <button class="border rounded-md py-2 px-4 mr-2 decrease-quantity">-</button>
@@ -39,7 +39,7 @@
                                                      <button class="border rounded-md py-2 px-4 ml-2 increase-quantity">+</button>
                                              </div>
                                                  </td>
-                                                 <td class="py-4">' . $value['thanhtien'] . '</td>
+                                                 <td class="py-4">' .number_format(floatval( $value['thanhtien']), 0, ".", ",") . '</td>
                                                  <td class="py-4"><a href="index.php?act=deleteGioHang&id=' . $value['id'] . '" onclick="return confirm(\'Bạn muốn xóa ?\')"><input type="button" value="Xóa"  class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"></a></td>
                                                 </tr> ';
                                     }
@@ -76,7 +76,8 @@
                                     //     extract($tongGia);
                                     //     echo '' . $value['tong'] . ',000đ';
                                     // }
-                                    echo $tongGia['tong'];
+                                    // echo $tongGia['tong'];
+                                    echo number_format(floatval($tongGia['tong']), 0, ".", ",");
                                     ?>
                                 </span>
                             </div>

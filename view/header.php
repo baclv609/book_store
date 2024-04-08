@@ -25,6 +25,7 @@
 </head>
 
 <!-- font-[Poppins] -->
+
 <body class="">
     <div class="bg-white sticky z-[11] top-0 w-full " style="box-shadow: 0 1px 3px gray">
         <div class="swiper mySwiper2 bg-[#C92127]">
@@ -56,10 +57,10 @@
                                 <a class="hover:text-gray-500" href="index.php?act=sanpham">Sản phẩm</a>
                             </li>
                             <li>
-                                <a class="hover:text-gray-500" href="index.php?act=tacgia">Tác giả</a>
+                                <a class="hover:text-gray-500" href="index.php?act=gioithieu ">Giới thiệu</a>
                             </li>
                             <li>
-                                <a class="hover:text-gray-500" href="index.php?act=nhaxuatban">Nhà xuất bản</a>
+                                <a class="hover:text-gray-500" href="index.php?act=tintuc">Tin tức</a>
                             </li>
                             <li>
                                 <div class="">
@@ -72,6 +73,9 @@
                                         } ?>
                                     </ul>
                                 </div>
+                            </li>
+                            <li>
+                                <a class="hover:text-gray-500" href="index.php?act=lienhe">Liên hệ</a>
                             </li>
                         </ul>
                     </div>

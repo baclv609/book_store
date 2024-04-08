@@ -14,7 +14,7 @@
 
                 <div class="text-sm text-[#424242] mt-2">Hotline: 1900.636.099</div>
                 <div class="text-sm text-[#424242] mt-2">
-                    Email: support@haravan.com
+                    Email: hello@merakiui.com
                 </div>
             </div>
 

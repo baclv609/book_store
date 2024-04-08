@@ -24,261 +24,279 @@
 <!-- font-[Poppins] -->
 
 <body class="">
-    <header class="bg-white">
-        <nav class="container-content flex justify-between items-center">
-            <div>
-                <img class="w-16 cursor-pointer" src="https://cdn-icons-png.flaticon.com/512/5968/5968204.png"
-                    alt="...">
-            </div>
-            <div
-                class="nav-links duration-500 md:static absolute bg-white  md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  flex items-center px-5">
-                <ul class="flex md:flex-row flex-col md:items-center md:gap-7 gap-4">
-                    <li>
-                        <a class="hover:text-gray-500" href="#">Products</a>
-                    </li>
-                    <li>
-                        <a class="hover:text-gray-500" href="#">Resource</a>
-                    </li>
-                    <li>
-                        <a class="hover:text-gray-500" href="#">Developers</a>
-                    </li>
-                    <li>
-                        <a class="hover:text-gray-500" href="#">Pricing</a>
-                    </li>
-                    <li>
-                        <div class="relative ">
-                            <a id="dropdownButton" class=" cursor-pointer m-7 md:m-0 hover:text-cyan-400 hover:underline 
-                            transition duration-400 ease-in">Danh Mục <i class="fa-solid fa-chevron-down"></i></a>
-
-                            <ul id="dropdownMenu"
-                                class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
-                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a>
-                                </li>
-                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a>
-                                </li>
-                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="flex items-center gap-6">
-                <form action="">
-                    <input type="text" placeholder="Tìm kiếm" class="border border-gray-400 p-2 rounded-md text-xs">
-                    <input type="submit" name="submit" value="Tìm" class="bg-red-500 text-white px-2 py-1 rounded ">
-                </form>
-                <div>
-                    <a href="#" class="flex flex-col justify-center items-center"><i
-                            class="fa-solid fa-cart-shopping"></i>
-                        <div class="text-xs mt-1">Giỏ hàng</div>
+   
+    <section class="container-content mt-5">
+        <div class="bg-white rounded-xl p-4 mb-4 lg:p-3">
+            <h3 class="mb-4 pt-2 text-left font-medium text-2xl leading-6">Chủ đề cho mẹ</h3>
+            <div class="grid grid-cols-12">
+                <!-- item 1 -->
+                <div
+                    class="md:col-span-6 2xl:col-span-3 sm:col-span-6 mx-3 mb-2 col-span-6 px-4 py-2 rounded-full flex border border-menuHover bg-[#fff9fb]">
+                    <a href="#">
+                        <img class="w-[48px] h-[48px] mr-3"
+                            src="https://file.hstatic.net/200000785527/file/me_mang_thai_84bac0b1bbac483c937b3c0a90ee45d0_grande.png"
+                            alt="">
                     </a>
-                </div>
-                <div>
-                    <a href="#" class="flex flex-col justify-center items-center"><i class="fa-regular fa-user"></i>
-                        <div class="text-xs mt-1">Đăng nhập</div>
-                    </a>
-                </div>
-            </div>
-    </header>
-  <!-- product -->
-  <div class="bg-gray-100 py-8">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row -mx-4">
-            <div class="md:flex-1 px-4">
-                <div class="h-[460px] rounded-lg bg-gray-300 mb-4">
-                    <img class="w-full h-full object-cover" src="https://cdn.pixabay.com/photo/2020/05/22/17/53/mockup-5206355_960_720.jpg" alt="Product Image">
-                </div>
-                <div class="flex -mx-2 mb-4">
-                    <div class="w-1/2 px-2">
-                        <button class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 ">Add to Cart</button>
-                    </div>
-                    <div class="w-1/2 px-2">
-                        <button class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300">Add to Wishlist</button>
-                    </div>
-                </div>
-            </div>
-            <div class="md:flex-1 px-4">
-                <h2 class="text-2xl font-bold text-gray-800  mb-2">Product Name</h2>
-                <p class="text-gray-600  text-sm mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
-                    ante justo. Integer euismod libero id mauris malesuada tincidunt.
-                </p>
-                <div class="flex mb-4">
-                    <div class="mr-4">
-                        <span class="font-bold text-gray-700 ">Price:</span>
-                        <span class="text-gray-600 ">$29.99</span>
-                    </div>
                     <div>
-                        <span class="font-bold text-gray-700 ">Availability:</span>
-                        <span class="text-gray-600 ">In Stock</span>
+                        <a href="#"
+                            class="text-[#424242] inline text-sm font-bold leading-6 text-left hover:text-[#ff379b]">Tin
+                            mới
+                            kids</a>
+                        <p class="text-[#424242] leading-4 text-xs hidden md:block">5 bài viết</p>
                     </div>
                 </div>
-                <div class="mb-4">
-                    <span class="font-bold text-gray-700 ">Select Color:</span>
-                    <div class="flex items-center mt-2">
-                        <button class="w-6 h-6 rounded-full bg-gray-800 mr-2"></button>
-                        <button class="w-6 h-6 rounded-full bg-red-500 dark:bg-red-700 mr-2"></button>
-                        <button class="w-6 h-6 rounded-full bg-blue-500 dark:bg-blue-700 mr-2"></button>
-                        <button class="w-6 h-6 rounded-full bg-yellow-500 dark:bg-yellow-700 mr-2"></button>
+
+                <!-- item 2 -->
+                <div
+                    class="md:col-span-6 2xl:col-span-3 sm:col-span-6 mx-3 mb-2 col-span-6 px-4 py-2 rounded-full flex border border-[#ffd8b3] bg-[#FFF9E6]">
+                    <a href="#">
+                        <img class="w-[48px] h-[48px] mr-3"
+                            src="https://file.hstatic.net/200000785527/file/9_thang_10_ngay_67a535e62e4e41f2beb1090f0094d317_grande.png"
+                            alt="">
+                    </a>
+                    <div>
+                        <a href="#"
+                            class="text-[#424242] inline text-sm font-bold leading-6 text-left hover:text-[#ff379b]">Tin
+                            mới
+                            kids</a>
+                        <p class="text-[#424242] leading-4 text-xs hidden md:block">5 bài viết</p>
                     </div>
                 </div>
-                <div class="mb-4">
-                    <span class="font-bold text-gray-700 ">Select Size:</span>
-                    <div class="flex items-center mt-2">
-                        <button class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">S</button>
-                        <button class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">M</button>
-                        <button class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">L</button>
-                        <button class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">XL</button>
-                        <button class="bg-gray-300 text-gray-700 dark:text-white py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">XXL</button>
+
+                <!-- item 3 -->
+                <div
+                    class="md:col-span-6 2xl:col-span-3 sm:col-span-6 mx-3 mb-2 col-span-6 px-4 py-2 rounded-full flex border border-[#c1efff] bg-[#F3FDFE]">
+                    <a href="#">
+                        <img class="w-[48px] h-[48px] mr-3"
+                            src="https://file.hstatic.net/200000785527/file/con_tu_0_12_thang_9a18073721c444fa96804616b634f8ba_grande.png"
+                            alt="">
+                    </a>
+                    <div>
+                        <a href="#"
+                            class="text-[#424242] inline text-sm font-bold leading-6 text-left hover:text-[#ff379b]">Tin
+                            mới
+                            kids</a>
+                        <p class="text-[#424242] leading-4 text-xs hidden md:block">5 bài viết</p>
                     </div>
                 </div>
-                <div>
-                    <span class="font-bold text-gray-700 ">Product Description:</span>
-                    <p class="text-gray-600  text-sm mt-2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                        sed ante justo. Integer euismod libero id mauris malesuada tincidunt. Vivamus commodo nulla ut
-                        lorem rhoncus aliquet. Duis dapibus augue vel ipsum pretium, et venenatis sem blandit. Quisque
-                        ut erat vitae nisi ultrices placerat non eget velit. Integer ornare mi sed ipsum lacinia, non
-                        sagittis mauris blandit. Morbi fermentum libero vel nisl suscipit, nec tincidunt mi consectetur.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-    
-
-    <!-- thông tin sản phẩm -->
-    <!-- <section class="mt-5 container-content mx-auto">
-        <div class="bg-white rounded-xl p-2 lg:p-3 mb-3">
-            <div class="flex flex-wrap-reverse md:flex-nowrap">
-
-                <div class=" p-4 w-full ">
-                    <h3 class="font-[Coiny] font-bold text-2xl leading-6 mb-4 text-center md:text-left">
-                        Thông tin chi tiết
-                    </h3>
-                    <p class="mb-4 text-sm">Sản phẩm được may từ vải cotton mềm mại cho phép bé thoải mái chơi đùa, vận
-                        động mà không cảm
-                        thấy khó
-                        chịu. Bên cạnh đó, chất liệu cotton không gây kích ứng da và có khả năng thấm hút mồ hôi tốt nên
-                        Mẹ không
-                        phải lo lắng bé yêu bị nổi rôm, tuyệt đối an toàn khi sử dụng.</p>
-                    <h3 class="font-semibold mb-4">Thiết kế thoải mái, đáng yêu</h3>
-                    <p class="mb-4 text-sm">Thiết kế thoải mái phối cùng họa tiết cá tính sẽ mang đến phong cách thoải
-                        mái và không kém
-                        phần thời trang
-                        cho bé của bạn. Ngoài ra, các đường nối, đường cuốn biên trên quần áo không bị nổi cộm gây khó
-                        chịu và ngứa
-                        da bé cho phép bé vận động dễ dàng.</p>
-                </div>
-                <div class=" border border-[#ffaa2d] rounded-xl p-4 w-full">
-                    <p class="border-b-2 border-[#097770] pb-6 mb-6">Rinh quà <b class="text-[#097770]">Trung thu</b>
-                        cho bé</p>
-                    <p class="pb-6">Giảm 5% đơn từ 290k - Mã <b class="text-[#097770]">mk5</b></p>
-                    <p class="pb-6">Giảm 20k phí ship đơn từ 700k - Mã <b class="text-[#097770]">FREESHIP20</b></p>
+                <!-- item 4 -->
+                <div
+                    class="md:col-span-6 2xl:col-span-3 sm:col-span-6 mx-3 mb-2 col-span-6 px-4 py-2 rounded-full flex border border-[#ffc5e2] bg-[#fff9fb]">
+                    <a href="#">
+                        <img class="w-[48px] h-[48px] mr-3"
+                            src="https://file.hstatic.net/200000785527/file/cham_me_sau_sinh_6d7da27ef8a7495abbaa9a92abcce24a_grande.png"
+                            alt="">
+                    </a>
+                    <div>
+                        <a href="#"
+                            class="text-[#424242] inline text-sm font-bold leading-6 text-left hover:text-[#ff379b]">Tin
+                            mới
+                            kids</a>
+                        <p class="text-[#424242] leading-4 text-xs hidden md:block">5 bài viết</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-    </section> -->
-    <!-- Đánh giá sản phẩm -->
-    <section class="container-content mx-auto">
-        <div class="bg-white rounded-xl p-2 lg:p-3 mb-3 ">
-            <h3 class="font-[Coiny] font-medium text-xl leading-6 mb-4 text-center md:text-left">
-                Đánh giá sản phẩm
-            </h3>
-            <div class="grid grid-cols-3">
-                <div class="md:col-span-1 col-span-3 ">
-                    <div
-                        class="w-full bg-[#fffbed] flex items-center flex-col rounded-xl text-sm leading-5 mb-5 p-3 md:w-[50%]">
-                        <!-- star -->
-                        <!-- <div class="flex items-center mb-1">
-              <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor" viewBox="0 0 22 20">
-                <path
-                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-              </svg>
-              <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor" viewBox="0 0 22 20">
-                <path
-                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-              </svg>
-              <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor" viewBox="0 0 22 20">
-                <path
-                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-              </svg>
-              <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor" viewBox="0 0 22 20">
-                <path
-                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-              </svg>
-              <svg class="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                <path
-                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-              </svg>
-            </div> -->
-                        <p class="text-center">(0 đánh giá)</p>
+
+        <div class="grid grid-cols-12 ">
+            <div class="lg:col-span-9 col-span-12 px-[10px]">
+                <div class="bg-white rounded-xl p-4 mb-4 lg:p-3">
+                    <h1 class="font-bold text-xl leading-6 mt-1 mb-2 text-left">Lý thuyết trò chơi trong 'Nghệ thuật tư duy chiến lược'</h1>
+                    <div class="">
+                        <P class="pt-1 mb-3">Đăng bởi: <b>Phạm Đức - 07/10/2023</b></P>
+                    </div>
+
+                    <div class="block lg:hidden">
+                        <a href="#"><img
+                                src="https://file.hstatic.net/200000785527/article/5-ly-do-ba-me-nen-cho-be-uong-sua-organic-7_c21aa4605b844efdb6ca1d16f7a37789.jpg"
+                                alt=""></a>
+                    </div>
+                    <div class="rounded-xl p-2">
+                        <h2
+                            class="text-[#097770] border-l-2 font-bold text-xl text-justify border-[#097770] pl-[10px] mb-[10px]">
+                            Sữa organic là gì?</h2>
+                        <p class="mb-4 leading-6">Sữa organic (hay còn được gọi là sữa hữu cơ) là sản phẩm được chế biến
+                            từ sữa lấy từ đàn bò được chăn nuôi bằng phương thức hữu cơ. Theo phương thức này, toàn bộ
+                            thức ăn và thức uống của đàn bò được nuôi trồng tự nhiên, hoàn toàn không sử dụng hóa chất,
+                            thuốc trừ sâu bọ trên đồng cỏ, không dùng phân hóa học để bón cỏ, không được trồng bằng hạt
+                            giống biến đổi gen. Tất cả quy trình chăn nuôi đàn bò và quy trình sản xuất sữa nguyên liệu
+                            đều tuân thủ nghiêm ngặt tiêu chuẩn organic “3 không” của châu Âu gồm: </p>
+                        <p class="mb-4 leading-6"><strong>.</strong> Không hormone tăng trưởng;</p>
+                        <p class="mb-4 leading-6"><strong>.</strong> Không dư lượng thuốc kháng sinh;</p>
+                        <p class="mb-4 leading-6"><strong>.</strong> Không thuốc trừ sâu</p>
+                        <p class="mb-4 leading-6">Các sản phẩm sữa hữu cơ cần phải được chứng nhận hữu cơ phổ biến như:
+                            chứng nhận hữu cơ từ tổ chức USDA (Bộ Nông nghiệp Mỹ), chứng nhận hữu cơ của Liên minh châu
+                            Âu (Soil Association). Đây là một lưu ý giúp ba mẹ tránh mua phải sữa organic kém chất
+                            lượng. </p>
+                        <p class="mb-4 leading-6"><em>Sữa organic là sản phẩm được chế biến từ sữa lấy từ đàn bò được
+                                chăn nuôi bằng phương thức hữu cơ </em></p>
+
+                        <h2
+                            class="text-[#097770] border-l-2 font-bold text-xl text-justify border-[#097770] pl-[10px] mb-[10px]">
+                            Bé có nên uống sữa organic không? </h2>
+                        <p class="mb-4 leading-6">Từ định nghĩa sữa organic mà KidsShop đã chia sẻ ở trên, thì quy trình
+                            sản xuất sữa organic quả thật rất chất lượng trong từng giai đoạn. Từ giai đoạn tuyển chọn
+                            nguồn sữa nguyên liệu tự nhiên, cho đến khâu sản xuất cũng đảm bảo khép kín và nghiêm ngặt.
+                            Chất lượng của sữa organic còn được công nhận bởi những đơn vị thẩm định uy tín trên thế
+                            giới. Do đó, ba mẹ hoàn toàn có thể an tâm về mức độ an toàn khi cho bé uống sữa hữu cơ.
+                        </p>
+                        <p class="mb-4 leading-6">Không chỉ an toàn thôi, sữa hữu cơ còn là một loại thực phẩm chứa một
+                            số dưỡng chất có hàm lượng đặc biệt cao. Tất cả những dưỡng chất này đều rất tốt và cần cho
+                            sự phát triển khỏe mạnh và toàn diện của trẻ. Ưu điểm vượt trội này đã được KidsShop tổng
+                            hợp và liệt kê thành 5 lợi ích, tương ứng với 5 lý do vì sao mẹ nên cho bé uống sữa organic.
+                            Mời ba mẹ cùng theo dõi ở nội dung tiếp theo nhé!</p>
+
+
+                        <h2
+                            class="text-[#097770] border-l-2 font-bold text-xl text-justify border-[#097770] pl-[10px] mb-[10px]">
+                            Sữa organic là gì?</h2>
+                        <p class="mb-4 leading-6">Sữa organic (hay còn được gọi là sữa hữu cơ) là sản phẩm được chế biến
+                            từ sữa lấy từ đàn bò được chăn nuôi bằng phương thức hữu cơ. Theo phương thức này, toàn bộ
+                            thức ăn và thức uống của đàn bò được nuôi trồng tự nhiên, hoàn toàn không sử dụng hóa chất,
+                            thuốc trừ sâu bọ trên đồng cỏ, không dùng phân hóa học để bón cỏ, không được trồng bằng hạt
+                            giống biến đổi gen. Tất cả quy trình chăn nuôi đàn bò và quy trình sản xuất sữa nguyên liệu
+                            đều tuân thủ nghiêm ngặt tiêu chuẩn organic “3 không” của châu Âu gồm: </p>
+                        <p class="mb-4 leading-6"><strong>.</strong> Không hormone tăng trưởng;</p>
+                        <p class="mb-4 leading-6"><strong>.</strong> Không dư lượng thuốc kháng sinh;</p>
+                        <p class="mb-4 leading-6"><strong>.</strong> Không thuốc trừ sâu</p>
+                        <p class="mb-4 leading-6">Các sản phẩm sữa hữu cơ cần phải được chứng nhận hữu cơ phổ biến như:
+                            chứng nhận hữu cơ từ tổ chức USDA (Bộ Nông nghiệp Mỹ), chứng nhận hữu cơ của Liên minh châu
+                            Âu (Soil Association). Đây là một lưu ý giúp ba mẹ tránh mua phải sữa organic kém chất
+                            lượng. </p>
+                        <p class="mb-4 leading-6"><em>Sữa organic là sản phẩm được chế biến từ sữa lấy từ đàn bò được
+                                chăn nuôi bằng phương thức hữu cơ </em></p>
+
+
+                        <hr>
+                        <div class="pt-4">
+                            <div>
+                                <h1 class="font-bold text-xl leading-6 mt-1 mb-4 text-left">Bình luận</h1>
+                                <p class="py-4 px-5 text-[#85640] rounded-lg mb-4 bg-[#fff3cd] border border-[#ffeeba]">
+                                    Hiện tại bài viết này chưa có bình luận.</p>
+                            </div>
+                            <div>
+                                <h1 class="font-bold text-xl leading-6 mt-1 mb-4 text-left">Viết bình luận</h1>
+                                <form action="#">
+                                    <div class="grid grid-cols-12">
+                                        <div class="lg:col-span-6 col-span-12 px-[10px] w-full h-[55px]">
+                                            <input type="text" id="" aria-describedby="helper-text-explanation"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                placeholder="Họ và tên...">
+                                        </div>
+                                        <div class="lg:col-span-6 col-span-12 px-[10px] w-full h-[55px]">
+                                            <input type="email" id="" aria-describedby="helper-text-explanation"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                placeholder="Địa chỉ email">
+                                        </div>
+                                    </div>
+                                    <div class="px-[10px]">
+                                        <textarea id="message" rows="4"
+                                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                            placeholder="Nội dung..."></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="lg:col-span-3 hidden lg:block px-[10px]">
+                <h3 class="text-2xl font-medium leading-6 pt-2 mb-4">Tin tức - Sự kiện</h3>
+
+                <div class="flex flex-col">
+                    <div class="bg-white rounded-xl p-2 mb-4">
+                        <a href="#" class=""><img class="mb-2 rounded-xl"
+                                src="https://file.hstatic.net/200000785527/article/20210813_133921_896717_loan-khuan-duong-ru-max-1800x1800_88986859ba5741e3b53a5f5f589f0551_large.jpg"
+                                alt=""></a>
+                        <h3 class="font-bold text-sm leading-5 text-left hover:text-menuHover line-clamp-2"><a
+                                href="#">Khám phá tác
+                                dụng
+                                của men vi sinh dành cho bé bị loạn khuẩn ruột
+                            </a></h3>
+                    </div>
+
+                    <div class="bg-[#f8eaff] rounded-xl p-2 mb-4">
+                        <a href="#" class=""><img class="mb-2 rounded-xl"
+                                src="https://file.hstatic.net/200000785527/article/i-thiet-ke-ranh-ta-dan-cheo-giup-ta-whito-tham-hut-tot-hon-den-3-lan-1_711467ac0c054727b01711d5e917cfe9_large.jpg"
+                                alt=""></a>
+                        <h3 class="font-bold text-sm leading-5 text-left hover:text-menuHover line-clamp-2"><a
+                                href="#">Bật mí thiết kế rãnh tã đan chéo giúp tã Whito thấm hút tốt hơn đến 3 lần</a>
+                        </h3>
+                    </div>
+
+                    <div class="bg-[#ddfff3] rounded-xl p-2 mb-4">
+                        <a href="#" class=""><img class="mb-2 rounded-xl"
+                                src="https://file.hstatic.net/200000785527/article/chuan-bi-do-di-sinh-3_d0e5303664c048a68b043772478fbf2b_large.jpg"
+                                alt=""></a>
+                        <h3 class="font-bold text-sm leading-5 text-left hover:text-menuHover line-clamp-2"><a
+                                href="#">Giải đáp: Mẹ nên chuẩn bị đồ đi sinh từ tháng thứ mấy?</a></h3>
+                    </div>
+
+                    <div class="bg-[#fff1f6] rounded-xl p-2 mb-4">
+                        <a href="#" class=""><img class="mb-2 rounded-xl"
+                                src="https://file.hstatic.net/200000785527/article/tre-bieng-an-cham-tang-can-thap-coi-lam-sao-de-cai-thien-3_eec0316a28e44f5d861468ca1a0a35c1_large.jpg"
+                                alt=""></a>
+                        <h3 class="font-bold text-sm leading-5 text-left hover:text-menuHover line-clamp-2"><a
+                                href="#">Trẻ biếng ăn, chậm tăng cân, thấp còi: Làm sao để cải thiện?</a></h3>
                     </div>
                 </div>
-                <div class="col-span-3 md:col-span-2 flex justify-end items-center">
-                    <span class=" mb-3 p-3 text-white  bg-menuHover rounded-xl font-bold cursor-pointer"><input
-                            value="Viết đánh giá" type="button" @click="toggleForm" /></span>
-                </div>
+
+
             </div>
+        </div>
 
-            <!-- form -->
-            <div v-show="showForm">
-                <div class="lg:w-[70%] w-full pl-3 mx-auto mb-5 flex justify-end">
-                    <form @submit.prevent="submitForm" class="md:w-[100%] w-[100%]">
-                        <div>
-                            <input v-model="name" type="text" id="name"
-                                class="my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                placeholder="Tên của bạn (>3 ký tự và < 20 ký tự)" />
-                            <div v-if="nameError" class="text-red-500 mt-3 w-full">Tên của bạn phải từ 3 đến 20 ký tự,
-                                vui lòng nhập
-                                lại.</div>
-                        </div>
-                        <div>
-                            <input v-model="email" type="email" id="email"
-                                class="my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                placeholder="john.smith@example.com" />
-                            <div v-if="emailError" class="text-red-500 mt-3 w-full">Email không đúng định dạng, vui lòng
-                                nhập lại.
-                            </div>
-                        </div>
-                  
-                        <div>
-                            <input v-model="title" type="text" id="title"
-                                class="my-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                placeholder="Hãy cho một tiêu đề (>3 ký tự và < 50 ký tự)" />
-                            <div v-if="titleError" class="text-red-500 mt-3 w-full">Tiêu đề của bạn không hợp lệ, vui
-                                lòng nhập lại.
-                            </div>
-                        </div>
-                        <div>
-                            <textarea v-model="content" id="content" rows="4"
-                                class="mt-3 block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Viết nội dung đánh giá ở đây (>3 ký tự và < 1000 ký tự)"></textarea>
-                            <div v-if="contentError" class="text-red-500 mt-3 w-full">
-                                Viết nội dung đánh giá ở đây (>3 ký tự và < 1000 ký tự) </div>
-                            </div>
-                            <span
-                                class="text-right mt-3 mb-3 p-3 text-white bg-menuHover rounded-xl font-bold cursor-pointer float-right">
-                                <input value="Gửi đánh giá" type="submit" />
-                            </span>
-                    </form>
-                </div>
-            </div>
+        <div class="lg:hidden block mb-5">
+            <h3 class="text-2xl font-medium leading-6 pt-2 mb-4">Tin tức - Sự kiện</h3>
 
-
-          
+            <swiper :scrollbar="{
+                hide: true,
+            }" v-bind="SwiperSlideNews" >
+                <swiper-slide>
+                    <div class="bg-white rounded-xl p-2">
+                        <a href="#" class=""><img class="mb-2 rounded-xl"
+                                src="https://file.hstatic.net/200000785527/article/20210813_133921_896717_loan-khuan-duong-ru-max-1800x1800_88986859ba5741e3b53a5f5f589f0551_large.jpg"
+                                alt=""></a>
+                        <h3 class="font-bold text-sm leading-5 text-left hover:text-menuHover line-clamp-2 max-h-[40px] min-h-[40px]"><a
+                                href="#">Khám phá tác
+                                dụng
+                                của men vi sinh dành cho bé bị loạn khuẩn ruột
+                            </a></h3>
+                    </div>
+                </swiper-slide>
+                <swiper-slide>
+                    <div class="bg-[#f8eaff] rounded-xl p-2">
+                        <a href="#" class=""><img class="mb-2 rounded-xl"
+                                src="https://file.hstatic.net/200000785527/article/i-thiet-ke-ranh-ta-dan-cheo-giup-ta-whito-tham-hut-tot-hon-den-3-lan-1_711467ac0c054727b01711d5e917cfe9_large.jpg"
+                                alt=""></a>
+                        <h3 class="font-bold text-sm leading-5 text-left hover:text-menuHover line-clamp-2 max-h-[40px] min-h-[40px]"><a
+                                href="#">Bật mí thiết kế rãnh tã đan chéo giúp tã Whito thấm hút tốt hơn đến 3
+                                lần</a>
+                        </h3>
+                    </div>
+                </swiper-slide><swiper-slide>
+                    <div class="bg-[#ddfff3] rounded-xl p-2">
+                        <a href="#" class=""><img class="mb-2 rounded-xl"
+                                src="https://file.hstatic.net/200000785527/article/chuan-bi-do-di-sinh-3_d0e5303664c048a68b043772478fbf2b_large.jpg"
+                                alt=""></a>
+                        <h3 class="font-bold text-sm leading-5 text-left hover:text-menuHover line-clamp-2 max-h-[40px] min-h-[40px]"><a
+                                href="#">Giải đáp: Mẹ nên chuẩn bị đồ đi sinh từ tháng thứ mấy?</a></h3>
+                    </div>
+                </swiper-slide>
+                <swiper-slide>
+                    <div class="bg-[#fff1f6] rounded-xl p-2">
+                        <a href="#" class=""><img class="mb-2 rounded-xl"
+                                src="https://file.hstatic.net/200000785527/article/tre-bieng-an-cham-tang-can-thap-coi-lam-sao-de-cai-thien-3_eec0316a28e44f5d861468ca1a0a35c1_large.jpg"
+                                alt=""></a>
+                        <h3 class="font-bold text-sm leading-5 text-left hover:text-menuHover line-clamp-2 max-h-[40px] min-h-[40px]"><a
+                                href="#">Trẻ biếng ăn, chậm tăng cân, thấp còi: Làm sao để cải thiện?</a></h3>
+                    </div>
+                </swiper-slide>
+            </swiper>
         </div>
     </section>
-
     <!-- footer -->
     <footer class=" bg-white">
         <div class="container-content ">

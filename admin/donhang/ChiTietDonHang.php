@@ -24,7 +24,7 @@
                                 <ul class="text-xs text-white space-y-3 mt-4">
                                     <li class="flex flex-wrap gap-4">Loại: <span class="ml-auto">' . $value['loai_bia'] . '</span></li>
                                     <li class="flex flex-wrap gap-4">Số lượng <span class="ml-auto">' . $value['so_luong'] . '</span></li>
-                                    <li class="flex flex-wrap gap-4">Tổng giá <span class="ml-auto ">' . $value['thanhtien'] . ',000 đ</span></li>
+                                    <li class="flex flex-wrap gap-4">Tổng giá <span class="ml-auto ">' . number_format(floatval($value['thanhtien']), 0, ".", ",") . 'đ</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -93,8 +93,8 @@
                                     </span>
                                     <span class=" text-sm text-red-600">
                                         <?php
-                                        echo $list_order_cart_where_id['tong_tien'];
-                                        ?>,000đ
+                                        echo number_format(floatval($list_order_cart_where_id['tong_tien']), 0, ".", ",");
+                                        ?>đ
                                     </span>
                                 </div>
                                 <input type="text" hidden value="<?php echo $list_order_cart_where_id['id'] ?>"

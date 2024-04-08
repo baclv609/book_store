@@ -15,6 +15,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
     include ("../model/thongke.php");
 
     include ("header.php");
+    // include ("home.php");
     if (isset($_GET["act"])) {
         $act = $_GET["act"];
         switch ($act) {
@@ -466,7 +467,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 include ("donhang/donhang.php");
                 break;
 
-            case 'thongKe':
+            case 'trangchu':
                 $thongke_gia_DanhMuc = thongke_gia_DanhMuc();
                 $thongke_DoanhThu_5_thang = thongke_DoanhThu_5_thang();
                 $top_10_sach_banChay = top_10_sach_banChay();

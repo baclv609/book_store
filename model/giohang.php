@@ -25,7 +25,8 @@ function add_gio_hang($id_user, $product_id, $so_luong, $gia, $loai_bia)
 }
 function tong_gia($id_user)
 {
-    $sql = "SELECT SUM(so_luong*gia) AS tong FROM gio_hang_items WHERE gio_hang_items.user_id = $id_user";
+    $sql = "SELECT SUM(so_luong*products.gia) AS tong FROM gio_hang_items JOIN products ON products.id=gio_hang_items.product_id 
+    WHERE gio_hang_items.user_id = $id_user";
     $tongGia = pdo_query_one($sql);
     return $tongGia;
 }

@@ -55,7 +55,12 @@ include ("view/header.php");
 if (isset($_GET["act"])) {
     $act = $_GET["act"];
     switch ($act) {
-
+        case 'tintuc':
+            include ("./view/tintuc.php");
+            break;
+        case 'lienhe':
+            include ("./view/lienhe.php");
+            break;
         case 'sanpham':
             // if ((isset($_POST["kyw"])) && ($_POST["kyw"]) != "") {
             //     $kyw = $_POST["kyw"];
