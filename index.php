@@ -39,6 +39,7 @@ $listTg = list_tac_gia("");
 $listSp_home = list_sach("", "", "");
 $list_sach_flashSale_home = list_sach_flashSale_home();
 $list_sach_banchay_home = list_sach_banchay_home();
+$list_Top_6_Sach_home = list_Top_6_Sach_home();
 $errDangNhappass = "";
 $errDangNhapuser = "";
 
@@ -46,10 +47,10 @@ $errDangKypass = "";
 $errDangKyuser = "";
 $errDangKyemail = "";
 
-if (!isset($_SESSION['myCart'])) {
-    $_SESSION['myCart'] = [];
-}
-$countProducts = count($_SESSION['myCart']);
+// if (!isset($_SESSION['myCart'])) {
+//     $_SESSION['myCart'] = [];
+// }
+// $countProducts = count($_SESSION['myCart']);
 
 include ("view/header.php");
 if (isset($_GET["act"])) {
@@ -519,7 +520,10 @@ if (isset($_GET["act"])) {
             }
             include ("./view/donHang/ChiTietDonHangCuaToi.php");
             break;
-
+        case 'flashsale':
+            $listSp = list_sach_flashSale_home();
+            include ("view/sanpham.php");
+            break;
         default:
             include ("view/home.php");
             break;

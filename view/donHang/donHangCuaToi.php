@@ -80,7 +80,7 @@
                                         
                                         ' . $value["created_at"] . ' <br>
                                         Phương thức thanh toán: ' . $value["payment"] . '  <br>
-                                        <p class=" font-bold text-sm text-red-600">Tổng tiền : ' . $value["tong_tien"] . ',000đ</p>
+                                        <p class=" font-bold text-sm text-red-600">Tổng tiền : ' . number_format($value["tong_tien"], 0, ".", ",") . ' đ</p>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                                             <a href="index.php?act=ChiTietDonHangCuaToi&id=' . $value["id"] . '"

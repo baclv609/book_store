@@ -35,7 +35,7 @@ function delete_sach($id)
 }
 function list_sach($danh_muc_id, $searchSp, $tacGia_id)
 {
-    $sql = "SELECT DISTINCT products.id, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
+    $sql = "SELECT DISTINCT products.id, products.ten, products.img,products.luot_ban, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
     FROM products 
     JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
     JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id
@@ -54,6 +54,7 @@ function list_sach($danh_muc_id, $searchSp, $tacGia_id)
     }
 
     $sql .= " ORDER BY products.id DESC";
+    // echo $sql; die;
     $listSach = pdo_query($sql);
     return $listSach;
 }
@@ -77,7 +78,15 @@ function list_sach_flashSale_home()
     $listSach = pdo_query($sql);
     return $listSach;
 }
-
+function list_Top_6_Sach_home()
+{
+    $sql = "SELECT products.id, products.ten, products.img, products.gia, products.gia_sale, products.luot_ban
+    FROM products
+     ORDER BY products.id DESC;
+    LIMIT 6;";
+    $listSach = pdo_query($sql);
+    return $listSach;
+}
 function list_sach_banchay_home()
 {
     $sql = "SELECT products.id,products.luot_ban, products.ten, products.img, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 

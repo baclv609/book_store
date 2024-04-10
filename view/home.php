@@ -176,10 +176,10 @@
     <div class="container-content  p-6 rounded-xl mb-3 ">
         <div class="mb-4 flex justify-between items-center bg-white py-5 px-6 rounded-xl">
             <!-- logo flash sale -->
-            <div><img class=""
+            <a href="index.php?act=flashsale"> <img class=""
                     src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/flashsale/label-flashsale.svg?q="
-                    alt=""></div>
-            <div class="text-[#1478FC] pl-2 font-bold leading-5 text-sm">Xem tất cả</div>
+                    alt=""> </a>
+            <a href="index.php?act=flashsale" class="text-[#1478FC] pl-2 font-bold leading-5 text-sm">Xem tất cả</a>
 
         </div>
 
@@ -219,7 +219,7 @@
                                           </div>
                                       </div>
 
-                                      <del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $value["gia_sale"] . ' đ</del>
+                                      <del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . number_format($value["gia_sale"], 0, ".", ",") . ' đ</del>
                                       <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán ' . $value["luot_ban"] . ' cuốn</div> 
                                       <div class="mt-2 flex items-center">
                                           <img src="https://file.hstatic.net/200000785527/file/label_img_1_ddaf3d6b446745c9a0052f99fd888209.png"
@@ -236,7 +236,6 @@
             <div class="swiper-pagination mt-10"></div>
         </div>
 </section>
-
 
 <!-- Sản phẩm nổi bật  -->
 <section class="container-content my-5 ">
@@ -279,12 +278,19 @@
 
             <?php
             $counter = 0;
+            foreach ($list_Top_6_Sach_home as $key => $value) {
+                $giaCu_listSP = $value['gia_sale'];
+                $giaMoi_listSP = $value['gia'];
 
-            foreach ($listSp_home as $key => $value) {
+                // Kiểm tra giá trị của $giaCu_listSP trước khi thực hiện phép chia
+                if ($giaCu_listSP != 0) {
+                    $phanTramGiamGia_listSP = round((($giaCu_listSP - $giaMoi_listSP) / $giaCu_listSP) * 100, 0);
+                } else {
+                    $phanTramGiamGia_listSP = 0; // Gán giá trị mặc định nếu $giaCu_listSP là 0
+                }
                 if ($counter >= 10) {
                     break;
                 }
-
                 echo '<div class="hover:shadow-md md:p-4 p-2 text-sm leading-5 bg-white rounded-xl">
         <div>
             <a href="index.php?act=sanphamct&idsp=' . $value["id"] . '" class="w-[190px] h-[190px] flex justify-center items-center">
@@ -295,34 +301,47 @@
         <div class="mt-2">
             <div class="overflow-hidden text-ellipsis max-h-9 min-h-9">
                 <a href="index.php?act=sanphamct&idsp=' . $value["id"] . '" class="leading-4 text-[#424242] text-sm text-left hover:text-[#ff379b] w-[184px]">' . $value["ten"] . '</a>
-            </div>
-
-            <div class="mt-2">
-                <div>
-                    <span class="font-bold text-[#FF0000] leading-6 text-left pr-2">' . number_format($value["gia"], 0, ".", ",") . ' đ</span>
-                </div>';
+            </div>';
 
                 if ($value["gia_sale"] && trim($value["gia_sale"]) !== '') {
-                    echo '<del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . $value["gia_sale"] . ' đ</del>';
+                    echo ' <div class="mt-2">
+                        <div>
+                            <a href="' . $value["id"] . '" class="font-bold text-[#C92127] leading-6 text-left pr-2">' . number_format($value["gia"], 0, ".", ",") . ' đ</a>
+                            <div class=" inline bg-[#C92127] text-white rounded-br-12 rounded-bl-12 rounded-tl-lg rounded-tr-lg rounded-b-lg text-left text-sm font-bold grid-auto line-height-18px p-1">
+                                ' . $phanTramGiamGia_listSP . ' %
+                            </div>
+                        </div>
+                
+                        <del class="mt-1 text-[#929292] text-sm leading-4 text-left">' . number_format($value["gia_sale"], 0, ".", ",") . ' đ</del>
+                        <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán ' . $value["luot_ban"] . ' cuốn</div> 
+                        <div class="mt-2 flex items-center">
+                            <img src="https://file.hstatic.net/200000785527/file/label_img_1_ddaf3d6b446745c9a0052f99fd888209.png"
+                                class="w-[18px] h-[18px]" alt="">
+                            <div class="text-[#d42611] font-bold leading-[15px] text-xs ml-1">Flashsale </div>
+                        </div>
+                    </div>';
+                } else {
+                    echo '
+                    <div class="mt-2">
+                        <div>
+                            <span class="font-bold text-[#FF0000] leading-6 text-left pr-2">' . number_format($value["gia"], 0, ".", ",") . ' đ</span>
+                        </div>
+                        <div class="text-xs leading-5 text-[#2F80ED] mt-6">Đã bán ' . $value["luot_ban"] . ' cuốn</div> 
+                        ';
+                    echo '</div>';
                 }
-
-                echo '</div>
-        </div>
-    </div>';
-
+                echo '  </div>
+                </div>';
                 $counter++;
             }
             ?>
-
-
         </div>
 
-        <div class="flex justify-center items-center py-2"><a
+        <div class="flex justify-center items-center py-2 mt-5"><a
                 class="text-center w-[200px] rounded-xl text-sm text-[#C92127] font-bold border-2 border-solid border-[#C92127] leading-5 bg-white py-3 px-4"
                 href="index.php?act=sanpham">Xem thêm</a></div>
     </div>
 </section>
-
 
 <!-- Top sản 5 sản phẩm bán chạy -->
 <section class="container-content my-5">
@@ -331,8 +350,6 @@
 
         <div class="bg-white grid grid-cols-12 pt-4">
             <div class="col-span-5 border-r-4 border-gray-500-500">
-
-
                 <?php
                 foreach ($list_sach_banchay_home as $key => $value) {
                     $list_tacgia_sach_spct = list_tacgia_sach_spct($value["id"]);
@@ -353,11 +370,8 @@
                             <div class="text-xs leading-5 text-[#2F80ED] my-1">Đã bán ' . $value["luot_ban"] . ' cuốn</div>
                         </div>
                     </div>
-                </div>
-';
+                </div> ';
                 }
-
-
                 ?>
             </div>
             <div class="col-span-7 ">
@@ -372,15 +386,12 @@
                                 <?php echo $list_sach_banchay_home[0]['ten']; ?>
                             </a> </div>
                         <div class="text-[#333333] text-sm leading-6 text-left ">Tác giả: <span class="font-medium">
-
                                 <?php
                                 $list_tacgia_sach_spct = list_tacgia_sach_spct($list_sach_banchay_home[0]['id']);
-                                // echo $list_sach_banchay_home[0]['tac_gia_name']; 
                                 foreach ($list_tacgia_sach_spct as $key_tacgia => $value_tacgia) {
                                     echo $value_tacgia["tac_gia_name"] . ", ";
                                 }
                                 ?>
-
                             </span> </div>
                         <div class="text-[#333333] text-sm leading-6 text-left mb-1">Nhà xuất bản: <span
                                 class="font-medium">
@@ -401,7 +412,7 @@
 </section>
 
 <section id="miraway-customer" class="mt-[100px] max-lg:mt-[80px] px-[120px] pb-[50px]">
-    <h3 class="text-primary text-center">Khách hàng của chúng tôi</h3>
+    <h3 class="text-primary text-center text-black text-3xl text-lg p-4 rounded-md">Khách hàng của chúng tôi</h3>
     <div class="mt-14 max-md:mt-[40px] overflow-hidden flex">
         <div class="slide w-full shrink-0 max-md:hidden">
             <img loading="lazy" src="https://miraway.vn/_ipx/w_1536&f_webp/images/customer-logo.png"
