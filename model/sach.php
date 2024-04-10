@@ -33,14 +33,12 @@ function delete_sach($id)
     $sql = "DELETE FROM products WHERE id = $id";
     pdo_query($sql);
 }
-function list_sach($danh_muc_id, $searchSp, $tacGia_id)
+function list_sach($danh_muc_id, $searchSp)
 {
     $sql = "SELECT DISTINCT products.id, products.ten, products.img,products.luot_ban, products.gia, products.danh_muc_id, products.gia_sale, products.mo_ta, products.created_at, danh_muc.name AS danh_muc_name, nha_san_xua.name AS nha_san_xua_name 
     FROM products 
     JOIN danh_muc ON danh_muc.id = products.danh_muc_id 
-    JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id
-    JOIN produt_tac_gia ON produt_tac_gia.product_id = products.id
-    JOIN tac_gia ON produt_tac_gia.tac_gia_id = tac_gia.id WHERE 1";
+    JOIN nha_san_xua ON nha_san_xua.id = products.nha_san_xuat_id WHERE 1";
     if ($searchSp != "") {
         $sql .= " AND products.ten LIKE '%" . $searchSp . "%'";
     }
@@ -49,9 +47,6 @@ function list_sach($danh_muc_id, $searchSp, $tacGia_id)
         $sql .= " AND products.danh_muc_id = " . $danh_muc_id;
     }
 
-    if ($tacGia_id) {
-        $sql .= " AND tac_gia.id IN ($tacGia_id) ";
-    }
 
     $sql .= " ORDER BY products.id DESC";
     // echo $sql; die;

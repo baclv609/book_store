@@ -221,7 +221,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 }
                 $listDm = list_danhmuc("");
                 $listTg = list_tac_gia("");
-                $list_Sach = list_sach($danh_muc_id, $searchSP, "");
+                $list_Sach = list_sach($danh_muc_id, $searchSP);
                 include ("sach/sach.php");
                 break;
             case 'addSach':

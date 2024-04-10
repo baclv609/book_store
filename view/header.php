@@ -54,11 +54,11 @@
                                 <a class="hover:text-gray-500" href="index.php">Trang chủ</a>
                             </li>
                             <li>
-                                <a class="hover:text-gray-500" href="index.php?act=sanpham">Sản phẩm</a>
+                                <a class="hover:text-gray-500" href="index.php?act=sach">Sản phẩm</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a class="hover:text-gray-500" href="index.php?act=gioithieu ">Giới thiệu</a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a class="hover:text-gray-500" href="index.php?act=tintuc">Tin tức</a>
                             </li>

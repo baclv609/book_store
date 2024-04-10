@@ -82,49 +82,33 @@ if (isset($_GET["act"])) {
         // lọc ở sản phẩm
         case 'sach':
             if (isset($_POST['submit'])) {
-                //$tacGia_id = $_POST["tacGia_id"];
-                $danh_muc_id = $_POST["danh_muc_id"];
-                $searchSP = $_POST["searchSP"];
+                $searchSP = isset($_POST["searchSP"]) ? $_POST["searchSP"] : "";
+                $danh_muc_id = isset($_POST["danh_muc_id"]) ? $_POST["danh_muc_id"] : "";
+                $tacgia = isset($_POST['tacGia_id']) ? $_POST['tacGia_id'] : array();
+            
+                if (is_array($tacgia)) {
+                    $tacGia_id = implode(",", $tacgia);
+                } else {
+                    $tacGia_id = "";
+                }
             } else {
                 $searchSP = "";
                 $danh_muc_id = "";
-                //$tacGia_id = "";
+                $tacGia_id = "";
             }
-            // $listDm = list_danhmuc("");
-            // $listTg = list_tac_gia("");
-            $listSp = list_sach($danh_muc_id, $searchSP, "");
-            include ("view/sanpham.php");
+            
+            $listSp = list_All_home_sach($danh_muc_id, $searchSP, $tacGia_id);
+            include("view/sanpham.php");
             break;
+
         //-- TÌM TÁC GIẢ TRANG SẢN PHẨM
-        case 'tim_tac_gia':
-            if (isset($_POST['submit'])) {
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    if (isset($_POST['tacGia_id']) && !empty($_POST['tacGia_id'])) {
-                        // print_r($_POST['tacGia_id']);
-                        // $authors = $_POST['tacGia_id'];
-                        // print_r($authors);
-                        // $danh_sach_tacgia = implode(",", $_POST['tacGia_id']);
-                        // print_r($danh_sach_tacgia);
-                        $tacgia = $_POST['tacGia_id'];
-                        $tacGia_id = implode(",", $tacgia);
-                        // print_r($tacGia_id);
-                        // die;
-                    } else {
-                        $tacGia_id = "";
-                    }
-                    // $loc_tacgia = loc_tacgia($tacGia_id);
-                }
-            }
-            $listSp = list_sach("", "", $tacGia_id);
-            include ("view/sanpham.php");
-            break;
         case 'searchsp':
             if ((isset($_POST["submit"])) && ($_POST["submit"]) != "") {
                 $kyw = $_POST["kyw"];
             } else {
                 $kyw = "";
             }
-            $listSp = list_sach(0, $kyw, "");
+            $listSp = list_sach(0, $kyw);
 
             include ("view/sanpham.php");
             break;
@@ -480,7 +464,7 @@ if (isset($_GET["act"])) {
                     $result = execPostRequest($endpoint, json_encode($data));
                     $jsonResult = json_decode($result, true);  // decode json
 
-// 0
+                    // 0
                     header('Location: ' . $jsonResult['payUrl']);
                 }
                 // 1
