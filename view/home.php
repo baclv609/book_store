@@ -412,7 +412,7 @@
 </section>
 
 <section id="miraway-customer" class="mt-[100px] max-lg:mt-[80px] px-[120px] pb-[50px]">
-    <h3 class="text-primary text-center text-black text-3xl text-lg p-4 rounded-md">Khách hàng của chúng tôi</h3>
+    <h3 class="text-primary text-center text-black text-3xl p-4 rounded-md">Khách hàng của chúng tôi</h3>
     <div class="mt-14 max-md:mt-[40px] overflow-hidden flex">
         <div class="slide w-full shrink-0 max-md:hidden">
             <img loading="lazy" src="https://miraway.vn/_ipx/w_1536&f_webp/images/customer-logo.png"

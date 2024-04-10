@@ -99,7 +99,7 @@
   </div>
   <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
     <div class="flex justify-between mb-4 items-start">
-      <div class="font-medium">Manage Services</div>
+      <div class="font-medium">Top 5 danh mục bán chạy</div>
 
     </div>
     <table class="w-full min-w-[540px]">
@@ -132,13 +132,13 @@
                                 </div>
                             </td>
                             <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400 text-center">' . $value["countSP"] . '</span>
+                                <span class="text-[13px] font-medium text-gray-400 text-center">' . $value["countSP"] . ' đ</span>
                             </td>
                             <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400 text-center">' . $value["minGia"] . '</span>
+                                <span class="text-[13px] font-medium text-gray-400 text-center">' . number_format(floatval($value["minGia"]), 0, ".", ",")  . ' đ</span>
                             </td>
                             <td class="py-2 px-4 border-b border-b-gray-50">
-                              <span class="text-[13px] font-medium text-gray-400 text-center">' . $value["maxGia"] . '</span>
+                              <span class="text-[13px] font-medium text-gray-400 text-center">' . number_format(floatval($value["maxGia"]), 0, ".", ",") . ' đ</span>
                             </td>
                             <td class="py-2 px-4 border-b border-b-gray-50">
                               <span class="text-[13px] font-medium text-gray-400 text-center">' . $value["totalLuotBan"] . '</span>
@@ -162,53 +162,154 @@
   <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
     <div class="flex justify-between mb-4 items-start">
       <div class="font-medium">Doanh thu những tháng gần đây</div>
-
     </div>
     <div>
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
       <div id="chart_div"></div>
+
       <script>
         google.charts.load('current', { packages: ['corechart', 'bar'] });
         google.charts.setOnLoadCallback(drawBasic);
 
         function drawBasic() {
-
           var data = google.visualization.arrayToDataTable([
-            ['Tháng', 'Doanh thu',],
+            ['Tháng', 'Doanh thu', 'Lượt bán'],
             <?php
-            $tongdoanhthu5t = count($thongke_DoanhThu_5_thang);
-            $i = 1;
-            foreach ($thongke_DoanhThu_5_thang as $key => $value) {
-              if ($i == $tongdoanhthu5t)
-                $dauPhay = "";
-              else
-                $dauPhay = ",";
-              echo "[ '" . $value['nam'] . " - " . $value['thang'] . "', " . $value['doanh_thu'] . "]$dauPhay";
-              $i++;
-            } ?>
-
+            foreach ($thongke_DoanhThu_5_thang as $value) {
+              echo "['{$value['nam']} - {$value['thang']}', {$value['doanh_thu']}, {$value['luot_ban']}],";
+            }
+            ?>
           ]);
 
           var options = {
-            title: 'Population of Largest U.S. Cities',
-            chartArea: { width: '' },
+            title: 'Doanh thu và lượt bán 6 tháng gần đây',
+            chartArea: { width: '50%' },
             hAxis: {
-              title: 'Total Population',
+              title: 'Tháng',
               minValue: 0
             },
+            vAxes: {
+              0: { title: 'Giá trị' },
+              1: { title: 'Lượt bán', minValue: 0 }
+            },
+            series: {
+              0: { targetAxisIndex: 0 },
+              1: { targetAxisIndex: 1 }
+            }
           };
 
-          var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+          var chart = new google.visualization.ColumnChart(
+            document.getElementById('chart_div'));
 
           chart.draw(data, options);
         }
       </script>
+
+      <!-- Thống kê theo ngày -->
+      <div class="mt-5">
+        <div class="flex justify-between mb-4 items-start">
+          <div class="font-medium">Thống kê theo ngày</div>
+        </div>
+        <form method="post" action="index.php?act=thongKe" class="mt-5 mb-5 flex justify-center">
+          <div class="flex gap-4">
+            <div class="flex items-center">
+              <label class="block text-sm font-medium text-gray-700 ml-1">Ngày: </label>
+              <select name="select_day" id="select_day"
+                class="block w-24 px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
+                <option value="0">Chọn</option>
+                <?php
+                for ($i = 1; $i <= 30; $i++) {
+                  echo "<option value='$i'>$i</option>";
+                }
+                ?>
+              </select>
+            </div>
+            <div class="flex items-center">
+              <label class="block text-sm font-medium text-gray-700 ml-1">Tháng: </label>
+              <select name="select_month" id="select_month"
+                class="block w-24 px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
+                <option value="0">Chọn</option>
+
+                <?php
+                for ($i = 1; $i <= 12; $i++) {
+                  echo "<option value='$i'>$i</option>";
+                }
+                ?>
+              </select>
+            </div>
+            <div class="flex items-center">
+              <label class="block text-sm font-medium text-gray-700 ml-1">Năm: </label>
+              <select name="select_year" id="select_year"
+                class="block w-24 px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
+                <?php
+                $current_year = date('Y');
+                for ($i = $current_year; $i >= $current_year - 5; $i--) {
+                  echo "<option value='$i'>$i</option>";
+                }
+                ?>
+              </select>
+            </div>
+            <div>
+              <button type="submit" name="submit"
+                class="px-2 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">Tìm
+                kiếm</button>
+            </div>
+          </div>
+        </form>
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <div id="chart_div2"></div>
+
+        <script>
+          google.charts.load('current', { packages: ['corechart', 'bar'] });
+          google.charts.setOnLoadCallback(drawBasic);
+
+          function drawBasic() {
+            var data = google.visualization.arrayToDataTable([
+              ['Tháng', 'Doanh thu', 'Lượt bán'],
+              <?php
+              foreach ($thongke_DoanhThu_sach as $value) {
+                if ($selected_month != null) {
+                  echo "[' {$value['thang']} - {$value['nam']}', {$value['doanh_thu']}, {$value['luot_ban']}],";
+                } else {
+                  echo "[' {$value['ngay']} - {$value['thang']} - {$value['nam']}', {$value['doanh_thu']}, {$value['luot_ban']}],";
+                }
+              }
+              ?>
+            ]);
+
+            var options = {
+              title: 'Doanh thu ',
+              chartArea: { width: '50%' },
+              hAxis: {
+                title: 'Thời gian',
+                minValue: 0
+              },
+              vAxes: {
+                0: { title: 'Giá trị' },
+                1: { title: 'Lượt bán', minValue: 0 }
+              },
+              series: {
+                0: { targetAxisIndex: 0 },
+                1: { targetAxisIndex: 1 }
+              }
+            };
+
+            var chart = new google.visualization.ColumnChart(
+              document.getElementById('chart_div2'));
+
+            chart.draw(data, options);
+          }
+        </script>
+
+      </div>
+
     </div>
 
   </div>
   <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
     <div class="flex justify-between mb-4 items-start">
-      <div class="font-medium">Earnings</div>
+      <div class="font-medium">Top 10 sách bán chạy</div>
     </div>
     <div class="overflow-x-auto">
       <table class="w-full min-w-[460px]">
@@ -246,6 +347,37 @@
           ?>
         </tbody>
       </table>
+    </div>
+    <div>
+      <!-- <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+          // Dữ liệu thống kê số lượng đã bán ra theo ngày tháng
+          var data = google.visualization.arrayToDataTable([
+            ['Ngày', 'Số lượng đã bán'],
+            ['01/01/2024', 10],
+            ['02/01/2024', 5],
+            ['03/01/2024', 8],
+            // Thêm dữ liệu cho các ngày khác tương tự
+          ]);
+
+          var options = {
+            title: 'Biểu đồ thống kê số lượng đã bán ra theo ngày',
+            hAxis: {
+              title: 'Ngày'
+            },
+            vAxis: {
+              title: 'Số lượng đã bán'
+            }
+          };
+
+          var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+          chart.draw(data, options);
+        }
+      </script> -->
     </div>
   </div>
 </div>

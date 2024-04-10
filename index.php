@@ -480,7 +480,6 @@ if (isset($_GET["act"])) {
                     $result = execPostRequest($endpoint, json_encode($data));
                     $jsonResult = json_decode($result, true);  // decode json
 
-                    //Just a example, please check more in there
 // 0
                     header('Location: ' . $jsonResult['payUrl']);
                 }
