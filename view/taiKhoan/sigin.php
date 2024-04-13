@@ -25,7 +25,7 @@
                     <input class="p-2 rounded-xl border w-full" type="password" name="password" placeholder="Password">
 
                     <p class="text-red-500 text-[13px] pl-2">
-                        <?= $errDangKyuser ?>
+                        <?= $errDangKypass ?>
                     </p> <br>
                 </div>
 

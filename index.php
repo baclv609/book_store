@@ -202,7 +202,7 @@ if (isset($_GET["act"])) {
                         header("Location: index.php");
                         exit();
                     } else {
-                        $thongBao = "Tài khoản không tồn tại";
+                        $thongbao = "Tài khoản không tồn tại";
                     }
                 }
             }
@@ -233,8 +233,11 @@ if (isset($_GET["act"])) {
 
                 $_SESSION['user'] = checkUser($email, $password);
 
+                $thongbao = "Cập nhật thành công!";
+                $_SESSION['thongbao'] = $thongbao;
                 // Chuyển hướng người dùng về trang edittk (chỉnh sửa tài khoản)
                 header('Location: index.php?act=edittk');
+                
             }
             include "view/taiKhoan/edittk.php";
             break;

@@ -2,11 +2,18 @@
     <!-- login container -->
     <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
         <!-- form -->
-        <?php if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
+        <?php
+        if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
             extract($_SESSION['user']);
         }
         // var_dump($_SESSION['user']);
         // die;
+        ?>
+        <?php
+        if (isset($_SESSION['thongbao'])) {
+            $thongbao = $_SESSION['thongbao'];
+            unset($_SESSION['thongbao']);
+        }
         ?>
         <div class=" px-8 md:px-14">
             <h2 class="font-bold text-2xl text-[#002D74]">Cập nhật tài khoản</h2>
@@ -75,8 +82,8 @@
             </form>
             <p class="text-red-500 text-[13px] pl-2">
                 <?php
-                if (isset($thongBao) && $thongBao != "") {
-                    echo $thongBao;
+                if (isset($thongbao) && $thongbao != "") {
+                    echo $thongbao;
                 }
                 ?>
             </p>
