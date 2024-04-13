@@ -60,6 +60,17 @@ function checkemail_admin($email)
     $sp = pdo_query_one($sql);
     return $sp;
 }
+function email_da_ton_tai($email){
+    $sql = "SELECT * FROM users WHERE email = '$email'";
+    $em = pdo_query_one($sql);
+    return $em;
+}
+
+function ten_dang_nhap_da_ton_tai($name) {
+    $sql = "SELECT * FROM users WHERE name = '$name'";
+    $user = pdo_query_one($sql);
+    return $user;
+}
 // function checkUser($user, $pass)
 // {
 //     $sql = "SELECT * FROM taikhoan WHERE user = '$user' and pass = '$pass'";
