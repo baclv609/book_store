@@ -64,12 +64,12 @@
                             </li>
                             <li>
                                 <div class="">
-                                    <a id="dropdownButton" class="cursor-pointer w-55 m-7 md:m-0 hover:text-cyan-400 
+                                    <a id="dropdownButton" class="cursor-pointer w-55 m-7 md:m-0 hover:text-gray-500 
                             transition duration-400 ease-in">Danh Mục <i class="fa-solid fa-chevron-down"></i></a>
                                     <ul id="dropdownMenu"
                                         class="absolute hidden mt-2 py-2 w-55  bg-white rounded-md shadow-md z-10">
                                         <?php foreach ($listDm as $key => $value) {
-                                            echo '<li><a class="hover:text-cyan-400 p-3"  href="index.php?act=sanpham&iddm=' . $value["id"] . '">' . $value["name"] . '</a></li>';
+                                            echo '<li><a class="hover:text-gray-500 p-3"  href="index.php?act=sanpham&iddm=' . $value["id"] . '">' . $value["name"] . '</a></li>';
                                         } ?>
                                     </ul>
                                 </div>
