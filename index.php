@@ -40,12 +40,7 @@ $listSp_home = list_sach("", "", "");
 $list_sach_flashSale_home = list_sach_flashSale_home();
 $list_sach_banchay_home = list_sach_banchay_home();
 $list_Top_6_Sach_home = list_Top_6_Sach_home();
-$errDangNhappass = "";
-$errDangNhapuser = "";
 
-$errDangKypass = "";
-$errDangKyuser = "";
-$errDangKyemail = "";
 
 // if (!isset($_SESSION['myCart'])) {
 //     $_SESSION['myCart'] = [];
@@ -85,7 +80,7 @@ if (isset($_GET["act"])) {
                 $searchSP = isset($_POST["searchSP"]) ? $_POST["searchSP"] : "";
                 $danh_muc_id = isset($_POST["danh_muc_id"]) ? $_POST["danh_muc_id"] : "";
                 $tacgia = isset($_POST['tacGia_id']) ? $_POST['tacGia_id'] : array();
-            
+
                 if (is_array($tacgia)) {
                     $tacGia_id = implode(",", $tacgia);
                 } else {
@@ -96,9 +91,9 @@ if (isset($_GET["act"])) {
                 $danh_muc_id = "";
                 $tacGia_id = "";
             }
-            
+
             $listSp = list_All_home_sach($danh_muc_id, $searchSP, $tacGia_id);
-            include("view/sanpham.php");
+            include ("view/sanpham.php");
             break;
 
         //-- TÌM TÁC GIẢ TRANG SẢN PHẨM
@@ -130,6 +125,10 @@ if (isset($_GET["act"])) {
 
         //đăng kí
         case 'dangky':
+            $errDangKypass = "";
+            $errDangKyuser = "";
+            $errDangKyemail = "";
+            
             // nếu có tồn tại và có nhấp vào nút dangky
             if (isset($_POST["submit"])) {
                 $email = $_POST["email"];
@@ -137,15 +136,30 @@ if (isset($_GET["act"])) {
                 $password = $_POST["password"];
                 $isCheck = true;
 
-                if (empty($email)) {
+                //xác thực địa chỉ email
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $isCheck = false;
-                    $errDangKyemail = "Cần nhập email";
+                    $errDangKyemail = 'Bạn không được để trống email';
                 }
-                if (empty($name)) {
+                // Kiểm tra email đã tồn tại trong cơ sở dữ liệu hay không
+                if ($email && email_da_ton_tai($email)) {
+                    $isCheck = false;
+                    $errDangKyemail = 'Email đã tồn tại trong hệ thống, vui lòng sử dụng email khác.';
+                }
+                // if (empty($email)) {
+                //     $isCheck = false;
+                //     $errDangKyemail = "Cần nhập email";
+                // }
+
+                if (!$name) {
                     $isCheck = false;
                     $errDangKyuser = "Cần nhập tên đăng nhập";
+                } else if (ten_dang_nhap_da_ton_tai($name)) {
+                    $isCheck = false;
+                    $errDangKyuser = 'Tên đăng nhập đã tồn tại trong hệ thống, vui lòng chọn tên khác.';
                 }
-                if (empty($password)) {
+
+                if (!$password) {
                     $isCheck = false;
                     $errDangKypass = "Cần nhập mật khẩu";
                 }
@@ -171,12 +185,12 @@ if (isset($_GET["act"])) {
                 $email = $_POST["email"];
                 $password = $_POST["passsword"];
 
-                if (empty($email)) {
+                if (!$email) {
                     $isCheck = false;
                     $errDangNhapuser = "Cần nhập email";
                 }
 
-                if (empty($password)) {
+                if (!$password) {
                     $isCheck = false;
                     $errDangNhappass = "Cần nhập mật khẩu";
                 }
@@ -188,7 +202,7 @@ if (isset($_GET["act"])) {
                         header("Location: index.php");
                         exit();
                     } else {
-                        $thongBao = "Tài khoản không tồn tại";
+                        $thongbao = "Tài khoản không tồn tại";
                     }
                 }
             }
@@ -219,8 +233,11 @@ if (isset($_GET["act"])) {
 
                 $_SESSION['user'] = checkUser($email, $password);
 
+                $thongbao = "Cập nhật thành công!";
+                $_SESSION['thongbao'] = $thongbao;
                 // Chuyển hướng người dùng về trang edittk (chỉnh sửa tài khoản)
                 header('Location: index.php?act=edittk');
+                
             }
             include "view/taiKhoan/edittk.php";
             break;

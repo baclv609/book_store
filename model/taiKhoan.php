@@ -60,33 +60,18 @@ function checkemail_admin($email)
     $sp = pdo_query_one($sql);
     return $sp;
 }
-// function checkUser($user, $pass)
-// {
-//     $sql = "SELECT * FROM taikhoan WHERE user = '$user' and pass = '$pass'";
-//     $tendm = pdo_query_one($sql);
-//     return $tendm;
-// }
-// function checkEmail($email)
-// {
-//     $sql = "SELECT * FROM users WHERE email = '$email'";
-//     $tendm = pdo_query_one($sql);
-//     return $tendm;
-// }
-// function update_taikhoan($id, $user, $pass, $email, $adress, $tel)
-// {
-//     $sql = "UPDATE taikhoan 
-//     SET 
-//     user='$user',
-//     pass='$pass',
-//     email='$email',
-//     adress='$adress',
-//     tel='$tel'
-//     WHERE id='$id'";
-//     pdo_execute($sql);
-// }
-// function delete_taikhoan($id)
-// {
-//     $sql = "DELETE FROM taikhoan WHERE id = $id";
-//     pdo_query($sql);
-// }
+function email_da_ton_tai($email){
+    $sql = "SELECT * FROM users WHERE email = '$email'";
+    $em = pdo_query_one($sql);
+    return $em;
+}
+
+function ten_dang_nhap_da_ton_tai($name) {
+    $sql = "SELECT * FROM users WHERE name = '$name'";
+    $user = pdo_query_one($sql);
+    return $user;
+}
+
+
+
 ?>
