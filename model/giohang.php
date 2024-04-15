@@ -2,7 +2,7 @@
 
 function select_1_sach($id_user)
 {
-    $sql = "SELECT gio_hang_items.id,products.id as id_product,gio_hang_items.loai_bia, gio_hang_items.user_id,gio_hang_items.so_luong,products.gia AS gia, ( gio_hang_items.so_luong * products.gia ) 
+    $sql = "SELECT gio_hang_items.id,products.id as id_product,gio_hang_items.loai_bia, gio_hang_items.user_id,gio_hang_items.so_luong,gio_hang_items.gia AS gia, ( gio_hang_items.so_luong * gio_hang_items.gia ) 
     AS thanhtien, products.ten ,products.img AS hinhAnh 
     FROM gio_hang_items 
     JOIN products ON products.id=gio_hang_items.product_id 
@@ -21,12 +21,14 @@ function add_gio_hang($id_user, $product_id, $so_luong, $gia, $loai_bia)
 {
     $sql = "INSERT INTO gio_hang_items(user_id, product_id, so_luong, gia,loai_bia) 
      VALUES ('$id_user','$product_id','$so_luong','$gia','$loai_bia')";
-    //  echo $sql
+    // echo $sql;
+    // die;
     pdo_execute($sql);
 }
 function tong_gia($id_user)
 {
-    $sql = "SELECT SUM(so_luong*products.gia) AS tong FROM gio_hang_items JOIN products ON products.id=gio_hang_items.product_id 
+    $sql = "SELECT SUM(so_luong*gio_hang_items.gia) AS tong FROM gio_hang_items 
+    JOIN products ON products.id=gio_hang_items.product_id 
     WHERE gio_hang_items.user_id = $id_user";
     $tongGia = pdo_query_one($sql);
     return $tongGia;

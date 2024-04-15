@@ -297,24 +297,25 @@ if (isset($_GET["act"])) {
             if (isset($_POST['submit']) && $_POST['submit']) {
                 $product_id = $_POST['id'];
                 $gia = $_POST['gia'];
-                $gia_sau_bien_the = $_POST['gia_sau_bien_the'];
                 $so_luong = $_POST['so_luong'];
                 $selectedLoaiBia = $_POST['loai_bia'];
                 $loai_bia = "";
+                $muc_tang = 0;
+                $gia_sau_bien_the = 0;
                 if (isset($selectedLoaiBia)) {
-                    // echo $selectedLoaiBia; die;
                     $selectedLoaiBia = trim($selectedLoaiBia, "[]"); // Loại bỏ các ký tự "[" và "]"
                     $arr = explode(",", $selectedLoaiBia);
+                    // print_r($arr);
+                    // die;
                     if (is_array($arr)) {
-                        if (isset($arr[1])) {
-                            $loai_bia = $arr[1];
-                        } else {
-                            $loai_bia = '';
-                        }
+                        $loai_bia = $arr[1];
+                        $muc_tang = floatval($arr[0]);
                     } else {
+                        $muc_tang = 0;
                         $loai_bia = '';
                     }
                 } else {
+                    $muc_tang = 0;
                     $loai_bia = '';
                 }
                 if (isset($_SESSION['user']['id'])) {
@@ -332,7 +333,9 @@ if (isset($_GET["act"])) {
                         }
                     }
                     if (!$product_exists) {
-                        add_gio_hang($_SESSION['user']['id'], $product_id, $so_luong, $gia, $loai_bia);
+
+                        $gia_sau_bien_the = floatval($gia) + $muc_tang;
+                        add_gio_hang($_SESSION['user']['id'], $product_id, $so_luong, $gia_sau_bien_the, $loai_bia);
                     }
                 } else {
                     // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập

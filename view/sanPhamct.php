@@ -55,9 +55,9 @@
                     </div>
                     <div class="flex mb-4 items-center">
                         <div class="mr-4">
-                            <?php echo '<input type="hidden" name="gia" value="' . number_format(floatval($sanPhamCt["gia"]), 0, ".", ",") . '" readonly > 
+                            <?php echo '<input type="hidden"  value="' . number_format(floatval($sanPhamCt["gia"]), 0, ".", ",") . '" readonly > 
                             
-                         <input class="text" hidden value="' . $sanPhamCt["gia"] . '" id="gia_bien_the"
+                         <input class="text" hidden value="' . $sanPhamCt["gia"] . '" id="gia_bien_the"  name="gia"
                             onchange="myFunction()"></input>
                         <span class="text-[#FF0000] text-[24px] font-bold no-underline" name="gia_sau_bien_the" id="gia_sau_bien_the">
                             ' . number_format(floatval($sanPhamCt["gia"]), 0, ".", ",") . ' đ
