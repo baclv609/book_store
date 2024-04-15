@@ -24,7 +24,7 @@
                                 <ul class="text-xs text-white space-y-3 mt-4">
                                     <li class="flex flex-wrap gap-4">Loại: <span class="ml-auto">' . $value['loai_bia'] . '</span></li>
                                     <li class="flex flex-wrap gap-4">Số lượng <span class="ml-auto">' . $value['so_luong'] . '</span></li>
-                                    <li class="flex flex-wrap gap-4">Tổng giá <span class="ml-auto ">' . number_format(floatval($value['thanhtien']), 0, ".", ",") . 'đ</span></li>
+                                    <li class="flex flex-wrap gap-4">Tổng giá <span class="ml-auto ">' . number_format(floatval($value['Gia_tien_Pro_id']), 0, ".", ",") . 'đ</span></li>
                                 </ul>
                             </div>
                         </div>

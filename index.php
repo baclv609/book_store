@@ -298,7 +298,9 @@ if (isset($_GET["act"])) {
                 $product_id = $_POST['id'];
                 $gia = $_POST['gia'];
                 $so_luong = $_POST['so_luong'];
-                $selectedLoaiBia = $_POST['loai_bia'];
+
+                $selectedLoaiBia = $_POST['loai_bia'] ? $_POST['loai_bia'] : null;
+
                 $loai_bia = "";
                 $muc_tang = 0;
                 $gia_sau_bien_the = 0;
@@ -307,8 +309,13 @@ if (isset($_GET["act"])) {
                     $arr = explode(",", $selectedLoaiBia);
                     // print_r($arr);
                     // die;
+
                     if (is_array($arr)) {
-                        $loai_bia = $arr[1];
+                        if (isset($arr[1])) {
+                            $loai_bia = $arr[1];
+                        } else {
+                            $loai_bia = '';
+                        }
                         $muc_tang = floatval($arr[0]);
                     } else {
                         $muc_tang = 0;
@@ -371,14 +378,15 @@ if (isset($_GET["act"])) {
 
                 // Lấy dữ liệu từ $gioHang và chèn vào bảng gio_hang_item_thanhtoan
                 $gioHang = select_1_sach($_SESSION['user']['id']);
-                $isSuccessful = true; // Flag to track if all operations are successful
+                $isSuccessful = true;
 
                 foreach ($gioHang as $key => $value) {
                     $id_gio_hang_items = $value['id'];
                     $so_luong = $value['so_luong'];
                     $product_id = $value['id_product'];
                     $loai_bia = $value['loai_bia'];
-                    $is_IdProduct_DH = insert_gio_hang_item_thanhtoan($so_luong, $product_id, $loai_bia, $_SESSION['user']['id'], $id_DH);
+                    $thanhtien = $value['thanhtien'];
+                    $is_IdProduct_DH = insert_gio_hang_item_thanhtoan($so_luong, $product_id, $loai_bia, $_SESSION['user']['id'], $id_DH, $thanhtien);
                     if (isset($is_IdProduct_DH)) {
                         delete_sanPham_cart($id_gio_hang_items);
                     } else {
@@ -392,6 +400,7 @@ if (isset($_GET["act"])) {
                 } else {
                     echo "Payment failed. Please try again.";
                 }
+
             } else if (isset($_POST['redirect'])) {
 
                 $name = $_POST['name'];

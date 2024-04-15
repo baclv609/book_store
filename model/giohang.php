@@ -2,7 +2,7 @@
 
 function select_1_sach($id_user)
 {
-    $sql = "SELECT gio_hang_items.id,products.id as id_product,gio_hang_items.loai_bia, gio_hang_items.user_id,gio_hang_items.so_luong,gio_hang_items.gia AS gia, ( gio_hang_items.so_luong * gio_hang_items.gia ) 
+    $sql = "SELECT gio_hang_items.id,products.id as id_product,gio_hang_items.loai_bia, gio_hang_items.user_id,gio_hang_items.so_luong,gio_hang_items.gia AS gia, (gio_hang_items.so_luong * gio_hang_items.gia ) 
     AS thanhtien, products.ten ,products.img AS hinhAnh 
     FROM gio_hang_items 
     JOIN products ON products.id=gio_hang_items.product_id 
@@ -50,10 +50,10 @@ function insert_donHang_id($customer_id, $status, $tong_tien, $payment, $ghi_chu
     $e = pdo_execute_return_lastInsertId($sql);
     return $e;
 }
-function insert_gio_hang_item_thanhtoan($so_luong, $product_id, $loai_bia, $user_id, $gio_hang_id)
+function insert_gio_hang_item_thanhtoan($so_luong, $product_id, $loai_bia, $user_id, $gio_hang_id, $thanhtien)
 {
-    $sql = "INSERT INTO gio_hang_item_thanhtoan(so_luong, product_id, loai_bia, user_id, gio_hang_id) 
-    VALUES ('$so_luong','$product_id','$loai_bia','$user_id','$gio_hang_id')";
+    $sql = "INSERT INTO gio_hang_item_thanhtoan(so_luong, product_id, loai_bia, user_id, gio_hang_id,Gia_tien_Pro_id) 
+    VALUES ('$so_luong','$product_id','$loai_bia','$user_id','$gio_hang_id','$thanhtien')";
     $e = pdo_execute_return_lastInsertId($sql);
     return $e;
 }
@@ -99,8 +99,7 @@ function select_ChiTietDonHang_where_id($id)
 }
 function select_gio_hang_item_thanhtoan_where_id($id)
 {
-    $sql = "SELECT gio_hang_item_thanhtoan.*, products.ten, products.img AS hinhAnh, products.id , ( gio_hang_item_thanhtoan.so_luong * products.gia ) 
-    AS thanhtien  FROM `gio_hang_item_thanhtoan`
+    $sql = "SELECT gio_hang_item_thanhtoan.*, products.ten, products.img AS hinhAnh, products.id  FROM `gio_hang_item_thanhtoan`
     JOIN products on products.id = gio_hang_item_thanhtoan.product_id
         WHERE gio_hang_item_thanhtoan.gio_hang_id  = $id
         ORDER BY gio_hang_item_thanhtoan.id desc";

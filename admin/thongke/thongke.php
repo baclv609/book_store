@@ -132,7 +132,7 @@
                                 </div>
                             </td>
                             <td class="py-2 px-4 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400 text-center">' . $value["countSP"] . ' đ</span>
+                                <span class="text-[13px] font-medium text-gray-400 text-center">' . $value["countSP"] . '</span>
                             </td>
                             <td class="py-2 px-4 border-b border-b-gray-50">
                                 <span class="text-[13px] font-medium text-gray-400 text-center">' . number_format(floatval($value["minGia"]), 0, ".", ",")  . ' đ</span>
