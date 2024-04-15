@@ -241,7 +241,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                     $gia = $_POST['gia'];
                     $giaSale = $_POST['gia_sale'];
                     $moTa = $_POST['mo_ta'];
-                    $created_at = date('Y-m-d H:i:s'); 
+                    $created_at = date('Y-m-d H:i:s');
                     $filename = $_FILES["img"]["name"];
                     $target_dir = "../uploads/";
                     $target_file = $target_dir . basename($_FILES["img"]["name"]);
@@ -362,7 +362,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 }
                 $listDm = list_danhmuc("");
                 $listTg = list_tac_gia("");
-                $list_Sach = list_sach("", "", "");
+                $list_Sach = list_sach("", "");
 
                 include ("sach/sach.php");
                 break;
@@ -372,7 +372,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                     $id = $_GET["id"];
                     delete_sach($id);
                 }
-                $list_Sach = list_sach("", "", "");
+                $list_Sach = list_sach("", "");
                 include ("sach/sach.php");
                 break;
 
@@ -394,7 +394,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                     // thêm vào bảng trung gian
                     insert_trung_gian_bia_product($id_sach, $bia_id);
                 }
-                $list_Sach = list_sach("", "", "");
+                $list_Sach = list_sach("", "");
 
                 include ("sach/sach.php");
                 break;
@@ -439,7 +439,14 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
 
             // đơn hàng
             case 'order':
-                $list_order_cart = select_order_cart();
+                if (isset($_POST['submit'])) {
+                    $search_id_DH = $_POST["search_id_DH"];
+                    // echo $search_id_DH;
+                    // die;
+                } else {
+                    $search_id_DH = "";
+                }
+                $list_order_cart = select_order_cart($search_id_DH);
                 include ("donhang/donhang.php");
                 break;
             case 'ChiTietDonHang':
@@ -456,7 +463,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                     $selectedStatus = $_POST['status_id'];
                     update_status_ChiTietDonHang($id, $selectedStatus);
                 }
-                $list_order_cart = select_order_cart();
+                $list_order_cart = select_order_cart("");
                 include ("donhang/donhang.php");
                 break;
 

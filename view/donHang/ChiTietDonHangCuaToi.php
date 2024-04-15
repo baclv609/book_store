@@ -39,7 +39,7 @@
                     <div class="md:w-1/4">
                         <form action="index.php?act=updateDHcuatoi" method="post">
                             <div class="bg-white rounded-lg shadow-md p-6">
-                                <h2 class="text-lg font-semibold mb-4">Mã đơn hàng : VNG0
+                                <h2 class="text-lg font-semibold mb-4">Mã đơn hàng : 
                                     <?php echo $list_order_cart_where_id["id"] ?>
                                 </h2>
                                 <span class="font-medium text-black">Họ tên:</span>

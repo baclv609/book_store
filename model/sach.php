@@ -46,8 +46,6 @@ function list_sach($danh_muc_id, $searchSp)
     if ($danh_muc_id > 0) {
         $sql .= " AND products.danh_muc_id = " . $danh_muc_id;
     }
-
-
     $sql .= " ORDER BY products.id DESC";
     // echo $sql; die;
     $listSach = pdo_query($sql);

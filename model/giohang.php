@@ -1,5 +1,4 @@
 <?php
-
 function select_1_sach($id_user)
 {
     $sql = "SELECT gio_hang_items.id,products.id as id_product,gio_hang_items.loai_bia, gio_hang_items.user_id,gio_hang_items.so_luong,gio_hang_items.gia AS gia, (gio_hang_items.so_luong * gio_hang_items.gia ) 
@@ -64,27 +63,14 @@ function delete_sanPham_cart($id)
 }
 
 // admin
-function select_order_cart()
+function select_order_cart($search)
 {
-    // $sql = "SELECT 
-    // gio_hang.id,
-    // gio_hang.customer_id as id_user, 
-    // gio_hang.status, 
-    // gio_hang.tong_tien, 
-    // gio_hang.payment, 
-    // gio_hang.ghi_chu, 
-    // gio_hang.name, 
-    // gio_hang.phone, 
-    // gio_hang.email,
-    // gio_hang.adress , 
-    // gio_hang_item_thanhtoan.so_luong,
-    // gio_hang_item_thanhtoan.product_id as id_Product, gio_hang_item_thanhtoan.loai_bia 
-    // FROM `gio_hang` 
-    // JOIN gio_hang_item_thanhtoan 
-    // ON gio_hang.id = gio_hang_item_thanhtoan.gio_hang_id;";
     $sql = "SELECT gio_hang.id,gio_hang.customer_id as id_user, gio_hang.status, gio_hang.tong_tien, gio_hang.payment, gio_hang.ghi_chu, gio_hang.name, gio_hang.phone, gio_hang.email,gio_hang.adress, gio_hang.created_at  
-    FROM `gio_hang`
-    ORDER BY gio_hang.id desc";
+    FROM `gio_hang` WHERE 1";
+    if ($search != "") {
+        $sql .= " AND gio_hang.id LIKE $search";
+    }
+    $sql .= " ORDER BY gio_hang.id desc";
     $gioHang = pdo_query($sql);
     return $gioHang;
 }
@@ -161,12 +147,15 @@ function update_luot_ban_san_pham($id_product, $soLuong)
 //     $sql = "UPDATE `products` SET `luot_ban`='$soLuong' WHERE products.id =  $id_product";
 //     pdo_execute($sql);
 // }
-function select_Don_hang_cua_toi_where_idUser($id)
+function select_Don_hang_cua_toi_where_idUser($id, $search)
 {
     $sql = "SELECT gio_hang.id,gio_hang.customer_id as id_user, gio_hang.status, gio_hang.tong_tien, gio_hang.payment, gio_hang.ghi_chu, gio_hang.name, gio_hang.phone, gio_hang.email,gio_hang.adress, gio_hang.created_at  
     FROM `gio_hang`
-    WHERE gio_hang.customer_id = $id
-    ORDER BY gio_hang.id desc";
+    WHERE gio_hang.customer_id = $id";
+    if ($search != "") {
+        $sql .= " AND gio_hang.id LIKE  $search";
+    }
+    $sql .= " ORDER BY gio_hang.id desc";
     // echo $sql; die;
     $gioHang = pdo_query($sql);
     return $gioHang;
@@ -178,8 +167,6 @@ function select_Don_hang_cua_toi_thanhtoan_where_id($id)
     JOIN products on products.id = gio_hang_item_thanhtoan.product_id
         WHERE gio_hang_item_thanhtoan.user_id  = $id
         ORDER BY gio_hang_item_thanhtoan.id desc";
-    // echo $sql;
-    // die;
     $gioHang = pdo_query($sql);
     return $gioHang;
 }

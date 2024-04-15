@@ -3,19 +3,21 @@
         <div class="p-1.5 min-w-full inline-block align-middle">
             <div class="border rounded-lg divide-y divide-gray-200 dark:border-gray-700">
                 <div class="py-3 px-4">
-                    <div class="relative max-w-xs">
-                        <label for="hs-table-search" class="sr-only">Search</label>
-                        <input type="text" name="hs-table-search" id="hs-table-search"
-                            class="py-2 px-3 ps-9 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
-                            placeholder="Search for items">
-                        <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-3">
-                            <svg class="size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8" />
-                                <path d="m21 21-4.3-4.3" />
-                            </svg>
-                        </div>
+                    <div class="flex justify-between items-center">
+                        <form class="w-[500px]" action="index.php?act=order" method="post">
+                            <div class="relative ">
+                                <input type="search" id="search-dropdown"
+                                    class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500   "
+                                    placeholder="Nhập mã đơn hàng" name="search_id_DH" />
+
+                                <button type="submit" name="submit"
+                                    class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  ">
+                                    <!-- icon search -->
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <span class="sr-only">Search</span>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="overflow-hidden">
@@ -65,7 +67,7 @@
                                     ];
                                     echo '
                                             <tr>
-                                                <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">VNG0' . $value["id"] . '</td>
+                                                <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">' . $value["id"] . '</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
                                                     <div class="flex items-center">
                                                         <img class="h-16 w-16 mr-4"
@@ -91,7 +93,7 @@
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . $value["created_at"] . '</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . ($statusMessages[$status] ?? "Trạng thái không hợp lệ") . '</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">' . $value["payment"] . '</td>
-                                                <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">' .number_format(floatval( $value["tong_tien"] ), 0, ".", ","). 'đ</td>
+                                                <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">' . number_format(floatval($value["tong_tien"]), 0, ".", ",") . 'đ</td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                                                     <a href="index.php?act=ChiTietDonHang&id=' . $value["id"] . '"
                                                         class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Cập nhật</a>
@@ -101,44 +103,6 @@
                                 }
                             } ?>
 
-                            <!-- <tr>
-                                <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">VNG027</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 ">
-                                    <div class="flex items-center">
-                                        <img class="h-16 w-16 mr-4"
-                                            src="http://localhost:81/da1/Book_Store/uploads/v%C4%83n%20h%E1%BB%8Dc%202.jpg"
-                                            alt="Product image">
-                                        <div class="flex flex-col">
-                                            <span class="font-medium text-[14px] w-[200px] line-clamp-2">Combo Sách Ghi
-                                                Chép Pháp Y - Những Cái Chết Bí Ẩn + Những Con Quái Vật Đội Lốt
-                                                Người</span>
-                                            <p class="mt-1 text-[#929292] text-sm leading-4">bia mem</p>
-                                            <p class="mt-1 text-[#929292] text-sm leading-4"><span
-                                                    class="font-medium text-black">Số lượng: </span>1</p>
-                                            <p class="mt-1 text-[#929292] text-sm leading-4"><span
-                                                    class="font-medium text-black">Số lượng: </span>1</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
-                                    <span class="font-medium text-black">Họ tên:</span> bacle <br>
-                                    <span class="font-medium text-black">Sdt:</span> 01234567889 <br>
-                                    <span class="font-medium text-black">Địa chỉ:</span> hà noi <br>
-                                    <span class="font-medium text-black">Ghi chú:</span> Giao giờ hành chính <br>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">London No. 1 Lake Park
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">Đã đặt hàng
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">COD
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap font-bold text-sm text-red-600">129,000đ
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                    <button type="button"
-                                        class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none  dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Delete</button>
-                                </td>
-                            </tr> -->
                         </tbody>
                     </table>
                 </div>

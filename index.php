@@ -514,7 +514,14 @@ if (isset($_GET["act"])) {
             include ("./view/thankyou.php");
             break;
         case 'donHangCuaToi':
-            $select_Don_hang_cua_toi = select_Don_hang_cua_toi_where_idUser($_SESSION['user']['id']);
+            if (isset($_POST['submit'])) {
+                $search_id_DH = $_POST["search_id_DH"];
+                // echo $search_id_DH;
+                // die;
+            } else {
+                $search_id_DH = "";
+            }
+            $select_Don_hang_cua_toi = select_Don_hang_cua_toi_where_idUser($_SESSION['user']['id'], $search_id_DH);
             $Don_hang_cua_toi_thanhtoan = select_Don_hang_cua_toi_thanhtoan_where_id($_SESSION['user']['id']);
             include ("./view/donHang/donHangCuaToi.php");
             break;
