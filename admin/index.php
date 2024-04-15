@@ -529,8 +529,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 include ("home.php");
                 break;
         }
-    }
-    else{
+    } else {
         if (isset($_POST['submit'])) {
             $selected_day = $_POST['select_day'];
             $selected_month = $_POST['select_month'];
