@@ -25,7 +25,6 @@
 </head>
 
 <!-- font-[Poppins] -->
-
 <body class="">
     <div class="bg-white sticky z-[11] top-0 w-full " style="box-shadow: 0 1px 3px gray">
         <div class="swiper mySwiper2 bg-[#C92127]">

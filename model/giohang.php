@@ -21,6 +21,7 @@ function add_gio_hang($id_user, $product_id, $so_luong, $gia, $loai_bia)
 {
     $sql = "INSERT INTO gio_hang_items(user_id, product_id, so_luong, gia,loai_bia) 
      VALUES ('$id_user','$product_id','$so_luong','$gia','$loai_bia')";
+    //  echo $sql
     pdo_execute($sql);
 }
 function tong_gia($id_user)
@@ -43,6 +44,7 @@ function insert_donHang_id($customer_id, $status, $tong_tien, $payment, $ghi_chu
 {
     $sql = "INSERT INTO gio_hang(customer_id, status, tong_tien, payment, ghi_chu, name, phone, email, adress,created_at) 
     VALUES ('$customer_id','$status','$tong_tien','$payment','$ghi_chu','$name','$phone','$email','$adress','$created_at')";
+    // echo $sql;
     $e = pdo_execute_return_lastInsertId($sql);
     return $e;
 }

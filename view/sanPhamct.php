@@ -2,19 +2,17 @@
 <div class="bg-gray-100 py-8">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row -mx-4">
-            <form action="index.php?act=add_to_card" method="post" class="flex flex-col md:flex-row -mx-4">
-                <div class="md:flex-1 px-4">
+            <form action="index.php?act=add_to_card" method="post" class="flex md:flex-row -mx-4">
+                <div class="px-4">
                     <div class="h-[460px] w-[428px] rounded-lg hover:shadow-md mb-4 flex justify-center items-center">
-                        <img class="max-h-[460px] max-w-[428px]  object-cover"
+                        <img class="max-h-[460px] max-w-[428px] object-cover"
                             src="./uploads/<?php echo $sanPhamCt["img"]; ?>" alt="Product Image">
                         <input type="hidden" name="hinhAnh" value="./uploads/<?php echo $sanPhamCt["img"]; ?>">
                     </div>
-                    <div class="flex mx-2 mb-4">
-
-                        <div class="w-1/2 px-2">
-                            <input type="submit" name="submit" value="Thêm vào giỏ Hàng"
-                                class="w-full bg-gray-200 text-gray-800  py-2 px-4 rounded-full font-bold hover:bg-gray-300">
-
+                    <div class="flex justify-center items-center mx-2 mb-4">
+                        <div class="w-full px-2">
+                            <input type="submit" name="submit" value="Thêm vào giỏ hàng"
+                                class="text-center w-[200px] rounded-xl text-sm text-[#C92127] font-bold border-2 border-solid border-[#C92127] leading-5 bg-white py-3 px-4">
                         </div>
                     </div>
                 </div>
@@ -29,7 +27,6 @@
                     <div class="flex mb-4">
                         <?php
                         if (!empty($list_tacgia_sach_spct)) {
-
                             echo ' <div class="mr-4">';
                             echo '<span class="text-gray-700">Tác giả:</span>';
                             echo '<span class="text-gray-600 font-bold">';
@@ -59,9 +56,10 @@
                     <div class="flex mb-4 items-center">
                         <div class="mr-4">
                             <?php echo '<input type="hidden" name="gia" value="' . number_format(floatval($sanPhamCt["gia"]), 0, ".", ",") . '" readonly > 
-                         <input class="text" hidden value="' . number_format(floatval($sanPhamCt["gia"]), 0, ".", ",") . '" id="gia_bien_the"
+                            
+                         <input class="text" hidden value="' . $sanPhamCt["gia"] . '" id="gia_bien_the"
                             onchange="myFunction()"></input>
-                        <span class="text-[#FF0000] text-[24px] font-bold" id="gia_sau_bien_the">
+                        <span class="text-[#FF0000] text-[24px] font-bold no-underline" name="gia_sau_bien_the" id="gia_sau_bien_the">
                             ' . number_format(floatval($sanPhamCt["gia"]), 0, ".", ",") . ' đ
                         </span> '; ?>
 
@@ -74,46 +72,43 @@
                         }
                         ?>
                     </div>
-                    <div class="mb-4">
-                        <span class="font-bold text-gray-700 ">Loại Hàng:</span>
-                        <div class="flex items-center mt-2">
-                            <div>
-                                <?php
-                                if (!empty($bien_the_bia)) {
-                                    foreach ($bien_the_bia as $Check) {
-                                        extract($Check);
-
-                                        echo '<label>';
-                                        echo '<input type="radio" name="loai_bia" value="' . $Check['muc_tang'] . ',' . $Check['loai_bia'] . '" onchange="myFunction()"';
-                                        if ($Check['muc_tang'] == 0) {
-                                            echo ' checked="checked"';
-                                        }
-                                        echo ' class="bg-gray-300 text-gray-700 dark:text-white py-2 ml-3 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">';
-                                        echo $loai_bia;
-                                        echo '</label>';
-                                    }
-                                } else {
-                                    echo "<input type='hidden' name='loai_bia' value=''>";
-
-                                }
-                                ?>
+                    <?php if (!empty($bien_the_bia)): ?>
+                        <div class="mb-4">
+                            <span class="font-bold text-gray-700">Loại Hàng:</span>
+                            <div class="flex items-center mt-2">
+                                <div>
+                                    <?php foreach ($bien_the_bia as $Check): ?>
+                                        <?php extract($Check); ?>
+                                        <label>
+                                            <input type="radio" name="loai_bia"
+                                                value="<?php echo $Check['muc_tang'] . ',' . $Check['loai_bia']; ?>"
+                                                onchange="myFunction()" <?php if ($Check['muc_tang'] == 0) {
+                                                    echo ' checked="checked"';
+                                                } ?>
+                                                class="bg-gray-300 text-gray-700 dark:text-white py-2 ml-3 px-4 rounded-full font-bold mr-2 hover:bg-gray-400 dark:hover:bg-gray-600">
+                                            <?php echo $loai_bia; ?>
+                                        </label>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
+
+                    <!--  -->
                     <div class="mb-4">
                         <span class="font-bold text-gray-700">Số Lượng:</span>
                         <div class="flex items-center">
                             <span
                                 class="border bg-white cursor-pointer rounded-md py-2 px-4 mr-2 decrease-quantity">-</span>
-                            <input type="number" name="so_luong" value="1" min="0" class="text-center w-8 quantity"
+                            <input type="number" name="so_luong" value="1" min="1" class="text-center w-8 quantity"
                                 readonly>
                             <span
                                 class="border bg-white cursor-pointer rounded-md py-2 px-4 ml-2 increase-quantity">+</span>
                         </div>
                     </div>
                     <div>
-                        <span class="font-bold text-gray-700 ">Mô tả:</span>
-                        <p class="text-gray-600  text-sm mt-2">
+                        <span class="font-bold text-gray-700">Mô tả:</span>
+                        <p class="text-gray-600 text-sm mt-2">
                             <?php echo $sanPhamCt["mo_ta"]; ?>
                         </p>
                     </div>
@@ -134,9 +129,12 @@
     decreaseButtons.forEach(button => {
         button.addEventListener('click', () => {
             let quantity = parseInt(quantityInput.value);
-            if (quantity > 0) {
+            if (quantity > 1) {
                 quantity--;
                 quantityInput.value = quantity;
+            }
+            if (quantity === 1) {
+                button.disabled = true; // Vô hiệu hóa nút giảm số lượng
             }
         });
     });
@@ -147,6 +145,9 @@
             let quantity = parseInt(quantityInput.value);
             quantity++;
             quantityInput.value = quantity;
+            decreaseButtons.forEach(decreaseButton => {
+                decreaseButton.disabled = false; // Kích hoạt lại nút giảm số lượng
+            });
         });
     });
 </script>
@@ -255,7 +256,7 @@
         var x = parseFloat(document.querySelector('input[name="loai_bia"]:checked').value);
         console.log("x", x);
         y = parseFloat(document.getElementById("gia_bien_the").value);
-        document.getElementById("gia_sau_bien_the").innerHTML = y + x + ".000 đ";
-
+        var formattedPrice = (y + x).toLocaleString("vi-VN");
+        document.getElementById("gia_sau_bien_the").innerHTML = formattedPrice + " đ";
     }
 </script>

@@ -7,7 +7,7 @@ session_start();
 include ("../../model/connect.php");
 include ("../../model/binhLuan.php");
 
-$idUser = !empty ($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
+$idUser = !empty($_SESSION['user']['id']) ? $_SESSION['user']['id'] : null;
 
 $idSp = $_REQUEST["idSp"];
 // echo $idSp;
@@ -16,15 +16,17 @@ $idSp = $_REQUEST["idSp"];
 // die();
 $dsbl = selectAll_binhluan($idSp);
 // echo "<pre>";
-// var_dump($dsbl);
+// print_r($dsbl);
 // die;
 ?>
 
 
 <ol class="relative border-s border-gray-200">
     <?php
-    foreach ($dsbl as $key => $value) {
-        echo '
+    if (is_array($dsbl) && !empty($dsbl)) {
+        echo '<ul>';
+        foreach ($dsbl as $key => $value) {
+            echo '
         <li class="mb-10 ms-6">
             <span
                 class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white">
@@ -43,21 +45,27 @@ $dsbl = selectAll_binhluan($idSp);
             </div>
         </li>
     ';
+        }
+        echo '</ul>';
+    } else {
+        echo '
+    <div>
+        <p class="py-4 px-5 text-[#85640] rounded-lg mb-4 bg-[#fff3cd] border border-[#ffeeba]">
+            Hiện tại sản phẩm này chưa có bình luận.</p>
+    </div>';
     }
     ?>
-
-
 </ol>
 
 <!-- form -->
 <?php
-if (isset ($_SESSION['user']) && (count($_SESSION['user']) > 0)) { ?>
+if (isset($_SESSION['user']) && (count($_SESSION['user']) > 0)) { ?>
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
         <input type="hidden" name="idSp" value="<?= $idSp ?>">
         <label for="chat" class="sr-only">Your message</label>
         <div class="flex items-center px-3 py-2 rounded-lg bg-gray-50">
-            <label for="file-upload"
-                class="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-100">
+            <label for="file-upload" disabled
+                class="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-100 ">
                 <i class="fa-regular fa-image"></i>
                 <span class="sr-only">Upload image</span>
             </label>
@@ -75,7 +83,7 @@ if (isset ($_SESSION['user']) && (count($_SESSION['user']) > 0)) { ?>
 <?php } ?>
 
 <?php
-if (isset ($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     // echo 'helo';
     $idSp = $_POST['idSp'];

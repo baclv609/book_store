@@ -241,7 +241,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                     $gia = $_POST['gia'];
                     $giaSale = $_POST['gia_sale'];
                     $moTa = $_POST['mo_ta'];
-                    $created_at = date('Y-m-d H:i:s');
+                    $created_at = date('Y-m-d H:i:s'); 
                     $filename = $_FILES["img"]["name"];
                     $target_dir = "../uploads/";
                     $target_file = $target_dir . basename($_FILES["img"]["name"]);
@@ -297,8 +297,6 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                 include ("sach/add.php");
                 break;
 
-
-
             case 'editSp':
                 if (isset($_GET["id"]) && ($_GET["id"] > 0)) {
                     $id = $_GET["id"];
@@ -339,11 +337,6 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
                         $isCheck = false;
                         $ErrmoTa = "Cần nhập Mô tả Sản phẩm";
                     }
-                    // if (empty($filename)) {
-                    //     $isCheck = false;
-                    //     $Errimg = "Cần thêm ảnh Sản phẩm";
-                    // }
-                    // var_dump($isCheck); die;
                     if ($isCheck) {
                         if ($filename) {
                             $filename = time() . $filename;

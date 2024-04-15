@@ -20,7 +20,7 @@ function thongke_DoanhThu_thang()
     $sql = "SELECT YEAR(created_at) AS nam, MONTH(created_at) AS thang, SUM(gia) AS doanh_thu
     FROM products
     GROUP BY YEAR(created_at), MONTH(created_at)
-    ORDER BY YEAR(created_at), MONTH(created_at);";
+    ORDER BY YEAR(created_at), MONTH(created_at)";
     return pdo_query($sql);
 }
 function thongke_DoanhThu_6_thang()

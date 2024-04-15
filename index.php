@@ -128,7 +128,7 @@ if (isset($_GET["act"])) {
             $errDangKypass = "";
             $errDangKyuser = "";
             $errDangKyemail = "";
-            
+
             // nếu có tồn tại và có nhấp vào nút dangky
             if (isset($_POST["submit"])) {
                 $email = $_POST["email"];
@@ -237,7 +237,7 @@ if (isset($_GET["act"])) {
                 $_SESSION['thongbao'] = $thongbao;
                 // Chuyển hướng người dùng về trang edittk (chỉnh sửa tài khoản)
                 header('Location: index.php?act=edittk');
-                
+
             }
             include "view/taiKhoan/edittk.php";
             break;
@@ -275,7 +275,11 @@ if (isset($_GET["act"])) {
                 $tongGia = tong_gia($_SESSION['user']['id']);
                 include ('./view/giohang.php');
             } else {
-                echo "Bạn cần đăng nhập để xem giỏ hàng của bạn";
+                // echo "Bạn cần đăng nhập để xem giỏ hàng của bạn";
+                echo '<div class="container-content my-5 ">
+                <h1 class="font-bold text-xl leading-6 mt-1 mb-4 text-left">Giỏ hàng</h1>
+                <p class="py-4 px-5 text-[#85640] rounded-lg mb-4 bg-[#fff3cd] border border-[#ffeeba]">Bạn cần đăng nhập để xem giỏ hàng của bạn.</p>
+            </div>';
             }
             break;
         case 'deleteGioHang':
@@ -293,6 +297,7 @@ if (isset($_GET["act"])) {
             if (isset($_POST['submit']) && $_POST['submit']) {
                 $product_id = $_POST['id'];
                 $gia = $_POST['gia'];
+                $gia_sau_bien_the = $_POST['gia_sau_bien_the'];
                 $so_luong = $_POST['so_luong'];
                 $selectedLoaiBia = $_POST['loai_bia'];
                 $loai_bia = "";
@@ -354,7 +359,7 @@ if (isset($_GET["act"])) {
                 // $payment = $_POST['payment_method']; // cod vn pay
                 $payment = 'COD';
                 $customer_id = $_SESSION['user']['id'];
-                $created_at = date('H:i:s d/m/Y');
+                $created_at = date('Y-m-d H:i:s');
 
                 $tongGia = tong_gia($_SESSION['user']['id']);
 
@@ -395,7 +400,7 @@ if (isset($_GET["act"])) {
                 // $payment = $_POST['payment_method']; // cod vn pay
                 $payment = 'VNPay';
                 $customer_id = $_SESSION['user']['id'];
-                $created_at = date('H:i:s d/m/Y');
+                $created_at = date('Y-m-d H:i:s');
 
                 $tongGia = tong_gia($_SESSION['user']['id']);
 
