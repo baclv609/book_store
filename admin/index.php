@@ -496,11 +496,68 @@ if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
 
                 include ("thongke/thongke.php");
                 break;
+            case 'trangchu':
+                if (isset($_POST['submit'])) {
+                    $selected_day = $_POST['select_day'];
+                    $selected_month = $_POST['select_month'];
+                    $selected_year = $_POST['select_year'];
 
+                    // Kiểm tra nếu có chọn ngày, tháng và năm
+                    if ($selected_day != 0 && $selected_month != 0 && $selected_year != 0) {
+                        // Thực hiện thống kê theo ngày, tháng và năm
+                        $thongke_DoanhThu_sach = thongke_DoanhThu_sach($selected_month, $selected_year, $selected_day);
+                    }
+                    // Kiểm tra nếu chỉ chọn tháng và năm
+                    elseif ($selected_month != 0 && $selected_year != 0) {
+                        // Thực hiện thống kê theo tháng và năm
+                        $thongke_DoanhThu_sach = thongke_DoanhThu_sach($selected_month, $selected_year, null);
+                    }
+                    // Kiểm tra nếu chỉ chọn năm
+                    elseif ($selected_year != 0) {
+                        // Thực hiện thống kê theo năm
+                        $thongke_DoanhThu_sach = thongke_DoanhThu_sach(null, $selected_year, null);
+                    }
+                }
+
+                $thongke_gia_DanhMuc = thongke_gia_DanhMuc();
+                $top_10_sach_banChay = top_10_sach_banChay();
+                $thongke_DoanhThu_5_thang = thongke_DoanhThu_6_thang();
+
+                include ("thongke/thongke.php");
+                break;
             default:
                 include ("home.php");
                 break;
         }
+    }
+    else{
+        if (isset($_POST['submit'])) {
+            $selected_day = $_POST['select_day'];
+            $selected_month = $_POST['select_month'];
+            $selected_year = $_POST['select_year'];
+
+            // Kiểm tra nếu có chọn ngày, tháng và năm
+            if ($selected_day != 0 && $selected_month != 0 && $selected_year != 0) {
+                // Thực hiện thống kê theo ngày, tháng và năm
+                $thongke_DoanhThu_sach = thongke_DoanhThu_sach($selected_month, $selected_year, $selected_day);
+            }
+            // Kiểm tra nếu chỉ chọn tháng và năm
+            elseif ($selected_month != 0 && $selected_year != 0) {
+                // Thực hiện thống kê theo tháng và năm
+                $thongke_DoanhThu_sach = thongke_DoanhThu_sach($selected_month, $selected_year, null);
+            }
+            // Kiểm tra nếu chỉ chọn năm
+            elseif ($selected_year != 0) {
+                // Thực hiện thống kê theo năm
+                $thongke_DoanhThu_sach = thongke_DoanhThu_sach(null, $selected_year, null);
+            }
+        }
+
+        $thongke_gia_DanhMuc = thongke_gia_DanhMuc();
+        $top_10_sach_banChay = top_10_sach_banChay();
+        $thongke_DoanhThu_5_thang = thongke_DoanhThu_6_thang();
+
+        include ("thongke/thongke.php");
     }
     include ("footer.php");
 } else {
