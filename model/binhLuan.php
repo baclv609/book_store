@@ -9,7 +9,9 @@ function insert_binhluan($idSp, $idUser, $noiDung, $ngayBinhLuan, $thoiGianBinhL
 
 function list_binhLuan($searchBl)
 {
-    $sql = "SELECT * FROM binh_luan WHERE 1";
+    $sql = "SELECT binh_luan.*, products.ten as TenSach, products.img, users.name, users.avatar, users.email FROM products 
+    JOIN binh_luan on binh_luan.customer_id = products.id 
+    JOIN users on binh_luan.product_id = users.id WHERE 1";
     if ($searchBl != "") {
         $sql .= " AND content LIKE '%" . $searchBl . "%'";
     }
