@@ -26,7 +26,7 @@
                                 <ul class="text-xs text-white space-y-3 mt-4">
                                     <li class="flex flex-wrap gap-4">Loại: <span class="ml-auto">' . $value['loai_bia'] . '</span></li>
                                     <li class="flex flex-wrap gap-4">Số lượng <span class="ml-auto">' . $value['so_luong'] . '</span></li>
-                                    <li class="flex flex-wrap gap-4">Tổng giá <span class="ml-auto">' . $value['thanhtien'] . ',000 đ</span></li>
+                                    <li class="flex flex-wrap gap-4">Tổng giá <span class="ml-auto">' . number_format($value["thanhtien"], 0, ".", ",") . ' đ</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -39,8 +39,8 @@
                 <div class="absolute left-0 bottom-0 bg-[#444] w-full p-4">
                     <h4 class="flex flex-wrap gap-4 text-base text-white">Tổng cộng <span class="ml-auto">
                             <?php
-                            echo $tongGia['tong'];
-                            ?>
+                            echo number_format($tongGia['tong'], 0, ".", ",");
+                            ?> đ
                         </span></h4>
                 </div>
             </div>
@@ -94,8 +94,8 @@
                         <h4 class="flex gap-4 text-base ">Tổng cộng :
                             <span class="text-red-500 font-bold">
                                 <?php
-                                echo $tongGia['tong'];
-                                ?>
+                                echo number_format($tongGia['tong'], 0, ".", ",");
+                                ?> đ
                             </span>
                         </h4>
                     </div>
@@ -108,7 +108,7 @@
                             class="rounded-md px-6 py-3 w-full text-sm font-semibold bg-[#C92127] text-white hover:bg-[#dd292f]">
                     </div>
                     <div class="flex gap-6 max-sm:flex-col mt-10">
-                       
+
                         <input type="submit" name="payUrl" value="MoMO"
                             class="rounded-md px-6 py-3 w-full text-sm font-semibold bg-[#C92127] text-white hover:bg-[#dd292f]">
                     </div>
