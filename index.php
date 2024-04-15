@@ -299,8 +299,7 @@ if (isset($_GET["act"])) {
                 $gia = $_POST['gia'];
                 $so_luong = $_POST['so_luong'];
 
-                $selectedLoaiBia = $_POST['loai_bia'] ? $_POST['loai_bia'] : null;
-
+                $selectedLoaiBia = isset($_POST['loai_bia']) ? $_POST['loai_bia'] : null;
                 $loai_bia = "";
                 $muc_tang = 0;
                 $gia_sau_bien_the = 0;

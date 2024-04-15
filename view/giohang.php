@@ -3,26 +3,27 @@
         <div class="bg-gray-100 py-8 w-full">
             <div class="container-content mx-auto px-4">
                 <h1 class="text-2xl font-semibold mb-4">Giỏ Hàng Của Bạn</h1>
-                <div class="flex flex-col md:flex-row gap-4">
-                    <div class="md:w-3/4">
-                        <div class="bg-white rounded-lg shadow-md p-6 mb-4">
-                            <table class="w-full">
-                                <thead>
-                                    <tr>
-                                        <th class="text-left font-semibold">Sản phẩm</th>
-                                        <th class="text-left font-semibold">Giá</th>
-                                        <th class="text-left font-semibold">Số lượng</th>
-                                        <th class="text-left font-semibold">Thành tiền</th>
-                                        <th class="text-left font-semibold ">#</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    // print_r($gioHang);
-                                    // die;
-                                    foreach ($gioHang as $key => $value) {
-                                        $hinh = "./uploads/" . $value['hinhAnh'];
-                                        echo '      <tr>
+                <?php if (!empty($gioHang)): ?>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="md:w-3/4">
+                            <div class="bg-white rounded-lg shadow-md p-6 mb-4">
+                                <table class="w-full">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left font-semibold">Sản phẩm</th>
+                                            <th class="text-left font-semibold">Giá</th>
+                                            <th class="text-left font-semibold">Số lượng</th>
+                                            <th class="text-left font-semibold">Thành tiền</th>
+                                            <th class="text-left font-semibold ">#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        // print_r($gioHang);
+                                        // die;
+                                        foreach ($gioHang as $key => $value) {
+                                            $hinh = "./uploads/" . $value['hinhAnh'];
+                                            echo '      <tr>
                                                  <td class="py-4">
                                                      <div class="flex items-center">
                                                          <img class="h-16 w-16 mr-4" src="' . $hinh . '"
@@ -44,52 +45,41 @@
                                                  <td class="py-4">' . number_format(floatval($value['thanhtien']), 0, ".", ",") . '</td>
                                                  <td class="py-4"><a href="index.php?act=deleteGioHang&id=' . $value['id'] . '" onclick="return confirm(\'Bạn muốn xóa ?\')"><input type="button" value="Xóa"  class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"></a></td>
                                                 </tr> ';
-                                    }
-                                    ?>
-                                    <!-- More product rows -->
-                                </tbody>
-                            </table>
-                        </div>
+                                        }
+                                        ?>
+                                        <!-- More product rows -->
+                                    </tbody>
+                                </table>
+                            </div>
 
-                    </div>
-                    <div class="md:w-1/4">
-                        <div class="bg-white rounded-lg shadow-md p-6">
-                            <h2 class="text-lg font-semibold mb-4">Tổng</h2>
-                            <!-- <div class="flex justify-between mb-2">
-                                <span>Subtotal</span>
-                                <span>$19.99</span>
+                        </div>
+                        <div class="md:w-1/4">
+                            <div class="bg-white rounded-lg shadow-md p-6">
+                                <!-- <hr class="my-2"> -->
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">
+                                        <h3>Tổng số tiền :
+                                    </span>
+                                    <span class="font-semibold">
+                                        <?php
+                                        echo number_format(floatval($tongGia['tong']), 0, ".", ",");
+                                        ?>
+                                    </span>
+                                </div>
+                                <form action="index.php?act=thanh_toan" method="post">
+                                    <input type="submit" value="THANH TOÁN"
+                                        class="bg-red-700 text-white py-2 px-4 rounded-lg mt-4 w-full">
+                                </form>
                             </div>
-                            <div class="flex justify-between mb-2">
-                                <span>Taxes</span>
-                                <span>$1.99</span>
-                            </div>
-                            <div class="flex justify-between mb-2">
-                                <span>Shipping</span>
-                                <span>$0.00</span>
-                            </div> -->
-                            <hr class="my-2">
-                            <div class="flex justify-between mb-2">
-                                <span class="font-semibold">
-                                    <h3>Tổng số tiền :
-                                </span>
-                                <span class="font-semibold">
-                                    <?php
-                                    // foreach ($tongGia as $value) {
-                                    //     extract($tongGia);
-                                    //     echo '' . $value['tong'] . ',000đ';
-                                    // }
-                                    // echo $tongGia['tong'];
-                                    echo number_format(floatval($tongGia['tong']), 0, ".", ",");
-                                    ?>
-                                </span>
-                            </div>
-                            <form action="index.php?act=thanh_toan" method="post">
-                                <input type="submit" value="THANH TOÁN"
-                                    class="bg-red-700 text-white py-2 px-4 rounded-lg mt-4 w-full">
-                            </form>
                         </div>
                     </div>
-                </div>
+                <?php else: ?>
+                    <div>
+                        <p class="py-4 px-5 text-[#85640] rounded-lg mb-4 bg-[#fff3cd] border border-[#ffeeba] w-full">
+                            <a href="index.php?act=sach">Giỏ hàng trống, bấm vào đây tiếp tuc mua sắm.</a>
+                        </p>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
